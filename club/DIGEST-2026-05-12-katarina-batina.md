@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=0YjO7wShTkQ
 published: 2026-05-12
 duration_min: 55
 tags: [ip/dive-club, prototyping, product-strategy, design-engineering, design-tools, ai-agents, craft, feedback]
-flags: [prototype-feedback]
+flags: [prototype-feedback, coded-prototypes, inflight-relevant]
 source: 2026-05-12-katarina-batina.md
 source_type: descript
 slug: 2026-05-12-katarina-batina
@@ -30,6 +31,8 @@ Core claims: Shop wins by taking bets that thwart "best practice" density and by
 Why it matters: concrete Shop process for big-bet design (shoplifting, Quick/Artifact sharing, baseline resets) plus a leadership frame for the agentic era where editing and data access matter as much as vibe-coding.
 
 Speaker labels in the Descript source are **Katerina** (guest) and **Ridd** (host). Correct guest name is **Katarina Batina** (Descript project titled "Katerina"; Ridd says "Caterina" at close). Toby/Tobi both appear for Shopify's founder; quotes keep transcript wording. Luke Dupont spelling confirmed via Editing Granola show notes. Timecodes and section markers are trusted from Descript (no ±30s caveat).
+
+**Inflight note:** Figma still canvas; code explosion changed what designers can productively ship/share.
 
 ## Takeaways (Granola)
 

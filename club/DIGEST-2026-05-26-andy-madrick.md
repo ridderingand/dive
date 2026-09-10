@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=IfPK0LwbX_0
 published: 2026-05-26
 duration_min: 53
 tags: [ip/dive-club, prototyping, design-tools, design-engineering, ai-creative-tools, collaboration, feedback, craft]
-flags: [prototype-feedback]
+flags: [prototype-feedback, coded-prototypes, inflight-relevant]
 source: 2026-05-26-andy-madrick.md
 source_type: descript
 slug: 2026-05-26-andy-madrick
@@ -30,6 +31,8 @@ Core claims: designers must build opinionated collaboration systems (editable pr
 Why it matters: concrete Notion workflow for prototype feedback loops with non-designers, last-mile ownership numbers (5–20%), and a clear taste curriculum when AI default output is a jelly bean factory.
 
 Speaker labels in the Descript source are already **Andy** (guest) and **Ridd** (host) — no Speaker N remapping. Timecodes and section markers are trusted from Descript (no ±30s caveat).
+
+**Inflight note:** Figma-link feedback broke for concurrent work → editable prototypes on rails.
 
 ## Takeaways (Granola)
 

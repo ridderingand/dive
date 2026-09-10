@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=Dpy-yyYXhgU
 published: 2026-02-23
 duration_min: 54
 tags: [ip/dive-club, visual-design, prototyping, taste, craft, feedback, ai-creative-tools, design-systems]
-flags: [prototype-feedback]
+flags: [prototype-feedback, inflight-relevant]
 source: 2026-02-23-katie-dill.md
 source_type: descript
 slug: 2026-02-23-katie-dill
@@ -26,6 +27,8 @@ schema: 1
 Katie Dill (Head of Design at Stripe; ~5 years in) walks Ridd through the new stripe.com homepage redesign and how AI is changing design practice, taste, and leadership inside Stripe. Arc: homepage design decisions (waves, product storytelling overlay, restrained bento, sentence-as-H1, beauty-for-beauty’s-sake data-viz, user-story parallelograms, swirl-line micro-interactions) → “lacking of humanity” / modernism-left-behind → Patrick Collison + Tyler Cowen call for new aesthetics and the 1927 Atlantic “Beauty is the new business tool” frame → Cultural Tutor lampposts and AI as the excuse-killer for care → threefold AI pressure (customers using AI, AI in Stripe products, AI in how design works) → Proto Dash (internal AI dashboard playground) and “don’t pitch — click the prototype” reviews → designers/PMs/eng easing interchange and shipping 30 explorations where one used to be costly → raise the ceiling not just the floor (leverage systems; pick battles when status quo holds magic back; Financial Accounts review) → 7/10 free → aim for 15/10 → high-standards feedback culture (pull the plug / change live billboards) balanced with psychological safety for WIP → hiring for curiosity-in-the-AI-era + agency → bottoms-up heroes (Owen’s Proto Dash; Chris’s platforms prototype) → Katie’s leadership shift: build conditions for great work, walk the store, stay hands-on with Proto Dash and weekend vibe-coding. Core claims: beauty has utility (joy + trust signal when you move people’s money); sterile modernism can lack humanity — bring magic that doesn’t clutter; AI raises the floor so love/care/beauty become the differentiator; designers aren’t reliant on others to make ideas real — share a link not a deck; don’t reinvent the date picker but break patterns when they under-deliver the product’s magic; concentrate craft/creativity on 15/10 moments once 7/10 is free; high standards include killing mediocre work late; curiosity + agency beat “I’ve been doing AI for 10 years.” Why it matters: a Stripe-scale playbook for homepage craft, prototype-first review culture, and raising taste/ceiling while AI cheapens the baseline.
 
 ASR/Descript speaker & proper-noun normalization: "Patrick Coon" → Patrick Collison, "Tyler Cohen" → Tyler Cowen, "stripe dot come" → stripe.com, "Hermes" → Hermès. Corrected in prose; quotes keep transcript wording. Descript speakers labeled **Katie** (guest) and **Ridd** (host). Granola editing note: timeline correction — 6 years since last homepage (not 9); not stated that way in this Descript export. Timecodes and markers trusted from Descript (no ±30s caveat).
+
+**Inflight note:** Prototype feedback culture (already flagged).
 
 ## Takeaways (Granola)
 

@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=KpJs7mZYErg
 published: 2026-04-02
 duration_min: 55
 tags: [ip/dive-club, creative-process, collaboration, craft, vibe-coding, ai-creative-tools, prototyping, design-tools]
-flags: [prototype-feedback]
+flags: [prototype-feedback, inflight-relevant]
 source: 2026-04-02-marvin-schwaibold.md
 source_type: descript
 slug: 2026-04-02-marvin-schwaibold
@@ -28,6 +29,8 @@ Marvin Schwaibold (co-founder of Molly with Jaytel; now Product Design Studio at
 Core claims: best output comes from assembling misfit specialists in a fun environment (Robert Henri: create a life where art is inevitable); studio works agency-style bursts *and* bottoms-up toolmaking; motion teaches interface hierarchy; keep teams narrow and sequenced; AI accelerates prototypes so you persuade with work not permission — but keep craft tools; design differentiation marries speed/malleability with brand/animation soul (Artifact as example). Why it matters: rare inside map of Shopify's post-Molly Product Design Studio — how an acquired agency culture scales into a remote-first commerce org while designers absorb coding agents without losing craft.
 
 Speaker labels in the Descript source are already **Marvin** (guest) and **Ridd** (host) — no Speaker N remapping. Closing turn addresses the host as "Brett" (familiar/first name); rendered as Ridd elsewhere. ASR often mangles: "jal" / "J tell" / "Jay Tele"→Jaytel; "Yale be stock" / "Yel"→Yaël Bienenstock; "Yes, BVO" / "Yesper"→Jesper Vos; "Frank Sloman"→Frank Slootman; "Robert Henry"→Robert Henri; "Toby"→Tobi Lütke; "open claw"→OpenClaw; "Ation" / "orientation"→Ation; "Playto attack"→plane of attack — corrected in prose below; quotes keep transcript wording. Timecodes and section markers are trusted from Descript (no ±30s caveat).
+
+**Inflight note:** Internal visibility across Figma, video, demos, vibe tools — multi-surface share culture.
 
 ## Takeaways (Granola)
 

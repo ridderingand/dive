@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=628c4YuxAEM
 published: 2026-08-18
 duration_min: 54
 tags: [ip/dive-club, prototyping, design-tools, ai-agents, design-engineering, creative-process, feedback, product-strategy]
-flags: [prototype-feedback]
+flags: [prototype-feedback, coded-prototypes, inflight-relevant]
 source: 2026-08-18-patrick-morgan.md
 source_type: descript
 slug: 2026-08-18-patrick-morgan
@@ -26,6 +27,8 @@ schema: 1
 Patrick Morgan (product designer at Sublime Security) walks Ridd through Design Studio — a custom prototyping playground he built so enterprise designers can branch from production-faithful "blueprints," explore divergent lo-fi variants on a shared canvas, annotate with Cursor, collect Vercel Toolbar comments, and hand off to engineers' agents. Core claims: Claude artifacts were fast but disconnected and non-persistent; prototyping in production was too constrained for a big cybersecurity app; the sweet spot is a centralized Vite/React sandbox with mock data shaped like production, intentional low-fidelity overwrites, and agent-first harness design (canvas/frame/section/row, per-contributor folders, methods as on-demand skills). Why it matters: a rare end-to-end blueprint for an agent-native internal design environment — canvas feedback, fidelity hacking, production-port agent loops, and brand tools that graduate from prototypes — for teams that cannot (or should not) prototype in prod.
 
 Speaker labels in the Descript source are normalized here: **Speaker 3 → Patrick Morgan (guest)**; unlabeled **Speaker → Ridd (host)**; **Speaker 2 → brief affirmations** (treated as Ridd / secondary mic noise). Timecodes and section markers are trusted from Descript (no ±30s caveat).
+
+**Inflight note:** Static Figma detached from code fails enterprise systems; coded variants for alignment.
 
 ## Takeaways (Granola)
 

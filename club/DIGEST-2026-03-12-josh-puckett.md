@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=wym3V9FycTk
 published: 2026-03-12
 duration_min: 54
 tags: [ip/dive-club, craft, taste, creative-process, prototyping, design-tools, ai-creative-tools, visual-design]
-flags: [prototype-feedback]
+flags: [prototype-feedback, coded-prototypes, inflight-relevant]
 source: 2026-03-12-josh-puckett.md
 source_type: descript
 slug: 2026-03-12-josh-puckett
@@ -26,6 +27,8 @@ schema: 1
 Josh Puckett (Interface Craft; ex–Wealthfront / Dropbox) screen-shares the Interface Craft library and walks Ridd through designing with "uncommon care": library-card onboarding that went viral via co-creation (sign/draw your card), generative graphic tools driven by sine waves, pulling the library metaphor until hospitality-level return visits, Lissajous-curve "one slider / three params" fidget controls, morphing micro-interactions (Benji/Family), maximalist scratch-off v0/Claude gift cards, and a shifted design value prop — AI compresses reach so craft + restraint + volume of shots become the job. Arc: fidgetability + co-creation → demystify custom tools with English intent → metaphor unlocks visual language → Lissajous solves three-slider overload → morphing over CRUD dialogs → gift-card conceptual range then depth → AI unlocks formerly irrational polish → juniors grow reach via five-beats-a-day reps and rough Figma storyboards into Claude/v0. Core claims: bake co-creation into onboarding; metaphor first then attributes; intent beats knowing the math; less-but-better / daily decrease over adding surface area; micro-care builds trust; AI gives time back for conceptual depth; quantity builds intuition. Why it matters: a rare live craft clinic — not just takes, but the actual playgrounds, failed five-card prototypes, and gift-card layers — for designers who want uncommon care to be a practice, not a slogan.
 
 Descript speakers are labeled **Josh** (guest) and **Ridd** (host); no Speaker-N remapping. ASR mangles Lissajous ("Elisa J Curve" / "Lisa's U" / "lease ju"), sine ("sign" / "s wave"), Claude/v0 ("cloud" / "V zero"), Vercel ("CEL" / "Versel"), Dieter Rams ("Dita ROMs"), and "fidgetability". Corrected in prose; quotes keep transcript wording. Timecodes and markers trusted from Descript (no ±30s caveat).
+
+**Inflight note:** v0/Claude as craft medium — agents compress implementation so prototypes get shared.
 
 ## Takeaways (Granola)
 

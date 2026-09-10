@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=dJ0nj1ajShc
 published: 2026-07-21
 duration_min: 52
 tags: [ip/dive-club, design-tools, ai-creative-tools, ai-agents, prototyping, creative-process, design-engineering, craft]
-flags: [prototype-feedback]
+flags: [prototype-feedback, coded-prototypes, inflight-relevant]
 source: 2026-07-21-pablo-stanley.md
 source_type: descript
 slug: 2026-07-21-pablo-stanley
@@ -26,6 +27,8 @@ schema: 1
 Pablo Stanley (designer-builder; Vercel / v0) walks Ridd through two creative tools he built — Effecto (canvas design tool with agents, shaders, and HTML/Tailwind as the LLM-native substrate) and a collaborative agent workspace (Discord/Slack-like channels where humans and agents share threads, sandboxes, and PR review) — then the identity crisis of not dogfooding a canvas tool because he no longer designs that way, how historic artists (Rembrandt, Rivera, Warhol, Sol LeWitt) frame AI delegation, the two builder roles emerging at Vercel (prototyper vs make-it-real), how he prototyped v0 design mode as one gigantic production-code PR that engineers cherry-picked into shipping, Loom-as-storytelling for getting teammates excited and frictioned, and protecting craft with a hand-made Pixelbots weekend when his brain treated AI like a drug. Core claims: match the canvas to the language LLMs already understand (HTML/Tailwind beat a forced 3D shader world); agent work in the “black void” isolates collaboration unless agents join the human conversation; prototyping volume in code replaces Figma artboards — and most of that code never ships; AI sycophancy needs human friction (Slack, Loom, preview links); use AI to amplify curiosity, not replace thinking. Why it matters: rare BTS from someone who both ships design-tool product (v0 design mode) and builds side tools that anticipate the industry — while naming the creative and junior-designer knowledge-transfer costs of agent workflows.
 
 Speaker labels in the Descript source are normalized here: **Speaker 2 → Pablo Stanley (guest)**; **Speaker 5 → Ridd (host)**. Timecodes and section markers are trusted from Descript (no ±30s caveat).
+
+**Inflight note:** Prototyper archetype: high volume of shareable coded ideas (v0 / HTML canvas).
 
 ## Takeaways (Granola)
 

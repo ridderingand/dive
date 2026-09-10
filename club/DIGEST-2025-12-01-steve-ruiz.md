@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=3SvL0r-Lhh8
 published: 2025-12-01
 duration_min: 63
 tags: [ip/dive-club, design-tools, ai-agents, ai-creative-tools, prototyping, founder-stories, tool-bending, creative-process]
-flags: []
+flags: [coded-prototypes, inflight-relevant]
 source: 2025-12-01-steve-ruiz.md
 source_type: descript
 slug: 2025-12-01-steve-ruiz
@@ -26,6 +27,8 @@ schema: 1
 Steve Ruiz (tldraw / canvas SDK) walks Ridd through a ~7-year path from fine-art MFA → Cambridge publishing/InDesign → eBooks/HTML-CSS → Framer Classic prototyping as the wedge into product design → Framer education → Play → open-source Perfect Arrows / State Designer / telestrator ink → founding tldraw — then argues the canvas is still early as a product paradigm and a natural home for AI collaborators. Arc: origin (art + analytical day-job imbalance; prototyping as specialization when Origami/early Framer rewarded appetite for complexity) → rapid career (first tech job 2017; working on tldraw by 2021) → pizza/Quora visual-computation obsession → State Designer needing responsive arrows → Perfect Arrows as design-taste expressed in code and as content that designers actually watch → telestrator + pressure-sensitive SVG ink (race-track polygon trick; PhDs in the DMs) → tool-design principles (decision-making tools; safety nets; precision vs breadth; don't force every decision to be precise) → canvas as commodity with text-editor-strength conventions (undo chunks, pinch-zoom origin, group rotate) that must match or feel broken — while tldraw increasingly *sets* those norms → conservative vs deep vertical uses of canvas (workflows, pharma process design, Padlet/HyperCard classrooms, board-game primitives) → canvas beats git history for ideation/compare/branch → Make Real (draw → vision model → working prototype on canvas; Sawyer Hood spark; draw-on-top iteration; Stripe screenshot prompts; pre–vibe-coding virality) → thesis that chat works for people *and* AI, so canvas (already great for human collab) should host AI collab too → early bots fail at coordinates → autocomplete body-horror → teach.tldraw.com box agents → **fairies** as narratively honest framing for low-skill agents (English/Tinkerbell not Irish) → visual multi-agent orchestration (hats/wings for identity; posture for state; summon/orchestrator mode demoed in Lisbon) → metaphor as ideation engine (enchanted ponds as folders; wands/MCP; gift scrolls as AGENTS.md-style context). Core claims: tool design is decision design with reversible compare loops; canvas conventions are non-negotiable commodities with thousands of micro-features; today's familiar whiteboards are an early generation — verticals and AI will look less like Miro; vision models made a hackable canvas the right substrate for visual prompts; multi-agent orchestration is easier to *see* and manage on a canvas than in terminal fleets; fairy metaphor unlocks product ideas in both directions (tech→story and lore→feature). Why it matters: a founder-level playbook for canvas SDK + AI (Make Real → fairies) plus a designer-who-codes origin story that maps tool taste onto open source and agent UX.
 
 Descript speaker disclosure: labels are mostly generic — **Speaker 8** (and one `riverside_steve_raw-synced-video-cfr_…dive club_0147` continuation) remapped to **Steve** (guest: origin, tldraw, fairies); unlabeled **Speaker** / **Ridd** remapped to **Ridd** (host: interviewer; explicit `Ridd` label at ~00:21:22). Brief **Speaker 3** / **Speaker 5** / **Speaker 7** are short acknowledgments (Yeah / Nice / Yep / Oh yeah) — left as low-stakes; not treated as substantive speakers. ASR / transcript wording preserved in quotes (tldraw → "Tera" / "Teal draw" / "teal draw" / "deal draw"; fairies → "ferries" / "ferry"; ChatGPT → "Chate" / "chate"; tldraw.com → "teach do te draw.com"; Diagram → "Diagram"; Sawyer Hood; Lou Wilson; Orion Reed; Max Drake; Nima Cavallo). Timecodes and `## [timecode]` markers trusted from Descript (no ±30s caveat). Low-confidence quote attributions marked when the speaker label is ambiguous.
+
+**Inflight note:** Code-on-canvas / Make Real future — localhost and live demos as the share surface.
 
 ## Takeaways (Granola)
 

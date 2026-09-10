@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=z7A0R9fwixg
 published: 2026-06-24
 duration_min: 50
 tags: [ip/dive-club, taste, ai-creative-tools, design-tools, prototyping, creative-process, craft, design-industry]
-flags: [prototype-feedback]
+flags: [prototype-feedback, inflight-relevant]
 source: 2026-06-24-loredana-crisan.md
 source_type: descript
 slug: 2026-06-24-loredana-crisan
@@ -26,6 +27,8 @@ schema: 1
 Loredana Crisan (design leadership at Figma; previously ~decade at Meta; Romanian classical pianist → sound engineer → startup audio UX) talks with Ridd about taste as embodied care rather than a miracle gift, how Config 2026 releases aim to expand what teams can imagine (design agent that hands control back, code as creative medium, motion/expression against model-uniform product), building tools where AI gets you to ~70% then direct manipulation (ShaderFX parameters, Weave node workflows, “systems not screens,” soul.md intent for humans and agents), Figma research that review is the bottleneck when everyone can build, bringing code prototypes onto the canvas to visualize states/flows instead of Loom piles, design’s simultaneous identity crisis and renaissance as roles blur and she ships PRs (especially eval tools), playground repos vs production codebase by stage, why designers must embrace evals for non-deterministic LLM experiences, org moves (unclog reviews, find intersections across FigJam/Slides/code/canvas), Config product-strategy debates (compose animation + code layers, kill translation costs between brief→design→build), how ICs move decisions by making trade-offs concrete, and hiring for passion/craft/expansive tech curiosity over domain-check boxes — ending on a billboard: put yourself in what you’re making. Core claims: taste equals intentional care and human point of view (AI as instrument, not soul-less output); technology changes the world by changing what we can imagine; AI sets up the workspace, then you make it sing; review must become a collaborative canvas surface, not a Loom backlog; playground for speed, production for precision; evals are how you define good when design has many wrong answers; complexity is the enemy of action — designers connect dots and simplify. Why it matters: rare Config-era BTS from someone shaping Figma’s AI/canvas bets while naming the craft, review, and identity pressures designers feel as builders. Site title is *The design renaissance (and identity crisis)*; YouTube title was *Figma's big bets for the future of AI design*.
 
 Descript source already uses named speakers **Loredana:** (guest) and **Ridd:** (host) — no Speaker-N remapping. Timecodes and section markers are trusted from Descript (no ±30s caveat).
+
+**Inflight note:** Figma review bottleneck / how review gets unblocked — adjacent to Inflight review loops.
 
 ## Takeaways (Granola)
 

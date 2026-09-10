@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=jEEbjiC4JE0
 published: 2026-07-08
 duration_min: 54
 tags: [ip/dive-club, design-tools, ai-agents, ai-creative-tools, prototyping, creative-process, design-engineering, product-strategy]
-flags: [prototype-feedback]
+flags: [prototype-feedback, coded-prototypes, inflight-relevant]
 source: 2026-07-08-meaghan-choi.md
 source_type: descript
 slug: 2026-07-08-meaghan-choi
@@ -26,6 +27,8 @@ schema: 1
 Meaghan Choi (design lead, Claude Code at Anthropic) walks Ridd from joining Anthropic in late 2024 — when outsiders still asked “what’s that?” — through becoming the first designer on an experimental CLI pod that assumed it didn’t need one, into Artifacts as shareable HTML prototypes that grow into repo-checked mid-fi and PRs, Claude Tag as a single org-wide Claude she ships more than half her code from (Slack DMs → draft PR → CI → merge), when she still opens Figma for speed, how to collaborate with models on shape before execution, when not to polish because you’re testing the mental model, fixed vs adaptive interfaces, product restraint when everything is cheap to build, and the three skill sets she hires for (fluidity/curiosity, discernment/taste, ownership of the ship loop). Core claims: CLI design is mostly invisible mental models plus information-dense, keyboard-primary interaction — no progressive disclosure, just disclose; Artifacts win because sharing and versioned decision logs beat Figma canvas for execs and teammates; Claude Tag shifts from session-based single-player tools to one proactive org Claude with its own credentials; designers must know shape vs execution because Claude will happily execute a wrong idea; Anthropic’s experimental tempo rewards testing shape over premature craft; UI will stay both fixed (login, billing, settings) and adaptive — designers decide which; thriving designers lean into chaos, discern what should be built, and own finishing with the whole org. Why it matters: rare BTS from the person designing Claude Code / Artifacts / Tag at the pace the industry copies months later — and a concrete playbook for prototype-in-HTML → PR shipping plus Slack-native agent collaboration.
 
 Speaker labels in the Descript source are normalized here: **Speaker 13 → Meaghan Choi (guest)**; **Speaker 3 → Ridd (host)**; brief **Speaker 4** lines are host-side interjections (same conversation). Timecodes and section markers are trusted from Descript (no ±30s caveat).
+
+**Inflight note:** Defaults to Claude Code; Figma only when she's faster — explicit tool-split for review.
 
 ## Takeaways (Granola)
 

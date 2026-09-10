@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=mdV8APhz2j4
 published: 2026-03-25
 duration_min: 47
 tags: [ip/dive-club, career-growth, ai-creative-tools, prototyping, design-engineering, creative-process, code-as-material, collaboration]
-flags: [prototype-feedback]
+flags: [prototype-feedback, coded-prototypes, inflight-relevant]
 source: 2026-03-25-flora-guo.md
 source_type: descript
 slug: 2026-03-25-flora-guo
@@ -26,6 +27,8 @@ schema: 1
 Flora Guo (design engineer at Paradigm; formerly design-engineering intern at Vercel) walks Ridd through how sharing v0 prototypes and Tokyo Design Forum notes online jumpstarted her career, how she lands luck by hosting and offering rather than asking, and a practical learning ladder from basic HTML/CSS into Claude Code skill files and living notes. Core claims: minimum-viable learning then backfill beats waiting for full foundations; AI is a map of the territory (blows away the fog) but you still have to walk the terrain; treat models as an infinitely patient tutor and scaffold, not a please-fix loop; at Paradigm, align on conceptual primitives before screens, then converge via Figma/Paper sketches → coded prototype PRs and staging links; AI-native product design (swarm agents in a spreadsheet) is about scale, invariants, and structured data; stay current by going broad with friends then deep on one weekend rabbit hole — and share the learnings to build community. Why it matters: a concrete career-acceleration path for designers who want to own more frontend with AI, plus a rare look at design-eng collaboration through PR staging prototypes.
 
 Speaker labels in the Descript source are remapped here: **Speaker → Flora Guo (guest)**, **Speaker 2 → Ridd (host)**; early **Speaker 3** is still Flora (same guest, diarization split). ASR often mangles product/people names (V zero / Versal / VL / CEL → v0 / Vercel; Cloud Code → Claude Code; G → Guillermo Rauch; Rono / Ronald → Rauno Freiberg; sold md → SOL.md / skill-file style notes). Timecodes and section markers are trusted from Descript (no ±30s caveat).
+
+**Inflight note:** Shares v0 / staging PR prototypes as the review artifact (not Figma-link handoff).
 
 ## Takeaways (Granola)
 

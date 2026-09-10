@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=uBUZ8H6zIGw
 published: 2026-08-04
 duration_min: 53
 tags: [ip/dive-club, visual-design, ai-creative-tools, design-tools, creative-process, craft, taste, prototyping]
-flags: [prototype-feedback]
+flags: [prototype-feedback, coded-prototypes, inflight-relevant]
 source: 2026-08-04-nate-parrott.md
 source_type: descript
 slug: 2026-08-04-nate-parrott
@@ -26,6 +27,8 @@ schema: 1
 Nate Parrott (Anthropic; Claude Design) walks Ridd through how he actually designs inside Claude Design — prompt-first volume to compensate for model taste, one-off editors Claude builds on demand (color themes from a tangerine photo, 173 animation tweaks), and artifacts that live between decks, docs, prototypes, and animations. Core claims: the ceiling for storytelling has risen because everything can be interactive; Claude Design is for communicating and shaping ideas early (napkin sketches, stakeholder buy-in), not production software (that's Claude Code / v0 / Lovable); side project (late 2025 ASCII mockups → HTML skills → Electron → web) shipped mid-April 2026 after Labs support; designers should bring taste, context, and voice while asking Claude for options and custom dial-in tools. Why it matters: a rare maker's tour of Claude Design from the person who built it — workflow demos, origin, product line-drawing, creative process, and tips for raising visual storytelling past static forms.
 
 Speaker labels in the Descript source are normalized here: **Speaker 3 → Nate Parrott (guest)**; unlabeled **Speaker → Ridd (host)**. ASR often renders "Claude" as "Cloud" (Cloud Design / Cloud Code) — corrected in prose below; quotes keep transcript wording. Timecodes and section markers are trusted from Descript (no ±30s caveat).
+
+**Inflight note:** Claude Code unlock for software-output teams; designers get into the material and ship.
 
 ## Takeaways (Granola)
 

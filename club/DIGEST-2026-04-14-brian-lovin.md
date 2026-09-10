@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=dvEwb1Ajkwo
 published: 2026-04-14
 duration_min: 55
 tags: [ip/dive-club, ai-creative-tools, prototyping, design-tools, ai-agents, design-engineering, career-growth, vibe-coding]
-flags: [prototype-feedback]
+flags: [prototype-feedback, coded-prototypes, inflight-relevant]
 source: 2026-04-14-brian-lovin.md
 source_type: youtube-captions
 slug: 2026-04-14-brian-lovin
@@ -26,6 +27,8 @@ schema: 1
 Brian Lovin (Notion design; Shuri side project) walks Ridd through leveling up with AI as a designer: why treating Notion's early app-builder like a classic Figma project failed, building an internal prototyping playground to feel models in the medium, the 6-month obsolescence cycle of harnesses/prompts/skills, an inverted toolstack (wide explore in Paper/Conductor, last-mile polish by hand in Cursor), prompting as steering upstream tokens (Simon's "simpler and dumber"), demystifying agents ("AI is not magic" — grep/sed/awk), and why title boxes (designer/PM/engineer) are the career trap. Core claims: jump into the medium instead of mocking agent UX in Figma; design at the boundary of the current model and its harness; every ~6 months prior craft assumptions go irrelevant — stay curious, not tribal on tools; write more code yourself for fit/finish while agents handle the rest; roles are blurring — ship good software for real people. Why it matters: a practice-level map for designers who need to level up with AI in 2026 without waiting for Descript-perfect transcripts — playgrounds, toolstack metaf, prompting, and career shape in one pass.
 
 **Source caveat:** YouTube captions fallback because the Descript project is missing (Drive search exhausted — only the Fall 2023 Campsite founder project exists for Brian). Timecodes are ±30s; no diarization — speakers inferred from content (Brian = guest stories at Notion / Shuri / Tokyo; Ridd = host questions / ads; captions sometimes render host as "Rid"; guest manager name corrected Max Stoiber from ASR "Stoening"). This is the Spring 2026 "How to level up with AI as a designer" episode (yt `dvEwb1Ajkwo`), **not** the Fall 2023 Campsite founder episode.
+
+**Inflight note:** Half of AI product work can't live in Figma; designers build/ship outside the canvas.
 
 ## Takeaways (Granola)
 

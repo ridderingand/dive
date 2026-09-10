@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=KH9GBasDTI8
 published: 2026-03-05
 duration_min: 55
 tags: [ip/dive-club, product-strategy, career-growth, design-industry, collaboration, craft, vibe-coding, design-systems]
-flags: [prototype-feedback]
+flags: [prototype-feedback, inflight-relevant]
 source: 2026-03-05-cam-worboys.md
 source_type: descript
 slug: 2026-03-05-cam-worboys
@@ -26,6 +27,8 @@ schema: 1
 Cam Worboys (Head of Product Design at Cash App / Block) walks Ridd through running an AI-native design org: high quality *and* high velocity via lean teams, a flattened "core + three" stack to Jack, and an uncomfortable deletion of process (CRIT gone; Monday plan → optional Wednesday unblock → Friday demos). Arc: industry whirlwind + late-2025 release as proof → flatten org / bare-bones week → Friday demos as invention not status → >90% designers shipping PRs (pixel janitors → builders) via code-fluency program → DRI / IC builder / player-coach archetypes → hiring for craft+taste with AI fluency as table stakes → Square↔Cash "siblings not twins" shared DNA → systems vs one-of-one personalization bet. Core claims: quality comes from reps not cave pontification; org must match AI tool speed or ops become the bottleneck; roles blur into who can ship good stuff; output without strategic taste is rudderless; fewer gigs / higher bar; logos matter less than raw craft. Why it matters: a rare large-company playbook for deleting bureaucracy while designers become production builders — and a clear three-archetype career map.
 
 Descript speakers are labeled **Cameron** (guest) and **Ridd** (host); no Speaker-N remapping. ASR mangles Cash App, Block, GitHub ("Git Cup"), DRI, and names. Corrected in prose; quotes keep transcript wording. Timecodes and markers trusted from Descript (no ±30s caveat).
+
+**Inflight note:** Prototype feedback / WIP share loops (already flagged; keep Inflight umbrella).
 
 ## Takeaways (Granola)
 

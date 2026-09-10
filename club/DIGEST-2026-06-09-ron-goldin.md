@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=UkQpgslyR3A
 published: 2026-06-09
 duration_min: 54
 tags: [ip/dive-club, ux-research, prototyping, vibe-coding, ai-creative-tools, career-growth, product-strategy, founder-stories]
-flags: []
+flags: [prototype-feedback, coded-prototypes, inflight-relevant]
 source: 2026-06-09-ron-goldin.md
 source_type: descript
 slug: 2026-06-09-ron-goldin
@@ -30,6 +31,8 @@ Core claims: memos get nodded at; felt research (video, silence in the all-hands
 Why it matters: concrete playbook for design leaders who still lead with research theater and now ship persuasion prototypes — plus an honest Matchmaker zero-to-one in Lovable and a hiring rubric for AI-era design orgs.
 
 Speaker labels in the Descript source are already **Ron** (guest) and **Ridd** (host) — no Speaker N remapping. Timecodes and section markers are trusted from Descript (no ±30s caveat).
+
+**Inflight note:** Prototypes are the new argument — felt/shared builds move orgs more than memos.
 
 ## Takeaways (Granola)
 

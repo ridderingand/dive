@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=oM1d9Tau27w
 published: 2026-04-08
 duration_min: 45
 tags: [ip/dive-club, design-systems, prototyping, design-tools, ai-creative-tools, creative-process, code-as-material, career-growth]
-flags: [prototype-feedback]
+flags: [prototype-feedback, coded-prototypes, inflight-relevant]
 source: 2026-04-08-ian-silber.md
 source_type: descript
 slug: 2026-04-08-ian-silber
@@ -26,6 +27,8 @@ schema: 1
 Ian Silber (OpenAI design leadership; previously Instagram ~8 years, then Artifact / browser Minecraft×Roblox startup) walks Ridd through what designing inside a research-led lab actually feels like: model-as-product curiosity over pixel craft alone, designing *outside* the pixels (system prompts, model behavior, onboarding via the model), systems thinkers who hunt primitives (skills, composable blocks) instead of one-off features, bottoms-up shipping where a designer’s live Codex prototype can rally a team (math/learning surfaces, writing containers with direct manipulation), and how Codex/Cursor shifted collaboration from Figma/static/video to interactive model-backed prototypes plus an internal data-scientist agent. Rituals (PD Whip WIP channel, crits, emerging design systems / Dynamic User Interface Library), the capability gap between what frontier models can do (Codex-class) and what ChatGPT exposes, Madden’s “11 players on the field” constraint analogy, and hiring signals (curiosity + side-project depth + fundamentals). Core claims: thrive by staying close to the model and productizing capability; prefer tokens/conversation before bespoke UI; best designers intuit which tool (paper → Figma → live prototype); edit/curate as anyone can ship software; balance research-lab experimentality with cohesive systems. Why it matters: a rare inside map of OpenAI design practice — research DNA, prototypes as stewardship, systems primitives, and the capability-gap product problem — for designers who need to work with models as material, not just decorate chat.
 
 Speaker labels in the Descript source are normalized here: early turns use **Ian** / **Ridd**; later diarization switches to **Speaker → Ridd (host)** and **Speaker 2 → Ian Silber (guest)**. ASR often mangles ChatGPT (e.g. “chat PT,” “Tbu,” “che bt,” “tragedy t”); rendered as ChatGPT in claims below. Timecodes and section markers are trusted from Descript (no ±30s caveat).
+
+**Inflight note:** Designing outside the pixels; AI tools shift practice beyond traditional canvas.
 
 ## Takeaways (Granola)
 

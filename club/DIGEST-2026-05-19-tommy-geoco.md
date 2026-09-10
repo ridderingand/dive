@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=OYNoy468kS8
 published: 2026-05-19
 duration_min: 60
 tags: [ip/dive-club, design-industry, vibe-coding, ai-agents, design-tools, design-systems, job-market, career-growth]
-flags: []
+flags: [coded-prototypes, inflight-relevant]
 source: 2026-05-19-tommy-geoco.md
 source_type: descript
 slug: 2026-05-19-tommy-geoco
@@ -30,6 +31,8 @@ Core claims: designers who vibe-code are happier, but junior/mid ICs risk being 
 Why it matters: Tommy's survey + onsite vantage points give a concrete fluency rubric (stack primitives, briefcase, blank-canvas Hello World, share workflows, internal tools) at the exact moment hiring managers treat "no AI curiosity" as the top red flag.
 
 Speaker labels in the Descript source are already **Tommy** (guest) and **Ridd** (host) — no Speaker N remapping. ASR often renders product names as "Versal"→Vercel, "open claw/cloth"→OpenClaw, "cloud/quad code"→Claude Code, "frame.io" kept as Frame.io — corrected in prose below; quotes keep transcript wording. Timecodes and section markers are trusted from Descript (no ±30s caveat).
+
+**Inflight note:** State of Prototyping: vibe-coding designers; canvas + agentic coding as primitives.
 
 ## Takeaways (Granola)
 

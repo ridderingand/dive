@@ -77,6 +77,8 @@ Use Bones slug in digests. Mapping for writers:
 
 Do not put these in `tags:`. Use digest/clip `flags:` instead:
 - `prototype-feedback` — getting feedback on prototypes / sharing WIP for review
+- `coded-prototypes` — shift from Figma/static design tools to sharing coded prototypes / live previews
+- `inflight-relevant` — Inflight.co-shaped (preview links, Slack prototype drops, review-via-code); usually with one of the above
 
 ## Staging
 _New tag proposals go here until promoted or merged with Bones._

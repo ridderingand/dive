@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=3rnhlZj25iY
 published: 2026-05-05
 duration_min: 59
 tags: [ip/dive-club, creative-process, craft, taste, prototyping, design-engineering, indie-software, feedback]
-flags: [prototype-feedback]
+flags: [prototype-feedback, coded-prototypes, inflight-relevant]
 source: 2026-05-05-rafa-conde.md
 source_type: descript
 slug: 2026-05-05-rafa-conde
@@ -26,6 +27,8 @@ schema: 1
 Rafa Conde (design engineer at Retro; Hand Mirror indie; ex–Sketch / Netlify) walks Ridd through the feeling he’s been chasing since his first MacBook unboxing — make people feel something with software — and how Metal Gear Solid / Hideo Kojima–style fourth-wall creativity, Retro’s haptic onboarding, Slack idea-videos, and Hand Mirror humor all serve that goal. Core claims: surprise/delight and intentional friction can create memorable emotion when you design for a core audience instead of every edge case; trust users a little more and unlearn accessibility absolutism when it caps the ceiling for the people you care about; creative process starts with what you know how to ship (slideshow + haptics) and motifs emerge from accidents and teammate feedback; at Retro, AI collapsed role lines so everyone prototypes in code — Rafa’s transfer format is a short entertaining video (soundtrack, humor, B-roll) that sells the idea with least information loss; side projects without pressure are where humor and humanity get free rein; people remember emotions more than how fast a flow was. Why it matters: a concrete craft/feel frame for designers who want sticky emotional products, plus a rare playbook for video as the prototype-feedback medium inside small product teams.
 
 Descript speakers are already labeled **Rafa** (guest) and **Ridd** (host); no Speaker-N remapping. Timecodes and section markers are trusted from Descript (no ±30s caveat). ASR often mangles names/products (Hiko Jima / Idio Jimma / Hideko Jimma / ilio → Hideo Kojima; Psycho Manis → Psycho Mantis; Tolin → Tolan; NIS 26 → iOS 26; heir / Anime Plus → Hand Mirror Plus; rural juror → Rural Juror; Red Sting → InFlight; Red → Ridd in one self-reference).
+
+**Inflight note:** Roles converging via AI prototypes — designers expected to code/share live work.
 
 ## Takeaways (Granola)
 

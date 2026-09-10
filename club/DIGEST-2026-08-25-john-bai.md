@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=E-VxnQO73s4
 published: 2026-08-25
 duration_min: 48
 tags: [ip/dive-club, prototyping, design-tools, ai-agents, creative-process, product-strategy, feedback, design-engineering]
-flags: [prototype-feedback]
+flags: [prototype-feedback, inflight-relevant]
 source: 2026-08-25-john-bai.md
 source_type: descript
 slug: 2026-08-25-john-bai
@@ -26,6 +27,8 @@ schema: 1
 John Bai (Cursor designer; first NY design hire) walks Ridd through the design journey behind Grok Bot — from the company split between making Cursor more accessible vs. shipping a fresh consumer product, through wide ambient/notch/mascot explorations, to landing back on chat as the right agent UX, onboarding concepts that teach value before the empty state, and Cursor's high-fidelity prototype crit culture. Core claims: iMessage-like chat was the early "secret sauce"; Figma remains John's sketching/storyboard layer before Sand/Grok Bot builds prototypes; onboarding should be sized by concepts introduced (not step count) and must make value clear before action paralysis; Cursor designers do not share one process; fundamentals and product-market-fit loops beat tool fluency when hiring. Why it matters: a rare behind-the-curtain on how a design-forward AI agent product was explored, unshipped, and shaped under Cursor's culture — with working prototypes, brand iterations, and consumer-facing choices (including ditching Cursor componentry).
 
 Speaker labels in the Descript source are normalized here: **Speaker 2 → John Bai (guest)**; **Speaker 3 → Ridd (host)**. Timecodes and markers are trusted from Descript (no ±30s caveat).
+
+**Inflight note:** Still starts in Figma often, but Cursor/Grok Bot work is reviewed as live product — hybrid.
 
 ## Takeaways (Granola)
 

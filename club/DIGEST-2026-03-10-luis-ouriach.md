@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=Pn2G7JhxNKc
 published: 2026-03-10
 duration_min: 55
 tags: [ip/dive-club, design-systems, design-tools, ai-creative-tools, collaboration, craft, product-strategy, career-growth]
-flags: [prototype-feedback]
+flags: [prototype-feedback, inflight-relevant]
 source: 2026-03-10-luis-ouriach.md
 source_type: descript
 slug: 2026-03-10-luis-ouriach
@@ -25,6 +26,8 @@ generator: dive-club-ideas
 Luis Ouriach (Designer Advocate at Figma) returns after the variables era to map how design systems flipped under LLM code generation: from siloed quality squads to the centerpiece that tells tools what to code — docs/guidelines as the foundation for agentic workflows, not "systems are dead." Arc: pendulum from token over-index → AI scare (Jan 2025 "we're toasted") → docs matter again for machines → agentic design systems (automate components vs tokens vs docs — decide before it's decided for you) → cross-functional bleeding as feature → quality is everyone's job / don't say "design system" → brand feeling over identical generation → enterprise/startup tool divide → Figma MCP "not faster, further" canvas↔browser loop → his caveman-ChatGPT→IDE plugin journey → career as keep shooting, writing + quality bars endure. Core claims: under-invested systems become landfill under AI; optimistic designers widen into generalists (writing first), pessimists freeze because they can do everything; pursue quality and a system appears; MCP unlocks non-technical designers testing real interactions; makers bounce mediums; niche tools and family-scale apps count as success. Why it matters: a systems advocate's field report from Figma + daily team conversations — practical agentic framing without the "prototype replaces PRD" slogan.
 
 Descript speakers are labeled **Luis** (guest) and **Ridd** (host); no Speaker-N remapping. ASR mangles Figma ("fig MA"), Claude ("clawed"), shadcn ("Shazi"), Vercel ("Versal"), and names. Corrected in prose; quotes keep transcript wording. Timecodes and markers trusted from Descript (no ±30s caveat).
+
+**Inflight note:** Design systems under LLM codegen — designers/engineers sharing higher-fidelity builds.
 
 ## Takeaways (Granola)
 

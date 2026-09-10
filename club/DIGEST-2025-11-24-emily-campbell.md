@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=PEDzBT-jNmI
 published: 2025-11-24
 duration_min: 43
 tags: [ip/dive-club, ai-creative-tools, ai-impact, ai-agents, prototyping, taste, creative-process, career-growth]
-flags: []
+flags: [coded-prototypes, inflight-relevant]
 source: 2025-11-24-emily-campbell.md
 source_type: descript
 slug: 2025-11-24-emily-campbell
@@ -26,6 +27,8 @@ schema: 1
 Emily Campbell (VP of Design at HackerRank; creator of Shape of AI) walks Ridd through a framework for designing AI products built from cataloging patterns since fall 2023. Arc: traditional software guessed user need → laggy iteration vs AI as users interact with the system itself → designers guide the human↔model relationship (intent in, verify understanding, adapt) → Wayfinders / Tuners / Governors categories → skeuomorphic “hire a person / show me your work” mental model (chat builds shared context early; over time UI recedes into observe/oversee/autonomy) → users already reshape products without waiting for agile discovery → taste as sampling (salt metaphor) and Emily’s Notion/clip catalog → Co-founder.co onboarding that proves context before asking more → consumer trust risk (her son + K-pop demon hunters app; incentive to deepen data relationship) → Tuners deep dive (prompt enhancers, parameter selectors, model pickers for non-technical control) → Governors / trust builders (stream-of-thought, planning mode, director’s chair) → consent ethics (Fireflies, Limitless pendant, Meta glasses / graphs) → HackerRank AI proctor: design the service first, then translate to software → model is a party to the experience so get designs into code ASAP (Figma Make / Lovable living prototypes; Cursor goal for all designers by end of 2026) → hiring for curiosity + go-get attitude + taste beyond aesthetics → brand as AI personality/trust layer (Poke) and designers who invite stakeholders into ambiguity. Core claims: AI UX is a meeting place between human and synthetic, not just more software for humans; Wayfinders/Tuners/Governors organize emerging patterns; trust is the new usability (legible “show your work” before autonomy); get into code because prompt/context config is UX; curiosity and sampling beat credential theater. Why it matters: a practical Shape-of-AI vocabulary for AI product craft, trust patterns, and how design orgs (and hiring) should change when the model sits inside the experience.
 
 ASR/Descript speaker normalization: Descript labels **Speaker 5** = Emily Campbell (guest), **Speaker** = Ridd (host). Brief **Speaker 4** / **Speaker 2** / **Speaker 6** lines treated as host/misc interruptions (e.g. “No, no” after Emily asks about Co-founder.co). Prefer Emily / Ridd in Mile Markers and Quotes. Proper-noun cleanup in prose: Hacker Rink / Hacker Inc → HackerRank; Shape of ai → Shape of AI; Co-founder / co-founder dot co → Co-founder.co; N eight N → n8n; chat GBT → ChatGPT; Repla / rept / rep lid → Replit; Flora Fauna → Flora/Fauna AI; Crea → Krea; Scrum Morphic / dysmorphic / skew morphic → skeuomorphic; adjunctive browsers → agentic browsers; Granola mentioned as meeting recorder. Quotes keep transcript wording. Timecodes and section markers trusted from Descript (no ±30s caveat). Granola edit note: “Trim follow-up to first question; kill evals section around 58 minutes” — this published Descript export is ~40 min and has no evals section (already cut or different cut).
+
+**Inflight note:** Living prototypes + Cursor as intent communication vs Figma Make handoff.
 
 ## Takeaways (Granola)
 

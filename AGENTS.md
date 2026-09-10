@@ -78,7 +78,7 @@ url:
 published: YYYY-MM-DD
 duration_min:
 tags: [ip/dive-club, ...] # 4–8 Bones slugs from taxonomy.md ONLY
-flags: []                 # optional vault flags, NOT Bones tags — e.g. prototype-feedback
+flags: []                 # optional vault flags, NOT Bones tags — prototype-feedback | coded-prototypes | inflight-relevant
 source:
 source_type: descript
 slug: yyyy-mm-dd-kebab
@@ -114,9 +114,13 @@ Never bake "what Ridd cares about this month" into archival equality of all mile
 
 ## Flags (vault-only, not Bones taxonomy)
 
-Use `flags:` on digests and matching `clips/` files:
+Use `flags:` on digests and matching `clips/` files (vault-only; never put these in Bones `tags:`):
 
-- `prototype-feedback` — episode discusses getting feedback on prototypes (sharing WIP, preview links, Slack feedback drops, review rounds on prototypes, etc.). Set when Takeaways or transcript clearly cover it. Do **not** invent a Bones tag for this.
+- `prototype-feedback` — getting feedback on prototypes (sharing WIP, preview links, Slack feedback drops, review rounds on prototypes, etc.). Set when Takeaways or transcript clearly cover it.
+- `coded-prototypes` — guest/host talk about shifting away from Figma (or static design-tool handoff) toward sharing **coded** prototypes — live preview links, HTML/Cursor/v0/Lovable/etc as the artifact teammates review. Direct “we left Figma for code prototypes” claims earn this even without a feedback loop.
+- `inflight-relevant` — Inflight.co-shaped workflow: set when either flag above applies, OR clear pre-deploy preview / Slack prototype-drop / design-review-via-code culture. Prefer also setting the more specific flag when possible.
+
+When `coded-prototypes` or `inflight-relevant` is set, keep a short evidence line in Summary or a mile-marker Gold note so Ridd can find the claim without re-watching.
 
 ## Clips and pitches
 

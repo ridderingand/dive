@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=K9qdl3M5NgE
 published: 2026-02-09
 duration_min: 51
 tags: [ip/dive-club, career-growth, job-market, portfolios, ai-impact, craft, junior-designers, feedback]
-flags: [prototype-feedback]
+flags: [prototype-feedback, inflight-relevant]
 source: 2026-02-09-hannah-hearth.md
 source_type: descript
 slug: 2026-02-09-hannah-hearth
@@ -26,6 +27,8 @@ schema: 1
 Hannah Hearth (VP-level design leader, ~5–6 weeks into Vercel after Webflow; third senior leadership role) walks Ridd through how design career strategy and leadership expectations are shifting under AI, smaller teams, and faster shipping. Arc: Vercel interview process (IC-style rounds → full-day onsite + take-home that sold her on developer tools) → new era of hands-on design leadership (hire smart people and stay in the process; staff/principals need as much support as juniors; leaders judged on shipping outcomes not beauty alone) → permanent course correction (do more with less without burnout; right-size under org scrutiny) → AI adoption as necessary evil / self-disruption (ruthless tracking orgs; juniors learning faster; dedicate Builder Days / hackathons) → design process collapse (5-day sprint → async + early prototyping, or 1-day understand/diverge/test; protect problem-alignment over craft when cutting time; craft survives when the whole company sweats pixels) → #1 designer trait = share work early/often and navigate feedback (fidelity no longer maps to process stage; prototype handoff still unsolved) → how close Vercel design sits to code (Claude/Cursor daily; polish last 1% or ship starter prototypes; Hannah's first PR was a tiny URL bug fix) → portfolio table stakes (show recent experiments/side projects; portfolio as sandbox; case-study process theater is dead) → if you don't spike in craft: learn it or pivot to product → forever skills (adaptability + storytelling / elephant-in-the-room buy-in) → product-heavy vs eng-heavy lanes (staff/principals do both) → design systems revived by LLM training on docs → leaders returning to IC / player-coach (Roberta Carrera VP→IC example; Vercel PD team ~7–8) → onboarding compressed (30-day outcomes, not 30-60-90 listening tours) → Webflow formative lesson: horizontal cross-pillar collaboration is the leader's biggest impact. Core claims: market "correction" is permanent not one-time; juniors and seniors both need present leadership; AI tool pressure is uncomfortable but useful self-disruption; share half-baked work immediately; experiments/side projects are hiring table stakes; craft can be learned or product is a valid pivot; storytelling (name the elephant + bring solutions) outlasts tool fads. Why it matters: concrete leadership, hiring, and portfolio playbook for the AI-era design market from someone living it at Vercel.
 
 ASR/Descript: "Versal" → Vercel, "Web Blow" → Webflow, "fee zero" → v0, "coating" → coding. Corrected in prose; quotes keep transcript wording. Timecodes and markers trusted from Descript (no ±30s caveat).
+
+**Inflight note:** Great designers share work very often and incorporate feedback (WIP review culture).
 
 ## Takeaways (Granola)
 

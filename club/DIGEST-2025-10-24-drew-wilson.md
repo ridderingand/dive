@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=6gmih5JChrQ
 published: 2025-10-24
 duration_min: 59
 tags: [ip/dive-club, design-tools, design-engineering, design-systems, code-as-material, ai-impact, founder-stories, career-growth]
-flags: []
+flags: [coded-prototypes, inflight-relevant]
 source: 2025-10-24-drew-wilson.md
 source_type: descript
 slug: 2025-10-24-drew-wilson
@@ -26,6 +27,8 @@ schema: 1
 Drew Wilson (founder of Opacity; design+engineering for ~30 years; prior bootstrap → GoDaddy ecommerce sale; YC Letter bank) walks Ridd through a GitHub-for-designers vision: design *is* code via a DOM/CSS canvas that publishes real packages instead of pretty pictures. Arc: designer-engineer dread after finishing a mock → single source of truth vs Figma Dev Mode / dual sync waste → WebGL canvas ≠ DOM so AI copy-React is a bandaid → handoff deleted and designer/engineer/PM messaging model fades as Claude Code raises productivity → components/nodes as the systematized design repo AI needs (variables ≈ props; marketplace teaches taste) → new technical threshold (clients want code-ready at last pixel; Figma variables don't export; Opacity props are real eng/AI contracts) → product strategy: don't launch "Figma but CSS"; V1 must be end-to-end (one-click Figma import + live code + visual PR/branch review → merge → new package) and dogfood Opacity in Opacity → Loop IDE (~10 days) so AI can *see* the browser/console/server via Chrome MCP → iteration > prototyping (1→n evergreen software; design systems keep AI inside the look; one truth unlocks wild creative changes if props contract holds) → UX designers need not learn React to stay valuable — DOM canvas means if you made it, it's real; Figma is a great general design tool, not a software-design tool → differentiation when defaults hit 7–8/10: build/maintain components; fewer designers per company but more companies → hire builders who have lived in design tools *and* write code → Monday advice: start Lovable/Bolt/v0 then eject to Cursor/Claude → Opacity Alpha after self-host redesign; Loop ships first; founder lesson this time = pre-seed + slow hire because AI agents outpace an early team of seven, while still playing the VC talent/eyeballs flywheel. Core claims: copy-paste instantly creates two sources of truth; the missing piece is a systematized design layer AI and eng can both consume; GitHub-style PR collaboration is what designers never got; design systems become creative again when recode cost dies; the career bar shifts from "learn to be a senior eng" to "work practically with AI and ship real frontend packages." Why it matters: a concrete Opacity/Loop playbook for design-as-code tooling, the post-handoff team shape, and how design founders should sequence and hire in an AI-native stack.
 
 ASR/Descript speaker & proper-noun normalization: **Rid** → Ridd (host); guest labeled **Drew**. Prose cleanup: MPM → NPM; "the do" → DOM; clog code / claw AI → Claude Code / Claude; fig MA → Figma; Shazi end → shadcn; van hours → man hours; coase → code; Theis → AIs; Macs 26 / IS 26 → macOS / iOS 26. Quotes keep transcript wording. Descript speakers/timecodes/markers trusted (no ±30s caveat). Granola Editing note (2025-10-23) had no 💡 clip markers — description bullets used as primary taste layer.
+
+**Inflight note:** Single source of truth: no design/eng separation; today's Figma Dev Mode sales don't deliver.
 
 ## Takeaways (Granola)
 

@@ -1,4 +1,5 @@
 ---
+
 type: episode-digest
 ip: dive-club
 class: interview
@@ -12,7 +13,7 @@ url: https://www.youtube.com/watch?v=TYUC5Bs5HvQ
 published: 2026-02-16
 duration_min: 40
 tags: [ip/dive-club, portfolios, design-engineering, craft, career-growth, ai-creative-tools, code-as-material, visual-design]
-flags: []
+flags: [coded-prototypes, inflight-relevant]
 source: 2026-02-16-tommy-smith.md
 source_type: descript
 slug: 2026-02-16-tommy-smith
@@ -26,6 +27,8 @@ schema: 1
 Tommy Smith (~5 years in, product designer → design engineer) walks Ridd through the portfolio that got him into Dive Talent — and how putting a side project (Chrono) front and center landed the work he actually wanted. Arc: strip-back portfolio strategy (less-is-more after an overdesigned product-like prior site; keep sidebar essence + playful Rive robot mascot) → Chrono as first-class citizen via three entry points (sidebar, bio, work list) when client/industry work couldn't represent the future → Chrono tour as craft sandbox (Amie-inspired calendar/tasks, React/Tailwind learning, drag-to-create with sweated scale/tilt/origin) → AI as foundations so taste owns easing/stagger/blur hover details → design-engineer identity (handoff-ready bar; early-stage thick-design vs mature codebases; kill impostor if interactions feel good) → more portfolio craft (View Transitions theme switcher, staggered case-study progress bar) → stay-curious advice → case studies short/visual (interactive video player, one-click zoom + carousel for static Bally work, extreme typography hierarchy) → Figma still essential for creative iteration; design engineer as bridge between creative canvas minds and structured eng minds → personal icon system as generalist ownership across every project. Core claims: when client work doesn't sell the next chapter, side projects belong front and center; craft details in code (Rive, motion, blur, theme, stagger) differentiate a portfolio more than pedigree; AI handles foundations so humans spend time on interaction taste; case studies should be short, visual, and skimmable; design engineers bridge creative design workflows and structured engineering workflows. Why it matters: concrete portfolio/hiring playbook for designers pivoting into design-engineering roles, plus Ridd's own Dive Talent green-flag story (20 seconds on Chrono).
 
 Descript speakers were exported as Riverside filenames (`riverside_tommy_smith_…` / `riverside_ridd_…`); remapped in the raw to **Tommy** (guest) and **Ridd** (host). ASR mangles Chrono (“Krono” / “KNO”), Amie (“Amy”), Rive (“Thrive” / “arrived”), Bally (“B Live”), and Emil (“a meal”). Corrected in prose; quotes keep transcript wording. Timecodes and markers trusted from Descript (no ±30s caveat).
+
+**Inflight note:** Client path: Figma-link → design-engineer shipping with AI coding tools.
 
 ## Takeaways (Granola)
 
