@@ -51,3 +51,9 @@ rg -n 'flags:.*(coded-prototypes|inflight-relevant|prototype-feedback)' club/DIG
 Counterexamples intentionally **not** flagged as `coded-prototypes` (opposite or weak):
 - Charlie Deets — more Figma, less AI prototyping at work
 - Brett Williams — personal Claude learning path, not team share-via-code culture
+
+| Sam Peitz | `2024-12-18-sam-peitz` | coded-prototypes, inflight-relevant | Figma → SVG → v0 interactive bubble / receipt; live build is the share artifact. |
+| Andrei Herasimchuk | `2024-12-11-andrei-herasimchuk` | coded-prototypes, inflight-relevant | Seldon packages as code components/libraries; design↔code via schemas. |
+| Joel Lewenstein | `2024-10-23-joel-lewenstein` | coded-prototypes, prototype-feedback, inflight-relevant | Artifacts HTML-beside-chat; Slack notebooks for WIP prototype share. |
+| Dan Moreno | `2024-10-09-dan-moreno` | prototype-feedback, inflight-relevant | Interactive Figma prototypes to CEO/partners (eng→Figma path; no coded-prototypes). |
+| Henry Modisett | `2024-09-04-henry-modisett` | coded-prototypes, prototype-feedback, inflight-relevant | UI code > Figma napkins; show-in-code review; designers-who-code polish PRs. |
