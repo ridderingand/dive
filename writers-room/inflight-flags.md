@@ -35,6 +35,13 @@ Vault flags (not Bones tags) for Inflight.co-shaped gold:
 | Luis Ouriach | `2026-03-10-luis-ouriach` | inflight-relevant | Design systems under LLM codegen — designers/engineers sharing higher-fidelity builds. |
 | Katie Dill | `2026-02-23-katie-dill` | inflight-relevant, prototype-feedback | Prototype feedback culture (already flagged). |
 
+| Kyle Turman | `2025-04-25-kyle-turman` | coded-prototypes, prototype-feedback, inflight-relevant | Half-finished Figma → finish in code; Slack personal notebook channels for WIP demos (Artifacts origin). |
+| Jack Brody | `2025-04-11-jack-brody` | _(none)_ | Feedback = crit/conviction culture, not WIP coded-prototype share loops. |
+| Sam Stephenson | `2025-03-28-sam-stephenson` | coded-prototypes, prototype-feedback, inflight-relevant | Fork app + live on coded prototypes for explore-mode; explicitly not Figma mocks. |
+
+| Zach Leach | `2025-05-09-zach-leach` | coded-prototypes, prototype-feedback, inflight-relevant | Designers code/ship with Cursor; Figma fails for non-deterministic AI; 3 Bolt/code prototypes of AI image flow to find the fun; Slack working-prototype drops. |
+| Tuhin Kumar | `2025-04-19-tuhin-kumar` | _(none)_ | Art/JTBD/system-prompt craft + playground prompt-smithing; closing Cursor/Lovable advice is personal practice, not team Figma→live-preview review culture. |
+
 ## How to scan later
 
 ```bash
