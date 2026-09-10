@@ -23,11 +23,13 @@ schema: 1
 
 ## Summary
 
-Kris Puckett (Design Manager at Stripe; ex–Mercury / Dropbox) walks Ridd through becoming "AI-native" by finally shipping the reading app he'd dreamed about since a 2005 iBook — Epilogue — via Claude Code after years of failed Treehouse/Swift attempts. Arc: permissionless building ("I don't know" as invitation, not door) → teach Claude Metal shaders via a research-agent skill → Stripe confidence + workflow skills that fill org gaps → start systems by telling the model you don't know where to start → skill files / loops for repeatable prompts → personal life systems + OpenClaw ("Shadow Facts") on a Mac mini → hiring-market curiosity shown as shipped systems, not Squarespace templates → a soulful personal site with WebGL ocean shaders. Core claims: "I don't know" is a superpower when paired with Claude; force-multipliers should stay human-in-the-loop and authentic (no skip-permissions hamster wheel); skills are just markdown instructions (and Claude can write/grade them B→A); AI-native is problem-solving friction in work *and* life, not only cool shaders; portfolios that look like stock templates get passed when custom is an hour away. Why it matters: a concrete playbook for designers who feel stuck at ChatGPT Q&A — Epilogue demos, skill creation, OpenClaw ambient assistant, and hiring signals that curiosity looks like shipped systems.
+Kris Puckett (Design Manager at Stripe; led design at Mercury and Dropbox) walks Ridd through becoming "AI-native" by finally shipping the reading app he'd dreamed about since a 2005 iBook — Epilogue — via Claude Code after years of failed Treehouse/Swift attempts. Arc: permissionless building ("I don't know" as invitation, not door) → teach Claude Metal shaders via a research-agent skill → Stripe confidence + workflow skills that fill org gaps → start systems by telling the model you don't know where to start → skill files / loops for repeatable prompts → personal life systems + OpenClaw ("Shadow Facts") on a Mac mini → hiring-market curiosity shown as shipped systems, not Squarespace templates → a soulful personal site with WebGL ocean shaders. Core claims: "I don't know" is a superpower when paired with Claude; force-multipliers should stay human-in-the-loop and authentic (no skip-permissions hamster wheel); skills are just markdown instructions (and Claude can write/grade them B→A); AI-native is problem-solving friction in work *and* life, not only cool shaders; portfolios that look like stock templates get passed when custom is an hour away. Why it matters: a concrete playbook for designers who feel stuck at ChatGPT Q&A — Epilogue demos, skill creation, OpenClaw ambient assistant, and hiring signals that curiosity looks like shipped systems.
 
 Descript speakers are labeled **Kris** (guest) and **Ridd** (host); no Speaker-N remapping. ASR often mangles Claude Code ("cloud code" / "clock code"), ChatGPT ("Chad CPT" / "Chacha PT"), OpenClaw ("open claw"), Vercel ("Versel"), MCP ("CPS" / "m ccp"), and Kris/Ridd names ("Chris" / "Ray" at outro) — corrected in prose; quotes keep transcript wording. Timecodes and section markers trusted from Descript (no ±30s caveat).
 
 ## Takeaways (Granola)
+
+_Note: Editing Kris Puckett had no formal Takeaways section — using Description Notes + Ideas as Ridd's gold layer._
 
 - How Kris taught Claude to be a metal shader expert
 - Building internal tools and workflows with AI at Stripe
@@ -35,7 +37,7 @@ Descript speakers are labeled **Kris** (guest) and **Ridd** (host); no Speaker-N
 - How to create custom skills with Claude Code
 - Kris's life systems and OpenClaw explorations
 - Behind the scenes of Kris's new personal site
-- Kris always asking Claude to review its own work and give it a grade. Then asking what it can do to go from a B to an A.
+- Kris always asking Claude to review its own work and give it a grade. Then asking what it can do to go from a B to an A
 
 ## Mile Markers
 
@@ -70,6 +72,6 @@ Descript speakers are labeled **Kris** (guest) and **Ridd** (host); no Speaker-N
 - **00:33** — **Kris:** "this is everything I've ever wanted in an ambient assistant."
 - **00:36** — **Kris:** "beware the barrenness of a busy life."
 - **00:37** — **Kris:** "they are a force multiplier, but I want 'em to be focused… still like authentically me."
-- **00:43** — **Kris:** "if your site is on Squarespace and it's a basic Squarespace template, you're probably gonna get passed on"
+- **00:43** — **Kris:** "if you site is on Squarespace and it's a basic Squarespace template, you're probably gonna get passed on"
 - **00:44** — **Kris:** "I don't know, as a superpower"
 - **00:46** — **Kris:** "soul is gonna be one of those things that is like, it'll be the word of the year"
