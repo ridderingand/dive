@@ -42,6 +42,10 @@ Vault flags (not Bones tags) for Inflight.co-shaped gold:
 | Zach Leach | `2025-05-09-zach-leach` | coded-prototypes, prototype-feedback, inflight-relevant | Designers code/ship with Cursor; Figma fails for non-deterministic AI; 3 Bolt/code prototypes of AI image flow to find the fun; Slack working-prototype drops. |
 | Tuhin Kumar | `2025-04-19-tuhin-kumar` | _(none)_ | Art/JTBD/system-prompt craft + playground prompt-smithing; closing Cursor/Lovable advice is personal practice, not team Figma→live-preview review culture. |
 
+| Alejandro Matamala Ortiz | `2025-03-14-alejandro-matamala-ortiz` | coded-prototypes, inflight-relevant | Designed in code ~4y; build-first before UX; frontend↔design rotation. |
+| Christophe Tauziet | `2025-03-08-christophe-tauziet` | prototype-feedback, inflight-relevant | Design jams, Loom process shares, CRIT, polish reviews (Figma surface — not coded-prototypes). |
+| Raycast Team | `2025-06-16-raycast-team` | coded-prototypes, prototype-feedback, inflight-relevant | Design Digest + Pixel Rumble WIP share; Cursor/codebase access; SwiftUI feel over Figma (Granola + cut). |
+
 ## How to scan later
 
 ```bash
@@ -57,3 +61,6 @@ Counterexamples intentionally **not** flagged as `coded-prototypes` (opposite or
 | Joel Lewenstein | `2024-10-23-joel-lewenstein` | coded-prototypes, prototype-feedback, inflight-relevant | Artifacts HTML-beside-chat; Slack notebooks for WIP prototype share. |
 | Dan Moreno | `2024-10-09-dan-moreno` | prototype-feedback, inflight-relevant | Interactive Figma prototypes to CEO/partners (eng→Figma path; no coded-prototypes). |
 | Henry Modisett | `2024-09-04-henry-modisett` | coded-prototypes, prototype-feedback, inflight-relevant | UI code > Figma napkins; show-in-code review; designers-who-code polish PRs. |
+| Emmet Connolly | `2025-06-27-emmet-connolly` | coded-prototypes, inflight-relevant | Q2 ship-to-production goal + vibe-coded throwaway prototypes hooked toward design system / frontend ownership (~20:16–24:41). |
+| Dustin Senos | `2025-06-20-dustin-senos` | coded-prototypes, prototype-feedback, inflight-relevant | Browser Co: all designers prototype (Swift/Origami/Figma); working prototypes beat wireframes for feedback; prototypes shared in motion (~28:49–31:01). |
+| Darrin Henein | `2025-06-06-darrin-henein` | coded-prototypes, prototype-feedback, inflight-relevant | Functional prototypes ≤ Figma-static time; English→code POC/demo is the expectation; Concrete Elephants to shared concrete artifact (~04:50–12:17). |
