@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# dive-index [--sync|--rebuild|--stats]   (default: --sync)
+D="$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)"
+IDX="${DIVE_INDEX_DIR:-/workspace/dive-index}"
+PY="${DIVE_PYTHON:-$IDX/venv/bin/python}"
+[ -x "$PY" ] || PY=python3
+export TOKENIZERS_PARALLELISM=false PYTHONWARNINGS=ignore
+# model already cached locally -> never touch the network at query/sync time
+ls -d "$IDX"/models/models--* >/dev/null 2>&1 && export HF_HUB_OFFLINE=1
+exec "$PY" "$D/dive_search.py" index "$@"
