@@ -1,0 +1,21 @@
+Dive Studio
+
+  bun run dive setup                         Fonts and first-run files
+  bun run dive doctor                        Check tools, fonts and footage
+  bun run dive list                          Every clip, its stage and concepts
+  bun run dive sync                          Rebuild the studio data
+
+  bun run dive import notion <rows.json>     Update clips from Notion rows
+  bun run dive trim <clip> --raw <dir>       Cut raw tracks into per-person clip files
+  bun run dive captions <clip> --json <file>   Word captions from Grok's dive-word-captions file
+  bun run dive captions <clip> --dense <txt> --srt <srt>   The same, built from Descript exports
+
+  bun run dive concept <clip> <id> --name "…" --template talk-square [--from a] [--format square] [--captions sky-label]
+  bun run dive render <clip> [concept]       Render a concept, or every stale one
+  bun run dive still <clip> <concept> <seconds…>   Check single frames without a full render
+  bun run dive round <clip> <concept> "what changed" [--feedback url] [--review url]
+  bun run dive status <clip> <concept> <draft|in-review|picked|final|parked>
+  bun run dive check [clip]                  Run the house rules
+
+  bun run dive review <clip> [clip…]         Build dist/ for Inflight share_app
+  bun run dive final <clip> <concept>        Export the full-quality MP4

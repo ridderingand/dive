@@ -1,0 +1,3174 @@
+{
+	"format": "dive-word-captions/v1",
+	"clip": "great-designers-self-plagiarize",
+	"source": "mixture-transcript",
+	"duration_s": 81.917,
+	"words": [
+		{
+			"i": 0,
+			"text": "I",
+			"start": 0,
+			"end": 0.26,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 1,
+			"text": "quote",
+			"start": 0.26,
+			"end": 0.64,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 2,
+			"text": "Soleio",
+			"start": 0.64,
+			"end": 1.12,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 3,
+			"text": "too",
+			"start": 1.12,
+			"end": 1.3,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 4,
+			"text": "much",
+			"start": 1.3,
+			"end": 1.54,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 5,
+			"text": "on",
+			"start": 1.54,
+			"end": 1.78,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 6,
+			"text": "this",
+			"start": 1.78,
+			"end": 1.94,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 7,
+			"text": "show.",
+			"start": 1.94,
+			"end": 2.24,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 8,
+			"text": "He",
+			"start": 2.86,
+			"end": 3.02,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 9,
+			"text": "had",
+			"start": 3.02,
+			"end": 3.68,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 10,
+			"text": "this",
+			"start": 3.68,
+			"end": 3.84,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 11,
+			"text": "idea",
+			"start": 3.84,
+			"end": 4.1,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 12,
+			"text": "that",
+			"start": 4.1,
+			"end": 4.26,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 13,
+			"text": "he",
+			"start": 4.26,
+			"end": 4.34,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 14,
+			"text": "talked",
+			"start": 4.34,
+			"end": 4.52,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 15,
+			"text": "about",
+			"start": 4.52,
+			"end": 4.76,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 16,
+			"text": "years",
+			"start": 4.76,
+			"end": 5.42,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 17,
+			"text": "ago",
+			"start": 5.42,
+			"end": 5.68,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 18,
+			"text": "at",
+			"start": 5.68,
+			"end": 5.82,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 19,
+			"text": "this",
+			"start": 5.82,
+			"end": 5.94,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 20,
+			"text": "point,",
+			"start": 5.94,
+			"end": 6.12,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 21,
+			"text": "and",
+			"start": 6.16,
+			"end": 6.24,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 22,
+			"text": "he",
+			"start": 6.24,
+			"end": 6.3,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 23,
+			"text": "talked",
+			"start": 6.3,
+			"end": 6.42,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 24,
+			"text": "about",
+			"start": 6.42,
+			"end": 6.6,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 25,
+			"text": "how",
+			"start": 6.6,
+			"end": 6.74,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 26,
+			"text": "great",
+			"start": 6.74,
+			"end": 6.98,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 27,
+			"text": "designers",
+			"start": 6.98,
+			"end": 7.38,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 28,
+			"text": "self-plagiarize.",
+			"start": 7.38,
+			"end": 8.62,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 29,
+			"text": "But",
+			"start": 9.18,
+			"end": 9.22,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 30,
+			"text": "I",
+			"start": 9.22,
+			"end": 9.42,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 31,
+			"text": "tried",
+			"start": 9.42,
+			"end": 9.64,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 32,
+			"text": "to",
+			"start": 9.64,
+			"end": 9.84,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 33,
+			"text": "just",
+			"start": 9.84,
+			"end": 10.08,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 34,
+			"text": "use",
+			"start": 10.08,
+			"end": 10.48,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 35,
+			"text": "that",
+			"start": 10.48,
+			"end": 10.8,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 36,
+			"text": "original",
+			"start": 10.8,
+			"end": 11.24,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 37,
+			"text": "idea",
+			"start": 11.24,
+			"end": 11.72,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 38,
+			"text": "of",
+			"start": 11.72,
+			"end": 12.14,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 39,
+			"text": "that",
+			"start": 12.14,
+			"end": 12.34,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 40,
+			"text": "animation,",
+			"start": 12.34,
+			"end": 12.9,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 41,
+			"text": "obviously",
+			"start": 13.26,
+			"end": 13.56,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 42,
+			"text": "outputted",
+			"start": 13.56,
+			"end": 14.24,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 43,
+			"text": "something",
+			"start": 14.24,
+			"end": 14.52,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 44,
+			"text": "completely",
+			"start": 14.52,
+			"end": 15.04,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 45,
+			"text": "different,",
+			"start": 15.04,
+			"end": 15.58,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 46,
+			"text": "like",
+			"start": 15.82,
+			"end": 16.06,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 47,
+			"text": "here,",
+			"start": 16.06,
+			"end": 16.36,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 48,
+			"text": "which",
+			"start": 16.58,
+			"end": 16.72,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 49,
+			"text": "again,",
+			"start": 16.72,
+			"end": 16.98,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 50,
+			"text": "I'm",
+			"start": 17.16,
+			"end": 17.3,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 51,
+			"text": "really",
+			"start": 17.3,
+			"end": 17.44,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 52,
+			"text": "happy",
+			"start": 17.44,
+			"end": 17.76,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 53,
+			"text": "that",
+			"start": 17.76,
+			"end": 17.98,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 54,
+			"text": "I",
+			"start": 17.98,
+			"end": 18.1,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 55,
+			"text": "managed",
+			"start": 18.1,
+			"end": 18.34,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 56,
+			"text": "to",
+			"start": 18.34,
+			"end": 18.8,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 57,
+			"text": "reuse",
+			"start": 18.8,
+			"end": 19.5,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 58,
+			"text": "that",
+			"start": 19.5,
+			"end": 19.86,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 59,
+			"text": "too",
+			"start": 19.86,
+			"end": 20.16,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 60,
+			"text": "almost,",
+			"start": 20.16,
+			"end": 20.56,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 61,
+			"text": "or",
+			"start": 20.72,
+			"end": 20.76,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 62,
+			"text": "reuse",
+			"start": 20.76,
+			"end": 21.1,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 63,
+			"text": "that",
+			"start": 21.1,
+			"end": 21.38,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 64,
+			"text": "idea.",
+			"start": 21.38,
+			"end": 21.8,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 65,
+			"text": "And",
+			"start": 22.1,
+			"end": 22.14,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 66,
+			"text": "I",
+			"start": 22.14,
+			"end": 22.26,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 67,
+			"text": "don't",
+			"start": 22.26,
+			"end": 22.38,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 68,
+			"text": "know",
+			"start": 22.38,
+			"end": 22.52,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 69,
+			"text": "if",
+			"start": 22.52,
+			"end": 22.64,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 70,
+			"text": "I",
+			"start": 22.64,
+			"end": 22.74,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 71,
+			"text": "would",
+			"start": 22.74,
+			"end": 22.88,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 72,
+			"text": "have",
+			"start": 22.88,
+			"end": 23.02,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 73,
+			"text": "ever",
+			"start": 23.02,
+			"end": 23.38,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 74,
+			"text": "thought",
+			"start": 23.38,
+			"end": 24.26,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 75,
+			"text": "about",
+			"start": 24.26,
+			"end": 24.5,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 76,
+			"text": "that",
+			"start": 24.5,
+			"end": 24.7,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 77,
+			"text": "or",
+			"start": 24.7,
+			"end": 24.82,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 78,
+			"text": "done",
+			"start": 24.82,
+			"end": 25.06,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 79,
+			"text": "that",
+			"start": 25.06,
+			"end": 25.32,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 80,
+			"text": "in",
+			"start": 25.32,
+			"end": 25.7,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 81,
+			"text": "Figma",
+			"start": 25.7,
+			"end": 25.94,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 82,
+			"text": "first,",
+			"start": 25.94,
+			"end": 26.24,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 83,
+			"text": "like,",
+			"start": 26.24,
+			"end": 26.62,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 84,
+			"text": "I",
+			"start": 26.74,
+			"end": 26.84,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 85,
+			"text": "think",
+			"start": 26.84,
+			"end": 26.98,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 86,
+			"text": "that's",
+			"start": 26.98,
+			"end": 27.28,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 87,
+			"text": "where",
+			"start": 27.28,
+			"end": 27.58,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 88,
+			"text": "Claude",
+			"start": 27.58,
+			"end": 28.1,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 89,
+			"text": "alone",
+			"start": 28.1,
+			"end": 28.42,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 90,
+			"text": "like",
+			"start": 28.42,
+			"end": 28.62,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 91,
+			"text": "really",
+			"start": 28.62,
+			"end": 28.84,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 92,
+			"text": "helped",
+			"start": 28.84,
+			"end": 29.28,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 93,
+			"text": "with",
+			"start": 29.28,
+			"end": 29.62,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 94,
+			"text": "that.",
+			"start": 29.62,
+			"end": 29.82,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 95,
+			"text": "And",
+			"start": 30.2,
+			"end": 30.24,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 96,
+			"text": "you",
+			"start": 30.24,
+			"end": 30.62,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 97,
+			"text": "can",
+			"start": 30.62,
+			"end": 30.74,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 98,
+			"text": "maybe",
+			"start": 30.74,
+			"end": 30.9,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 99,
+			"text": "have",
+			"start": 30.9,
+			"end": 31.16,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 100,
+			"text": "an",
+			"start": 31.16,
+			"end": 31.32,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 101,
+			"text": "idea",
+			"start": 31.32,
+			"end": 31.54,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 102,
+			"text": "that",
+			"start": 31.54,
+			"end": 31.72,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 103,
+			"text": "doesn't",
+			"start": 31.72,
+			"end": 32,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 104,
+			"text": "quite",
+			"start": 32,
+			"end": 32.16,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 105,
+			"text": "work.",
+			"start": 32.16,
+			"end": 32.46,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 106,
+			"text": "And",
+			"start": 32.46,
+			"end": 32.76,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 107,
+			"text": "I",
+			"start": 32.76,
+			"end": 33,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 108,
+			"text": "was",
+			"start": 33,
+			"end": 33.12,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 109,
+			"text": "like,",
+			"start": 33.12,
+			"end": 33.36,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 110,
+			"text": "right,",
+			"start": 33.36,
+			"end": 33.52,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 111,
+			"text": "I'll",
+			"start": 33.58,
+			"end": 33.66,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 112,
+			"text": "just",
+			"start": 33.66,
+			"end": 33.84,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 113,
+			"text": "shelve",
+			"start": 33.84,
+			"end": 34.12,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 114,
+			"text": "that",
+			"start": 34.12,
+			"end": 34.38,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 115,
+			"text": "for",
+			"start": 34.38,
+			"end": 34.54,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 116,
+			"text": "now.",
+			"start": 34.54,
+			"end": 34.8,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 117,
+			"text": "But",
+			"start": 35.26,
+			"end": 35.4,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 118,
+			"text": "then",
+			"start": 35.4,
+			"end": 35.56,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 119,
+			"text": "it",
+			"start": 35.56,
+			"end": 35.72,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 120,
+			"text": "obviously",
+			"start": 35.72,
+			"end": 35.94,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 121,
+			"text": "came",
+			"start": 35.94,
+			"end": 36.24,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 122,
+			"text": "in",
+			"start": 36.24,
+			"end": 36.36,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 123,
+			"text": "handy,",
+			"start": 36.36,
+			"end": 36.7,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 124,
+			"text": "like",
+			"start": 36.7,
+			"end": 37,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 125,
+			"text": "for",
+			"start": 37,
+			"end": 37.22,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 126,
+			"text": "here,",
+			"start": 37.22,
+			"end": 37.46,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 127,
+			"text": "you",
+			"start": 37.58,
+			"end": 37.74,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 128,
+			"text": "know,",
+			"start": 37.74,
+			"end": 37.84,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 129,
+			"text": "like",
+			"start": 37.92,
+			"end": 38.04,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 130,
+			"text": "I'm",
+			"start": 38.04,
+			"end": 38.2,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 131,
+			"text": "pretty",
+			"start": 38.2,
+			"end": 38.36,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 132,
+			"text": "happy",
+			"start": 38.36,
+			"end": 38.62,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 133,
+			"text": "with",
+			"start": 38.62,
+			"end": 38.8,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 134,
+			"text": "how",
+			"start": 38.8,
+			"end": 38.94,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 135,
+			"text": "those",
+			"start": 38.94,
+			"end": 39.2,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 136,
+			"text": "folded",
+			"start": 39.2,
+			"end": 39.56,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 137,
+			"text": "back",
+			"start": 39.56,
+			"end": 39.88,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 138,
+			"text": "in.",
+			"start": 39.88,
+			"end": 40.14,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 139,
+			"text": "I",
+			"start": 40.44,
+			"end": 40.44,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 140,
+			"text": "even",
+			"start": 40.44,
+			"end": 40.62,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 141,
+			"text": "have",
+			"start": 40.62,
+			"end": 40.76,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 142,
+			"text": "my",
+			"start": 40.76,
+			"end": 40.9,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 143,
+			"text": "own",
+			"start": 40.9,
+			"end": 41.1,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 144,
+			"text": "story",
+			"start": 41.1,
+			"end": 41.3,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 145,
+			"text": "about",
+			"start": 41.3,
+			"end": 41.54,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 146,
+			"text": "that,",
+			"start": 41.54,
+			"end": 41.72,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 147,
+			"text": "where",
+			"start": 41.72,
+			"end": 41.86,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 148,
+			"text": "I",
+			"start": 41.86,
+			"end": 42.04,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 149,
+			"text": "made",
+			"start": 42.04,
+			"end": 42.36,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 150,
+			"text": "multiple",
+			"start": 42.36,
+			"end": 43.36,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 151,
+			"text": "versions",
+			"start": 43.36,
+			"end": 43.84,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 152,
+			"text": "of",
+			"start": 43.84,
+			"end": 44,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 153,
+			"text": "the",
+			"start": 44,
+			"end": 44.12,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 154,
+			"text": "Inflight",
+			"start": 44.12,
+			"end": 44.38,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 155,
+			"text": "website.",
+			"start": 44.38,
+			"end": 44.7,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 156,
+			"text": "It",
+			"start": 44.98,
+			"end": 45.06,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 157,
+			"text": "was",
+			"start": 45.06,
+			"end": 45.14,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 158,
+			"text": "only",
+			"start": 45.14,
+			"end": 45.34,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 159,
+			"text": "like",
+			"start": 45.34,
+			"end": 45.6,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 160,
+			"text": "a",
+			"start": 45.6,
+			"end": 45.78,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 161,
+			"text": "live",
+			"start": 45.78,
+			"end": 45.92,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 162,
+			"text": "for",
+			"start": 45.92,
+			"end": 46.08,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 163,
+			"text": "a",
+			"start": 46.08,
+			"end": 46.18,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 164,
+			"text": "month,",
+			"start": 46.18,
+			"end": 46.38,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 165,
+			"text": "this",
+			"start": 46.38,
+			"end": 46.7,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 166,
+			"text": "version.",
+			"start": 46.7,
+			"end": 47.02,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 167,
+			"text": "And",
+			"start": 47.42,
+			"end": 47.46,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 168,
+			"text": "I",
+			"start": 47.46,
+			"end": 47.56,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 169,
+			"text": "had",
+			"start": 47.56,
+			"end": 47.74,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 170,
+			"text": "this",
+			"start": 47.74,
+			"end": 47.88,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 171,
+			"text": "dashed",
+			"start": 47.88,
+			"end": 48.48,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 172,
+			"text": "line",
+			"start": 48.48,
+			"end": 48.94,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 173,
+			"text": "that",
+			"start": 48.94,
+			"end": 49.26,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 174,
+			"text": "I",
+			"start": 49.26,
+			"end": 49.38,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 175,
+			"text": "massaged",
+			"start": 49.38,
+			"end": 49.92,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 176,
+			"text": "with",
+			"start": 49.92,
+			"end": 50.12,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 177,
+			"text": "Claude",
+			"start": 50.12,
+			"end": 50.46,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 178,
+			"text": "to",
+			"start": 50.46,
+			"end": 50.7,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 179,
+			"text": "like",
+			"start": 50.7,
+			"end": 50.84,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 180,
+			"text": "have",
+			"start": 50.84,
+			"end": 51.04,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 181,
+			"text": "this",
+			"start": 51.04,
+			"end": 51.24,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 182,
+			"text": "gradient",
+			"start": 51.24,
+			"end": 51.74,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 183,
+			"text": "pulse.",
+			"start": 51.74,
+			"end": 52.44,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 184,
+			"text": "It",
+			"start": 53,
+			"end": 53,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 185,
+			"text": "was",
+			"start": 53,
+			"end": 53.12,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 186,
+			"text": "called",
+			"start": 53.12,
+			"end": 53.34,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 187,
+			"text": "the",
+			"start": 53.34,
+			"end": 53.5,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 188,
+			"text": "Ethereal",
+			"start": 53.5,
+			"end": 54.12,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 189,
+			"text": "Connector",
+			"start": 54.12,
+			"end": 54.6,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 190,
+			"text": "is",
+			"start": 54.6,
+			"end": 54.96,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 191,
+			"text": "what",
+			"start": 54.96,
+			"end": 55.14,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 192,
+			"text": "Claude",
+			"start": 55.14,
+			"end": 55.38,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 193,
+			"text": "called",
+			"start": 55.38,
+			"end": 55.66,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 194,
+			"text": "it.",
+			"start": 55.66,
+			"end": 56.02,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 195,
+			"text": "It",
+			"start": 56.44,
+			"end": 56.48,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 196,
+			"text": "hasn't",
+			"start": 56.48,
+			"end": 57.12,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 197,
+			"text": "been",
+			"start": 57.12,
+			"end": 57.28,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 198,
+			"text": "live",
+			"start": 57.28,
+			"end": 57.58,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 199,
+			"text": "for",
+			"start": 57.58,
+			"end": 57.84,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 200,
+			"text": "so",
+			"start": 57.84,
+			"end": 58.16,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 201,
+			"text": "long,",
+			"start": 58.16,
+			"end": 58.52,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 202,
+			"text": "but",
+			"start": 58.96,
+			"end": 59.04,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 203,
+			"text": "I've",
+			"start": 59.04,
+			"end": 59.34,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 204,
+			"text": "so",
+			"start": 59.34,
+			"end": 59.9,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 205,
+			"text": "many",
+			"start": 59.9,
+			"end": 60.12,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 206,
+			"text": "times",
+			"start": 60.12,
+			"end": 60.44,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 207,
+			"text": "been",
+			"start": 60.44,
+			"end": 60.66,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 208,
+			"text": "like,",
+			"start": 60.66,
+			"end": 60.82,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 209,
+			"text": "hey,",
+			"start": 60.92,
+			"end": 60.98,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 210,
+			"text": "can",
+			"start": 61.02,
+			"end": 61.16,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 211,
+			"text": "you",
+			"start": 61.16,
+			"end": 61.3,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 212,
+			"text": "kind",
+			"start": 61.3,
+			"end": 61.44,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 213,
+			"text": "of",
+			"start": 61.44,
+			"end": 61.54,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 214,
+			"text": "make",
+			"start": 61.54,
+			"end": 61.7,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 215,
+			"text": "that",
+			"start": 61.7,
+			"end": 61.88,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 216,
+			"text": "like",
+			"start": 61.88,
+			"end": 62.04,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 217,
+			"text": "the",
+			"start": 62.04,
+			"end": 62.2,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 218,
+			"text": "old",
+			"start": 62.2,
+			"end": 62.36,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 219,
+			"text": "Ethereal",
+			"start": 62.36,
+			"end": 62.82,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 220,
+			"text": "Connector?",
+			"start": 62.82,
+			"end": 63.26,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 221,
+			"text": "And",
+			"start": 63.54,
+			"end": 63.56,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 222,
+			"text": "then",
+			"start": 63.56,
+			"end": 63.64,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 223,
+			"text": "it",
+			"start": 63.64,
+			"end": 63.72,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 224,
+			"text": "just",
+			"start": 63.72,
+			"end": 63.88,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 225,
+			"text": "does",
+			"start": 63.88,
+			"end": 64.16,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 226,
+			"text": "something",
+			"start": 64.16,
+			"end": 64.56,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 227,
+			"text": "and",
+			"start": 64.56,
+			"end": 64.7,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 228,
+			"text": "I'm",
+			"start": 64.7,
+			"end": 64.86,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 229,
+			"text": "like,",
+			"start": 64.86,
+			"end": 64.9,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 230,
+			"text": "oh,",
+			"start": 65.08,
+			"end": 65.08,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 231,
+			"text": "that's",
+			"start": 65.12,
+			"end": 65.32,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 232,
+			"text": "so",
+			"start": 65.32,
+			"end": 65.44,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 233,
+			"text": "sick.",
+			"start": 65.44,
+			"end": 65.96,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 234,
+			"text": "Yeah.",
+			"start": 66.36,
+			"end": 66.36,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 235,
+			"text": "And",
+			"start": 66.66,
+			"end": 66.74,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 236,
+			"text": "just",
+			"start": 66.74,
+			"end": 67.12,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 237,
+			"text": "that",
+			"start": 67.12,
+			"end": 67.34,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 238,
+			"text": "old",
+			"start": 67.34,
+			"end": 67.6,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 239,
+			"text": "idea",
+			"start": 67.6,
+			"end": 68.04,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 240,
+			"text": "managed",
+			"start": 68.04,
+			"end": 68.34,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 241,
+			"text": "to",
+			"start": 68.34,
+			"end": 68.62,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 242,
+			"text": "get",
+			"start": 68.62,
+			"end": 68.84,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 243,
+			"text": "repurposed",
+			"start": 68.84,
+			"end": 69.62,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 244,
+			"text": "in",
+			"start": 69.62,
+			"end": 69.76,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 245,
+			"text": "a",
+			"start": 69.76,
+			"end": 69.86,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 246,
+			"text": "way",
+			"start": 69.86,
+			"end": 70.06,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 247,
+			"text": "that",
+			"start": 70.06,
+			"end": 70.44,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 248,
+			"text": "just",
+			"start": 70.44,
+			"end": 70.6,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 249,
+			"text": "fit",
+			"start": 70.6,
+			"end": 70.88,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 250,
+			"text": "perfectly",
+			"start": 70.88,
+			"end": 71.42,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 251,
+			"text": "for",
+			"start": 71.42,
+			"end": 71.66,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 252,
+			"text": "like",
+			"start": 71.66,
+			"end": 71.82,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 253,
+			"text": "what",
+			"start": 71.82,
+			"end": 72.04,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 254,
+			"text": "I",
+			"start": 72.04,
+			"end": 72.18,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 255,
+			"text": "wanted",
+			"start": 72.18,
+			"end": 72.42,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 256,
+			"text": "to",
+			"start": 72.42,
+			"end": 72.66,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 257,
+			"text": "hear.",
+			"start": 72.66,
+			"end": 72.8,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 258,
+			"text": "I",
+			"start": 72.94,
+			"end": 73.1,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 259,
+			"text": "think",
+			"start": 73.1,
+			"end": 73.26,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 260,
+			"text": "that's",
+			"start": 73.26,
+			"end": 73.5,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 261,
+			"text": "the",
+			"start": 73.5,
+			"end": 73.62,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 262,
+			"text": "magical",
+			"start": 73.62,
+			"end": 73.96,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 263,
+			"text": "part",
+			"start": 73.96,
+			"end": 74.4,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 264,
+			"text": "of",
+			"start": 74.4,
+			"end": 74.56,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 265,
+			"text": "these",
+			"start": 74.56,
+			"end": 74.72,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 266,
+			"text": "tools,",
+			"start": 74.72,
+			"end": 75.06,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 267,
+			"text": "especially",
+			"start": 75.14,
+			"end": 75.44,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 268,
+			"text": "for",
+			"start": 75.88,
+			"end": 76.1,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 269,
+			"text": "me",
+			"start": 76.1,
+			"end": 76.32,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 270,
+			"text": "anyway,",
+			"start": 76.32,
+			"end": 76.58,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 271,
+			"text": "like",
+			"start": 76.86,
+			"end": 76.88,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 272,
+			"text": "being",
+			"start": 76.88,
+			"end": 77.18,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 273,
+			"text": "able",
+			"start": 77.18,
+			"end": 77.42,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 274,
+			"text": "to",
+			"start": 77.42,
+			"end": 77.6,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 275,
+			"text": "actually",
+			"start": 77.6,
+			"end": 77.88,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 276,
+			"text": "animate",
+			"start": 77.88,
+			"end": 78.32,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 277,
+			"text": "this",
+			"start": 78.32,
+			"end": 78.58,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 278,
+			"text": "stuff",
+			"start": 78.58,
+			"end": 78.86,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 279,
+			"text": "is",
+			"start": 78.86,
+			"end": 79.06,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 280,
+			"text": "like",
+			"start": 79.06,
+			"end": 79.24,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 281,
+			"text": "just",
+			"start": 79.24,
+			"end": 79.4,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 282,
+			"text": "so",
+			"start": 79.4,
+			"end": 79.88,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 283,
+			"text": "like",
+			"start": 79.88,
+			"end": 80.5,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 284,
+			"text": "exciting",
+			"start": 80.5,
+			"end": 80.98,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 285,
+			"text": "for",
+			"start": 80.98,
+			"end": 81.34,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 286,
+			"text": "me,",
+			"start": 81.34,
+			"end": 81.56,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 287,
+			"text": "you",
+			"start": 81.56,
+			"end": 81.78,
+			"speaker": null,
+			"em": false
+		},
+		{
+			"i": 288,
+			"text": "know.",
+			"start": 81.78,
+			"end": 81.9,
+			"speaker": null,
+			"em": false
+		}
+	],
+	"lines": [
+		{
+			"line": "I quote",
+			"start": 0,
+			"end": 0.64,
+			"em": false
+		},
+		{
+			"line": "too much",
+			"start": 1.12,
+			"end": 1.54,
+			"em": false
+		},
+		{
+			"line": "on this",
+			"start": 1.54,
+			"end": 1.94,
+			"em": false
+		},
+		{
+			"line": "show",
+			"start": 1.94,
+			"end": 2.24,
+			"em": false
+		},
+		{
+			"line": "He had",
+			"start": 2.86,
+			"end": 3.68,
+			"em": false
+		},
+		{
+			"line": "this idea",
+			"start": 3.68,
+			"end": 4.1,
+			"em": false
+		},
+		{
+			"line": "that he",
+			"start": 4.1,
+			"end": 4.34,
+			"em": false
+		},
+		{
+			"line": "talked about",
+			"start": 4.34,
+			"end": 4.76,
+			"em": false
+		},
+		{
+			"line": "years ago",
+			"start": 4.76,
+			"end": 5.68,
+			"em": false
+		},
+		{
+			"line": "at this",
+			"start": 5.68,
+			"end": 5.94,
+			"em": false
+		},
+		{
+			"line": "point and",
+			"start": 5.94,
+			"end": 6.24,
+			"em": false
+		},
+		{
+			"line": "he talked",
+			"start": 6.24,
+			"end": 6.42,
+			"em": false
+		},
+		{
+			"line": "about how",
+			"start": 6.42,
+			"end": 6.74,
+			"em": false
+		},
+		{
+			"line": "great designers",
+			"start": 6.74,
+			"end": 7.38,
+			"em": false
+		},
+		{
+			"line": "But I",
+			"start": 9.18,
+			"end": 9.42,
+			"em": false
+		},
+		{
+			"line": "tried to",
+			"start": 9.42,
+			"end": 9.84,
+			"em": false
+		},
+		{
+			"line": "just use",
+			"start": 9.84,
+			"end": 10.48,
+			"em": false
+		},
+		{
+			"line": "that original",
+			"start": 10.48,
+			"end": 11.24,
+			"em": false
+		},
+		{
+			"line": "idea of",
+			"start": 11.24,
+			"end": 12.14,
+			"em": false
+		},
+		{
+			"line": "that animation",
+			"start": 12.14,
+			"end": 12.9,
+			"em": false
+		},
+		{
+			"line": "obviously outputted",
+			"start": 13.26,
+			"end": 14.24,
+			"em": false
+		},
+		{
+			"line": "something completely",
+			"start": 14.24,
+			"end": 15.04,
+			"em": false
+		},
+		{
+			"line": "different like",
+			"start": 15.04,
+			"end": 16.06,
+			"em": false
+		},
+		{
+			"line": "here which",
+			"start": 16.06,
+			"end": 16.72,
+			"em": false
+		},
+		{
+			"line": "again I'm",
+			"start": 16.72,
+			"end": 17.3,
+			"em": false
+		},
+		{
+			"line": "really happy",
+			"start": 17.3,
+			"end": 17.76,
+			"em": false
+		},
+		{
+			"line": "that I",
+			"start": 17.76,
+			"end": 18.1,
+			"em": false
+		},
+		{
+			"line": "managed to",
+			"start": 18.1,
+			"end": 18.8,
+			"em": false
+		},
+		{
+			"line": "reuse that",
+			"start": 18.8,
+			"end": 19.86,
+			"em": false
+		},
+		{
+			"line": "too almost",
+			"start": 19.86,
+			"end": 20.72,
+			"em": false
+		},
+		{
+			"line": "or",
+			"start": 20.72,
+			"end": 20.76,
+			"em": false
+		},
+		{
+			"line": "And I",
+			"start": 22.1,
+			"end": 22.26,
+			"em": false
+		},
+		{
+			"line": "don't know",
+			"start": 22.26,
+			"end": 22.52,
+			"em": false
+		},
+		{
+			"line": "if I",
+			"start": 22.52,
+			"end": 22.74,
+			"em": false
+		},
+		{
+			"line": "would have",
+			"start": 22.74,
+			"end": 23.02,
+			"em": false
+		},
+		{
+			"line": "ever thought",
+			"start": 23.02,
+			"end": 24.26,
+			"em": false
+		},
+		{
+			"line": "about that",
+			"start": 24.26,
+			"end": 24.7,
+			"em": false
+		},
+		{
+			"line": "or done",
+			"start": 24.7,
+			"end": 25.06,
+			"em": false
+		},
+		{
+			"line": "that in",
+			"start": 25.06,
+			"end": 25.7,
+			"em": false
+		},
+		{
+			"line": "first like",
+			"start": 25.94,
+			"end": 26.74,
+			"em": false
+		},
+		{
+			"line": "I think",
+			"start": 26.74,
+			"end": 26.98,
+			"em": false
+		},
+		{
+			"line": "that's where",
+			"start": 26.98,
+			"end": 27.58,
+			"em": false
+		},
+		{
+			"line": "alone like",
+			"start": 28.1,
+			"end": 28.62,
+			"em": false
+		},
+		{
+			"line": "really helped",
+			"start": 28.62,
+			"end": 29.28,
+			"em": false
+		},
+		{
+			"line": "with that",
+			"start": 29.28,
+			"end": 29.82,
+			"em": false
+		},
+		{
+			"line": "And you",
+			"start": 30.2,
+			"end": 30.62,
+			"em": false
+		},
+		{
+			"line": "can maybe",
+			"start": 30.62,
+			"end": 30.9,
+			"em": false
+		},
+		{
+			"line": "have an",
+			"start": 30.9,
+			"end": 31.32,
+			"em": false
+		},
+		{
+			"line": "idea that",
+			"start": 31.32,
+			"end": 31.72,
+			"em": false
+		},
+		{
+			"line": "doesn't quite",
+			"start": 31.72,
+			"end": 32.16,
+			"em": false
+		},
+		{
+			"line": "work",
+			"start": 32.16,
+			"end": 32.46,
+			"em": false
+		},
+		{
+			"line": "And I",
+			"start": 32.46,
+			"end": 33,
+			"em": false
+		},
+		{
+			"line": "was like",
+			"start": 33,
+			"end": 33.36,
+			"em": false
+		},
+		{
+			"line": "right I'll",
+			"start": 33.36,
+			"end": 33.66,
+			"em": false
+		},
+		{
+			"line": "just",
+			"start": 33.66,
+			"end": 33.84,
+			"em": false
+		},
+		{
+			"line": "for now",
+			"start": 34.38,
+			"end": 34.8,
+			"em": false
+		},
+		{
+			"line": "But then",
+			"start": 35.26,
+			"end": 35.56,
+			"em": false
+		},
+		{
+			"line": "it obviously",
+			"start": 35.56,
+			"end": 35.94,
+			"em": false
+		},
+		{
+			"line": "came in",
+			"start": 35.94,
+			"end": 36.36,
+			"em": false
+		},
+		{
+			"line": "handy like",
+			"start": 36.36,
+			"end": 37,
+			"em": false
+		},
+		{
+			"line": "for here",
+			"start": 37,
+			"end": 37.58,
+			"em": false
+		},
+		{
+			"line": "you know",
+			"start": 37.58,
+			"end": 37.92,
+			"em": false
+		},
+		{
+			"line": "like I'm",
+			"start": 37.92,
+			"end": 38.2,
+			"em": false
+		},
+		{
+			"line": "pretty happy",
+			"start": 38.2,
+			"end": 38.62,
+			"em": false
+		},
+		{
+			"line": "with how",
+			"start": 38.62,
+			"end": 38.94,
+			"em": false
+		},
+		{
+			"line": "those folded",
+			"start": 38.94,
+			"end": 39.56,
+			"em": false
+		},
+		{
+			"line": "back in",
+			"start": 39.56,
+			"end": 40.44,
+			"em": false
+		},
+		{
+			"line": "I even",
+			"start": 40.44,
+			"end": 40.62,
+			"em": false
+		},
+		{
+			"line": "have my",
+			"start": 40.62,
+			"end": 40.9,
+			"em": false
+		},
+		{
+			"line": "own story",
+			"start": 40.9,
+			"end": 41.3,
+			"em": false
+		},
+		{
+			"line": "about that",
+			"start": 41.3,
+			"end": 41.72,
+			"em": false
+		},
+		{
+			"line": "where I",
+			"start": 41.72,
+			"end": 42.04,
+			"em": false
+		},
+		{
+			"line": "made multiple",
+			"start": 42.04,
+			"end": 43.36,
+			"em": false
+		},
+		{
+			"line": "versions of",
+			"start": 43.36,
+			"end": 44,
+			"em": false
+		},
+		{
+			"line": "the",
+			"start": 44,
+			"end": 44.12,
+			"em": false
+		},
+		{
+			"line": "website",
+			"start": 44.38,
+			"end": 44.98,
+			"em": false
+		},
+		{
+			"line": "It was",
+			"start": 44.98,
+			"end": 45.14,
+			"em": false
+		},
+		{
+			"line": "only like",
+			"start": 45.14,
+			"end": 45.6,
+			"em": false
+		},
+		{
+			"line": "a live",
+			"start": 45.6,
+			"end": 45.92,
+			"em": false
+		},
+		{
+			"line": "for a",
+			"start": 45.92,
+			"end": 46.18,
+			"em": false
+		},
+		{
+			"line": "month this",
+			"start": 46.18,
+			"end": 46.7,
+			"em": false
+		},
+		{
+			"line": "version",
+			"start": 46.7,
+			"end": 47.02,
+			"em": false
+		},
+		{
+			"line": "And I",
+			"start": 47.42,
+			"end": 47.56,
+			"em": false
+		},
+		{
+			"line": "had this",
+			"start": 47.56,
+			"end": 47.88,
+			"em": false
+		},
+		{
+			"line": "dashed line",
+			"start": 47.88,
+			"end": 48.94,
+			"em": false
+		},
+		{
+			"line": "that I",
+			"start": 48.94,
+			"end": 49.38,
+			"em": false
+		},
+		{
+			"line": "massaged with",
+			"start": 49.38,
+			"end": 50.12,
+			"em": false
+		},
+		{
+			"line": "Claude to",
+			"start": 50.12,
+			"end": 50.7,
+			"em": false
+		},
+		{
+			"line": "like have",
+			"start": 50.7,
+			"end": 51.04,
+			"em": false
+		},
+		{
+			"line": "this",
+			"start": 51.04,
+			"end": 51.24,
+			"em": false
+		},
+		{
+			"line": "It was",
+			"start": 53,
+			"end": 53.12,
+			"em": false
+		},
+		{
+			"line": "called the",
+			"start": 53.12,
+			"end": 53.5,
+			"em": false
+		},
+		{
+			"line": "is what",
+			"start": 54.6,
+			"end": 55.14,
+			"em": false
+		},
+		{
+			"line": "Claude called",
+			"start": 55.14,
+			"end": 55.66,
+			"em": false
+		},
+		{
+			"line": "it",
+			"start": 55.66,
+			"end": 56.02,
+			"em": false
+		},
+		{
+			"line": "It hasn't",
+			"start": 56.44,
+			"end": 57.12,
+			"em": false
+		},
+		{
+			"line": "been live",
+			"start": 57.12,
+			"end": 57.58,
+			"em": false
+		},
+		{
+			"line": "for so",
+			"start": 57.58,
+			"end": 58.16,
+			"em": false
+		},
+		{
+			"line": "long",
+			"start": 58.16,
+			"end": 58.52,
+			"em": false
+		},
+		{
+			"line": "but I've",
+			"start": 58.96,
+			"end": 59.34,
+			"em": false
+		},
+		{
+			"line": "so many",
+			"start": 59.34,
+			"end": 60.12,
+			"em": false
+		},
+		{
+			"line": "times been",
+			"start": 60.12,
+			"end": 60.66,
+			"em": false
+		},
+		{
+			"line": "like hey",
+			"start": 60.66,
+			"end": 61.02,
+			"em": false
+		},
+		{
+			"line": "can you",
+			"start": 61.02,
+			"end": 61.3,
+			"em": false
+		},
+		{
+			"line": "kind of",
+			"start": 61.3,
+			"end": 61.54,
+			"em": false
+		},
+		{
+			"line": "make that",
+			"start": 61.54,
+			"end": 61.88,
+			"em": false
+		},
+		{
+			"line": "like the",
+			"start": 61.88,
+			"end": 62.2,
+			"em": false
+		},
+		{
+			"line": "old Ethereal",
+			"start": 62.2,
+			"end": 62.82,
+			"em": false
+		},
+		{
+			"line": "Connector",
+			"start": 62.82,
+			"end": 63.54,
+			"em": false
+		},
+		{
+			"line": "And then",
+			"start": 63.54,
+			"end": 63.64,
+			"em": false
+		},
+		{
+			"line": "it just",
+			"start": 63.64,
+			"end": 63.88,
+			"em": false
+		},
+		{
+			"line": "does something",
+			"start": 63.88,
+			"end": 64.56,
+			"em": false
+		},
+		{
+			"line": "and I'm",
+			"start": 64.56,
+			"end": 64.86,
+			"em": false
+		},
+		{
+			"line": "like oh",
+			"start": 64.86,
+			"end": 65.12,
+			"em": false
+		},
+		{
+			"line": "that's so",
+			"start": 65.12,
+			"end": 65.44,
+			"em": false
+		},
+		{
+			"line": "sick",
+			"start": 65.44,
+			"end": 65.96,
+			"em": false
+		},
+		{
+			"line": "Yeah",
+			"start": 66.36,
+			"end": 66.66,
+			"em": false
+		},
+		{
+			"line": "And just",
+			"start": 66.66,
+			"end": 67.12,
+			"em": false
+		},
+		{
+			"line": "that old",
+			"start": 67.12,
+			"end": 67.6,
+			"em": false
+		},
+		{
+			"line": "idea managed",
+			"start": 67.6,
+			"end": 68.34,
+			"em": false
+		},
+		{
+			"line": "to get",
+			"start": 68.34,
+			"end": 68.84,
+			"em": false
+		},
+		{
+			"line": "in a",
+			"start": 69.62,
+			"end": 69.86,
+			"em": false
+		},
+		{
+			"line": "way that",
+			"start": 69.86,
+			"end": 70.44,
+			"em": false
+		},
+		{
+			"line": "just fit",
+			"start": 70.44,
+			"end": 70.88,
+			"em": false
+		},
+		{
+			"line": "perfectly for",
+			"start": 70.88,
+			"end": 71.66,
+			"em": false
+		},
+		{
+			"line": "like what",
+			"start": 71.66,
+			"end": 72.04,
+			"em": false
+		},
+		{
+			"line": "I wanted",
+			"start": 72.04,
+			"end": 72.42,
+			"em": false
+		},
+		{
+			"line": "to hear",
+			"start": 72.42,
+			"end": 72.94,
+			"em": false
+		},
+		{
+			"line": "I think",
+			"start": 72.94,
+			"end": 73.26,
+			"em": false
+		},
+		{
+			"line": "that's the",
+			"start": 73.26,
+			"end": 73.62,
+			"em": false
+		},
+		{
+			"line": "of these",
+			"start": 74.4,
+			"end": 74.72,
+			"em": false
+		},
+		{
+			"line": "tools especially",
+			"start": 74.72,
+			"end": 75.44,
+			"em": false
+		},
+		{
+			"line": "for me",
+			"start": 75.88,
+			"end": 76.32,
+			"em": false
+		},
+		{
+			"line": "anyway like",
+			"start": 76.32,
+			"end": 76.88,
+			"em": false
+		},
+		{
+			"line": "being able",
+			"start": 76.88,
+			"end": 77.42,
+			"em": false
+		},
+		{
+			"line": "to actually",
+			"start": 77.42,
+			"end": 77.88,
+			"em": false
+		},
+		{
+			"line": "this stuff",
+			"start": 78.32,
+			"end": 78.86,
+			"em": false
+		},
+		{
+			"line": "is like",
+			"start": 78.86,
+			"end": 79.24,
+			"em": false
+		},
+		{
+			"line": "just so",
+			"start": 79.24,
+			"end": 79.88,
+			"em": false
+		},
+		{
+			"line": "like exciting",
+			"start": 79.88,
+			"end": 80.98,
+			"em": false
+		},
+		{
+			"line": "for me",
+			"start": 80.98,
+			"end": 81.56,
+			"em": false
+		},
+		{
+			"line": "you know",
+			"start": 81.56,
+			"end": 81.9,
+			"em": false
+		}
+	]
+}

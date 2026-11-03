@@ -1,0 +1,106 @@
+{
+	"id": "a",
+	"name": "Sky labels",
+	"intent": "The house look on a short clip.",
+	"template": "talk-square",
+	"format": "square",
+	"round": 1,
+	"status": "in-review",
+	"captionStyle": "sky-label",
+	"cuts": [
+		{
+			"source": "screenshare",
+			"from": 0,
+			"to": 8.375,
+			"sourceIn": 0,
+			"rate": 1,
+			"focus": {
+				"x": 0.47,
+				"y": 0.37
+			},
+			"scale": 1.6,
+			"offsetY": 0,
+			"label": "Screen share (feature section)"
+		},
+		{
+			"source": "guest",
+			"from": 8.375,
+			"to": 22.2,
+			"sourceIn": 8.375,
+			"rate": 1,
+			"focus": {
+				"x": 0.55,
+				"y": 0.5
+			},
+			"scale": 1.35,
+			"offsetY": -160,
+			"label": "James"
+		},
+		{
+			"source": "broll-facemesh",
+			"from": 22.2,
+			"to": 31.2,
+			"sourceIn": 2,
+			"rate": 1,
+			"focus": {
+				"x": 0.55,
+				"y": 0.549
+			},
+			"scale": 1.48,
+			"offsetY": 0,
+			"label": "B-roll: face mesh"
+		},
+		{
+			"source": "guest",
+			"from": 31.2,
+			"to": 36.458,
+			"sourceIn": 31.2,
+			"rate": 1,
+			"focus": {
+				"x": 0.55,
+				"y": 0.5
+			},
+			"scale": 1.35,
+			"offsetY": -160,
+			"label": "James (payoff)"
+		}
+	],
+	"bubbles": [
+		{
+			"source": "guest",
+			"from": 0,
+			"to": 8.375,
+			"sourceIn": 0,
+			"focus": {
+				"x": 0.6,
+				"y": 0.42
+			},
+			"x": 850,
+			"y": 225,
+			"size": 340
+		},
+		{
+			"source": "guest",
+			"from": 22.2,
+			"to": 31.2,
+			"sourceIn": 22.2,
+			"focus": {
+				"x": 0.6,
+				"y": 0.42
+			},
+			"x": 850,
+			"y": 225,
+			"size": 340
+		}
+	],
+	"zooms": [],
+	"endCap": false,
+	"props": {},
+	"history": [
+		{
+			"round": 1,
+			"date": "2026-11-03",
+			"summary": "Rebuilt from the Mixture composition claude-figma."
+		}
+	]
+}

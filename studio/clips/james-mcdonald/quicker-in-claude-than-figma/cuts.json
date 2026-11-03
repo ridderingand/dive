@@ -1,0 +1,118 @@
+{
+ "clip": "clip2-claude-figma",
+ "fps": 24,
+ "total_frames": 875,
+ "duration_s": 36.458333333333336,
+ "face_track_offset_frames": 115,
+ "note": "frames; outs exclusive; face_in/out are raw james.mp4/ridd.mp4 frames, screen_in/out raw screenshare.mp4 frames",
+ "pieces": [
+  {
+   "clip_in": 0,
+   "clip_out": 62,
+   "frames": 62,
+   "face_in": 19498,
+   "face_out": 19560,
+   "screen_in": 19613,
+   "screen_out": 19675,
+   "n": 1,
+   "clip_in_s": 0.0,
+   "clip_out_s": 2.5833
+  },
+  {
+   "clip_in": 62,
+   "clip_out": 201,
+   "frames": 139,
+   "face_in": 19609,
+   "face_out": 19748,
+   "screen_in": 19725,
+   "screen_out": 19864,
+   "n": 2,
+   "clip_in_s": 2.5833,
+   "clip_out_s": 8.375
+  },
+  {
+   "clip_in": 201,
+   "clip_out": 340,
+   "frames": 139,
+   "face_in": 16586,
+   "face_out": 16725,
+   "screen_in": 16702,
+   "screen_out": 16841,
+   "n": 3,
+   "clip_in_s": 8.375,
+   "clip_out_s": 14.1667
+  },
+  {
+   "clip_in": 340,
+   "clip_out": 392,
+   "frames": 52,
+   "face_in": 16741,
+   "face_out": 16793,
+   "screen_in": 16857,
+   "screen_out": 16909,
+   "n": 4,
+   "clip_in_s": 14.1667,
+   "clip_out_s": 16.3333
+  },
+  {
+   "clip_in": 392,
+   "clip_out": 411,
+   "frames": 19,
+   "face_in": 16814,
+   "face_out": 16833,
+   "screen_in": 16929,
+   "screen_out": 16948,
+   "n": 5,
+   "clip_in_s": 16.3333,
+   "clip_out_s": 17.125
+  },
+  {
+   "clip_in": 411,
+   "clip_out": 456,
+   "frames": 45,
+   "face_in": 16871,
+   "face_out": 16916,
+   "screen_in": 16987,
+   "screen_out": 17032,
+   "n": 6,
+   "clip_in_s": 17.125,
+   "clip_out_s": 19.0
+  },
+  {
+   "clip_in": 456,
+   "clip_out": 645,
+   "frames": 189,
+   "face_in": 16934,
+   "face_out": 17123,
+   "screen_in": 17050,
+   "screen_out": 17239,
+   "n": 7,
+   "clip_in_s": 19.0,
+   "clip_out_s": 26.875
+  },
+  {
+   "clip_in": 645,
+   "clip_out": 749,
+   "frames": 104,
+   "face_in": 17140,
+   "face_out": 17244,
+   "screen_in": 17255,
+   "screen_out": 17359,
+   "n": 8,
+   "clip_in_s": 26.875,
+   "clip_out_s": 31.2083
+  },
+  {
+   "clip_in": 749,
+   "clip_out": 875,
+   "frames": 126,
+   "face_in": 17272,
+   "face_out": 17398,
+   "screen_in": 17387,
+   "screen_out": 17513,
+   "n": 9,
+   "clip_in_s": 31.2083,
+   "clip_out_s": 36.4583
+  }
+ ]
+}

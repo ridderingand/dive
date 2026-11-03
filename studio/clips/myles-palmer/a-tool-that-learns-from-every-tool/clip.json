@@ -1,0 +1,52 @@
+{
+	"slug": "a-tool-that-learns-from-every-tool",
+	"guest": "myles-palmer",
+	"title": "A Tool That Learns From Every Tool",
+	"score": 76,
+	"status": "Cut in Descript",
+	"designer": "Anna",
+	"topics": [
+		"AI",
+		"Tools"
+	],
+	"hook": "Myles: \"A lot of our design team were making these tools, but Claude… falls into the same trap over and over again.\"",
+	"payoff": "\"Of all of the tools built in the last month, what did we learn? … How can we use that to improve further tools?\"",
+	"arc": "Obsession → a single prompt makes an Oodle (screen share) → self-learning system payoff.",
+	"lengthTargetS": 44.3,
+	"durationS": 65.5,
+	"fps": 24,
+	"format": null,
+	"notionUrl": "https://app.notion.com/40854bed0e368113a4c0d26a4c82230c",
+	"descriptUrl": "https://web.descript.com/8581623c-d5a2-47f0-af9a-9a5b5c2628a8/a2619",
+	"mixtureUrl": null,
+	"sourceNote": "Source pack attached on this page (captions + cuts.json, synced to clip timeline). Riverside mp4s + audio NOT attached: download blocked (no vault/browser access in the run).",
+	"audio": "myles-palmer/a-tool-that-learns-from-every-tool/audio.m4a",
+	"sources": [
+		{
+			"key": "guest",
+			"kind": "guest",
+			"label": "Myles Palmer",
+			"file": "myles-palmer/a-tool-that-learns-from-every-tool/guest.mp4",
+			"synced": true
+		},
+		{
+			"key": "ridd",
+			"kind": "host",
+			"label": "Ridd",
+			"file": "myles-palmer/a-tool-that-learns-from-every-tool/ridd.mp4",
+			"synced": true
+		},
+		{
+			"key": "screenshare",
+			"kind": "screen",
+			"label": "Screen share",
+			"file": "myles-palmer/a-tool-that-learns-from-every-tool/screenshare.mp4",
+			"synced": true
+		}
+	],
+	"beats": [],
+	"broll": [],
+	"captionCopy": null,
+	"visualNotes": [],
+	"openIssues": []
+}

@@ -1,0 +1,104 @@
+{
+	"slug": "my-first-project-as-a-builder",
+	"guest": "james-mcdonald",
+	"title": "My First Project as a Builder",
+	"score": null,
+	"status": "In design",
+	"designer": "Anna",
+	"topics": [],
+	"hook": "Is this the first project that you've taken on as a freelancer where you're— / Yeah. Yeah, yeah.",
+	"payoff": "It's inevitable you'll move fast and pick things up and learn how this stuff works. So, I'm loving it.",
+	"arc": "Hook: Ridd asks if this is James's first freelance project as a builder: \"Yeah, yeah, yeah.\" → Tension: he was always jealous of engineers and never a technical designer → Payoff: the tools make you move fast, and \"I'm loving it.\"",
+	"lengthTargetS": 83.4,
+	"durationS": 83.375,
+	"fps": 24,
+	"format": "square",
+	"notionUrl": "https://app.notion.com/40654bed0e36816eb2c4d6852ee8bc75",
+	"descriptUrl": "https://web.descript.com/71965789-5c8b-42ab-8af5-7de36fdda3d9/dc6d1",
+	"mixtureUrl": "https://mixture.dev/app/projects/2c800362-cfc6-480d-b427-929d2a6cfdfa",
+	"sourceNote": "Source pack attached on this page (synced to clip timeline)",
+	"audio": "james-mcdonald/my-first-project-as-a-builder/audio.m4a",
+	"sources": [
+		{
+			"key": "ridd",
+			"kind": "host",
+			"label": "Ridd",
+			"file": "james-mcdonald/my-first-project-as-a-builder/ridd.mp4",
+			"synced": true
+		},
+		{
+			"key": "guest",
+			"kind": "guest",
+			"label": "James McDonald",
+			"file": "james-mcdonald/my-first-project-as-a-builder/guest.mp4",
+			"synced": true
+		},
+		{
+			"key": "broll-facemesh",
+			"kind": "broll",
+			"label": "B-roll face mesh",
+			"file": "james-mcdonald/_broll/broll-facemesh.mp4",
+			"synced": false
+		}
+	],
+	"beats": [
+		{
+			"start": 0,
+			"end": 5,
+			"speaker": "Ridd → James",
+			"line": "\"Is this the **first project** you've taken on as a freelancer where you're—\" / \"Yeah. Yeah, yeah.\"",
+			"visual": "Ridd full frame, quick cut to James full frame for the answer."
+		},
+		{
+			"start": 5,
+			"end": 7,
+			"speaker": "Ridd",
+			"line": "\"Dude, how cool is that?\"",
+			"visual": "Ridd full frame."
+		},
+		{
+			"start": 7,
+			"end": 30,
+			"speaker": "James",
+			"line": "\"…always so **jealous** of engineers being able to build ideas…\"",
+			"visual": "James talking head, full frame."
+		},
+		{
+			"start": 30,
+			"end": 60,
+			"speaker": "James",
+			"line": "\"…from **zero to one**… I've never been a **technical designer** whatsoever…\"",
+			"visual": "James full frame. Optional B-roll (Ridd's call): little pattern tools (raw screenshare 00:04:14:00–00:04:31:08, episode 06:35–06:46; or raw screenshare 00:01:50:04–00:02:33:19, episode 04:42–05:15)."
+		},
+		{
+			"start": 60,
+			"end": 83,
+			"speaker": "James",
+			"line": "\"…things just **move fast** and you will move fast… **I'm loving it**.\"",
+			"visual": "James full frame for the payoff."
+		}
+	],
+	"broll": [
+		{
+			"name": "little-pattern-tools-a",
+			"rawTimecode": "screenshare 00:04:14:00–00:04:31:08",
+			"episodeTimecode": "06:35–06:46",
+			"note": "Optional B-roll (Ridd's call): little pattern tools (beat 0:30–0:60)"
+		},
+		{
+			"name": "little-pattern-tools-b",
+			"rawTimecode": "screenshare 00:01:50:04–00:02:33:19",
+			"episodeTimecode": "04:42–05:15",
+			"note": "Alternative optional B-roll (Ridd's call): little pattern tools (beat 0:30–0:60)"
+		}
+	],
+	"captionCopy": "**Ridd:** Is this the **first project** that you've taken on as a freelancer where you're—\n\n**James:** Yeah. Yeah, yeah.\n\n**Ridd:** Dude, how cool is that?\n\n**James:** For the longest time, honestly, I was always so **jealous** of engineers being able to build ideas. Or not even jealous, sometimes **frustrated**, because maybe an engineer doesn't quite do what you envision, the idea you have in your mind.\n\nSo being able to actually put an idea together from **zero to one** and build it, like I said, really **empowers** me to do a lot more of that. It's such an exciting time for designers in the same boat as me. I've never been a **technical designer** whatsoever. I think I've mentioned that to you before. Thinking in systems, I'm just not that designer at all. But these tools **unlock** a part of the process, if you're patient enough to keep playing around and keep bringing **simple ideas** over.\n\nI started pretty simple, just trying to build little tools that might help with animating an illustration or whatever. Starting there, the nature of the beast with these tools is things **move fast**, and you will move fast.\n\nIt's inevitable. You'll move fast, pick things up, and learn how this stuff works. So, **I'm loving it**, you know. It's so, so enjoyable working on this stuff.",
+	"visualNotes": [
+		"Talking head only (Ridd + James), speaker full frame; **Ridd on camera when he speaks**.",
+		"No screen share in range, so no bubbles unless B-roll is added."
+	],
+	"openIssues": [
+		"Hook is a two-line exchange; check it lands without context.",
+		"Source tracks: resolved. Full raw tracks are too big to upload, so a pre-cut, synced source pack is attached in the Source pack section above. The Drive Tracks folder linked in the cut list stays empty; the raw-time cut list is kept as reference only."
+	]
+}

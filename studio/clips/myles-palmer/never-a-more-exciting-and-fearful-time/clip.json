@@ -1,0 +1,53 @@
+{
+	"slug": "never-a-more-exciting-and-fearful-time",
+	"guest": "myles-palmer",
+	"title": "Never a More Exciting and Fearful Time",
+	"score": 86,
+	"status": "Cut in Descript",
+	"designer": "Anna",
+	"topics": [
+		"AI",
+		"Craft",
+		"Career"
+	],
+	"hook": "Myles: \"I think it has never been a more exciting and more fearful time to be a designer, and I think both things can be true.\"",
+	"payoff": "Myles: stopped coding in 2017, AI pulled him back to building; ends hard on \"…focus on what you can do today and how you can change today\" (rhetorical \"don't worry about tomorrow, right?\" cut)",
+	"arc": "Host-led stakes take (file 15: stakes questions open best). Ridd confesses he doesn't craft anymore → Myles: \"It's 100%…\" → stopped coding in 2017, AI brought him back → payoff on not worrying about tomorrow.",
+	"lengthTargetS": 40.4,
+	"durationS": 61.708,
+	"fps": 24,
+	"format": "square",
+	"notionUrl": "https://app.notion.com/40854bed0e3681a9bb91de3ce7bf373e",
+	"descriptUrl": "https://web.descript.com/8581623c-d5a2-47f0-af9a-9a5b5c2628a8/d470e",
+	"mixtureUrl": null,
+	"sourceNote": "Source pack attached on this page (captions + cuts.json, synced to clip timeline). Riverside mp4s + audio NOT attached: download blocked (no vault/browser access in the run).",
+	"audio": "myles-palmer/never-a-more-exciting-and-fearful-time/audio.m4a",
+	"sources": [
+		{
+			"key": "guest",
+			"kind": "guest",
+			"label": "Myles Palmer",
+			"file": "myles-palmer/never-a-more-exciting-and-fearful-time/guest.mp4",
+			"synced": true
+		},
+		{
+			"key": "ridd",
+			"kind": "host",
+			"label": "Ridd",
+			"file": "myles-palmer/never-a-more-exciting-and-fearful-time/ridd.mp4",
+			"synced": true
+		},
+		{
+			"key": "screenshare",
+			"kind": "screen",
+			"label": "Screen share",
+			"file": "myles-palmer/never-a-more-exciting-and-fearful-time/screenshare.mp4",
+			"synced": true
+		}
+	],
+	"beats": [],
+	"broll": [],
+	"captionCopy": null,
+	"visualNotes": [],
+	"openIssues": []
+}

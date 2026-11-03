@@ -1,0 +1,132 @@
+{
+	"slug": "the-random-button-era-of-design",
+	"guest": "james-mcdonald",
+	"title": "The Random Button Era of Design",
+	"score": null,
+	"status": "In design",
+	"designer": "Anna",
+	"topics": [],
+	"hook": "Anytime I make these tools, I love to add a random button 'cause sometimes you can just get weird stuff happening.",
+	"payoff": "If I can build this, I can build my own projects now, you know?",
+	"arc": "Hook: James always adds a random button to his tools → Tension: Ridd says 18 months ago he was the \"sweat every vector in Figma\" designer, and James admits he was a late bloomer with real apprehension → Payoff: this project gave him the taste: \"If I can build this, I can build my own projects now.\"",
+	"lengthTargetS": 89.8,
+	"durationS": 89.833,
+	"fps": 24,
+	"format": "square",
+	"notionUrl": "https://app.notion.com/40654bed0e3681c7a9ecc77c3f0501b7",
+	"descriptUrl": "https://web.descript.com/71965789-5c8b-42ab-8af5-7de36fdda3d9/7aff6",
+	"mixtureUrl": "https://mixture.dev/app/projects/2c800362-cfc6-480d-b427-929d2a6cfdfa",
+	"sourceNote": "Source pack attached on this page (synced to clip timeline)",
+	"audio": "james-mcdonald/the-random-button-era-of-design/audio.m4a",
+	"sources": [
+		{
+			"key": "broll-random-button",
+			"kind": "broll",
+			"label": "B-roll random button",
+			"file": "james-mcdonald/_broll/broll-random-button.mp4",
+			"synced": false
+		},
+		{
+			"key": "guest",
+			"kind": "guest",
+			"label": "James McDonald",
+			"file": "james-mcdonald/the-random-button-era-of-design/guest.mp4",
+			"synced": true
+		},
+		{
+			"key": "ridd",
+			"kind": "host",
+			"label": "Ridd",
+			"file": "james-mcdonald/the-random-button-era-of-design/ridd.mp4",
+			"synced": true
+		},
+		{
+			"key": "screenshare",
+			"kind": "screen",
+			"label": "Screen share",
+			"file": "james-mcdonald/the-random-button-era-of-design/screenshare.mp4",
+			"synced": true
+		}
+	],
+	"beats": [
+		{
+			"start": 0,
+			"end": 5,
+			"speaker": "James",
+			"line": "\"Anytime I make these tools, I love to add a random button…\"",
+			"visual": "Screen share of the pattern generator (crop ~10% from left, ~1.32x, controls panel visible). James bubble top corner. B-roll option: random button demo at raw screenshare 00:08:21:11–00:08:53:03 (episode 08:53–09:21)."
+		},
+		{
+			"start": 5,
+			"end": 25,
+			"speaker": "Ridd",
+			"line": "\"Can you imagine, like, 18 months ago… sweating the details of every little custom vector in Figma…\"",
+			"visual": "Ridd on camera, full frame while he speaks."
+		},
+		{
+			"start": 25,
+			"end": 39,
+			"speaker": "James",
+			"line": "\"Yeah. It's crazy… I'm sort of like a late bloomer…\"",
+			"visual": "James talking head, full frame."
+		},
+		{
+			"start": 39,
+			"end": 49,
+			"speaker": "James",
+			"line": "\"I've always handed design files off to engineers… it just empowers a lot of that process.\"",
+			"visual": "James talking head, or B-roll: pattern generator ripples / parameters (raw screenshare 00:06:20:22–00:08:21:11; episode 07:29–08:53)."
+		},
+		{
+			"start": 49,
+			"end": 75,
+			"speaker": "James",
+			"line": "\"…you could quite easily see a lot of this stuff in some sort of brand guideline book… apprehension…\"",
+			"visual": "Screen share, same crop. B-roll: default shape explorations (raw screenshare 00:09:54:10–00:10:51:01; episode 10:04–10:48) or L-shape tool (raw screenshare 00:01:50:04–00:02:33:19; episode 04:42–05:15)."
+		},
+		{
+			"start": 75,
+			"end": 90,
+			"speaker": "James",
+			"line": "\"…from zero to one… If I can build this, I can build my own projects now.\"",
+			"visual": "James talking head full frame for the payoff."
+		}
+	],
+	"broll": [
+		{
+			"name": "random-button-demo",
+			"rawTimecode": "00:08:21:11–00:08:53:03 (raw screenshare)",
+			"episodeTimecode": "08:53–09:21",
+			"note": "Beat 0:00–0:05 option"
+		},
+		{
+			"name": "pattern-generator-ripples",
+			"rawTimecode": "00:06:20:22–00:08:21:11 (raw screenshare)",
+			"episodeTimecode": "07:29–08:53",
+			"note": "Beat 0:39–0:49 option: pattern generator ripples / parameters"
+		},
+		{
+			"name": "default-shape-explorations",
+			"rawTimecode": "00:09:54:10–00:10:51:01 (raw screenshare)",
+			"episodeTimecode": "10:04–10:48",
+			"note": "Beat 0:49–1:15 option"
+		},
+		{
+			"name": "l-shape-tool",
+			"rawTimecode": "00:01:50:04–00:02:33:19 (raw screenshare)",
+			"episodeTimecode": "04:42–05:15",
+			"note": "Beat 0:49–1:15 option"
+		}
+	],
+	"captionCopy": "**James:** Anytime I make these tools, I love to add a **random button** 'cause sometimes you can just get, like, weird stuff happening.\n**Ridd:** Can you imagine, like, **18 months ago** if you saw this was part of your design process, the idea of **building a tool**? You're the person I associated with sweating the details of every little custom vector in **Figma**, and now you're hitting a random button in a custom tool that you **built yourself**.\n**James:** Yeah. It's crazy. Even six months ago, honestly, I feel like I'm a **late bloomer** when it comes to this stuff. It disheartens me when I see designers not being all in on this stuff, because I know I felt that way, you know?\nI've always handed design files off to engineers. From discovering ideas and inspiration, doing it this way just **empowers** a lot of that process.\nThere's this weird combination of things you've built. I'm not saying the random button is the be-all and end-all. But a bunch of this stuff, you could quite easily see in some sort of **brand guideline book**, a new design.\nA lot of this stuff is where I definitely had a lot of **apprehension** when it came to exploring and playing around with tools like **Claude**.\nThis was the first project where I really had **fun** with that part of it, you know? Trying to take it from **zero to one**. It was just so much fun building this stuff, and that's where I got a taste for it. If I can build this, **I can build my own projects now**, you know?",
+	"visualNotes": [
+		"Screen share framing: crop starts ~10% from the left so the tool controls panel shows; scale ~1.32x. Ridd hand-refined this crop in Descript; match it (the XML does not carry the crop).",
+		"Bubbles: 240px circles in the top corners during screen share.",
+		"Talking head: the speaker is full frame; Ridd on camera when he speaks.",
+		"Frame on what matters, not the center."
+	],
+	"openIssues": [
+		"None blocking. Last range ends at 36:21.5 episode time (mid-breath before Ridd's next question); check the tail.",
+		"Source tracks: resolved. Full raw tracks are too big to upload, so a pre-cut, synced source pack is attached in the Source pack section. The Drive Tracks folder linked in the cut list stays empty; the raw-time cut list is kept as reference only."
+	]
+}

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+media/
+.work/
+out/
+.env*
+public/fonts/
+public/review/
+*.log
+.DS_Store
+public/data/

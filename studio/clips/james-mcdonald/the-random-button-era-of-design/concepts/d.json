@@ -1,0 +1,175 @@
+{
+	"id": "d",
+	"name": "Vertical cut",
+	"intent": "The same edit for Shorts and Reels.",
+	"template": "talk-vertical",
+	"format": "vertical",
+	"round": 1,
+	"status": "draft",
+	"captionStyle": "sky-label",
+	"cuts": [
+		{
+			"source": "broll-random-button",
+			"from": 0,
+			"to": 4.542,
+			"sourceIn": 2,
+			"rate": 2,
+			"focus": {
+				"x": 0.61,
+				"y": 0.555
+			},
+			"scale": 1.5,
+			"offsetY": 0,
+			"label": "B-roll: random button (hook)"
+		},
+		{
+			"source": "guest",
+			"from": 4.542,
+			"to": 6.833,
+			"sourceIn": 4.542,
+			"rate": 1,
+			"focus": {
+				"x": 0.55,
+				"y": 0.5
+			},
+			"scale": 1.15,
+			"offsetY": -70,
+			"label": "James"
+		},
+		{
+			"source": "ridd",
+			"from": 6.833,
+			"to": 23.9,
+			"sourceIn": 6.833,
+			"rate": 1,
+			"focus": {
+				"x": 0.5,
+				"y": 0.45
+			},
+			"scale": 1,
+			"offsetY": 0,
+			"label": "Ridd"
+		},
+		{
+			"source": "guest",
+			"from": 23.9,
+			"to": 38.96,
+			"sourceIn": 23.9,
+			"rate": 1,
+			"focus": {
+				"x": 0.55,
+				"y": 0.5
+			},
+			"scale": 1.15,
+			"offsetY": -70,
+			"label": "James"
+		},
+		{
+			"source": "broll-random-button",
+			"from": 38.96,
+			"to": 49.42,
+			"sourceIn": 12,
+			"rate": 1,
+			"focus": {
+				"x": 0.61,
+				"y": 0.555
+			},
+			"scale": 1.5,
+			"offsetY": 0,
+			"label": "B-roll: random button (empowers)"
+		},
+		{
+			"source": "screenshare",
+			"from": 49.42,
+			"to": 75.1,
+			"sourceIn": 49.42,
+			"rate": 1,
+			"focus": {
+				"x": 0.31,
+				"y": 0.5
+			},
+			"scale": 1.32,
+			"offsetY": 0,
+			"label": "Screen share"
+		},
+		{
+			"source": "guest",
+			"from": 75.1,
+			"to": 89.833,
+			"sourceIn": 75.1,
+			"rate": 1,
+			"focus": {
+				"x": 0.55,
+				"y": 0.5
+			},
+			"scale": 1.22,
+			"offsetY": -110,
+			"label": "James (payoff)"
+		}
+	],
+	"bubbles": [
+		{
+			"source": "guest",
+			"from": 0,
+			"to": 4.542,
+			"sourceIn": 0,
+			"focus": {
+				"x": 0.6,
+				"y": 0.42
+			}
+		},
+		{
+			"source": "guest",
+			"from": 38.96,
+			"to": 49.42,
+			"sourceIn": 38.96,
+			"focus": {
+				"x": 0.6,
+				"y": 0.42
+			}
+		},
+		{
+			"source": "guest",
+			"from": 49.42,
+			"to": 75.1,
+			"sourceIn": 49.42,
+			"focus": {
+				"x": 0.6,
+				"y": 0.42
+			}
+		}
+	],
+	"zooms": [
+		{
+			"from": 36.68,
+			"to": 38.9,
+			"level": 1.3,
+			"focus": {
+				"x": 0.5,
+				"y": 0.62
+			},
+			"transitionIn": 0.22,
+			"transitionOut": 0.3
+		},
+		{
+			"from": 77.04,
+			"to": 78.7,
+			"level": 1.25,
+			"focus": {
+				"x": 0.5,
+				"y": 0.62
+			},
+			"transitionIn": 0.22,
+			"transitionOut": 0.3
+		}
+	],
+	"endCap": false,
+	"props": {},
+	"history": [
+		{
+			"round": 1,
+			"date": "2026-11-03",
+			"summary": "Started from concept a."
+		}
+	]
+}

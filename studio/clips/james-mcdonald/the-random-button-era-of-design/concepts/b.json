@@ -1,0 +1,161 @@
+{
+	"id": "b",
+	"name": "Tanker words",
+	"intent": "One loud word at a time. Does it feel more like the feed?",
+	"template": "talk-square",
+	"format": "square",
+	"round": 1,
+	"status": "draft",
+	"captionStyle": "sky-tanker",
+	"cuts": [
+		{
+			"source": "broll-random-button",
+			"from": 0,
+			"to": 4.542,
+			"sourceIn": 2,
+			"rate": 2,
+			"focus": {
+				"x": 0.61,
+				"y": 0.555
+			},
+			"scale": 1.5,
+			"offsetY": 0,
+			"label": "B-roll: random button (hook)"
+		},
+		{
+			"source": "guest",
+			"from": 4.542,
+			"to": 6.833,
+			"sourceIn": 4.542,
+			"rate": 1,
+			"focus": {
+				"x": 0.55,
+				"y": 0.5
+			},
+			"scale": 1,
+			"offsetY": 0,
+			"label": "James"
+		},
+		{
+			"source": "ridd",
+			"from": 6.833,
+			"to": 23.9,
+			"sourceIn": 6.833,
+			"rate": 1,
+			"focus": {
+				"x": 0.5,
+				"y": 0.45
+			},
+			"scale": 1,
+			"offsetY": 0,
+			"label": "Ridd"
+		},
+		{
+			"source": "guest",
+			"from": 23.9,
+			"to": 38.96,
+			"sourceIn": 23.9,
+			"rate": 1,
+			"focus": {
+				"x": 0.55,
+				"y": 0.5
+			},
+			"scale": 1,
+			"offsetY": 0,
+			"label": "James"
+		},
+		{
+			"source": "broll-random-button",
+			"from": 38.96,
+			"to": 49.42,
+			"sourceIn": 12,
+			"rate": 1,
+			"focus": {
+				"x": 0.61,
+				"y": 0.555
+			},
+			"scale": 1.5,
+			"offsetY": 0,
+			"label": "B-roll: random button (empowers)"
+		},
+		{
+			"source": "screenshare",
+			"from": 49.42,
+			"to": 75.1,
+			"sourceIn": 49.42,
+			"rate": 1,
+			"focus": {
+				"x": 0.31,
+				"y": 0.5
+			},
+			"scale": 1.32,
+			"offsetY": 0,
+			"label": "Screen share"
+		},
+		{
+			"source": "guest",
+			"from": 75.1,
+			"to": 89.833,
+			"sourceIn": 75.1,
+			"rate": 1,
+			"focus": {
+				"x": 0.55,
+				"y": 0.5
+			},
+			"scale": 1,
+			"offsetY": 0,
+			"label": "James (payoff)"
+		}
+	],
+	"bubbles": [
+		{
+			"source": "guest",
+			"from": 0,
+			"to": 4.542,
+			"sourceIn": 0,
+			"focus": {
+				"x": 0.6,
+				"y": 0.42
+			},
+			"x": 905,
+			"y": 224,
+			"size": 240
+		},
+		{
+			"source": "guest",
+			"from": 38.96,
+			"to": 49.42,
+			"sourceIn": 38.96,
+			"focus": {
+				"x": 0.6,
+				"y": 0.42
+			},
+			"x": 920,
+			"y": 160,
+			"size": 240
+		},
+		{
+			"source": "guest",
+			"from": 49.42,
+			"to": 75.1,
+			"sourceIn": 49.42,
+			"focus": {
+				"x": 0.6,
+				"y": 0.42
+			},
+			"x": 920,
+			"y": 160,
+			"size": 240
+		}
+	],
+	"zooms": [],
+	"endCap": false,
+	"props": {},
+	"history": [
+		{
+			"round": 1,
+			"date": "2026-11-03",
+			"summary": "Rebuilt from the Mixture composition comp-layer-93d9e875."
+		}
+	]
+}

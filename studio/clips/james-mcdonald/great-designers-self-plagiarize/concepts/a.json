@@ -1,0 +1,175 @@
+{
+	"id": "a",
+	"name": "Sky labels",
+	"intent": "The house look over the cubes B-roll.",
+	"template": "talk-square",
+	"format": "square",
+	"round": 1,
+	"status": "in-review",
+	"captionStyle": "sky-label",
+	"cuts": [
+		{
+			"source": "ridd",
+			"from": 0,
+			"to": 9,
+			"sourceIn": 0,
+			"rate": 1,
+			"focus": {
+				"x": 0.5,
+				"y": 0.45
+			},
+			"scale": 1,
+			"offsetY": 0,
+			"label": "Ridd"
+		},
+		{
+			"source": "guest",
+			"from": 9,
+			"to": 13.1,
+			"sourceIn": 9,
+			"rate": 1,
+			"focus": {
+				"x": 0.55,
+				"y": 0.5
+			},
+			"scale": 1.36,
+			"offsetY": -170,
+			"label": "James"
+		},
+		{
+			"source": "broll-cubes",
+			"from": 13.1,
+			"to": 27.6,
+			"sourceIn": 49,
+			"rate": 1,
+			"focus": {
+				"x": 0.47,
+				"y": 0.537
+			},
+			"scale": 2.2,
+			"offsetY": 0,
+			"label": "B-roll: squares/cubes"
+		},
+		{
+			"source": "guest",
+			"from": 27.6,
+			"to": 34.5,
+			"sourceIn": 27.6,
+			"rate": 1,
+			"focus": {
+				"x": 0.55,
+				"y": 0.5
+			},
+			"scale": 1.36,
+			"offsetY": -170,
+			"label": "James"
+		},
+		{
+			"source": "broll-cubes",
+			"from": 34.5,
+			"to": 40.3,
+			"sourceIn": 63.5,
+			"rate": 1,
+			"focus": {
+				"x": 0.47,
+				"y": 0.537
+			},
+			"scale": 2.2,
+			"offsetY": 0,
+			"label": "B-roll: cubes folding"
+		},
+		{
+			"source": "ridd",
+			"from": 40.3,
+			"to": 66.1,
+			"sourceIn": 40.3,
+			"rate": 1,
+			"focus": {
+				"x": 0.5,
+				"y": 0.45
+			},
+			"scale": 1,
+			"offsetY": 0,
+			"label": "Ridd"
+		},
+		{
+			"source": "broll-cubes",
+			"from": 66.1,
+			"to": 72.8,
+			"sourceIn": 0,
+			"rate": 1,
+			"focus": {
+				"x": 0.47,
+				"y": 0.537
+			},
+			"scale": 2.2,
+			"offsetY": 0,
+			"label": "B-roll: cubes"
+		},
+		{
+			"source": "guest",
+			"from": 72.8,
+			"to": 81.917,
+			"sourceIn": 72.8,
+			"rate": 1,
+			"focus": {
+				"x": 0.55,
+				"y": 0.5
+			},
+			"scale": 1.36,
+			"offsetY": -170,
+			"label": "James (payoff)"
+		}
+	],
+	"bubbles": [
+		{
+			"source": "guest",
+			"from": 13.1,
+			"to": 27.6,
+			"sourceIn": 13.1,
+			"focus": {
+				"x": 0.6,
+				"y": 0.42
+			},
+			"x": 850,
+			"y": 225,
+			"size": 340
+		},
+		{
+			"source": "guest",
+			"from": 34.5,
+			"to": 40.3,
+			"sourceIn": 34.5,
+			"focus": {
+				"x": 0.6,
+				"y": 0.42
+			},
+			"x": 850,
+			"y": 225,
+			"size": 340
+		},
+		{
+			"source": "guest",
+			"from": 66.1,
+			"to": 72.8,
+			"sourceIn": 66.1,
+			"focus": {
+				"x": 0.6,
+				"y": 0.42
+			},
+			"x": 850,
+			"y": 225,
+			"size": 340
+		}
+	],
+	"zooms": [],
+	"endCap": false,
+	"props": {},
+	"history": [
+		{
+			"round": 1,
+			"date": "2026-11-03",
+			"summary": "Rebuilt from the Mixture composition self-plagiarize."
+		}
+	]
+}

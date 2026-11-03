@@ -1,0 +1,49 @@
+{
+	"slug": "greatness-accidentally-happens",
+	"guest": "derek-briggs",
+	"title": "Greatness Accidentally Happens",
+	"score": 89,
+	"status": "Cut in Descript",
+	"designer": null,
+	"topics": [
+		"AI",
+		"Leadership",
+		"Process"
+	],
+	"hook": "Derek: leadership says \"Hey Derek, go over there and build this thing to make it look better.\" Cool, that makes one thing look better.",
+	"payoff": "Document it in simple markdown so skills deploy to every designer and engineer \"to where greatness accidentally happens\" → \"companies are wasting their time hiring tons of these people… deploy them horizontally through Markdown.\"",
+	"arc": "One-off polish request → extract the craft into markdown skills → greatness accidentally happens → hard contrarian end: stop hiring, deploy taste through Markdown.",
+	"lengthTargetS": 62.9,
+	"durationS": null,
+	"fps": 24,
+	"format": null,
+	"notionUrl": "https://app.notion.com/40c54bed0e36818ba4c2e1b6b4ef8790",
+	"descriptUrl": "https://web.descript.com/3d69e34f-e15f-4b49-a1ea-e398d35b4683/bd5c6",
+	"mixtureUrl": null,
+	"sourceNote": "Built in Descript project Derek Briggs (2026), Derek cam. Composition id bd5c6605-3c23-4c0a-addb-8f15bce2232a.",
+	"audio": "derek-briggs/greatness-accidentally-happens/audio.m4a",
+	"sources": [
+		{
+			"key": "guest",
+			"kind": "guest",
+			"label": "Derek Briggs",
+			"file": "derek-briggs/greatness-accidentally-happens/guest.mp4",
+			"synced": true
+		},
+		{
+			"key": "ridd",
+			"kind": "host",
+			"label": "Ridd",
+			"file": "derek-briggs/greatness-accidentally-happens/ridd.mp4",
+			"synced": true
+		}
+	],
+	"beats": [],
+	"broll": [],
+	"captionCopy": null,
+	"visualNotes": [],
+	"openIssues": [
+		"Page has no Open issues section; this is from Rough edges. 2160×2160 canvas; verify captions render.",
+		"Page states no beat sheet, B-roll, caption copy, visual references or format (format note: single talking-head scene, no visual)."
+	]
+}

@@ -1,0 +1,49 @@
+{
+	"slug": "data-with-your-morning-coffee",
+	"guest": "derek-briggs",
+	"title": "Data With Your Morning Coffee",
+	"score": 86,
+	"status": "Cut in Descript",
+	"designer": null,
+	"topics": [
+		"AI",
+		"Process",
+		"Tools"
+	],
+	"hook": "Derek: \"If you're shipping something without any sort of data around its success…\" how would you know what you did was right?",
+	"payoff": "Codex scheduled automations read with a cup of coffee, flag criticality, let it bake → ends on asking it \"What should I measure?\"",
+	"arc": "Be ruthless about data → his morning-coffee Codex automations (criticality, let it bake) → don't monitor it yourself, ask it \"What should I measure?\" Product-partner alignment (32:59–33:45) skipped per Ridd.",
+	"lengthTargetS": 86.9,
+	"durationS": null,
+	"fps": 24,
+	"format": null,
+	"notionUrl": "https://app.notion.com/40c54bed0e3681f2a950d07d37493828",
+	"descriptUrl": "https://web.descript.com/3d69e34f-e15f-4b49-a1ea-e398d35b4683/5907d",
+	"mixtureUrl": null,
+	"sourceNote": "Built in Descript project Derek Briggs (2026), Derek cam. Composition id 5907d18d-3865-44aa-b5c6-c04968ddbb7d.",
+	"audio": "derek-briggs/data-with-your-morning-coffee/audio.m4a",
+	"sources": [
+		{
+			"key": "guest",
+			"kind": "guest",
+			"label": "Derek Briggs",
+			"file": "derek-briggs/data-with-your-morning-coffee/guest.mp4",
+			"synced": true
+		},
+		{
+			"key": "ridd",
+			"kind": "host",
+			"label": "Ridd",
+			"file": "derek-briggs/data-with-your-morning-coffee/ridd.mp4",
+			"synced": true
+		}
+	],
+	"beats": [],
+	"broll": [],
+	"captionCopy": null,
+	"visualNotes": [],
+	"openIssues": [
+		"Page has no Open issues section; these are from Rough edges. The Underlord job that built this clip deleted 4 stutter words from the MAIN composition instead of the clip (see report). The clip may still contain those stutters (\"let, let's\", \"I don't-- You--\"). Needs a manual check. 2160×2160 canvas.",
+		"Page states no beat sheet, B-roll, caption copy, visual references or format."
+	]
+}

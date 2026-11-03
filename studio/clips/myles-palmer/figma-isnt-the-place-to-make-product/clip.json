@@ -1,0 +1,53 @@
+{
+	"slug": "figma-isnt-the-place-to-make-product",
+	"guest": "myles-palmer",
+	"title": "Figma Isn't the Place to Make Product",
+	"score": 91,
+	"status": "Cut in Descript",
+	"designer": "Anna",
+	"topics": [
+		"AI",
+		"Tools",
+		"Process"
+	],
+	"hook": "Myles: Figma isn't the place to make product anymore (cold open 24:34).",
+	"payoff": "\"…great design is always originated from looking at something visual.\"",
+	"arc": "Cold-open claim → Firefox context (screen share) → Ridd's question → Myles's answer → visual-origin payoff.",
+	"lengthTargetS": 87.5,
+	"durationS": 99.583,
+	"fps": 24,
+	"format": null,
+	"notionUrl": "https://app.notion.com/40854bed0e368184a755fffc1864673a",
+	"descriptUrl": "https://web.descript.com/8581623c-d5a2-47f0-af9a-9a5b5c2628a8/f9e0e",
+	"mixtureUrl": null,
+	"sourceNote": "Source pack attached on this page (captions + cuts.json, synced to clip timeline). Riverside mp4s + audio NOT attached: download blocked (no vault/browser access in the run).",
+	"audio": "myles-palmer/figma-isnt-the-place-to-make-product/audio.m4a",
+	"sources": [
+		{
+			"key": "guest",
+			"kind": "guest",
+			"label": "Myles Palmer",
+			"file": "myles-palmer/figma-isnt-the-place-to-make-product/guest.mp4",
+			"synced": true
+		},
+		{
+			"key": "ridd",
+			"kind": "host",
+			"label": "Ridd",
+			"file": "myles-palmer/figma-isnt-the-place-to-make-product/ridd.mp4",
+			"synced": true
+		},
+		{
+			"key": "screenshare",
+			"kind": "screen",
+			"label": "Screen share",
+			"file": "myles-palmer/figma-isnt-the-place-to-make-product/screenshare.mp4",
+			"synced": true
+		}
+	],
+	"beats": [],
+	"broll": [],
+	"captionCopy": null,
+	"visualNotes": [],
+	"openIssues": []
+}

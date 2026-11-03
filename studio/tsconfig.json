@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "types": ["bun", "vite/client"],
+    "baseUrl": ".",
+    "paths": { "@/*": ["src/*"], "@templates/*": ["templates/*"], "@core/*": ["core/*"] }
+  },
+  "include": ["src", "templates", "video", "cli", "core", "vite.config.ts", "remotion.config.ts"]
+}

@@ -1,0 +1,52 @@
+{
+	"slug": "i-wondered-if-i-could",
+	"guest": "myles-palmer",
+	"title": "I Wondered If I Could",
+	"score": 76,
+	"status": "Cut in Descript",
+	"designer": "Anna",
+	"topics": [
+		"AI",
+		"Craft"
+	],
+	"hook": "Myles: \"I think all of it stems from curiosity… my answer was, 'I don't know, to see if I could.'\"",
+	"payoff": "Glass-cube process: 100 variations, tag blue/red, 20 of 100 with speckles; ends \"…it then became closer and closer.\"",
+	"arc": "The work (marble Oodle, v67) → Ridd: most visually stunning thing he's seen AI make → why? → \"I wondered if I could\" → curiosity payoff.",
+	"lengthTargetS": 63.7,
+	"durationS": 34.25,
+	"fps": 24,
+	"format": "square",
+	"notionUrl": "https://app.notion.com/40854bed0e36813f8cfadcca051c2cc6",
+	"descriptUrl": "https://web.descript.com/8581623c-d5a2-47f0-af9a-9a5b5c2628a8/3a08c",
+	"mixtureUrl": null,
+	"sourceNote": "Source pack attached on this page (captions + cuts.json, synced to clip timeline). Riverside mp4s + audio NOT attached: download blocked (no vault/browser access in the run).",
+	"audio": "myles-palmer/i-wondered-if-i-could/audio.m4a",
+	"sources": [
+		{
+			"key": "guest",
+			"kind": "guest",
+			"label": "Myles Palmer",
+			"file": "myles-palmer/i-wondered-if-i-could/guest.mp4",
+			"synced": true
+		},
+		{
+			"key": "ridd",
+			"kind": "host",
+			"label": "Ridd",
+			"file": "myles-palmer/i-wondered-if-i-could/ridd.mp4",
+			"synced": true
+		},
+		{
+			"key": "screenshare",
+			"kind": "screen",
+			"label": "Screen share",
+			"file": "myles-palmer/i-wondered-if-i-could/screenshare.mp4",
+			"synced": true
+		}
+	],
+	"beats": [],
+	"broll": [],
+	"captionCopy": null,
+	"visualNotes": [],
+	"openIssues": []
+}

@@ -1,0 +1,53 @@
+{
+	"slug": "the-most-powerful-thing-a-designer-can-do",
+	"guest": "myles-palmer",
+	"title": "The Most Powerful Thing a Designer Can Do",
+	"score": 81,
+	"status": "Cut in Descript",
+	"designer": "Anna",
+	"topics": [
+		"AI",
+		"Prototyping",
+		"Career"
+	],
+	"hook": "Myles: \"I think the most powerful thing a designer can do…\" (build your own tools; that's what I did).",
+	"payoff": "Two real people built their own apps: Natalie's measuring app, Adam's baby app — \"…very encouraged.\"",
+	"arc": "Claim → proof 1 (Natalie's app, screen share) → proof 2 (Adam's app, screen share) → encouraged ending.",
+	"lengthTargetS": 61.6,
+	"durationS": 61.583,
+	"fps": 24,
+	"format": null,
+	"notionUrl": "https://app.notion.com/40854bed0e3681c9a6dff11425cf57e2",
+	"descriptUrl": "https://web.descript.com/8581623c-d5a2-47f0-af9a-9a5b5c2628a8/70b3f",
+	"mixtureUrl": null,
+	"sourceNote": "Source pack attached on this page (captions + cuts.json, synced to clip timeline). Riverside mp4s + audio NOT attached: download blocked (no vault/browser access in the run).",
+	"audio": "myles-palmer/the-most-powerful-thing-a-designer-can-do/audio.m4a",
+	"sources": [
+		{
+			"key": "guest",
+			"kind": "guest",
+			"label": "Myles Palmer",
+			"file": "myles-palmer/the-most-powerful-thing-a-designer-can-do/guest.mp4",
+			"synced": true
+		},
+		{
+			"key": "ridd",
+			"kind": "host",
+			"label": "Ridd",
+			"file": "myles-palmer/the-most-powerful-thing-a-designer-can-do/ridd.mp4",
+			"synced": true
+		},
+		{
+			"key": "screenshare",
+			"kind": "screen",
+			"label": "Screen share",
+			"file": "myles-palmer/the-most-powerful-thing-a-designer-can-do/screenshare.mp4",
+			"synced": true
+		}
+	],
+	"beats": [],
+	"broll": [],
+	"captionCopy": null,
+	"visualNotes": [],
+	"openIssues": []
+}

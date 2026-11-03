@@ -1,0 +1,48 @@
+{
+	"slug": "when-in-doubt-ease-out",
+	"guest": "derek-briggs",
+	"title": "When in Doubt Ease Out",
+	"score": 90,
+	"status": "Cut in Descript",
+	"designer": null,
+	"topics": [
+		"Craft"
+	],
+	"hook": "Derek: \"We all say that we wanna keep movement and transitions around 200 milliseconds… but there's amazing things you can do… in a much longer duration.\"",
+	"payoff": "Soft-close-drawer demo (screen share), ends hard on \"….2, .8, 0, 1 with 400 milliseconds, and you just use it everywhere.\"",
+	"arc": "Claim (200ms rule is too blunt) → the exact curve (cubic-bezier .2 .8 0 1 @ 400ms, \"that's slow\") → screen-share demo of robotic default vs soft-close drawer → hard end on \"when in doubt, ease out… use it everywhere.\"",
+	"lengthTargetS": 108.6,
+	"durationS": null,
+	"fps": 24,
+	"format": null,
+	"notionUrl": "https://app.notion.com/40c54bed0e368102aeffe67bf4b0a1ae",
+	"descriptUrl": "https://web.descript.com/3d69e34f-e15f-4b49-a1ea-e398d35b4683/05cef",
+	"mixtureUrl": null,
+	"sourceNote": "Built in Descript project Derek Briggs (2026) from derek_briggs / screenshare CFR tracks. Composition id 05cef246-2cee-4129-999e-18cc442f0d6f.",
+	"audio": "derek-briggs/when-in-doubt-ease-out/audio.m4a",
+	"sources": [
+		{
+			"key": "guest",
+			"kind": "guest",
+			"label": "Derek Briggs",
+			"file": "derek-briggs/when-in-doubt-ease-out/guest.mp4",
+			"synced": true
+		},
+		{
+			"key": "ridd",
+			"kind": "host",
+			"label": "Ridd",
+			"file": "derek-briggs/when-in-doubt-ease-out/ridd.mp4",
+			"synced": true
+		}
+	],
+	"beats": [],
+	"broll": [],
+	"captionCopy": null,
+	"visualNotes": [],
+	"openIssues": [
+		"Page has no Open issues section; these are from Rough edges. Canvas is 2160×2160 (Underlord couldn't set 1080; layout doubled to match). Check the screen-share crop for chrome/Riverside bar, and that captions render.",
+		"Scene change lands ~0.9s before \"So your default browser ease\".",
+		"Page states no beat sheet, B-roll, caption copy, visual references or format."
+	]
+}

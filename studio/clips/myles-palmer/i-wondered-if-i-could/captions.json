@@ -1,0 +1,692 @@
+{
+	"format": "dive-word-captions/v1",
+	"clip": "i-wondered-if-i-could",
+	"source": "srt-estimate",
+	"duration_s": 34.25,
+	"words": [
+		{
+			"i": 0,
+			"text": "this",
+			"start": 0.05,
+			"end": 0.34
+		},
+		{
+			"i": 1,
+			"text": "particular",
+			"start": 0.34,
+			"end": 0.97
+		},
+		{
+			"i": 2,
+			"text": "Oodle,",
+			"start": 0.97,
+			"end": 1.37
+		},
+		{
+			"i": 3,
+			"text": "this",
+			"start": 1.37,
+			"end": 1.66
+		},
+		{
+			"i": 4,
+			"text": "is",
+			"start": 1.66,
+			"end": 1.83
+		},
+		{
+			"i": 5,
+			"text": "maybe",
+			"start": 1.83,
+			"end": 2.18
+		},
+		{
+			"i": 6,
+			"text": "like",
+			"start": 2.18,
+			"end": 2.47
+		},
+		{
+			"i": 7,
+			"text": "version",
+			"start": 2.47,
+			"end": 2.93
+		},
+		{
+			"i": 8,
+			"text": "67",
+			"start": 2.93,
+			"end": 3.14
+		},
+		{
+			"i": 9,
+			"text": "or",
+			"start": 3.14,
+			"end": 3.35
+		},
+		{
+			"i": 10,
+			"text": "something",
+			"start": 3.35,
+			"end": 4.06
+		},
+		{
+			"i": 11,
+			"text": "like",
+			"start": 4.06,
+			"end": 4.41
+		},
+		{
+			"i": 12,
+			"text": "that.",
+			"start": 4.41,
+			"end": 4.84
+		},
+		{
+			"i": 13,
+			"text": "And",
+			"start": 4.88,
+			"end": 5.05
+		},
+		{
+			"i": 14,
+			"text": "it's,",
+			"start": 5.05,
+			"end": 5.31
+		},
+		{
+			"i": 15,
+			"text": "stuck",
+			"start": 5.31,
+			"end": 5.58
+		},
+		{
+			"i": 16,
+			"text": "there",
+			"start": 5.58,
+			"end": 5.84
+		},
+		{
+			"i": 17,
+			"text": "since,",
+			"start": 5.84,
+			"end": 6.15
+		},
+		{
+			"i": 18,
+			"text": "right?",
+			"start": 6.15,
+			"end": 6.46
+		},
+		{
+			"i": 19,
+			"text": "Like",
+			"start": 6.46,
+			"end": 6.66
+		},
+		{
+			"i": 20,
+			"text": "it's",
+			"start": 6.66,
+			"end": 6.86
+		},
+		{
+			"i": 21,
+			"text": "not",
+			"start": 6.86,
+			"end": 7.02
+		},
+		{
+			"i": 22,
+			"text": "changed.",
+			"start": 7.02,
+			"end": 7.39
+		},
+		{
+			"i": 23,
+			"text": "It's",
+			"start": 7.39,
+			"end": 7.59
+		},
+		{
+			"i": 24,
+			"text": "got",
+			"start": 7.59,
+			"end": 7.75
+		},
+		{
+			"i": 25,
+			"text": "everything.",
+			"start": 7.75,
+			"end": 8.22
+		},
+		{
+			"i": 26,
+			"text": "I'm",
+			"start": 8.66,
+			"end": 8.87
+		},
+		{
+			"i": 27,
+			"text": "not",
+			"start": 8.87,
+			"end": 9.08
+		},
+		{
+			"i": 28,
+			"text": "just",
+			"start": 9.08,
+			"end": 9.34
+		},
+		{
+			"i": 29,
+			"text": "gassing",
+			"start": 9.34,
+			"end": 9.76
+		},
+		{
+			"i": 30,
+			"text": "you",
+			"start": 9.76,
+			"end": 9.97
+		},
+		{
+			"i": 31,
+			"text": "up",
+			"start": 9.97,
+			"end": 10.12
+		},
+		{
+			"i": 32,
+			"text": "because",
+			"start": 10.12,
+			"end": 10.54
+		},
+		{
+			"i": 33,
+			"text": "you're",
+			"start": 10.54,
+			"end": 10.91
+		},
+		{
+			"i": 34,
+			"text": "on",
+			"start": 10.91,
+			"end": 11.07
+		},
+		{
+			"i": 35,
+			"text": "my",
+			"start": 11.07,
+			"end": 11.23
+		},
+		{
+			"i": 36,
+			"text": "podcast.",
+			"start": 11.23,
+			"end": 11.7
+		},
+		{
+			"i": 37,
+			"text": "I",
+			"start": 11.75,
+			"end": 11.83
+		},
+		{
+			"i": 38,
+			"text": "really",
+			"start": 11.83,
+			"end": 12.12
+		},
+		{
+			"i": 39,
+			"text": "do",
+			"start": 12.12,
+			"end": 12.24
+		},
+		{
+			"i": 40,
+			"text": "think",
+			"start": 12.24,
+			"end": 12.49
+		},
+		{
+			"i": 41,
+			"text": "that",
+			"start": 12.49,
+			"end": 12.7
+		},
+		{
+			"i": 42,
+			"text": "is",
+			"start": 12.7,
+			"end": 12.82
+		},
+		{
+			"i": 43,
+			"text": "one",
+			"start": 12.82,
+			"end": 12.99
+		},
+		{
+			"i": 44,
+			"text": "of",
+			"start": 12.99,
+			"end": 13.11
+		},
+		{
+			"i": 45,
+			"text": "the",
+			"start": 13.11,
+			"end": 13.27
+		},
+		{
+			"i": 46,
+			"text": "most",
+			"start": 13.27,
+			"end": 13.48
+		},
+		{
+			"i": 47,
+			"text": "visually",
+			"start": 13.48,
+			"end": 13.85
+		},
+		{
+			"i": 48,
+			"text": "stunning",
+			"start": 13.85,
+			"end": 14.22
+		},
+		{
+			"i": 49,
+			"text": "things",
+			"start": 14.23,
+			"end": 14.66
+		},
+		{
+			"i": 50,
+			"text": "I've",
+			"start": 14.66,
+			"end": 14.96
+		},
+		{
+			"i": 51,
+			"text": "seen",
+			"start": 14.96,
+			"end": 15.27
+		},
+		{
+			"i": 52,
+			"text": "AI",
+			"start": 15.27,
+			"end": 15.46
+		},
+		{
+			"i": 53,
+			"text": "make.",
+			"start": 15.46,
+			"end": 15.83
+		},
+		{
+			"i": 54,
+			"text": "It's",
+			"start": 16.29,
+			"end": 16.6
+		},
+		{
+			"i": 55,
+			"text": "unbelievable.",
+			"start": 16.6,
+			"end": 17.48
+		},
+		{
+			"i": 56,
+			"text": "Like,",
+			"start": 17.54,
+			"end": 17.87
+		},
+		{
+			"i": 57,
+			"text": "why",
+			"start": 17.87,
+			"end": 18.1
+		},
+		{
+			"i": 58,
+			"text": "did",
+			"start": 18.1,
+			"end": 18.32
+		},
+		{
+			"i": 59,
+			"text": "you",
+			"start": 18.32,
+			"end": 18.54
+		},
+		{
+			"i": 60,
+			"text": "do",
+			"start": 18.54,
+			"end": 18.7
+		},
+		{
+			"i": 61,
+			"text": "this,",
+			"start": 18.7,
+			"end": 19.04
+		},
+		{
+			"i": 62,
+			"text": "and",
+			"start": 19.04,
+			"end": 19.26
+		},
+		{
+			"i": 63,
+			"text": "how",
+			"start": 19.26,
+			"end": 19.48
+		},
+		{
+			"i": 64,
+			"text": "often",
+			"start": 19.48,
+			"end": 19.81
+		},
+		{
+			"i": 65,
+			"text": "do",
+			"start": 19.81,
+			"end": 19.98
+		},
+		{
+			"i": 66,
+			"text": "you",
+			"start": 19.98,
+			"end": 20.2
+		},
+		{
+			"i": 67,
+			"text": "do",
+			"start": 20.2,
+			"end": 20.36
+		},
+		{
+			"i": 68,
+			"text": "this",
+			"start": 20.36,
+			"end": 20.64
+		},
+		{
+			"i": 69,
+			"text": "kind",
+			"start": 20.64,
+			"end": 20.92
+		},
+		{
+			"i": 70,
+			"text": "of",
+			"start": 20.92,
+			"end": 21.08
+		},
+		{
+			"i": 71,
+			"text": "thing",
+			"start": 21.08,
+			"end": 21.41
+		},
+		{
+			"i": 72,
+			"text": "in",
+			"start": 21.41,
+			"end": 21.52
+		},
+		{
+			"i": 73,
+			"text": "your",
+			"start": 21.52,
+			"end": 21.7
+		},
+		{
+			"i": 74,
+			"text": "own",
+			"start": 21.7,
+			"end": 21.85
+		},
+		{
+			"i": 75,
+			"text": "creative",
+			"start": 21.85,
+			"end": 22.17
+		},
+		{
+			"i": 76,
+			"text": "work,",
+			"start": 22.17,
+			"end": 22.39
+		},
+		{
+			"i": 77,
+			"text": "I",
+			"start": 22.39,
+			"end": 22.46
+		},
+		{
+			"i": 78,
+			"text": "guess?",
+			"start": 22.46,
+			"end": 22.71
+		},
+		{
+			"i": 79,
+			"text": "for",
+			"start": 23.7,
+			"end": 23.85
+		},
+		{
+			"i": 80,
+			"text": "this",
+			"start": 23.85,
+			"end": 24.05
+		},
+		{
+			"i": 81,
+			"text": "one",
+			"start": 24.05,
+			"end": 24.2
+		},
+		{
+			"i": 82,
+			"text": "specifically,",
+			"start": 24.2,
+			"end": 24.74
+		},
+		{
+			"i": 83,
+			"text": "it",
+			"start": 24.74,
+			"end": 24.86
+		},
+		{
+			"i": 84,
+			"text": "was",
+			"start": 24.86,
+			"end": 25.01
+		},
+		{
+			"i": 85,
+			"text": "just",
+			"start": 25.01,
+			"end": 25.21
+		},
+		{
+			"i": 86,
+			"text": "because",
+			"start": 25.21,
+			"end": 25.52
+		},
+		{
+			"i": 87,
+			"text": "I",
+			"start": 25.52,
+			"end": 25.59
+		},
+		{
+			"i": 88,
+			"text": "thought,",
+			"start": 25.59,
+			"end": 25.94
+		},
+		{
+			"i": 89,
+			"text": "I",
+			"start": 25.99,
+			"end": 26.07
+		},
+		{
+			"i": 90,
+			"text": "wondered",
+			"start": 26.07,
+			"end": 26.47
+		},
+		{
+			"i": 91,
+			"text": "if",
+			"start": 26.47,
+			"end": 26.6
+		},
+		{
+			"i": 92,
+			"text": "I",
+			"start": 26.6,
+			"end": 26.69
+		},
+		{
+			"i": 93,
+			"text": "could.",
+			"start": 26.69,
+			"end": 27
+		},
+		{
+			"i": 94,
+			"text": "I",
+			"start": 28,
+			"end": 28.12
+		},
+		{
+			"i": 95,
+			"text": "think",
+			"start": 28.12,
+			"end": 28.47
+		},
+		{
+			"i": 96,
+			"text": "all",
+			"start": 28.47,
+			"end": 28.71
+		},
+		{
+			"i": 97,
+			"text": "of",
+			"start": 28.71,
+			"end": 28.88
+		},
+		{
+			"i": 98,
+			"text": "it",
+			"start": 28.88,
+			"end": 29.06
+		},
+		{
+			"i": 99,
+			"text": "stems",
+			"start": 29.06,
+			"end": 29.41
+		},
+		{
+			"i": 100,
+			"text": "from",
+			"start": 29.41,
+			"end": 29.7
+		},
+		{
+			"i": 101,
+			"text": "curiosity.",
+			"start": 29.7,
+			"end": 30.35
+		},
+		{
+			"i": 102,
+			"text": "I",
+			"start": 30.65,
+			"end": 30.76
+		},
+		{
+			"i": 103,
+			"text": "am",
+			"start": 30.76,
+			"end": 30.94
+		},
+		{
+			"i": 104,
+			"text": "curious",
+			"start": 30.94,
+			"end": 31.4
+		},
+		{
+			"i": 105,
+			"text": "naturally,",
+			"start": 31.4,
+			"end": 32.04
+		},
+		{
+			"i": 106,
+			"text": "and",
+			"start": 32.04,
+			"end": 32.27
+		},
+		{
+			"i": 107,
+			"text": "I",
+			"start": 32.27,
+			"end": 32.39
+		},
+		{
+			"i": 108,
+			"text": "wanna",
+			"start": 32.39,
+			"end": 32.73
+		},
+		{
+			"i": 109,
+			"text": "try",
+			"start": 32.73,
+			"end": 32.97
+		},
+		{
+			"i": 110,
+			"text": "and",
+			"start": 32.97,
+			"end": 33.2
+		},
+		{
+			"i": 111,
+			"text": "see",
+			"start": 33.2,
+			"end": 33.43
+		},
+		{
+			"i": 112,
+			"text": "what",
+			"start": 33.43,
+			"end": 33.72
+		},
+		{
+			"i": 113,
+			"text": "happens.",
+			"start": 33.72,
+			"end": 34.24
+		}
+	]
+}

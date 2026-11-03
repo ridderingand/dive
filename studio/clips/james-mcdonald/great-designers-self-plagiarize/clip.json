@@ -1,0 +1,99 @@
+{
+	"slug": "great-designers-self-plagiarize",
+	"guest": "james-mcdonald",
+	"title": "Great Designers Self Plagiarize",
+	"score": null,
+	"status": "In design",
+	"designer": "Anna",
+	"topics": [],
+	"hook": "I quote Soleio too much on this show... great designers self-plagiarize.",
+	"payoff": "That's the magical part of these tools... being able to actually animate this stuff is just so exciting for me.",
+	"arc": "Hook: Ridd quotes Soleio: great designers self-plagiarize → Tension: James shelved an animation that didn't work, Ridd shares his own \"Ethereal Connector\" story → Payoff: reusing old ideas is the magical part of these tools.",
+	"lengthTargetS": 85.9,
+	"durationS": 81.917,
+	"fps": 24,
+	"format": "square",
+	"notionUrl": "https://app.notion.com/40654bed0e3681a68360ea4edf4edbb2",
+	"descriptUrl": "https://web.descript.com/71965789-5c8b-42ab-8af5-7de36fdda3d9/2ccb7",
+	"mixtureUrl": "https://mixture.dev/app/projects/2c800362-cfc6-480d-b427-929d2a6cfdfa",
+	"sourceNote": "Source pack attached on this page (synced to clip timeline)",
+	"audio": "james-mcdonald/great-designers-self-plagiarize/audio.m4a",
+	"sources": [
+		{
+			"key": "ridd",
+			"kind": "host",
+			"label": "Ridd",
+			"file": "james-mcdonald/great-designers-self-plagiarize/ridd.mp4",
+			"synced": true
+		},
+		{
+			"key": "guest",
+			"kind": "guest",
+			"label": "James McDonald",
+			"file": "james-mcdonald/great-designers-self-plagiarize/guest.mp4",
+			"synced": true
+		},
+		{
+			"key": "broll-cubes",
+			"kind": "broll",
+			"label": "B-roll cubes",
+			"file": "james-mcdonald/_broll/broll-cubes.mp4",
+			"synced": false
+		}
+	],
+	"beats": [
+		{
+			"start": 0,
+			"end": 13,
+			"speaker": "Ridd",
+			"line": "\"I quote **Soleio** too much on this show… great designers **self-plagiarize**.\"",
+			"visual": "Ridd on camera, full frame."
+		},
+		{
+			"start": 13,
+			"end": 45,
+			"speaker": "James",
+			"line": "\"…use that original idea of that animation… **reuse that idea**… shelf that for now…\"",
+			"visual": "Screen share framed on the squares/cubes animation. B-roll: cubes folding into the center (raw screenshare 00:19:52:20–00:21:04:10; episode 17:39–18:38); squares forming the card (raw screenshare 00:19:19:10–00:19:50:20; episode 17:17–17:37). James bubble top corner."
+		},
+		{
+			"start": 45,
+			"end": 72,
+			"speaker": "Ridd",
+			"line": "\"…dashed line… **gradient pulse**… the **Ethereal Connector**…\"",
+			"visual": "Ridd on camera, full frame."
+		},
+		{
+			"start": 72,
+			"end": 86,
+			"speaker": "James",
+			"line": "\"…that old idea got **repurposed**… the **magical part** of these tools…\"",
+			"visual": "Screen share on the animation, then James full frame for the payoff."
+		}
+	],
+	"broll": [
+		{
+			"name": "cubes-folding-into-center",
+			"rawTimecode": "screenshare 00:19:52:20–00:21:04:10",
+			"episodeTimecode": "17:39–18:38",
+			"note": "Cubes folding into the center (beat 0:13–0:45)"
+		},
+		{
+			"name": "squares-forming-card",
+			"rawTimecode": "screenshare 00:19:19:10–00:19:50:20",
+			"episodeTimecode": "17:17–17:37",
+			"note": "Squares forming the card (beat 0:13–0:45)"
+		}
+	],
+	"captionCopy": "**Ridd:** I quote **Soleio** too much on this show. He had this idea he talked about years ago, about how great designers **self-plagiarize**.\n\n**James:** So I tried to use that original idea of that animation, and obviously it output something completely different, like here. I'm really happy I managed to **reuse that idea**. I don't know if I would have ever thought about that or done that in **Figma** first.\n\nI think that's where **Claude** really helped. You can have an idea and it doesn't quite work, and you're like, \"Right, I'll just **shelve that** for now.\" But then it came in handy here. I'm quite happy with how those folded back in.\n\n**Ridd:** I even have my own story about that. I made multiple versions of the **Inflight** website, and one was only alive for a month. I had this dashed line that I massaged with Claude to have this **gradient pulse**. Claude called it the **Ethereal Connector**. It hasn't been live for so long, but so many times I've been like, \"Hey, can you make that like the old Ethereal Connector?\" And it just does something, and I'm like, \"Oh, that's so sick.\"\n\n**James:** And that old idea got **repurposed** in a way that fit perfectly for what I wanted here. That's the **magical part** of these tools, for me anyway. Being able to actually **animate** this stuff is just so exciting for me, you know?",
+	"visualNotes": [
+		"Ridd opens on camera, full frame when he speaks.",
+		"James's segments sit over his screen share: frame on the **squares/cubes animation**, not the center.",
+		"Bubbles: 240px circles in the top corners during screen share."
+	],
+	"openIssues": [
+		"**Screen-share crop TBD.** Current Descript framing lands on the credentials card, not the squares animation. Ridd to pick the crop.",
+		"Spellings to confirm: **Soleio** (Descript transcribed \"Saleo\") and **Ethereal Connector** (Descript has \"Nethereal\" once). \"InFly\" corrected to Inflight.",
+		"Source tracks: resolved. Full raw tracks are too big to upload, so a pre-cut, synced source pack is attached in the Source pack section above. The Drive Tracks folder linked in the cut list stays empty; the raw-time cut list is kept as reference only."
+	]
+}

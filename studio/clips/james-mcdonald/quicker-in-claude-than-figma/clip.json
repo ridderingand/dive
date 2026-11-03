@@ -1,0 +1,90 @@
+{
+	"slug": "quicker-in-claude-than-figma",
+	"guest": "james-mcdonald",
+	"title": "Quicker in Claude Than Figma",
+	"score": null,
+	"status": "In design",
+	"designer": "Anna",
+	"topics": [],
+	"hook": "There was this weird mind switch that happened where I was quicker to actually design the thing using Claude rather than jumping back into Figma.",
+	"payoff": "I think these tools help you evolve that process a lot quicker. For me, it does anyway.",
+	"arc": "Hook: James noticed he was quicker designing in Claude than in Figma → Tension: in Figma, finding the core idea for a site or landing page always took the longest → Payoff: these tools help that process evolve a lot quicker.",
+	"lengthTargetS": 36.5,
+	"durationS": 36.458,
+	"fps": 24,
+	"format": "square",
+	"notionUrl": "https://app.notion.com/40654bed0e36819c9422f06eeb3845c9",
+	"descriptUrl": "https://web.descript.com/71965789-5c8b-42ab-8af5-7de36fdda3d9/0ccab",
+	"mixtureUrl": "https://mixture.dev/app/projects/2c800362-cfc6-480d-b427-929d2a6cfdfa",
+	"sourceNote": "Source pack attached on this page (synced to clip timeline)",
+	"audio": "james-mcdonald/quicker-in-claude-than-figma/audio.m4a",
+	"sources": [
+		{
+			"key": "screenshare",
+			"kind": "screen",
+			"label": "Screen share",
+			"file": "james-mcdonald/quicker-in-claude-than-figma/screenshare.mp4",
+			"synced": true
+		},
+		{
+			"key": "guest",
+			"kind": "guest",
+			"label": "James McDonald",
+			"file": "james-mcdonald/quicker-in-claude-than-figma/guest.mp4",
+			"synced": true
+		},
+		{
+			"key": "broll-facemesh",
+			"kind": "broll",
+			"label": "B-roll face mesh",
+			"file": "james-mcdonald/_broll/broll-facemesh.mp4",
+			"synced": false
+		}
+	],
+	"beats": [
+		{
+			"start": 0,
+			"end": 10,
+			"speaker": "James",
+			"line": "\"…I was **quicker** to actually design the thing using **Claude** rather than jumping back into **Figma**.\"",
+			"visual": "Screen share: James showing a feature section (he is on it at raw screenshare 00:13:13:02–00:13:47:09; episode 12:37–12:49). James bubble top corner. B-roll option: three-tab feature section staggering in (raw screenshare 00:16:46:17–00:18:11:15; episode 15:22–16:28)."
+		},
+		{
+			"start": 10,
+			"end": 22,
+			"speaker": "James",
+			"line": "\"…starting with something simple… in Figma, that's the part that **took the longest**.\"",
+			"visual": "James talking head, full frame."
+		},
+		{
+			"start": 22,
+			"end": 36.5,
+			"speaker": "James",
+			"line": "\"…trying to find that **core idea**… these tools help you **evolve that process a lot quicker**.\"",
+			"visual": "B-roll: face mesh / dot-matrix tool (raw screenshare 00:26:24:20–00:28:34:07; episode 22:42–24:17), then back to James full frame for the last line."
+		}
+	],
+	"broll": [
+		{
+			"name": "three-tab-feature-section",
+			"rawTimecode": "screenshare 00:16:46:17–00:18:11:15",
+			"episodeTimecode": "15:22–16:28",
+			"note": "Three-tab feature section staggering in (B-roll option, beat 0:00–0:10)"
+		},
+		{
+			"name": "face-mesh-dot-matrix-tool",
+			"rawTimecode": "screenshare 00:26:24:20–00:28:34:07",
+			"episodeTimecode": "22:42–24:17",
+			"note": "Face mesh / dot-matrix tool, then back to James full frame for the last line (beat 0:22–0:36.5)"
+		}
+	],
+	"captionCopy": "**James:** There was this weird **mind switch** that happened where I was **quicker** to actually design the thing using **Claude** rather than jumping back into **Figma**.\n\nJust starting with something simple, a simple idea, can really **evolve really quickly**, you know. I've always found, before all this tooling and AI or whatever, in Figma, that's the part that **took the longest**.\n\nEspecially building out website design and landing pages. It's really about trying to find that **core idea**. And I think these tools help you evolve that process **a lot quicker**. For me, it does anyway.",
+	"visualNotes": [
+		"James talking head full frame; cut to his screen share for B-roll, framed on the UI being discussed, not the center.",
+		"Bubbles: 240px circles in the top corners during screen share."
+	],
+	"openIssues": [
+		"**36.5s, under the 40s minimum.** Optional extension 11:53–12:01 exists but is not applied (Ridd's call).",
+		"Source tracks: resolved. Full raw tracks are too big to upload, so a pre-cut, synced source pack is attached in the Source pack section above. The Drive Tracks folder linked in the cut list stays empty; the raw-time cut list is kept as reference only."
+	]
+}
