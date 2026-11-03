@@ -51,6 +51,25 @@ export const Zoom = z.object({
 });
 export type Zoom = z.infer<typeof Zoom>;
 
+const OverlayTiming = { from: z.number(), to: z.number() };
+
+export const Overlay = z.discriminatedUnion("type", [
+	z.object({ type: z.literal("lower-third"), ...OverlayTiming, title: z.string(), subtitle: z.string().optional(), y: z.number().optional() }),
+	z.object({ type: z.literal("wordmark"), ...OverlayTiming, corner: z.enum(["top-left", "top-right"]).default("top-left") }),
+	z.object({
+		type: z.literal("screen-card"),
+		...OverlayTiming,
+		source: z.string(),
+		sourceIn: z.number().optional(),
+		focus: Focus.default({ x: 0.5, y: 0.5 }),
+		x: z.number().optional(),
+		y: z.number().optional(),
+		width: z.number().optional(),
+	}),
+	z.object({ type: z.literal("title-card"), ...OverlayTiming, text: z.string(), size: z.number().optional() }),
+]);
+export type Overlay = z.infer<typeof Overlay>;
+
 export const RoundNote = z.object({
 	round: z.number().int(),
 	date: z.string(),
@@ -74,6 +93,7 @@ export const Concept = z.object({
 	cuts: z.array(Cut),
 	bubbles: z.array(Bubble).default([]),
 	zooms: z.array(Zoom).default([]),
+	overlays: z.array(Overlay).default([]),
 	endCap: z.boolean().default(false),
 	props: z.record(z.string(), z.unknown()).default({}),
 	history: z.array(RoundNote).default([]),
@@ -167,7 +187,7 @@ export type Guest = z.infer<typeof Guest>;
 /** What every template receives. Built by the CLI for renders and by the shell for the placeholder preview. */
 export type TemplateInput = {
 	clip: Pick<Clip, "title" | "fps" | "audio" | "sources"> & { durationS: number };
-	concept: Pick<Concept, "cuts" | "bubbles" | "zooms" | "captionStyle" | "format" | "endCap" | "props">;
+	concept: Pick<Concept, "cuts" | "bubbles" | "zooms" | "overlays" | "captionStyle" | "format" | "endCap" | "props">;
 	captions: Pick<Captions, "words" | "lines">;
 	mediaBase: string;
 };

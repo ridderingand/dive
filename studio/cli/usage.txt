@@ -1,8 +1,11 @@
 Dive Studio
 
+<clip> is any unique part of a clip's slug, such as random-button.
+
   bun run dive setup                         Fonts and first-run files
   bun run dive doctor                        Check tools, fonts and footage
   bun run dive list                          Every clip, its stage and concepts
+  bun run dive styles                        Template and caption style ids
   bun run dive sync                          Rebuild the studio data
 
   bun run dive import notion <rows.json>     Update clips from Notion rows

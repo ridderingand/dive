@@ -15,7 +15,7 @@ const emptyProps: ConceptProps = {
 	templateId: "talk-square",
 	mediaBase: "",
 	clip: { title: "", fps: 24, audio: null, sources: [], durationS: 1 },
-	concept: { cuts: [], bubbles: [], zooms: [], captionStyle: "sky-label", format: "square", endCap: false, props: {} },
+	concept: { cuts: [], bubbles: [], zooms: [], overlays: [], captionStyle: "sky-label", format: "square", endCap: false, props: {} },
 	captions: { words: [] },
 };
 

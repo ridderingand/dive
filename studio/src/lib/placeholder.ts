@@ -34,6 +34,7 @@ export function placeholderInput(format: FormatId, captionStyle: string): Templa
 			props: {},
 			cuts: [cut("guest", 0, 3.5), cut("screenshare", 3.5, 8), cut("ridd", 8, 9.5), cut("guest", 9.5, SECONDS)],
 			bubbles: [{ source: "guest", from: 3.5, to: 8, focus: { x: 0.5, y: 0.4 } }],
+			overlays: [{ type: "lower-third", from: 0.4, to: 3.2, title: "Guest Name", subtitle: "Role at Company" }],
 			zooms: [{ from: 5, to: 7.5, level: 1.3, focus: { x: 0.6, y: 0.35 }, transitionIn: 0.22, transitionOut: 0.3 }],
 		},
 		captions: { words: sampleWords() },

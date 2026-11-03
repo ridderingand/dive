@@ -2,7 +2,7 @@ import { accents, bubble, captionStyles, gradients, motion, neutrals, type as ty
 import { rules, type Rule } from "../../system/rules";
 import { copyText } from "../ui/toast";
 
-const SPECIMEN = 0.34;
+const SPECIMEN = 0.3;
 
 function Swatch({ name, value, background }: { name: string; value: string; background?: string }) {
 	return (

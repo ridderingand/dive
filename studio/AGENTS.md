@@ -52,9 +52,18 @@ A concept is a template, a caption style, and a list of cuts:
   ],
   "bubbles": [{ "source": "guest", "from": 0, "to": 8.4, "focus": { "x": 0.6, "y": 0.42 } }],
   "zooms": [{ "from": 36.7, "to": 38.9, "level": 1.3, "focus": { "x": 0.5, "y": 0.62 }, "transitionIn": 0.22, "transitionOut": 0.3 }],
+  "overlays": [
+    { "type": "lower-third", "from": 1, "to": 4, "title": "James McDonald", "subtitle": "Designer" },
+    { "type": "wordmark", "from": 0, "to": 89.8, "corner": "top-left" },
+    // A screen share or B-roll floating over the talking head. Add sourceIn for unsynced B-roll.
+    { "type": "screen-card", "from": 22, "to": 31, "source": "broll-facemesh", "sourceIn": 4 },
+    { "type": "title-card", "from": 0, "to": 2.5, "text": "The random button era" }
+  ],
   "endCap": false, "props": {}, "history": []
 }
 ```
+
+Any template can show overlays. `endCap: true` adds the 4-second Resolve animation after the clip.
 
 ```bash
 bun run dive concept <clip> b --from a --template talk-vertical --name "Vertical cut" --intent "…"
@@ -63,7 +72,11 @@ bun run dive still <clip> b 12 45    # look at single frames before a full rende
 bun run dive render <clip> b
 ```
 
+`<clip>` is any unique part of a slug, such as `random-button`. `bun run dive list` shows every clip, and `bun run dive styles` lists template and caption style ids. To find a moment, read the word timings in `captions.json`: a clip's payoff is usually its last sentence.
+
 Read the brief in `clip.json` first: hook, payoff, beats, visual notes and open issues. Follow `system/rules.ts`. Look at stills yourself before you render or share. Emphasis words come from the bold words in `captionCopy`.
+
+In `bun run dive check`, a `fail` must be fixed before you render. A `warn` doesn't block anything, but tell the person about it. A zoom's `level` multiplies a cut's `scale`.
 
 ## The review loop
 

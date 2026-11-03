@@ -171,6 +171,7 @@ export function Timeline({ engine, clip, concept, render }: Props) {
 						</span>
 					))}
 					{concept?.zooms.map((zoom) => <span key={zoom.from} className="zoom-mark" style={{ left: percent(zoom.from), width: percent(zoom.to - zoom.from) }} title={`Zoom ${zoom.level}×`} />)}
+					{concept?.overlays.map((overlay) => <span key={`${overlay.type}-${overlay.from}`} className="overlay-mark" style={{ left: percent(overlay.from), width: percent(overlay.to - overlay.from) }} title={overlay.type.replace("-", " ")} />)}
 					{segments.length === 0 ? <span className="lane-empty">No picture yet</span> : null}
 				</div>
 				<div className="lane lane-words">

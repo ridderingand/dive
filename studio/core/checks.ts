@@ -19,7 +19,7 @@ function firstSentenceEnd(captions: Captions | null): number | null {
 /** The bold words in Notion's caption copy, which are the words a clip should emphasise. */
 export function emphasisFromCopy(copy: string | null): Set<string> {
 	if (!copy) return new Set();
-	return new Set([...copy.matchAll(/\*\*(.+?)\*\*/g)].flatMap((match) => (match[1] ?? "").split(/\s+/)).map((word) => cleanWord(word).toLowerCase()).filter(Boolean));
+	return new Set([...copy.matchAll(/\*\*(.+?)\*\*/g)].filter((match) => !match[1]?.trim().endsWith(":")).flatMap((match) => (match[1] ?? "").split(/\s+/)).map((word) => cleanWord(word).toLowerCase()).filter(Boolean));
 }
 
 export function clipChecks(clip: Clip, captions: Captions | null): Check[] {
@@ -114,7 +114,8 @@ export function conceptChecks(clip: Clip, concept: Concept, captions: Captions |
 		);
 	}
 
-	const unknown = [...concept.cuts, ...concept.bubbles].find((item) => !sources.has(item.source));
+	const screenCards = concept.overlays.filter((overlay) => overlay.type === "screen-card");
+	const unknown = [...concept.cuts, ...concept.bubbles, ...screenCards].find((item) => !sources.has(item.source));
 	if (unknown) checks.push({ id: "sources", title: "Sources exist", level: "fail", message: `Uses "${unknown.source}", which this clip doesn't have.`, at: unknown.from });
 	return checks;
 }

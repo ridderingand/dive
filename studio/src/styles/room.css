@@ -987,6 +987,14 @@ button.check-row:hover {
 	background: var(--foam);
 }
 
+.overlay-mark {
+	position: absolute;
+	top: 2px;
+	height: 3px;
+	border-radius: 2px;
+	background: var(--accent);
+}
+
 .lane-empty {
 	display: flex;
 	align-items: center;

@@ -222,6 +222,13 @@ export const commands: Record<string, Command> = {
 		for (const clip of manifest.clips) console.log(`${clip.stage.padEnd(9)} ${`${clip.guest}/${clip.slug}`.padEnd(66)} ${clip.concepts.map((concept) => `${concept.id}${concept.stale ? "*" : ""}`).join(" ")}`);
 	},
 
+	async styles() {
+		console.log("Templates");
+		for (const template of templates) console.log(`  ${template.id.padEnd(16)} ${template.formats.join(", ").padEnd(10)} ${template.name}`);
+		console.log("\nCaption styles");
+		for (const [id, style] of Object.entries(captionStyles)) console.log(`  ${id.padEnd(16)} ${style.description}`);
+	},
+
 	async sync(_args, flags) {
 		const manifest = await sync();
 		if (!flags.quiet) console.log(`${manifest.clips.length} clips synced to ${path.relative(ROOT, MANIFEST_FILE)}`);

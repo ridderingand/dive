@@ -27,7 +27,7 @@ export function buildInput(loaded: LoadedClip, concept: Concept, mediaBase: stri
 		templateId: concept.template,
 		mediaBase,
 		clip: { title: clip.title, fps: clip.fps, audio: clip.audio, sources: clip.sources, durationS: clip.durationS },
-		concept: { cuts: concept.cuts, bubbles: concept.bubbles, zooms: concept.zooms, captionStyle: concept.captionStyle, format: concept.format, endCap: concept.endCap, props: concept.props },
+		concept: { cuts: concept.cuts, bubbles: concept.bubbles, zooms: concept.zooms, overlays: concept.overlays, captionStyle: concept.captionStyle, format: concept.format, endCap: concept.endCap, props: concept.props },
 		captions: { words: captions?.words ?? [], lines: captions?.lines },
 	};
 }

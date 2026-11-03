@@ -2,6 +2,7 @@ import { AbsoluteFill, Audio, OffthreadVideo, Sequence, staticFile, useVideoConf
 import { END_CAP_SECONDS } from "@core/time";
 import type { TemplateInput } from "@core/schema";
 import { useDiveFonts } from "./fonts";
+import { Overlays } from "./Overlays";
 
 /** What every template shares: the dialogue track, caption fonts and the optional Resolve end cap. */
 export function TemplateShell({ input, children }: { input: TemplateInput; children: React.ReactNode }) {
@@ -12,6 +13,7 @@ export function TemplateShell({ input, children }: { input: TemplateInput; child
 		<AbsoluteFill style={{ background: "#000", overflow: "hidden" }}>
 			<Sequence durationInFrames={clipFrames} name="Clip">
 				{children}
+				<Overlays input={input} />
 			</Sequence>
 			{input.clip.audio ? <Audio src={`${input.mediaBase}${input.clip.audio}`} /> : null}
 			{input.concept.endCap ? (

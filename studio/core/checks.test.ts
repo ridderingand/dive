@@ -21,7 +21,7 @@ const level = (checks: { id: string; level: string }[], id: string) => checks.fi
 
 describe("emphasisFromCopy", () => {
 	test("reads the bold words", () => {
-		expect([...emphasisFromCopy("a **mind switch** and **Figma.**")]).toEqual(["mind", "switch", "figma"]);
+		expect([...emphasisFromCopy("**James:** a **mind switch** and **Figma.**")]).toEqual(["mind", "switch", "figma"]);
 	});
 });
 
