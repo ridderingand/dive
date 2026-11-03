@@ -1,11 +1,6 @@
 import { z } from "zod";
 
-export const FORMATS = {
-	square: { width: 1080, height: 1080, label: "Square", ratio: "1:1" },
-	vertical: { width: 1080, height: 1920, label: "Vertical", ratio: "9:16" },
-	wide: { width: 1920, height: 1080, label: "Wide", ratio: "16:9" },
-} as const;
-export type FormatId = keyof typeof FORMATS;
+export { FORMATS, type FormatId } from "./formats";
 
 const Focus = z.object({ x: z.number().min(0).max(1), y: z.number().min(0).max(1) });
 export type Focus = z.infer<typeof Focus>;
@@ -137,7 +132,9 @@ export const Clip = z.object({
 	payoff: z.string().default(""),
 	arc: z.string().nullable().default(null),
 	lengthTargetS: z.number().nullable().default(null),
-	durationS: z.number().nullable().default(null).describe("Actual cut length; null until the tracks exist"),
+	durationS: z.number().nullable().default(null).describe("Length of the cut we hold, from cuts.json or the trimmed files"),
+	descriptDurationS: z.number().nullable().default(null).describe("Length of the Descript composition when last synced"),
+	removed: z.boolean().default(false).describe("Ridd marked the composition REMOVED in Descript"),
 	fps: z.number().default(24),
 	format: z.enum(["square", "vertical", "wide"]).nullable().default(null),
 	notionUrl: z.string().nullable().default(null),

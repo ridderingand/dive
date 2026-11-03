@@ -1,9 +1,10 @@
 import { Player } from "@remotion/player";
 import { useMemo, useState } from "react";
 import type { Manifest } from "@core/manifest";
-import { FORMATS, type FormatId, type TemplateInput } from "@core/schema";
-import { templateById, templates } from "../../templates";
-import type { TemplateDef } from "../../templates/types";
+import { FORMATS, type FormatId } from "@core/formats";
+import type { TemplateInput } from "@core/schema";
+import { templateComponent } from "../../templates";
+import { templateInfo, templates, type TemplateInfo } from "../../templates/registry";
 import { captionStyles } from "../../system/dive";
 import { clipPath } from "../lib/data";
 import { placeholderInput } from "../lib/placeholder";
@@ -12,10 +13,10 @@ import { copyText } from "../ui/toast";
 
 const SHOWCASE_FRAME = 140;
 
-function TemplatePlayer({ template, format, captionStyle, controls }: { template: TemplateDef; format: FormatId; captionStyle: string; controls: boolean }) {
+function TemplatePlayer({ template, format, captionStyle, controls }: { template: TemplateInfo; format: FormatId; captionStyle: string; controls: boolean }) {
 	const input = useMemo<TemplateInput>(() => placeholderInput(format, captionStyle), [format, captionStyle]);
 	const { width, height } = FORMATS[format];
-	return <Player component={template.component} inputProps={input} durationInFrames={Math.round(input.clip.durationS * 24)} fps={24} compositionWidth={width} compositionHeight={height} loop autoPlay={!controls} controls={controls} initialFrame={SHOWCASE_FRAME} acknowledgeRemotionLicense style={{ width: "100%", height: "100%" }} />;
+	return <Player component={templateComponent(template.id)} inputProps={input} durationInFrames={Math.round(input.clip.durationS * 24)} fps={24} compositionWidth={width} compositionHeight={height} loop autoPlay={!controls} controls={controls} initialFrame={SHOWCASE_FRAME} acknowledgeRemotionLicense style={{ width: "100%", height: "100%" }} />;
 }
 
 function usage(manifest: Manifest, id: string) {
@@ -59,7 +60,7 @@ export function TemplatesPage({ manifest }: { manifest: Manifest }) {
 }
 
 export function TemplatePage({ manifest, id }: { manifest: Manifest; id: string }) {
-	const template = templateById(id);
+	const template = templateInfo(id);
 	const [format, setFormat] = useState<FormatId>(template.formats[0] ?? "square");
 	const [captionStyle, setCaptionStyle] = useState(template.defaultCaptionStyle);
 	const used = usage(manifest, template.id);
@@ -72,7 +73,7 @@ export function TemplatePage({ manifest, id }: { manifest: Manifest; id: string 
 				</a>
 				<div className="template-layout">
 					<div className="template-stage">
-						<div className="template-frame" style={{ aspectRatio: `${FORMATS[format].width} / ${FORMATS[format].height}` }}>
+						<div className="template-frame" style={{ aspectRatio: `${FORMATS[format].width} / ${FORMATS[format].height}`, "--ratio": FORMATS[format].width / FORMATS[format].height } as React.CSSProperties}>
 							<TemplatePlayer key={`${format}-${captionStyle}`} template={template} format={format} captionStyle={captionStyle} controls />
 						</div>
 					</div>

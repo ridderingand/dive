@@ -11,6 +11,8 @@
 	"arc": "Hook: James noticed he was quicker designing in Claude than in Figma → Tension: in Figma, finding the core idea for a site or landing page always took the longest → Payoff: these tools help that process evolve a lot quicker.",
 	"lengthTargetS": 36.5,
 	"durationS": 36.458,
+	"descriptDurationS": 36.452,
+	"removed": false,
 	"fps": 24,
 	"format": "square",
 	"notionUrl": "https://app.notion.com/40654bed0e36819c9422f06eeb3845c9",
@@ -46,21 +48,21 @@
 			"start": 0,
 			"end": 10,
 			"speaker": "James",
-			"line": "\"…I was **quicker** to actually design the thing using **Claude** rather than jumping back into **Figma**.\"",
+			"line": "\"…I was quicker to actually design the thing using Claude rather than jumping back into Figma.\"",
 			"visual": "Screen share: James showing a feature section (he is on it at raw screenshare 00:13:13:02–00:13:47:09; episode 12:37–12:49). James bubble top corner. B-roll option: three-tab feature section staggering in (raw screenshare 00:16:46:17–00:18:11:15; episode 15:22–16:28)."
 		},
 		{
 			"start": 10,
 			"end": 22,
 			"speaker": "James",
-			"line": "\"…starting with something simple… in Figma, that's the part that **took the longest**.\"",
+			"line": "\"…starting with something simple… in Figma, that's the part that took the longest.\"",
 			"visual": "James talking head, full frame."
 		},
 		{
 			"start": 22,
 			"end": 36.5,
 			"speaker": "James",
-			"line": "\"…trying to find that **core idea**… these tools help you **evolve that process a lot quicker**.\"",
+			"line": "\"…trying to find that core idea… these tools help you evolve that process a lot quicker.\"",
 			"visual": "B-roll: face mesh / dot-matrix tool (raw screenshare 00:26:24:20–00:28:34:07; episode 22:42–24:17), then back to James full frame for the last line."
 		}
 	],

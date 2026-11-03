@@ -17,10 +17,10 @@ clip  →  a file per person  →  concepts (template + cuts)  →  review on In
 | `clips/<guest>/<clip>/cuts.json` | Grok's cut list |
 | `clips/<guest>/<clip>/captions.json` | Per-word captions (`dive-word-captions/v1`), plus an `em` flag per word |
 | `clips/<guest>/<clip>/concepts/<id>.json` | **One concept: what you edit for a clip** |
-| `templates/` | Remotion templates. `_kit/` is shared. Add new ones to `index.ts` and `registry.ts` |
+| `templates/` | Remotion templates. `_kit/` is shared. A new one needs a folder, a line in `index.ts` and an entry in `registry.ts` |
 | `system/dive.ts` | Colour, caption styles, timing, bubble size |
 | `system/rules.ts` | House rules. `core/checks.ts` enforces the automatic ones |
-| `media/` | Footage and renders. Never in git. Set `DIVE_MEDIA` to use another folder |
+| `media/` | Footage and renders. Never in git. Point `DIVE_MEDIA` at a synced Drive folder to share it between machines |
 | `src/` | The studio you see in the browser |
 
 **This repo is public.** Never commit footage, licensed fonts (`public/fonts/`), tokens or signed URLs.
@@ -68,7 +68,7 @@ Read the brief in `clip.json` first: hook, payoff, beats, visual notes and open 
 ## The review loop
 
 1. Build a review: `bun run dive review <clip> --title "…" --note "…"`. It fits the previews into Inflight's limits in `dist/`.
-2. Share it with Inflight's `share_app` tool: `build_dir: studio/dist`, `repo: ridderingand/dive`. Run the command it returns from the repo root. For a new round, pass the earlier link as `page`, so it joins the same project.
+2. Share it with Inflight's `share_app` tool: `build_dir: studio/dist`, `repo: ridderingand/dive`. Run the command it returns from the repo root. For a new round, pass the earlier link as `page`, so it joins the same project. With several concepts on one link, pass a `poll` in `questions` naming them, so a vote comes back with the feedback.
 3. Ridd talks over the video with the Inflight widget. The large timecode under the player is on screen on purpose.
 4. Read it with `get_feedback` on the link. For a recording, use `get_transcript`, and `get_frame` at each moment. Read the timecode from the frame to find the clip time, because the recording's clock is not the clip's clock.
 5. Edit the concept, then record the round: `bun run dive round <clip> <concept> "What changed" --feedback <link>`. Render, and go back to step 1.
@@ -82,7 +82,7 @@ Ridd will say something like "edit the talk square template". Change `templates/
 
 ## Syncing from Notion
 
-Query the Dive Club Clips data source (`collection://1c954bed-0e36-8052-a56d-000ba75d0b79`), write the rows to a JSON file, and run `bun run dive import notion <rows.json> [briefs dir]`. New guests need a `clips/<guest>/guest.json` first. Existing tracks and concepts are kept.
+Query the Dive Club Clips data source (`collection://1c954bed-0e36-8052-a56d-000ba75d0b79`), write the rows to a JSON file, and run `bun run dive import notion <rows.json> [briefs dir]`. New guests need a `clips/<guest>/guest.json` first. Existing tracks and concepts are kept. Then save Descript's `get_project` result to a file and run `bun run dive import descript <file>`: it records each composition's length, so a stale `cuts.json` fails the checks, and it marks compositions Ridd renamed with `REMOVED`.
 
 ## Running it
 

@@ -1,4 +1,4 @@
-import { AbsoluteFill, Audio, OffthreadVideo, Sequence, useVideoConfig } from "remotion";
+import { AbsoluteFill, Audio, OffthreadVideo, Sequence, staticFile, useVideoConfig } from "remotion";
 import { END_CAP_SECONDS } from "@core/time";
 import type { TemplateInput } from "@core/schema";
 import { useDiveFonts } from "./fonts";
@@ -17,7 +17,7 @@ export function TemplateShell({ input, children }: { input: TemplateInput; child
 			{input.concept.endCap ? (
 				<Sequence from={clipFrames} durationInFrames={Math.round(END_CAP_SECONDS * fps)} name="End cap">
 					<AbsoluteFill style={{ alignItems: "center", justifyContent: "center", background: "#000" }}>
-						<OffthreadVideo src={`${input.mediaBase}library/Resolve_animation_square.mp4`} muted style={{ width: 620, height: 620 }} />
+						<OffthreadVideo src={staticFile("brand/resolve.mp4")} muted style={{ width: 620, height: 620 }} />
 					</AbsoluteFill>
 				</Sequence>
 			) : null}

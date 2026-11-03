@@ -99,8 +99,17 @@ function layerToConcept(scene: Layer, plan: (typeof PLAN)[number]["comps"][numbe
 }
 
 function captionLines(scene: Layer) {
-	const group = scene.layers.find((layer: Layer) => layer.repeat?.from?.[0]?.line !== undefined);
-	return group ? (group.repeat.from as { line: string; start: number; end: number; em?: number }[]) : null;
+	const groups = scene.layers.filter((layer: Layer) => layer.repeat?.from?.[0]?.line !== undefined);
+	const seen = new Map<string, { line: string; start: number; end: number; em: boolean }>();
+	for (const group of groups) {
+		const emphasis = /emphasis/i.test(group.name ?? "");
+		for (const item of group.repeat.from as { line: string; start: number; end: number; em?: number }[]) {
+			const key = `${item.start}-${item.line}`;
+			const em = emphasis || Boolean(item.em) || Boolean(seen.get(key)?.em);
+			seen.set(key, { line: item.line, start: item.start, end: item.end, em });
+		}
+	}
+	return [...seen.values()].sort((a, b) => a.start - b.start);
 }
 
 export function importMixture(dslFile: string, assetFile: string) {
@@ -128,7 +137,7 @@ export function importMixture(dslFile: string, assetFile: string) {
 		for (const concept of concepts) saveConcept(dir, concept);
 
 		const transcript = JSON.parse(readFileSync(path.join(path.dirname(path.join(ROOT, audioAsset.path)), "transcript.json"), "utf8")) as { words: { word: string; start: number; end: number }[] };
-		const lines = captionLines(scene) ?? [];
+		const lines = captionLines(scene);
 		const emphasised = lines.filter((line) => line.em);
 		const words = transcript.words.map((word, i) => ({
 			i,
@@ -138,7 +147,7 @@ export function importMixture(dslFile: string, assetFile: string) {
 			speaker: null,
 			em: emphasised.some((line) => word.start + 0.001 >= line.start && word.start < line.end),
 		}));
-		writeJson(path.join(dir, "captions.json"), Captions.parse({ format: "dive-word-captions/v1", clip: plan.slug, source: "mixture-transcript", duration_s: scene.duration, words, lines: lines.map((line) => ({ line: line.line, start: line.start, end: line.end, em: Boolean(line.em) })) }));
+		writeJson(path.join(dir, "captions.json"), Captions.parse({ format: "dive-word-captions/v1", clip: plan.slug, source: "mixture-transcript", duration_s: scene.duration, words, lines }));
 
 		const { clip } = loadClip(GUEST, plan.slug);
 		const next: Clip = { ...clip, durationS: scene.duration, fps: primary.fps, format: "square", audio, sources: [...seen.values()] };

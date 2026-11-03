@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, statSync } from "node:fs";
+import { existsSync, mkdirSync, rmSync, statSync } from "node:fs";
 import path from "node:path";
 import type { Concept, TemplateInput } from "../../core/schema";
 import { FORMATS } from "../../core/schema";
@@ -11,7 +11,8 @@ import { ffmpeg, probeDuration, run } from "./run";
 
 export type RenderRecord = { hash: string; renderedAt: string; durationS: number; width: number; height: number; masterBytes: number; previewBytes: number; renderSeconds: number };
 
-const BUNDLE = path.join(WORK, "bundle");
+// One per process, so a still can run while a long render keeps reading its own bundle.
+const BUNDLE = path.join(WORK, `bundle-${process.pid}`);
 
 // Remotion's own headless shell crashes at GPU start on this Mac, so renders prefer the installed Chrome.
 const CHROME = process.env.DIVE_CHROME ?? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
@@ -50,7 +51,7 @@ export async function renderConcept(loaded: LoadedClip, concept: Concept, option
 	const { clip } = loaded;
 	const folder = renderDir(clip.guest, clip.slug, concept.id, concept.round);
 	mkdirSync(mediaPath(folder), { recursive: true });
-	const propsFile = path.join(WORK, `props-${clip.slug}-${concept.id}.json`);
+	const propsFile = path.join(WORK, `props-${process.pid}-${clip.slug}-${concept.id}.json`);
 	writeJson(propsFile, buildInput(loaded, concept, options.mediaBase));
 	const master = mediaPath(`${folder}/master.mp4`);
 	const started = performance.now();
@@ -79,7 +80,7 @@ export async function renderConcept(loaded: LoadedClip, concept: Concept, option
 /** One frame, for checking a look without waiting on a full render. */
 export async function renderStill(loaded: LoadedClip, concept: Concept, options: { mediaBase: string; frame: number; out: string; scale?: string }) {
 	mkdirSync(path.dirname(options.out), { recursive: true });
-	const propsFile = path.join(WORK, `props-${loaded.clip.slug}-${concept.id}.json`);
+	const propsFile = path.join(WORK, `props-${process.pid}-${loaded.clip.slug}-${concept.id}.json`);
 	writeJson(propsFile, buildInput(loaded, concept, options.mediaBase));
 	await run(["bunx", "remotion", "still", BUNDLE, "concept", options.out, `--props=${propsFile}`, `--frame=${options.frame}`, `--scale=${options.scale ?? "0.5"}`, "--image-format=jpeg", "--log=error", "--overwrite", ...browserArgs], { cwd: ROOT });
 }
@@ -90,6 +91,7 @@ export async function withMedia<T>(work: (base: string) => Promise<T>) {
 		return await work(server.base);
 	} finally {
 		server.stop();
+		rmSync(BUNDLE, { recursive: true, force: true });
 	}
 }
 

@@ -11,8 +11,10 @@ import { ShortcutSheet } from "./ui/ShortcutSheet";
 import { TopBar } from "./ui/TopBar";
 import { ToastHost } from "./ui/toast";
 
-const TemplatesPage = lazy(() => import("./pages/TemplatesPage").then((module) => ({ default: module.TemplatesPage })));
-const TemplatePage = lazy(() => import("./pages/TemplatesPage").then((module) => ({ default: module.TemplatePage })));
+// Review builds leave Remotion out: it isn't needed there, and Inflight flags its localhost strings as a missing backend.
+const REVIEW_BUILD = import.meta.env.VITE_DIVE_REVIEW === "1";
+const TemplatesPage = REVIEW_BUILD ? () => null : lazy(() => import("./pages/TemplatesPage").then((module) => ({ default: module.TemplatesPage })));
+const TemplatePage = REVIEW_BUILD ? () => null : lazy(() => import("./pages/TemplatesPage").then((module) => ({ default: module.TemplatePage })));
 
 function Routes({ manifest }: { manifest: Manifest }) {
 	const { pathname } = useRoute();
@@ -35,13 +37,13 @@ export function App() {
 	const [palette, setPalette] = useState(false);
 	const [shortcuts, setShortcuts] = useState(false);
 	useKeys({
-		"mod+k": () => setPalette((open) => !open),
+		"mod+k": () => manifest?.mode === "local" && setPalette((open) => !open),
 		"?": () => setShortcuts((open) => !open),
 		Escape: () => {
 			setPalette(false);
 			setShortcuts(false);
 		},
-		g: () => navigate("/"),
+		g: () => manifest?.mode === "local" && navigate("/"),
 	});
 	if (error) return <div className="fatal">{error}</div>;
 	if (!manifest) return <div className="page-loading" />;
@@ -53,7 +55,7 @@ export function App() {
 			</main>
 			<div className="grain" />
 			{palette ? <CommandPalette manifest={manifest} onClose={() => setPalette(false)} /> : null}
-			{shortcuts ? <ShortcutSheet onClose={() => setShortcuts(false)} /> : null}
+			{shortcuts ? <ShortcutSheet review={manifest.mode === "review"} onClose={() => setShortcuts(false)} /> : null}
 			<ToastHost />
 		</div>
 	);

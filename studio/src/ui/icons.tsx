@@ -82,3 +82,9 @@ export const CopyIcon = (props: Props) => (
 		<path d="M5.5 15H5a1.5 1.5 0 0 1-1.5-1.5V5A1.5 1.5 0 0 1 5 3.5h8.5A1.5 1.5 0 0 1 15 5v.5" />
 	</svg>
 );
+export const SafeZoneIcon = (props: Props) => (
+	<svg {...base} {...props}>
+		<rect x="4" y="4" width="16" height="16" rx="3" />
+		<rect x="8" y="8" width="8" height="8" rx="1" strokeDasharray="2 2" />
+	</svg>
+);

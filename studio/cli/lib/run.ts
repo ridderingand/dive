@@ -1,5 +1,5 @@
 export async function run(command: string[], options: { cwd?: string; quiet?: boolean } = {}) {
-	const proc = Bun.spawn(command, { cwd: options.cwd, stdout: options.quiet ? "pipe" : "inherit", stderr: options.quiet ? "pipe" : "inherit" });
+	const proc = Bun.spawn(command, { cwd: options.cwd, env: process.env, stdout: options.quiet ? "pipe" : "inherit", stderr: options.quiet ? "pipe" : "inherit" });
 	const code = await proc.exited;
 	if (code !== 0) {
 		const detail = options.quiet ? await new Response(proc.stderr).text() : "";

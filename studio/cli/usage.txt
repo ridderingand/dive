@@ -6,6 +6,7 @@ Dive Studio
   bun run dive sync                          Rebuild the studio data
 
   bun run dive import notion <rows.json>     Update clips from Notion rows
+  bun run dive import descript <project.json>   Compare cut lengths and spot removed clips
   bun run dive trim <clip> --raw <dir>       Cut raw tracks into per-person clip files
   bun run dive captions <clip> --json <file>   Word captions from Grok's dive-word-captions file
   bun run dive captions <clip> --dense <txt> --srt <srt>   The same, built from Descript exports

@@ -15,6 +15,8 @@
 	"arc": "Host-led stakes take (file 15: stakes questions open best). Ridd confesses he doesn't craft anymore → Myles: \"It's 100%…\" → stopped coding in 2017, AI brought him back → payoff on not worrying about tomorrow.",
 	"lengthTargetS": 40.4,
 	"durationS": 61.708,
+	"descriptDurationS": 40.389,
+	"removed": true,
 	"fps": 24,
 	"format": "square",
 	"notionUrl": "https://app.notion.com/40854bed0e3681a9bb91de3ce7bf373e",

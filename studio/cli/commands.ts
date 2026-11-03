@@ -1,4 +1,4 @@
-import { copyFileSync, existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { cleanWord } from "../core/captions";
 import { emphasisFromCopy } from "../core/checks";
@@ -148,7 +148,9 @@ async function reviewCommand(args: string[], flags: Flags) {
 	const stale = concepts.filter(({ concept }) => concept.stale);
 	if (stale.length > 0 && !flags.force) throw new Error(`Stale renders: ${stale.map(({ clip, concept }) => `${clip.slug}/${concept.id}`).join(", ")}. Render them first, or pass --force.`);
 
-	await run(["bunx", "vite", "build", "--logLevel", "warn"], { cwd: ROOT });
+	process.env.VITE_DIVE_REVIEW = "1";
+	await run(["bunx", "vite", "build", "--logLevel", "error"], { cwd: ROOT, quiet: true });
+	for (const unused of ["fonts", "placeholder"]) rmSync(path.join(DIST, unused), { recursive: true, force: true });
 
 	const copy = (relative: string) => {
 		const to = path.join(DIST, "media", relative);
@@ -230,10 +232,21 @@ export const commands: Record<string, Command> = {
 		if (kind === "notion" && file) {
 			const rows = JSON.parse(readFileSync(file, "utf8")) as NotionRow[];
 			console.log(`Imported ${importNotion(rows, extra ?? path.join(WORK, "briefs")).length} clips`);
+		} else if (kind === "descript" && file) {
+			const project = JSON.parse(readFileSync(file, "utf8")) as { compositions: { id: string; name: string; duration: number }[] };
+			let matched = 0;
+			for (const loaded of loadAllClips()) {
+				const short = loaded.clip.descriptUrl?.split("/").pop();
+				const composition = short ? project.compositions.find((item) => item.id.startsWith(short)) : undefined;
+				if (!composition) continue;
+				matched += 1;
+				writeJson(path.join(loaded.dir, "clip.json"), { ...loaded.clip, descriptDurationS: Math.round(composition.duration * 1000) / 1000, durationS: loaded.clip.durationS ?? Math.round(composition.duration * 1000) / 1000, removed: /REMOVED/i.test(composition.name) });
+			}
+			console.log(`Matched ${matched} compositions`);
 		} else if (kind === "mixture" && file && extra) {
 			importMixture(file, extra);
 			console.log("Imported Mixture compositions");
-		} else throw new Error("Usage: import notion <rows.json> [briefs dir], or import mixture <dsl.json> <assets.json>");
+		} else throw new Error("Usage: import notion <rows.json> [briefs dir], import descript <get_project.json>, or import mixture <dsl.json> <assets.json>");
 		await sync();
 	},
 

@@ -1,12 +1,13 @@
 import { Composition } from "remotion";
 import { END_CAP_SECONDS } from "@core/time";
-import { FORMATS, type TemplateInput } from "@core/schema";
-import { templateById } from "../templates";
+import { FORMATS } from "@core/formats";
+import type { TemplateInput } from "@core/schema";
+import { templateComponent } from "../templates";
 
 export type ConceptProps = TemplateInput & { templateId: string };
 
 function ConceptVideo(props: ConceptProps) {
-	const Template = templateById(props.templateId).component;
+	const Template = templateComponent(props.templateId);
 	return <Template {...props} />;
 }
 

@@ -209,6 +209,10 @@
 	color: var(--text-2);
 }
 
+.clip-row-next.is-warn {
+	color: var(--warn);
+}
+
 .clip-row-time {
 	text-align: right;
 	color: var(--text-2);
@@ -217,9 +221,9 @@
 
 .reef {
 	position: absolute;
-	left: 0;
+	left: -2%;
 	bottom: 0;
-	width: 100%;
+	width: 104%;
 	max-height: 440px;
 	object-fit: cover;
 	object-position: 50% 0;
@@ -229,11 +233,49 @@
 }
 
 @media (max-width: 900px) {
+	.clips-inner {
+		width: calc(100% - 28px);
+		padding-top: 48px;
+	}
+
+	.stage-filter {
+		flex-wrap: wrap;
+	}
+
+	.stage-filter button {
+		padding-right: 26px;
+	}
+
+	.stage-filter i {
+		display: none;
+	}
+
 	.clip-row {
-		grid-template-columns: 44px minmax(0, 1fr) 52px;
+		grid-template-columns: 40px minmax(0, 1fr) 42px;
+		gap: 12px;
+		padding: 12px 16px 12px 12px;
 	}
 	.clip-row-concepts,
 	.clip-row-state {
 		display: none;
 	}
+}
+
+.removed-group {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 6px 18px;
+	margin-top: 44px;
+	padding-left: 6px;
+	font-size: 13px;
+}
+
+.removed-group a {
+	color: var(--text-3);
+	text-decoration: none;
+}
+
+.removed-group a:hover {
+	color: var(--text-2);
 }

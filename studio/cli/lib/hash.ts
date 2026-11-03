@@ -20,7 +20,7 @@ let designHash: string | null = null;
 function currentDesignHash() {
 	if (designHash) return designHash;
 	const hash = createHash("sha1");
-	for (const dir of ["templates", "system"]) for (const file of walk(path.join(ROOT, dir))) hash.update(readFileSync(file));
+	for (const file of [...walk(path.join(ROOT, "templates")), path.join(ROOT, "system/dive.ts")]) hash.update(readFileSync(file));
 	designHash = hash.digest("hex");
 	return designHash;
 }

@@ -24,6 +24,15 @@ export function emphasisFromCopy(copy: string | null): Set<string> {
 
 export function clipChecks(clip: Clip, captions: Captions | null): Check[] {
 	const checks: Check[] = [];
+	if (clip.durationS !== null && clip.descriptDurationS !== null) {
+		const stale = Math.abs(clip.durationS - clip.descriptDurationS) > 0.5;
+		checks.push({
+			id: "cut-fresh",
+			title: "Cut list matches Descript",
+			level: stale ? "fail" : "pass",
+			message: stale ? `cuts.json is ${clip.durationS.toFixed(1)}s, but the Descript composition is ${clip.descriptDurationS.toFixed(1)}s. Re-export the cut.` : "The cut list matches the Descript composition.",
+		});
+	}
 	if (clip.durationS !== null && clip.lengthTargetS !== null) {
 		const drift = Math.abs(clip.durationS - clip.lengthTargetS);
 		checks.push({

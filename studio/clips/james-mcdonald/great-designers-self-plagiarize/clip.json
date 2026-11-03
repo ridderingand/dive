@@ -11,6 +11,8 @@
 	"arc": "Hook: Ridd quotes Soleio: great designers self-plagiarize → Tension: James shelved an animation that didn't work, Ridd shares his own \"Ethereal Connector\" story → Payoff: reusing old ideas is the magical part of these tools.",
 	"lengthTargetS": 85.9,
 	"durationS": 81.917,
+	"descriptDurationS": 81.917,
+	"removed": false,
 	"fps": 24,
 	"format": "square",
 	"notionUrl": "https://app.notion.com/40654bed0e3681a68360ea4edf4edbb2",
@@ -46,28 +48,28 @@
 			"start": 0,
 			"end": 13,
 			"speaker": "Ridd",
-			"line": "\"I quote **Soleio** too much on this show… great designers **self-plagiarize**.\"",
+			"line": "\"I quote Soleio too much on this show… great designers self-plagiarize.\"",
 			"visual": "Ridd on camera, full frame."
 		},
 		{
 			"start": 13,
 			"end": 45,
 			"speaker": "James",
-			"line": "\"…use that original idea of that animation… **reuse that idea**… shelf that for now…\"",
+			"line": "\"…use that original idea of that animation… reuse that idea… shelf that for now…\"",
 			"visual": "Screen share framed on the squares/cubes animation. B-roll: cubes folding into the center (raw screenshare 00:19:52:20–00:21:04:10; episode 17:39–18:38); squares forming the card (raw screenshare 00:19:19:10–00:19:50:20; episode 17:17–17:37). James bubble top corner."
 		},
 		{
 			"start": 45,
 			"end": 72,
 			"speaker": "Ridd",
-			"line": "\"…dashed line… **gradient pulse**… the **Ethereal Connector**…\"",
+			"line": "\"…dashed line… gradient pulse… the Ethereal Connector…\"",
 			"visual": "Ridd on camera, full frame."
 		},
 		{
 			"start": 72,
 			"end": 86,
 			"speaker": "James",
-			"line": "\"…that old idea got **repurposed**… the **magical part** of these tools…\"",
+			"line": "\"…that old idea got repurposed… the magical part of these tools…\"",
 			"visual": "Screen share on the animation, then James full frame for the payoff."
 		}
 	],

@@ -1,13 +1,13 @@
 import { useRef } from "react";
 import { timecode } from "@core/time";
-import { ExpandIcon, LinkIcon, MuteIcon, PauseIcon, PlayIcon, SoundIcon, StepBackIcon, StepForwardIcon } from "../ui/icons";
+import { ExpandIcon, LinkIcon, MuteIcon, PauseIcon, PlayIcon, SafeZoneIcon, SoundIcon, StepBackIcon, StepForwardIcon } from "../ui/icons";
 import { useEngineFrame, useEngineState, type PlayerEngine } from "./engine";
 
 export const RATES = [0.5, 1, 1.5, 2];
 
-type Props = { engine: PlayerEngine; onCopyMoment: () => void; onFullscreen: () => void; disabled: boolean };
+type Props = { engine: PlayerEngine; onCopyMoment: () => void; onFullscreen: () => void; safeZones: boolean; onSafeZones: () => void; disabled: boolean };
 
-export function Transport({ engine, onCopyMoment, onFullscreen, disabled }: Props) {
+export function Transport({ engine, onCopyMoment, onFullscreen, safeZones, onSafeZones, disabled }: Props) {
 	const state = useEngineState(engine);
 	const code = useRef<HTMLSpanElement>(null);
 	useEngineFrame(engine, (t) => {
@@ -42,6 +42,9 @@ export function Transport({ engine, onCopyMoment, onFullscreen, disabled }: Prop
 				</div>
 				<button type="button" className="icon-button" onClick={() => engine.toggleMute()} aria-label={state.muted ? "Unmute" : "Mute"} title="Mute">
 					{state.muted ? <MuteIcon /> : <SoundIcon />}
+				</button>
+				<button type="button" className={`icon-button${safeZones ? " is-on" : ""}`} onClick={onSafeZones} aria-label="Safe zones" aria-pressed={safeZones} title="Safe zones">
+					<SafeZoneIcon />
 				</button>
 				<button type="button" className="icon-button" onClick={onCopyMoment} aria-label="Copy this moment for an agent" title="Copy this moment for an agent">
 					<LinkIcon />

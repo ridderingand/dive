@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { activeAt } from "@core/captions";
 import type { Manifest, ManifestClip, ManifestConcept, RenderInfo } from "@core/manifest";
-import { FORMATS } from "@core/schema";
+import { FORMATS, type FormatId } from "@core/formats";
 import { timecode } from "@core/time";
 import { guestOf, mediaUrl } from "../lib/data";
 import { useKeys } from "../lib/keys";
 import { navigate, replaceQuery, useRoute } from "../lib/router";
+import { prefetchVideos } from "../lib/video-source";
 import { templateName } from "../lib/templates";
 import { PlayerEngine, useEngineState } from "../player/engine";
 import { EngineVideo } from "../player/EngineVideo";
@@ -22,12 +23,13 @@ type Mode = "watch" | "compare" | "files";
 type Pick = { concept: ManifestConcept; render: RenderInfo };
 
 const MAX_COMPARE = 4;
+const pickKey = (conceptId: string, round: number) => `${conceptId}@${round}`;
 
 function renderOf(concept: ManifestConcept, round: number | null) {
 	return concept.renders.find((render) => render.round === round) ?? concept.current;
 }
 
-function ConceptChip({ concept, index, active, inCompare, onClick }: { concept: ManifestConcept; index: number; active: boolean; inCompare: boolean; onClick: () => void }) {
+function ConceptChip({ concept, index, active, inCompare, review, onClick }: { concept: ManifestConcept; index: number; active: boolean; inCompare: boolean; review: boolean; onClick: () => void }) {
 	const poster = concept.current?.poster;
 	return (
 		<button type="button" className={`concept-chip${active ? " is-active" : ""}${inCompare ? " is-compare" : ""}`} onClick={onClick} title={concept.intent}>
@@ -40,11 +42,27 @@ function ConceptChip({ concept, index, active, inCompare, onClick }: { concept: 
 				</span>
 				<span className="concept-detail role">
 					{templateName(concept.template)} · {FORMATS[concept.format].ratio} · R{concept.round}
-					{concept.stale ? " · stale" : ""}
+					{concept.stale && !review ? " · stale" : ""}
 					{concept.status === "picked" ? " · picked" : ""}
 				</span>
 			</span>
 		</button>
+	);
+}
+
+const SAFE_ZONES: Record<FormatId, { top: number; bottom: number; right: number; left: number; note: string }> = {
+	vertical: { top: 13, bottom: 21, right: 12, left: 4, note: "Reels, Shorts and TikTok buttons" },
+	square: { top: 4, bottom: 10, right: 4, left: 4, note: "Feed crop and caption bar" },
+	wide: { top: 5, bottom: 12, right: 5, left: 5, note: "Player controls" },
+};
+
+function SafeZones({ format }: { format: FormatId }) {
+	const zone = SAFE_ZONES[format];
+	return (
+		<div className="safe-zones" aria-hidden>
+			<div style={{ inset: `${zone.top}% ${zone.right}% ${zone.bottom}% ${zone.left}%` }} />
+			<span>{zone.note}</span>
+		</div>
 	);
 }
 
@@ -78,21 +96,26 @@ function WaitingStage({ clip, guestName }: { clip: ManifestClip; guestName: stri
 			</div>
 		);
 	}
-	const prompt = `Fetch the Riverside tracks for ${guestName} into the Dive Club Clips Raw Drive folder, as guest.mp4, ridd.mp4 and screenshare.mp4, then trim ${clip.slug}.`;
+	const staleCut = clip.checks.find((check) => check.id === "cut-fresh" && check.level === "fail");
+	const prompt = `${staleCut ? `Re-export the cut list for ${clip.slug} from Descript. ` : ""}Fetch the Riverside tracks for ${guestName} into the Dive Club Clips Raw Drive folder, as guest.mp4, ridd.mp4 and screenshare.mp4, then trim ${clip.slug}.`;
 	return (
 		<div className="waiting">
 			<img src="/brand/snorkel.png" alt="" />
-			<h2 className="wide">Waiting on tracks</h2>
-			<p className="role">The brief and cut are in. This clip still needs its files.</p>
-			<div className="waiting-files mono">
-				{missing.map((name) => (
-					<span key={name}>{name}</span>
-				))}
-			</div>
-			<button type="button" className="pill-button" onClick={() => void copyText(prompt, "Prompt copied")}>
-				Copy the prompt for Grok
-				<CopyIcon width={14} height={14} />
-			</button>
+			<h2 className="wide">{clip.removed ? "Removed in Descript" : "Waiting on tracks"}</h2>
+			<p className="role">{clip.removed ? "This clip's composition is marked removed, so nothing is needed here." : (staleCut?.message ?? "The brief and cut are in. This clip still needs its files.")}</p>
+			{clip.removed ? null : (
+				<>
+					<div className="waiting-files mono">
+						{missing.map((name) => (
+							<span key={name}>{name}</span>
+						))}
+					</div>
+					<button type="button" className="pill-button" onClick={() => void copyText(prompt, "Prompt copied")}>
+						Copy the prompt for Grok
+						<CopyIcon width={14} height={14} />
+					</button>
+				</>
+			)}
 		</div>
 	);
 }
@@ -101,7 +124,7 @@ function CompareGrid({ engine, picks, master, onMaster }: { engine: PlayerEngine
 	return (
 		<div className={`compare-grid count-${picks.length}`}>
 			{picks.map(({ concept, render }, index) => {
-				const id = `${concept.id}@${render.round}`;
+				const id = pickKey(concept.id, render.round);
 				const isMaster = master === id;
 				return (
 					<figure key={id} className={isMaster ? "is-master" : undefined}>
@@ -129,9 +152,10 @@ export function ClipRoom({ manifest, clip }: { manifest: Manifest; clip: Manifes
 	const [activeId, setActiveId] = useState<string | null>(query.get("c") ?? rendered[0]?.id ?? concepts[0]?.id ?? null);
 	const [round, setRound] = useState<number | null>(query.get("r") ? Number(query.get("r")) : null);
 	const [mode, setMode] = useState<Mode>((query.get("v") as Mode) ?? "watch");
-	const [compareIds, setCompareIds] = useState<string[]>(() => rendered.slice(0, MAX_COMPARE).map((concept) => concept.id));
+	const [compareKeys, setCompareKeys] = useState<string[]>(() => rendered.slice(0, MAX_COMPARE).map((concept) => pickKey(concept.id, concept.current?.round ?? 1)));
 	const [masterId, setMasterId] = useState<string | null>(null);
-	const stage = useRef<HTMLDivElement>(null);
+	const main = useRef<HTMLDivElement>(null);
+	const [safeZones, setSafeZones] = useState(false);
 
 	const engine = useMemo(() => new PlayerEngine(clip.fps, clip.durationS ?? 0), [clip]);
 	useEffect(() => () => engine.dispose(), [engine]);
@@ -152,6 +176,11 @@ export function ClipRoom({ manifest, clip }: { manifest: Manifest; clip: Manifes
 	}, [activeId, mode, round, engine, state.playing]);
 
 	useEffect(() => {
+		const previews = concepts.flatMap((item) => (item.current ? [mediaUrl(item.current.preview)] : []));
+		void prefetchVideos([...previews, ...clip.files.flatMap((file) => (file.proxy ? [mediaUrl(file.proxy)] : []))]);
+	}, [clip, concepts]);
+
+	useEffect(() => {
 		document.title = `${clip.title} · Dive Studio`;
 		return () => {
 			document.title = "Dive Studio";
@@ -160,24 +189,39 @@ export function ClipRoom({ manifest, clip }: { manifest: Manifest; clip: Manifes
 
 	const picks = useMemo<Pick[]>(() => {
 		const list: Pick[] = [];
-		for (const id of compareIds) {
+		for (const key of compareKeys) {
+			const [id, round] = key.split("@");
 			const item = concepts.find((entry) => entry.id === id);
-			if (item?.current) list.push({ concept: item, render: item.current });
+			const found = item?.renders.find((entry) => entry.round === Number(round));
+			if (item && found) list.push({ concept: item, render: found });
 		}
 		return list;
-	}, [compareIds, concepts]);
-	const compareMaster = masterId && picks.some((pick) => `${pick.concept.id}@${pick.render.round}` === masterId) ? masterId : picks[0] ? `${picks[0].concept.id}@${picks[0].render.round}` : "";
+	}, [compareKeys, concepts]);
+	const compareMaster = masterId && picks.some((pick) => pickKey(pick.concept.id, pick.render.round) === masterId) ? masterId : picks[0] ? pickKey(picks[0].concept.id, picks[0].render.round) : "";
 
 	const selectConcept = useCallback(
 		(id: string) => {
 			if (mode === "compare") {
-				setCompareIds((ids) => (ids.includes(id) ? ids.filter((item) => item !== id) : [...ids, id].slice(-MAX_COMPARE)));
+				const item = concepts.find((entry) => entry.id === id);
+				if (!item?.current) return;
+				const key = pickKey(id, item.current.round);
+				setCompareKeys((keys) => (keys.some((entry) => entry.startsWith(`${id}@`)) ? keys.filter((entry) => !entry.startsWith(`${id}@`)) : [...keys, key].slice(-MAX_COMPARE)));
 				return;
 			}
 			setActiveId(id);
 			setRound(null);
 		},
-		[mode],
+		[mode, concepts],
+	);
+
+	const compareRounds = useCallback(
+		(earlier: number) => {
+			if (!concept || !render) return;
+			setCompareKeys([pickKey(concept.id, earlier), pickKey(concept.id, render.round)]);
+			setMasterId(pickKey(concept.id, render.round));
+			setMode("compare");
+		},
+		[concept, render],
 	);
 
 	const describeMoment = useCallback(() => {
@@ -198,7 +242,7 @@ export function ClipRoom({ manifest, clip }: { manifest: Manifest; clip: Manifes
 	}, [engine, concept, clip, render]);
 
 	const copyMoment = useCallback(() => void copyText(describeMoment(), "Moment copied"), [describeMoment]);
-	const fullscreen = useCallback(() => void stage.current?.requestFullscreen?.(), []);
+	const fullscreen = useCallback(() => void main.current?.requestFullscreen?.(), []);
 
 	const jumpCut = (direction: 1 | -1) => {
 		const edges = (concept?.cuts ?? []).map((cut) => cut.from).sort((a, b) => a - b);
@@ -227,10 +271,11 @@ export function ClipRoom({ manifest, clip }: { manifest: Manifest; clip: Manifes
 		",": () => stepRate(-1),
 		".": () => stepRate(1),
 		m: () => engine.toggleMute(),
-		t: copyMoment,
+		s: () => setSafeZones((shown) => !shown),
 		w: () => setMode("watch"),
-		c: () => rendered.length > 1 && setMode("compare"),
 		f: (event) => (event.shiftKey ? fullscreen() : setMode("files")),
+		// The Inflight widget owns C and T on a hosted review.
+		...(manifest.mode === "local" ? { t: copyMoment, c: () => rendered.length > 1 && setMode("compare") } : {}),
 		...Object.fromEntries(concepts.slice(0, 9).map((item, index) => [String(index + 1), () => selectConcept(item.id)])),
 	});
 
@@ -267,20 +312,21 @@ export function ClipRoom({ manifest, clip }: { manifest: Manifest; clip: Manifes
 				</div>
 			</header>
 
-			<div className="room-main">
+			<div ref={main} className="room-main">
 				{concepts.length > 0 ? (
 					<div className="concept-strip scroll-x">
 						{concepts.map((item, index) => (
-							<ConceptChip key={item.id} concept={item} index={index} active={mode !== "compare" && item.id === activeId} inCompare={mode === "compare" && compareIds.includes(item.id)} onClick={() => selectConcept(item.id)} />
+							<ConceptChip key={item.id} concept={item} index={index} review={manifest.mode === "review"} active={mode !== "compare" && item.id === activeId} inCompare={mode === "compare" && compareKeys.some((key) => key.startsWith(`${item.id}@`))} onClick={() => selectConcept(item.id)} />
 						))}
 					</div>
 				) : null}
 
-				<div ref={stage} className="stage">
+				<div className="stage">
 					{mode === "watch" && render && concept ? (
 						<div className="stage-frame" style={{ aspectRatio: `${render.width} / ${render.height}`, "--ratio": ratio } as React.CSSProperties}>
 							<EngineVideo key={`${concept.id}@${render.round}`} engine={engine} id={`${concept.id}@${render.round}`} src={mediaUrl(render.preview)} poster={mediaUrl(render.poster)} master />
 							<button type="button" className="stage-hit" aria-label="Play or pause" onClick={() => engine.toggle()} />
+							{safeZones ? <SafeZones format={concept.format} /> : null}
 						</div>
 					) : null}
 					{mode === "watch" && !render ? <WaitingStage clip={clip} guestName={guest.name} /> : null}
@@ -288,10 +334,10 @@ export function ClipRoom({ manifest, clip }: { manifest: Manifest; clip: Manifes
 					{mode === "files" ? <FilesWall engine={engine} clip={clip} concept={concept} render={render} /> : null}
 				</div>
 
-				<Transport engine={engine} onCopyMoment={copyMoment} onFullscreen={fullscreen} disabled={!hasVideo} />
+				<Transport engine={engine} onCopyMoment={copyMoment} onFullscreen={fullscreen} safeZones={safeZones} onSafeZones={() => setSafeZones((shown) => !shown)} disabled={!hasVideo} />
 			</div>
 
-			<Rail manifest={manifest} clip={clip} concept={concept} render={render} engine={engine} onPickRound={setRound} agentPrompt={agentPrompt} />
+			<Rail manifest={manifest} clip={clip} concept={concept} render={render} engine={engine} onPickRound={setRound} onCompareRounds={compareRounds} agentPrompt={agentPrompt} />
 			<Timeline engine={engine} clip={clip} concept={concept} render={render} />
 		</div>
 	);

@@ -6,6 +6,7 @@ import { shortTime } from "@core/time";
 import { rules } from "../../system/rules";
 import { AlertIcon, ArrowOutIcon, CheckIcon, CopyIcon } from "../ui/icons";
 import { copyText } from "../ui/toast";
+import { mediaUrl } from "../lib/data";
 import { useEngineFrame, type PlayerEngine } from "./engine";
 
 const TABS = ["Brief", "Words", "Files", "Rules", "Rounds"] as const;
@@ -32,9 +33,15 @@ function payoffTime(clip: ManifestClip) {
 	return sentences[sentences.length - 1]?.start;
 }
 
-function BriefTab({ clip, engine, review }: { clip: ManifestClip; engine: PlayerEngine; review: boolean }) {
+function BriefTab({ clip, concept, engine, review }: { clip: ManifestClip; concept: ManifestConcept | null; engine: PlayerEngine; review: boolean }) {
 	return (
 		<>
+			{concept?.intent ? (
+				<section className="rail-block rail-intent">
+					<h4 className="label">This concept</h4>
+					<p>{concept.intent}</p>
+				</section>
+			) : null}
 			<Quote label="Hook" text={clip.hook} at={0} engine={engine} />
 			<Quote label="Payoff" text={clip.payoff} at={payoffTime(clip)} engine={engine} />
 			{clip.arc ? <Quote label="Arc" text={clip.arc} engine={engine} /> : null}
@@ -192,8 +199,9 @@ function RulesTab({ clip, concept, engine }: { clip: ManifestClip; concept: Mani
 	);
 }
 
-function RoundsTab({ concept, render, onPick }: { concept: ManifestConcept | null; render: RenderInfo | null; onPick: (round: number) => void }) {
+function RoundsTab({ concept, render, review, onPick, onCompare }: { concept: ManifestConcept | null; render: RenderInfo | null; review: boolean; onPick: (round: number) => void; onCompare: (earlier: number) => void }) {
 	if (!concept) return <p className="rail-empty">Rounds appear once a concept exists.</p>;
+	const earlier = render ? [...concept.renders].reverse().find((item) => item.round < render.round) : undefined;
 	return (
 		<section className="rail-block">
 			<h4 className="label">{concept.name}</h4>
@@ -209,19 +217,26 @@ function RoundsTab({ concept, render, onPick }: { concept: ManifestConcept | nul
 									<span className="mono rail-tiny">{note.date}{available ? "" : " · not rendered"}</span>
 								</span>
 							</button>
-							{note.feedbackUrl ? <a href={note.feedbackUrl} target="_blank" rel="noreferrer" className="rail-tiny">Feedback on Inflight <ArrowOutIcon width={12} height={12} /></a> : null}
+							{note.reviewUrl ? <a href={note.reviewUrl} target="_blank" rel="noreferrer" className="rail-tiny round-link">Review on Inflight <ArrowOutIcon width={12} height={12} /></a> : null}
+							{note.feedbackUrl ? <a href={note.feedbackUrl} target="_blank" rel="noreferrer" className="rail-tiny round-link">Feedback this round answered <ArrowOutIcon width={12} height={12} /></a> : null}
 						</div>
 					);
 				})}
+			</div>
+			<div className="round-actions">
+				{earlier ? <button type="button" className="pill-button" onClick={() => onCompare(earlier.round)}>Compare with R{earlier.round}</button> : null}
+				{render && !review ? <a className="pill-button" href={mediaUrl(render.preview.replace("preview.mp4", "master.mp4"))} download={`${concept.id}-r${render.round}.mp4`}>Download master</a> : null}
 			</div>
 			{render ? <p className="rail-tiny rail-meta mono">{render.width}×{render.height} · rendered in {render.renderSeconds}s · {bytes(render.masterBytes)} master</p> : null}
 		</section>
 	);
 }
 
-type RailProps = { manifest: Manifest; clip: ManifestClip; concept: ManifestConcept | null; render: RenderInfo | null; engine: PlayerEngine; onPickRound: (round: number) => void; agentPrompt: () => string };
+type RailProps = { manifest: Manifest; clip: ManifestClip; concept: ManifestConcept | null; render: RenderInfo | null; engine: PlayerEngine; onPickRound: (round: number) => void; onCompareRounds: (earlier: number) => void; agentPrompt: () => string };
 
-export function Rail({ manifest, clip, concept, render, engine, onPickRound, agentPrompt }: RailProps) {
+export function Rail({ manifest, clip, concept, render, engine, onPickRound, onCompareRounds, agentPrompt }: RailProps) {
+	const review = manifest.mode === "review";
+	const tabs = review ? TABS.filter((name) => name !== "Rules") : TABS;
 	const [tab, setTab] = useState<Tab>("Brief");
 	useEffect(() => {
 		document.querySelector(".rail-body")?.scrollTo(0, 0);
@@ -230,7 +245,7 @@ export function Rail({ manifest, clip, concept, render, engine, onPickRound, age
 	return (
 		<aside className="rail">
 			<div className="rail-tabs" role="tablist">
-				{TABS.map((name) => (
+				{tabs.map((name) => (
 					<button key={name} type="button" role="tab" aria-selected={tab === name} className={tab === name ? "is-active" : undefined} onClick={() => setTab(name)}>
 						{name}
 						{name === "Rules" && warnings > 0 ? <i>{warnings}</i> : null}
@@ -238,18 +253,20 @@ export function Rail({ manifest, clip, concept, render, engine, onPickRound, age
 				))}
 			</div>
 			<div className="rail-body scroll">
-				{tab === "Brief" ? <BriefTab clip={clip} engine={engine} review={manifest.mode === "review"} /> : null}
+				{tab === "Brief" ? <BriefTab clip={clip} concept={concept} engine={engine} review={manifest.mode === "review"} /> : null}
 				{tab === "Words" ? <WordsTab clip={clip} engine={engine} /> : null}
 				{tab === "Files" ? <FilesTab clip={clip} /> : null}
 				{tab === "Rules" ? <RulesTab clip={clip} concept={concept} engine={engine} /> : null}
-				{tab === "Rounds" ? <RoundsTab concept={concept} render={render} onPick={onPickRound} /> : null}
+				{tab === "Rounds" ? <RoundsTab concept={concept} render={render} review={manifest.mode === "review"} onPick={onPickRound} onCompare={onCompareRounds} /> : null}
 			</div>
-			{manifest.mode === "local" ? (
+			{manifest.mode === "review" ? (
+				<p className="rail-hint">Use the Inflight button to talk over any moment. Keep the timecode in view so your notes land on the right frame.</p>
+			) : (
 				<button type="button" className="rail-agent" onClick={() => void copyText(agentPrompt(), "Copied. Paste it to your agent.")}>
 					<CopyIcon width={15} height={15} />
 					Copy a prompt for this clip
 				</button>
-			) : null}
+			)}
 		</aside>
 	);
 }

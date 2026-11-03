@@ -11,6 +11,8 @@
 	"arc": "Hook: Ridd asks if this is James's first freelance project as a builder: \"Yeah, yeah, yeah.\" → Tension: he was always jealous of engineers and never a technical designer → Payoff: the tools make you move fast, and \"I'm loving it.\"",
 	"lengthTargetS": 83.4,
 	"durationS": 83.375,
+	"descriptDurationS": 83.356,
+	"removed": false,
 	"fps": 24,
 	"format": "square",
 	"notionUrl": "https://app.notion.com/40654bed0e36816eb2c4d6852ee8bc75",
@@ -46,7 +48,7 @@
 			"start": 0,
 			"end": 5,
 			"speaker": "Ridd → James",
-			"line": "\"Is this the **first project** you've taken on as a freelancer where you're—\" / \"Yeah. Yeah, yeah.\"",
+			"line": "\"Is this the first project you've taken on as a freelancer where you're—\" / \"Yeah. Yeah, yeah.\"",
 			"visual": "Ridd full frame, quick cut to James full frame for the answer."
 		},
 		{
@@ -60,21 +62,21 @@
 			"start": 7,
 			"end": 30,
 			"speaker": "James",
-			"line": "\"…always so **jealous** of engineers being able to build ideas…\"",
+			"line": "\"…always so jealous of engineers being able to build ideas…\"",
 			"visual": "James talking head, full frame."
 		},
 		{
 			"start": 30,
 			"end": 60,
 			"speaker": "James",
-			"line": "\"…from **zero to one**… I've never been a **technical designer** whatsoever…\"",
+			"line": "\"…from zero to one… I've never been a technical designer whatsoever…\"",
 			"visual": "James full frame. Optional B-roll (Ridd's call): little pattern tools (raw screenshare 00:04:14:00–00:04:31:08, episode 06:35–06:46; or raw screenshare 00:01:50:04–00:02:33:19, episode 04:42–05:15)."
 		},
 		{
 			"start": 60,
 			"end": 83,
 			"speaker": "James",
-			"line": "\"…things just **move fast** and you will move fast… **I'm loving it**.\"",
+			"line": "\"…things just move fast and you will move fast… I'm loving it.\"",
 			"visual": "James full frame for the payoff."
 		}
 	],

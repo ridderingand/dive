@@ -138,7 +138,7 @@ export function importNotion(rows: NotionRow[], briefs: string) {
 			sourceNote: row["Source tracks"],
 			audio: existing.audio ?? `${base}/audio.m4a`,
 			sources: existing.sources?.length ? existing.sources : defaultSources,
-			beats: (brief.beats as Clip["beats"]) ?? [],
+			beats: ((brief.beats as Clip["beats"]) ?? []).map((beat) => ({ ...beat, line: beat.line?.replace(/\*\*/g, "") ?? null })),
 			broll: ((brief.broll as Clip["broll"]) ?? []).map((item) => ({ ...item, note: item.note ?? null, rawTimecode: item.rawTimecode ?? null })),
 			captionCopy: (brief.captionCopy as string | null) ?? null,
 			visualNotes: (brief.visualNotes as string[]) ?? [],

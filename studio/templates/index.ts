@@ -1,12 +1,18 @@
-import { demoWide } from "./demo-wide";
-import { talkSquare } from "./talk-square";
-import { talkVertical } from "./talk-vertical";
-import type { TemplateDef } from "./types";
+import type { ComponentType } from "react";
+import type { TemplateInput } from "@core/schema";
+import { DemoWide } from "./demo-wide";
+import { TalkSquare } from "./talk-square";
+import { TalkVertical } from "./talk-vertical";
 
-export const templates: TemplateDef[] = [talkSquare, talkVertical, demoWide];
+/** Add a template here and in registry.ts. */
+export const components: Record<string, ComponentType<TemplateInput>> = {
+	"talk-square": TalkSquare,
+	"talk-vertical": TalkVertical,
+	"demo-wide": DemoWide,
+};
 
-export function templateById(id: string): TemplateDef {
-	const template = templates.find((item) => item.id === id);
-	if (!template) throw new Error(`Unknown template "${id}"`);
-	return template;
+export function templateComponent(id: string): ComponentType<TemplateInput> {
+	const component = components[id];
+	if (!component) throw new Error(`Unknown template "${id}"`);
+	return component;
 }

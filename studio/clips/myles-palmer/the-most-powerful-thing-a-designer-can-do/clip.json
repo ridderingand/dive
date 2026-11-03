@@ -15,6 +15,8 @@
 	"arc": "Claim → proof 1 (Natalie's app, screen share) → proof 2 (Adam's app, screen share) → encouraged ending.",
 	"lengthTargetS": 61.6,
 	"durationS": 61.583,
+	"descriptDurationS": 61.664,
+	"removed": false,
 	"fps": 24,
 	"format": null,
 	"notionUrl": "https://app.notion.com/40854bed0e3681c9a6dff11425cf57e2",

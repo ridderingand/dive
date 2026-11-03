@@ -1,7 +1,14 @@
 import { expect, test } from "bun:test";
+import { existsSync } from "node:fs";
+import path from "node:path";
 import { captionStyles } from "../system/dive";
 import { templates } from "../templates/registry";
 import { loadAllClips } from "./lib/load";
+import { ROOT } from "./lib/paths";
+
+test("every template in the registry has a folder", () => {
+	for (const template of templates) expect(existsSync(path.join(ROOT, "templates", template.id, "index.tsx"))).toBe(true);
+});
 
 test("every clip and concept in the repo is valid", () => {
 	const clips = loadAllClips();

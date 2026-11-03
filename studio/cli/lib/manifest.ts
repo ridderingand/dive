@@ -47,7 +47,10 @@ export async function buildClip(loaded: LoadedClip): Promise<ManifestClip> {
 	const concepts: ManifestConcept[] = loaded.concepts.map((concept) => {
 		const renders = renderList(loaded, concept.id);
 		const current = renders.find((render) => render.round === concept.round) ?? renders[renders.length - 1] ?? null;
-		return { ...concept, renders, current, stale: current ? current.hash !== renderHash(loaded, concept) : false, checks: conceptChecks(clip, concept, captions), finalFile: finalFile(loaded, concept.id) };
+		const stale = current ? current.hash !== renderHash(loaded, concept) : false;
+		const checks = conceptChecks(clip, concept, captions);
+		if (stale) checks.push({ id: "render-fresh", title: "Render is current", level: "warn", message: "The concept or its template changed after this render." });
+		return { ...concept, renders, current, stale, checks, finalFile: finalFile(loaded, concept.id) };
 	});
 	const audioExists = Boolean(clip.audio && existsSync(mediaPath(clip.audio)));
 	const { sources: _sources, ...rest } = clip;

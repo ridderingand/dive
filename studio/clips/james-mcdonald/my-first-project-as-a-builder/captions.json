@@ -34,7 +34,7 @@
 			"start": 0.46,
 			"end": 0.9,
 			"speaker": null,
-			"em": false
+			"em": true
 		},
 		{
 			"i": 4,
@@ -42,7 +42,7 @@
 			"start": 0.9,
 			"end": 1.72,
 			"speaker": null,
-			"em": false
+			"em": true
 		},
 		{
 			"i": 5,
@@ -282,7 +282,7 @@
 			"start": 10.78,
 			"end": 11.18,
 			"speaker": null,
-			"em": false
+			"em": true
 		},
 		{
 			"i": 35,
@@ -386,7 +386,7 @@
 			"start": 15.32,
 			"end": 15.72,
 			"speaker": null,
-			"em": false
+			"em": true
 		},
 		{
 			"i": 48,
@@ -666,7 +666,7 @@
 			"start": 26.48,
 			"end": 26.8,
 			"speaker": null,
-			"em": false
+			"em": true
 		},
 		{
 			"i": 83,
@@ -674,7 +674,7 @@
 			"start": 26.8,
 			"end": 27.02,
 			"speaker": null,
-			"em": false
+			"em": true
 		},
 		{
 			"i": 84,
@@ -682,7 +682,7 @@
 			"start": 27.02,
 			"end": 27.24,
 			"speaker": null,
-			"em": false
+			"em": true
 		},
 		{
 			"i": 85,
@@ -810,7 +810,7 @@
 			"start": 31.42,
 			"end": 31.98,
 			"speaker": null,
-			"em": false
+			"em": true
 		},
 		{
 			"i": 101,
@@ -1122,7 +1122,7 @@
 			"start": 40.72,
 			"end": 41.18,
 			"speaker": null,
-			"em": false
+			"em": true
 		},
 		{
 			"i": 140,
@@ -1130,7 +1130,7 @@
 			"start": 41.18,
 			"end": 41.72,
 			"speaker": null,
-			"em": false
+			"em": true
 		},
 		{
 			"i": 141,
@@ -1378,7 +1378,7 @@
 			"start": 50.54,
 			"end": 51.3,
 			"speaker": null,
-			"em": false
+			"em": true
 		},
 		{
 			"i": 172,
@@ -1586,7 +1586,7 @@
 			"start": 58.3,
 			"end": 58.94,
 			"speaker": null,
-			"em": false
+			"em": true
 		},
 		{
 			"i": 198,
@@ -1594,7 +1594,7 @@
 			"start": 58.94,
 			"end": 59.46,
 			"speaker": null,
-			"em": false
+			"em": true
 		},
 		{
 			"i": 199,
@@ -1994,7 +1994,7 @@
 			"start": 73.12,
 			"end": 73.36,
 			"speaker": null,
-			"em": false
+			"em": true
 		},
 		{
 			"i": 249,
@@ -2002,7 +2002,7 @@
 			"start": 73.36,
 			"end": 73.76,
 			"speaker": null,
-			"em": false
+			"em": true
 		},
 		{
 			"i": 250,
@@ -2186,7 +2186,7 @@
 			"start": 79.56,
 			"end": 80.06,
 			"speaker": null,
-			"em": false
+			"em": true
 		},
 		{
 			"i": 273,
@@ -2194,7 +2194,7 @@
 			"start": 80.06,
 			"end": 80.24,
 			"speaker": null,
-			"em": false
+			"em": true
 		},
 		{
 			"i": 274,
@@ -2202,7 +2202,7 @@
 			"start": 80.24,
 			"end": 80.44,
 			"speaker": null,
-			"em": false
+			"em": true
 		},
 		{
 			"i": 275,
@@ -2307,6 +2307,12 @@
 			"em": false
 		},
 		{
+			"line": "first project",
+			"start": 0.46,
+			"end": 1.72,
+			"em": true
+		},
+		{
 			"line": "that you've",
 			"start": 1.72,
 			"end": 2.14,
@@ -2403,6 +2409,12 @@
 			"em": false
 		},
 		{
+			"line": "jealous",
+			"start": 10.78,
+			"end": 11.18,
+			"em": true
+		},
+		{
 			"line": "of engineers",
 			"start": 11.18,
 			"end": 11.8,
@@ -2443,6 +2455,12 @@
 			"start": 14.84,
 			"end": 15.32,
 			"em": false
+		},
+		{
+			"line": "frustrated",
+			"start": 15.32,
+			"end": 15.72,
+			"em": true
 		},
 		{
 			"line": "as well",
@@ -2553,6 +2571,18 @@
 			"em": false
 		},
 		{
+			"line": "zero to",
+			"start": 26.48,
+			"end": 27.02,
+			"em": true
+		},
+		{
+			"line": "one",
+			"start": 27.02,
+			"end": 27.24,
+			"em": true
+		},
+		{
 			"line": "and build",
 			"start": 27.24,
 			"end": 28.08,
@@ -2599,6 +2629,12 @@
 			"start": 30.9,
 			"end": 31.42,
 			"em": false
+		},
+		{
+			"line": "empowers",
+			"start": 31.42,
+			"end": 31.98,
+			"em": true
 		},
 		{
 			"line": "me to",
@@ -2715,6 +2751,12 @@
 			"em": false
 		},
 		{
+			"line": "technical designer",
+			"start": 40.72,
+			"end": 41.72,
+			"em": true
+		},
+		{
 			"line": "whatsoever",
 			"start": 41.72,
 			"end": 42.2,
@@ -2811,6 +2853,12 @@
 			"em": false
 		},
 		{
+			"line": "unlock",
+			"start": 50.54,
+			"end": 51.3,
+			"em": true
+		},
+		{
 			"line": "just a",
 			"start": 51.3,
 			"end": 52.12,
@@ -2887,6 +2935,12 @@
 			"start": 58.04,
 			"end": 58.3,
 			"em": false
+		},
+		{
+			"line": "simple ideas",
+			"start": 58.3,
+			"end": 59.46,
+			"em": true
 		},
 		{
 			"line": "over like",
@@ -3039,6 +3093,12 @@
 			"em": false
 		},
 		{
+			"line": "move fast",
+			"start": 73.12,
+			"end": 73.76,
+			"em": true
+		},
+		{
 			"line": "and you",
 			"start": 73.76,
 			"end": 74.26,
@@ -3103,6 +3163,18 @@
 			"start": 78.88,
 			"end": 79.56,
 			"em": false
+		},
+		{
+			"line": "I'm loving",
+			"start": 79.56,
+			"end": 80.24,
+			"em": true
+		},
+		{
+			"line": "it",
+			"start": 80.24,
+			"end": 80.44,
+			"em": true
 		},
 		{
 			"line": "you know",

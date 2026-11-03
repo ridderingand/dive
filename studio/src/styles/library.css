@@ -119,9 +119,7 @@
 }
 
 .template-frame {
-	max-width: 100cqw;
-	max-height: 100cqh;
-	height: 100cqh;
+	width: min(100cqw, calc(100cqh * var(--ratio, 1)));
 	border-radius: 16px;
 	overflow: hidden;
 	box-shadow:

@@ -17,7 +17,14 @@ const NEXT_STEP: Record<StageId, string> = {
 	final: "Exported",
 };
 
+function nextStep(clip: ManifestClip) {
+	if (clip.checks.some((check) => check.id === "cut-fresh" && check.level === "fail")) return { text: "Cut list out of date", warn: true };
+	if (clip.concepts.some((concept) => concept.stale)) return { text: "Needs a new render", warn: true };
+	return { text: NEXT_STEP[clip.stage], warn: false };
+}
+
 function ClipRow({ clip }: { clip: ManifestClip }) {
+	const next = nextStep(clip);
 	const posters = clip.concepts.filter((concept) => concept.current).slice(0, 4);
 	const ready = clip.stage !== "clip";
 	return (
@@ -34,7 +41,7 @@ function ClipRow({ clip }: { clip: ManifestClip }) {
 			</span>
 			<span className="clip-row-state">
 				<StageMeter stage={clip.stage} />
-				<span className="clip-row-next">{NEXT_STEP[clip.stage]}</span>
+				<span className={`clip-row-next${next.warn ? " is-warn" : ""}`}>{next.text}</span>
 			</span>
 			<span className="clip-row-time mono">{clip.durationS ? shortTime(clip.durationS) : "–"}</span>
 		</a>
@@ -43,7 +50,9 @@ function ClipRow({ clip }: { clip: ManifestClip }) {
 
 export function ClipsPage({ manifest }: { manifest: Manifest }) {
 	const [stage, setStage] = useState<StageId | null>(null);
-	const counts = useMemo(() => Object.fromEntries(STAGES.map((item) => [item.id, manifest.clips.filter((clip) => clip.stage === item.id).length])), [manifest]);
+	const live = useMemo(() => manifest.clips.filter((clip) => !clip.removed), [manifest]);
+	const removed = manifest.clips.filter((clip) => clip.removed);
+	const counts = useMemo(() => Object.fromEntries(STAGES.map((item) => [item.id, live.filter((clip) => clip.stage === item.id).length])), [live]);
 	const review = manifest.review;
 	const furthest = (guest: Guest) => Math.max(...manifest.clips.filter((clip) => clip.guest === guest.slug).map((clip) => STAGES.findIndex((item) => item.id === clip.stage)));
 	const guests = useMemo(() => [...manifest.guests].sort((a, b) => furthest(b) - furthest(a)), [manifest]);
@@ -71,7 +80,7 @@ export function ClipsPage({ manifest }: { manifest: Manifest }) {
 			<div className="clips-inner">
 				<header className="clips-hero">
 					<h1 className="display">{review ? review.title : "Clips"}</h1>
-					<p className="role">{review?.note ?? `${manifest.clips.length} clips from ${manifest.guests.length} episodes, from the cut to the file you ship.`}</p>
+					<p className="role">{review?.note ?? `${live.length} clips from ${manifest.guests.length} episodes, from the cut to the file you ship.`}</p>
 				</header>
 
 				{review ? null : (
@@ -87,7 +96,7 @@ export function ClipsPage({ manifest }: { manifest: Manifest }) {
 				)}
 
 				{guests.map((guest) => {
-					const clips = manifest.clips.filter((clip) => clip.guest === guest.slug && (!stage || clip.stage === stage)).sort((a, b) => (b.score ?? 0) - (a.score ?? 0));
+					const clips = manifest.clips.filter((clip) => clip.guest === guest.slug && !clip.removed && (!stage || clip.stage === stage)).sort((a, b) => (b.score ?? 0) - (a.score ?? 0));
 					if (clips.length === 0) return null;
 					return (
 						<section key={guest.slug} className="guest-group" style={{ "--accent": accentOf(guest) } as React.CSSProperties}>
@@ -105,6 +114,17 @@ export function ClipsPage({ manifest }: { manifest: Manifest }) {
 						</section>
 					);
 				})}
+
+				{removed.length > 0 && !stage ? (
+					<section className="removed-group">
+						<h2 className="label">Removed in Descript</h2>
+						{removed.map((clip) => (
+							<a key={clip.slug} href={`#${clipPath(clip)}`}>
+								{clip.title}
+							</a>
+						))}
+					</section>
+				) : null}
 			</div>
 			<img className="reef" src="/brand/sea-floor.webp" alt="" aria-hidden />
 			</div>

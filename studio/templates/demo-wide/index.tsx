@@ -6,7 +6,6 @@ import { Bubbles } from "../_kit/Bubble";
 import { Captions } from "../_kit/Captions";
 import { CutSequence, CutVideo, FramedCut, isCamera, zoomAt } from "../_kit/Picture";
 import { TemplateShell } from "../_kit/Shell";
-import type { TemplateDef } from "../types";
 
 const INSET = 72;
 
@@ -40,7 +39,7 @@ function ScreenWindow({ input, cut }: { input: TemplateInput; cut: Cut }) {
 	);
 }
 
-function DemoWide(input: TemplateInput) {
+export function DemoWide(input: TemplateInput) {
 	return (
 		<TemplateShell input={input}>
 			<AbsoluteFill>
@@ -55,15 +54,3 @@ function DemoWide(input: TemplateInput) {
 		</TemplateShell>
 	);
 }
-
-export const demoWide: TemplateDef = {
-	id: "demo-wide",
-	name: "Demo wide",
-	summary: "16:9 with the screen share in a window on the Dive backdrop. Strategic zooms do the framing instead of a crop.",
-	bestFor: "Demo-heavy clips where the UI is the story.",
-	formats: ["wide"],
-	defaultCaptionStyle: "sky-clash",
-	anatomy: ["Screen window with 72px margins", "Bubble bottom right", "Zooms land inside the window", "Cameras go full frame"],
-	knobs: [{ key: "captionY", type: "number", fallback: "930", description: "Vertical centre of the captions" }],
-	component: DemoWide,
-};

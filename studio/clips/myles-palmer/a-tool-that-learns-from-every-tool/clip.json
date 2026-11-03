@@ -14,6 +14,8 @@
 	"arc": "Obsession → a single prompt makes an Oodle (screen share) → self-learning system payoff.",
 	"lengthTargetS": 44.3,
 	"durationS": 65.5,
+	"descriptDurationS": 44.315,
+	"removed": true,
 	"fps": 24,
 	"format": null,
 	"notionUrl": "https://app.notion.com/40854bed0e368113a4c0d26a4c82230c",
