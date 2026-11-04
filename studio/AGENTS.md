@@ -25,6 +25,14 @@ clip  →  a file per person  →  concepts (template + cuts)  →  review on In
 
 **This repo is public.** Never commit footage, licensed fonts (`public/fonts/`), tokens or signed URLs.
 
+## Icons
+
+Every icon in the studio is from the **Central Icon System**, and they all live in `src/ui/icons.tsx`. Reuse one from there first. Never use Lucide, Phosphor, Heroicons, Material, an emoji or a hand-drawn SVG.
+
+To add one, copy its body from the catalog in the Inflight repo, `apps/api/assets/central-icons.json`, into `src/ui/icons.tsx` as a named component. Use `bodies.outlined` by default and `bodies.filled` for a selected or active state. Colour comes from `currentColor`. If nothing fits, or you can't reach the catalog, ask Ridd.
+
+Add only the icons the studio uses. Central's license forbids publishing the full set, so never commit the catalog here.
+
 ## The files Grok delivers
 
 Per clip, under `media/<guest>/<clip>/`: `guest.mp4`, `ridd.mp4`, `screenshare.mp4` (if any) and `audio.m4a`, all starting at clip time 0 and all the same length. B-roll that isn't synced goes in `media/<guest>/_broll/` and gets `"synced": false` in `clip.json`. Grok's raw tracks are per episode in Drive under `Dive Club Clips Raw/<Guest>`.
@@ -91,6 +99,10 @@ When a clip goes live, mark it with `bun run dive posted <clip>` (or the button 
 
 After each share, set the Notion row: Status to `Ready for review`, and the Inflight link where the Mixture link used to go. Never edit Descript compositions. Nothing goes out as final until Ridd or Anna asks.
 
+## Dictated notes
+
+In the studio, Anna presses **Talk**, moves through the video and says what she'd change. Each note lands on the moment on screen, and transcription runs on her machine, so her voice never leaves it. If someone asks you to apply their notes, run `bun run dive notes <clip>`. Times and concepts are all there. To see a moment, use `bun run dive still <clip> <concept> <seconds>`. Apply the changes, record the round, then clear them with `bun run dive notes <clip> --clear`.
+
 ## Editing a template
 
 Ridd will say something like "edit the talk square template". Change `templates/<id>/index.tsx`, or `system/dive.ts` when the change belongs to every clip. Preview it at `#/templates/<id>` in the studio, which runs the template live on placeholder footage. Any template or system change marks existing renders stale, and the studio says so. Re-render what matters with `bun run dive render --all`.
@@ -103,7 +115,7 @@ Query the Dive Club Clips data source (`collection://1c954bed-0e36-8052-a56d-000
 
 ```bash
 bun install
-bun run dive setup    # fetches caption fonts
+bun run dive setup    # fetches caption fonts and the local speech model
 bun run dev           # http://localhost:4410
 bun test core cli
 ```

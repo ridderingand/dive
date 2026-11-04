@@ -10,10 +10,10 @@ const BY_STAGE: Record<StageId, { text: string; tone: StatusTone }> = {
 	final: { text: "Exported", tone: "done" },
 };
 
-export function nextStep(clip: ManifestClip): { text: string; tone: StatusTone } {
+export function nextStep(clip: ManifestClip): { text: string; tone: StatusTone } | null {
 	if (clip.posted) return { text: "Posted", tone: "done" };
 	if (clip.checks.some((check) => check.id === "cut-fresh" && check.level === "fail")) return { text: "Cut list out of date", tone: "warn" };
 	if (clip.concepts.some((concept) => concept.stale)) return { text: "Needs a new render", tone: "warn" };
-	if (clip.stage === "concepts" && clip.concepts.some((concept) => concept.current)) return { text: "Ready to share", tone: "ready" };
+	if (clip.stage === "concepts" && clip.concepts.some((concept) => concept.current)) return null;
 	return BY_STAGE[clip.stage];
 }

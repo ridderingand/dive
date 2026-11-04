@@ -1,18 +1,20 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Manifest, ManifestClip, ManifestConcept, RenderInfo } from "@core/manifest";
+import type { Note } from "@core/moments";
 import { FORMATS, type FormatId } from "@core/formats";
 import { guestOf, mediaUrl } from "../lib/data";
 import { useKeys } from "../lib/keys";
 import { nextStep } from "../lib/next-step";
+import { useDictation } from "../lib/dictation";
 import { navigate, replaceQuery, useRoute } from "../lib/router";
 import { prefetchVideos } from "../lib/video-source";
 import { templateName } from "../lib/templates";
 import { PlayerEngine, useEngineFrame } from "../player/engine";
 import { EngineVideo } from "../player/EngineVideo";
-import { Rail } from "../player/Rail";
+import { Rail, type RailTab } from "../player/Rail";
 import { Timeline } from "../player/Timeline";
 import { RATES, Transport } from "../player/Transport";
-import { BackIcon, CheckIcon, CopyIcon } from "../ui/icons";
+import { BackIcon, CheckIcon, CopyIcon, SidebarClosedIcon, SidebarOpenIcon } from "../ui/icons";
 import { copyText, toast } from "../ui/toast";
 import { accentOf } from "./ClipsPage";
 
@@ -21,7 +23,23 @@ type Pick = { concept: ManifestConcept; render: RenderInfo };
 
 const MAX_COMPARE = 4;
 const STAMP_EVERY_MS = 500;
+const RAIL_KEY = "dive-studio:rail";
 const pickKey = (conceptId: string, round: number) => `${conceptId}@${round}`;
+
+// Storage can throw on a hosted review page, and the rail has to work there too.
+function railWasClosed() {
+	try {
+		return localStorage.getItem(RAIL_KEY) === "closed";
+	} catch {
+		return false;
+	}
+}
+
+function rememberRail(open: boolean) {
+	try {
+		localStorage.setItem(RAIL_KEY, open ? "open" : "closed");
+	} catch {}
+}
 
 function renderOf(concept: ManifestConcept, round: number | null) {
 	return concept.renders.find((render) => render.round === round) ?? concept.current;
@@ -164,6 +182,7 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 	const [masterId, setMasterId] = useState<string | null>(null);
 	const main = useRef<HTMLDivElement>(null);
 	const [safeZones, setSafeZones] = useState(false);
+	const [railOpen, setRailOpen] = useState(() => !railWasClosed());
 
 	const engine = useMemo(() => new PlayerEngine(clip.fps, clip.durationS ?? 0), [clip]);
 	useEffect(() => () => engine.dispose(), [engine]);
@@ -249,6 +268,34 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 		[concept, render],
 	);
 
+	const [notes, setNotes] = useState<Note[]>([]);
+	useEffect(() => {
+		if (manifest.mode !== "local") return;
+		fetch(mediaUrl(`notes/${clip.guest}/${clip.slug}/notes.json`), { cache: "no-store" })
+			.then((response) => (response.ok ? response.json() : []))
+			.then(setNotes)
+			.catch(() => {});
+	}, [manifest.mode, clip]);
+	const [railTab, setRailTab] = useState<RailTab>("Transcript");
+	const dictation = useDictation({
+		engine,
+		guest: clip.guest,
+		slug: clip.slug,
+		count: () => notes.length,
+		current: () => ({ concept: concept?.id ?? null, round: render?.round ?? null }),
+		onNotes: (next) => {
+			setNotes(next);
+			setRailTab("Notes");
+			rememberRail(true);
+			setRailOpen(true);
+		},
+		onError: toast,
+	});
+	const saveNotes = (next: Note[]) => {
+		setNotes(next);
+		void fetch("/api/notes/save", { method: "POST", body: JSON.stringify({ clip: `${clip.guest}/${clip.slug}`, notes: next }) });
+	};
+
 	const togglePosted = () => {
 		void fetch(`/api/posted?clip=${clip.guest}/${clip.slug}${clip.posted ? "&undo=1" : ""}`, { method: "POST" }).then((response) => {
 			if (response.ok) onChanged();
@@ -257,6 +304,10 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 	};
 
 	const fullscreen = useCallback(() => void main.current?.requestFullscreen?.(), []);
+	const toggleRail = () => {
+		rememberRail(!railOpen);
+		setRailOpen(!railOpen);
+	};
 
 	const jumpCut = (direction: 1 | -1) => {
 		const edges = (concept?.cuts ?? []).map((cut) => cut.from).sort((a, b) => a - b);
@@ -288,8 +339,9 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 		s: () => setSafeZones((shown) => !shown),
 		w: () => setMode("watch"),
 		f: fullscreen,
+		"\\": toggleRail,
 		// The Inflight widget owns C on a hosted review.
-		...(manifest.mode === "local" ? { c: () => rendered.length > 1 && setMode("compare") } : {}),
+		...(manifest.mode === "local" ? { t: dictation.toggle, c: () => rendered.length > 1 && setMode("compare") } : {}),
 		...Object.fromEntries(concepts.slice(0, 9).map((item, index) => [String(index + 1), () => selectConcept(item.id)])),
 	});
 
@@ -298,7 +350,7 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 	const next = nextStep(clip);
 
 	return (
-		<div className="room" style={{ "--accent": accentOf(guest) } as React.CSSProperties}>
+		<div className={`room${railOpen ? "" : " is-rail-closed"}`} style={{ "--accent": accentOf(guest) } as React.CSSProperties}>
 			<header className="room-head">
 				{manifest.mode === "local" || reviewMany ? (
 					<button type="button" className="icon-button" onClick={() => navigate("/")} aria-label="All clips">
@@ -309,7 +361,7 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 					<h1 className="wide">{clip.title}</h1>
 					<span className="room-guest">
 						<span className="room-guest-name">{guest.name}</span>
-						<span className={`status tone-${next.tone}`}>{next.text}</span>
+						{next ? <span className={`status tone-${next.tone}`}>{next.text}</span> : null}
 					</span>
 				</div>
 				{manifest.mode === "local" ? (
@@ -328,6 +380,9 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 						</button>
 					</div>
 				) : null}
+				<button type="button" className="icon-button" onClick={toggleRail} aria-label={railOpen ? "Hide sidebar" : "Show sidebar"} aria-expanded={railOpen} title={railOpen ? "Hide sidebar" : "Show sidebar"}>
+					{railOpen ? <SidebarOpenIcon /> : <SidebarClosedIcon />}
+				</button>
 			</header>
 
 			<div ref={main} className="room-main">
@@ -351,11 +406,11 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 					{mode === "compare" ? <CompareGrid engine={engine} picks={picks} master={compareMaster} onMaster={setMasterId} /> : null}
 				</div>
 
-				<Transport engine={engine} onFullscreen={fullscreen} safeZones={safeZones} onSafeZones={() => setSafeZones((shown) => !shown)} disabled={!hasVideo} />
+				<Transport engine={engine} dictation={manifest.mode === "local" && hasVideo ? dictation : null} onFullscreen={fullscreen} safeZones={safeZones} onSafeZones={() => setSafeZones((shown) => !shown)} disabled={!hasVideo} />
 			</div>
 
-			<Rail manifest={manifest} clip={clip} concept={concept} render={render} engine={engine} onPickRound={setRound} onCompareRounds={compareRounds} />
-			<Timeline engine={engine} clip={clip} concept={concept} render={render} />
+			<Rail open={railOpen} manifest={manifest} clip={clip} concept={concept} render={render} engine={engine} tab={railTab} onTab={setRailTab} notes={notes} onNotes={saveNotes} onPickRound={setRound} onCompareRounds={compareRounds} />
+			<Timeline engine={engine} clip={clip} concept={concept} render={render} notes={notes} />
 		</div>
 	);
 }

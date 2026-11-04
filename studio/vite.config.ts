@@ -1,5 +1,7 @@
 import { execFile } from "node:child_process";
-import { createReadStream, existsSync, statSync } from "node:fs";
+import { createReadStream, existsSync, mkdirSync, rmSync, statSync, writeFileSync } from "node:fs";
+import type { IncomingMessage } from "node:http";
+import { tmpdir } from "node:os";
 import path from "node:path";
 import react from "@vitejs/plugin-react";
 import { defineConfig, type Plugin } from "vite";
@@ -7,6 +9,17 @@ import { defineConfig, type Plugin } from "vite";
 const media = path.resolve(process.env.DIVE_MEDIA ?? "media");
 
 const CONTENT_TYPES: Record<string, string> = { ".mp4": "video/mp4", ".m4a": "audio/mp4", ".jpg": "image/jpeg", ".png": "image/png", ".json": "application/json", ".svg": "image/svg+xml" };
+
+const CLIP_PATH = /^[a-z0-9-]+\/[a-z0-9-]+$/;
+
+function readBody(req: IncomingMessage) {
+	return new Promise<string>((resolve, reject) => {
+		const chunks: Buffer[] = [];
+		req.on("data", (chunk: Buffer) => chunks.push(chunk));
+		req.on("end", () => resolve(Buffer.concat(chunks).toString()));
+		req.on("error", reject);
+	});
+}
 
 /** Video seeking needs Range requests, which Vite's static handling doesn't give a folder outside public/. */
 function mediaFolder(): Plugin {
@@ -17,13 +30,34 @@ function mediaFolder(): Plugin {
 			server.middlewares.use("/api/posted", (req, res) => {
 				const url = new URL(req.url ?? "", "http://localhost");
 				const clip = url.searchParams.get("clip") ?? "";
-				if (req.method !== "POST" || !/^[a-z0-9-]+\/[a-z0-9-]+$/.test(clip)) {
+				if (req.method !== "POST" || !CLIP_PATH.test(clip)) {
 					res.statusCode = 400;
 					return res.end();
 				}
 				execFile("bun", ["cli/dive.ts", "posted", clip, ...(url.searchParams.get("undo") ? ["--undo"] : [])], (error) => {
 					res.statusCode = error ? 500 : 200;
 					res.end();
+				});
+			});
+			server.middlewares.use("/api/notes/save", async (req, res) => {
+				const { clip, notes } = JSON.parse(await readBody(req)) as { clip: string; notes: unknown[] };
+				if (!CLIP_PATH.test(clip)) {
+					res.statusCode = 400;
+					return res.end();
+				}
+				const file = path.join(media, "notes", clip, "notes.json");
+				mkdirSync(path.dirname(file), { recursive: true });
+				writeFileSync(file, JSON.stringify(notes, null, "\t"));
+				res.end();
+			});
+			server.middlewares.use("/api/notes", async (req, res) => {
+				const file = path.join(tmpdir(), `dive-take-${Date.now()}.json`);
+				writeFileSync(file, await readBody(req));
+				execFile("bun", ["cli/dive.ts", "take", file], { maxBuffer: 1e7 }, (error, stdout) => {
+					rmSync(file, { force: true });
+					res.statusCode = error ? 500 : 200;
+					res.setHeader("Content-Type", "application/json");
+					res.end(error ? "[]" : stdout);
 				});
 			});
 			server.middlewares.use("/media", (req, res, next) => {

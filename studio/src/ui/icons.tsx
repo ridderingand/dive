@@ -1,84 +1,105 @@
 import type { SVGProps } from "react";
 
-const base = { width: 18, height: 18, viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.8, strokeLinecap: "round", strokeLinejoin: "round" } as const;
+// Central icons only. Add one at a time; the license forbids publishing the set. See AGENTS.md.
+const base = { width: 18, height: 18, viewBox: "0 0 24 24", fill: "none" } as const;
 type Props = SVGProps<SVGSVGElement>;
 
 export const PlayIcon = (props: Props) => (
-	<svg {...base} {...props} stroke="none" fill="currentColor">
-		<path d="M7 4.8c0-1 1-1.6 1.9-1.1l11.4 6.9c.9.5.9 1.8 0 2.3L8.9 19.8c-.9.5-1.9-.1-1.9-1.1V4.8Z" transform="translate(0 .5)" />
+	<svg {...base} {...props}>
+		<path d="M11.1967 2.71828C8.53683 0.970354 5 2.8783 5 6.0611V17.9387C5 21.1215 8.53684 23.0294 11.1967 21.2815L20.234 15.3427C22.6384 13.7627 22.6384 10.2371 20.234 8.65706L11.1967 2.71828Z" fill="currentColor" />
 	</svg>
 );
 export const PauseIcon = (props: Props) => (
-	<svg {...base} {...props} stroke="none" fill="currentColor">
-		<rect x="6" y="4" width="4.5" height="16" rx="1.4" />
-		<rect x="13.5" y="4" width="4.5" height="16" rx="1.4" />
+	<svg {...base} {...props}>
+		<path d="M4 6C4 4.34315 5.34315 3 7 3C8.65685 3 10 4.34315 10 6V18C10 19.6569 8.65685 21 7 21C5.34315 21 4 19.6569 4 18V6Z" fill="currentColor" />
+		<path d="M14 6C14 4.34315 15.3431 3 17 3C18.6569 3 20 4.34315 20 6V18C20 19.6569 18.6569 21 17 21C15.3431 21 14 19.6569 14 18V6Z" fill="currentColor" />
 	</svg>
 );
 export const BackIcon = (props: Props) => (
 	<svg {...base} {...props}>
-		<path d="M15 5 8 12l7 7" />
+		<path d="M15 20L9.12136 14.1213C7.94978 12.9498 7.94978 11.0503 9.12135 9.8787L15 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 	</svg>
 );
 export const StepBackIcon = (props: Props) => (
 	<svg {...base} {...props}>
-		<path d="M18 6 11 12l7 6V6Z" />
-		<path d="M6 6v12" />
+		<path d="M4.4834 14.6667C5.58163 17.7738 8.54493 20 12.0282 20C16.4465 20 20.0282 16.4183 20.0282 12C20.0282 7.58172 16.4465 4 12.0282 4C8.93224 4 6.99986 5.5 4.99986 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+		<path d="M5 4V8H9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 	</svg>
 );
 export const StepForwardIcon = (props: Props) => (
 	<svg {...base} {...props}>
-		<path d="m6 6 7 6-7 6V6Z" />
-		<path d="M18 6v12" />
+		<path d="M19.5165 14.6667C18.4182 17.7738 15.4549 20 11.9717 20C7.5534 20 3.97168 16.4183 3.97168 12C3.97168 7.58172 7.5534 4 11.9717 4C15.0676 4 17 5.5 19 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+		<path d="M19 4V8H15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 	</svg>
 );
 export const SoundIcon = (props: Props) => (
 	<svg {...base} {...props}>
-		<path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4Z" />
-		<path d="M16 9a4.2 4.2 0 0 1 0 6M18.5 6.5a7.8 7.8 0 0 1 0 11" />
+		<path d="M19.071 4.92968C20.8807 6.73932 22 9.23932 22 12.0007C22 14.7622 20.8807 17.2622 19.071 19.0718M15.8891 8.11132C16.8844 9.10662 17.5 10.4816 17.5 12.0004C17.5 13.5192 16.8844 14.8942 15.8891 15.8895M4 7.99999H5.2759C5.74377 7.99999 6.19684 7.83596 6.55627 7.53643L10.3598 4.36681C11.0111 3.82403 12 4.28719 12 5.13503V18.8649C12 19.7128 11.0111 20.1759 10.3598 19.6332L6.55627 16.4635C6.19684 16.164 5.74377 16 5.2759 16H4C2.89543 16 2 15.1046 2 14V9.99999C2 8.89542 2.89543 7.99999 4 7.99999Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 	</svg>
 );
 export const MuteIcon = (props: Props) => (
 	<svg {...base} {...props}>
-		<path d="M4 9.5v5h3.5L12 18.5v-13L7.5 9.5H4Z" />
-		<path d="m16 9.5 5 5M21 9.5l-5 5" />
+		<path d="M21.5 9.99999L19.3787 12.1213M19.3787 12.1213L17.2574 14.2426M19.3787 12.1213L17.2574 9.99999M19.3787 12.1213L21.5 14.2426M4 7.99999H5.2759C5.74377 7.99999 6.19684 7.83596 6.55627 7.53643L10.3598 4.36681C11.0111 3.82403 12 4.28719 12 5.13503V18.8649C12 19.7128 11.0111 20.1759 10.3598 19.6332L6.55627 16.4635C6.19684 16.164 5.74377 16 5.2759 16H4C2.89543 16 2 15.1046 2 14V9.99999C2 8.89542 2.89543 7.99999 4 7.99999Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+	</svg>
+);
+export const LinkIcon = (props: Props) => (
+	<svg {...base} {...props}>
+		<path d="M13 18L11.6213 19.3787C10.4497 20.5503 8.55023 20.5503 7.37866 19.3787L4.62129 16.6213C3.44972 15.4497 3.44972 13.5503 4.62129 12.3787L5.99997 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+		<path d="M11 5.99955L12.3787 4.62087C13.5503 3.44929 15.4497 3.44929 16.6213 4.62087L19.3787 7.37823C20.5503 8.5498 20.5503 10.4493 19.3787 11.6209L18 12.9995" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+		<path d="M9 15L15 9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 	</svg>
 );
 export const ExpandIcon = (props: Props) => (
 	<svg {...base} {...props}>
-		<path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5" />
+		<path d="M8 4H7C5.34315 4 4 5.34315 4 7V8M16 4H17C18.6569 4 20 5.34315 20 7V8M20 16V17C20 18.6569 18.6569 20 17 20H16M8 20H7C5.34315 20 4 18.6569 4 17V16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 	</svg>
 );
 export const SearchIcon = (props: Props) => (
 	<svg {...base} {...props}>
-		<circle cx="11" cy="11" r="6.5" />
-		<path d="m16 16 4.5 4.5" />
+		<path d="M11 18C14.866 18 18 14.866 18 11C18 7.13401 14.866 4 11 4C7.13401 4 4 7.13401 4 11C4 14.866 7.13401 18 11 18Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+		<path d="M20 20L16.05 16.05" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
 	</svg>
 );
 export const CheckIcon = (props: Props) => (
 	<svg {...base} {...props}>
-		<path d="m5 12.5 4.5 4.5L19 7.5" />
-	</svg>
-);
-export const AlertIcon = (props: Props) => (
-	<svg {...base} {...props}>
-		<path d="M12 8v5M12 16.5v.01" />
-		<circle cx="12" cy="12" r="8.5" />
+		<path d="M5 12.75L10 19L19 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 	</svg>
 );
 export const ArrowOutIcon = (props: Props) => (
 	<svg {...base} {...props}>
-		<path d="M8 16 17 7M9 7h8v8" />
+		<path d="M18 15V6M18 6H9M18 6L6.25 17.75" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 	</svg>
 );
 export const CopyIcon = (props: Props) => (
 	<svg {...base} {...props}>
-		<rect x="9" y="9" width="11" height="11" rx="2.5" />
-		<path d="M5.5 15H5a1.5 1.5 0 0 1-1.5-1.5V5A1.5 1.5 0 0 1 5 3.5h8.5A1.5 1.5 0 0 1 15 5v.5" />
+		<path d="M15 9V5.25C15 4.00736 13.9926 3 12.75 3H5.25C4.00736 3 3 4.00736 3 5.25V12.75C3 13.9926 4.00736 15 5.25 15H9M11.25 9H18.75C19.9926 9 21 10.0074 21 11.25V18.75C21 19.9926 19.9926 21 18.75 21H11.25C10.0074 21 9 19.9926 9 18.75V11.25C9 10.0074 10.0074 9 11.25 9Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 	</svg>
 );
 export const SafeZoneIcon = (props: Props) => (
 	<svg {...base} {...props}>
-		<rect x="4" y="4" width="16" height="16" rx="3" />
-		<rect x="8" y="8" width="8" height="8" rx="1" strokeDasharray="2 2" />
+		<path d="M4 8V7C4 5.34315 5.34315 4 7 4H8M4 16V17C4 18.6569 5.34315 20 7 20H8M16 4H17C18.6569 4 20 5.34315 20 7V8M20 16V17C20 18.6569 18.6569 20 17 20H16M11 15H13C14.1046 15 15 14.1046 15 13V11C15 9.89543 14.1046 9 13 9H11C9.89543 9 9 9.89543 9 11V13C9 14.1046 9.89543 15 11 15Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+	</svg>
+);
+export const SidebarOpenIcon = (props: Props) => (
+	<svg {...base} {...props}>
+		<path d="M3 8C3 6.34315 4.34315 5 6 5H18C19.6569 5 21 6.34315 21 8V16C21 17.6569 19.6569 19 18 19H6C4.34315 19 3 17.6569 3 16V8Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+		<path d="M15 5V12V19" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+	</svg>
+);
+export const SidebarClosedIcon = (props: Props) => (
+	<svg {...base} {...props}>
+		<path d="M3 8C3 6.34315 4.34315 5 6 5H18C19.6569 5 21 6.34315 21 8V16C21 17.6569 19.6569 19 18 19H6C4.34315 19 3 17.6569 3 16V8Z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+		<path d="M17 9V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+	</svg>
+);
+export const MicIcon = (props: Props) => (
+	<svg {...base} {...props} stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+		<rect x="9" y="3.5" width="6" height="11" rx="3" />
+		<path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v2.5" />
+	</svg>
+);
+export const CloseIcon = (props: Props) => (
+	<svg {...base} {...props} stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+		<path d="m7 7 10 10M17 7 7 17" />
 	</svg>
 );

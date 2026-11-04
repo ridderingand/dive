@@ -1,5 +1,6 @@
 import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import type { ManifestClip, ManifestConcept, RenderInfo } from "@core/manifest";
+import type { Note } from "@core/moments";
 import { timecode } from "@core/time";
 import { mediaUrl } from "../lib/data";
 import { useEngineFrame, type PlayerEngine } from "./engine";
@@ -37,9 +38,9 @@ function segmentsOf(clip: ManifestClip, concept: ManifestConcept | null): Segmen
 	});
 }
 
-type Props = { engine: PlayerEngine; clip: ManifestClip; concept: ManifestConcept | null; render: RenderInfo | null };
+type Props = { engine: PlayerEngine; clip: ManifestClip; concept: ManifestConcept | null; render: RenderInfo | null; notes: Note[] };
 
-export function Timeline({ engine, clip, concept, render }: Props) {
+export function Timeline({ engine, clip, concept, render, notes }: Props) {
 	const { ref: track, width } = useWidth<HTMLDivElement>();
 	const duration = render?.durationS ?? clip.durationS ?? 1;
 	const head = useRef<HTMLDivElement>(null);
@@ -106,6 +107,7 @@ export function Timeline({ engine, clip, concept, render }: Props) {
 					{concept?.overlays.map((overlay) => <span key={`${overlay.type}-${overlay.from}`} className="overlay-mark" style={{ left: percent(overlay.from), width: percent(overlay.to - overlay.from) }} title={overlay.type.replace("-", " ")} />)}
 					{segments.length === 0 ? <span className="lane-empty">No picture yet</span> : null}
 				</div>
+				{notes.map((note) => <span key={note.id} className="note-pin" style={{ left: percent(note.clipFrom) }} title={note.text} />)}
 				<div ref={head} className="playhead" />
 				{hover !== null ? (
 					<div className="hover-card" style={{ left: `clamp(${previewWidth / 2}px, ${percent(hover)}, calc(100% - ${previewWidth / 2}px))` }}>

@@ -21,7 +21,7 @@ function ClipRow({ clip }: { clip: ManifestClip }) {
 				<span className="clip-row-title wide">{clip.title}</span>
 				<span className="clip-row-hook role">{clip.hook}</span>
 			</span>
-			<span className={`status tone-${next.tone}`}>{next.text}</span>
+			{next ? <span className={`status tone-${next.tone}`}>{next.text}</span> : <span />}
 			<span className="clip-row-time mono">{clip.durationS ? shortTime(clip.durationS) : "–"}</span>
 		</a>
 	);

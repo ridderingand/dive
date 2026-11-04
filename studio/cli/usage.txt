@@ -17,6 +17,7 @@ Dive Studio
   bun run dive concept <clip> <id> --name "…" --template talk-square [--from a] [--format square] [--captions sky-label]
   bun run dive render <clip> [concept]       Render a concept, or every stale one
   bun run dive still <clip> <concept> <seconds…>   Check single frames without a full render
+  bun run dive notes <clip> [--clear]        Print the notes dictated in the studio, ready to act on
   bun run dive moments <clip> --transcript <file> --events <file>   Tie a recording's notes to clip moments, with frames
   bun run dive round <clip> <concept> "what changed" [--feedback url] [--review url]
   bun run dive status <clip> <concept> <draft|in-review|picked|final|parked>

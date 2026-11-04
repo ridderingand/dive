@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test";
-import { momentsFrom, stampsFrom } from "./moments";
+import { momentsFrom, notesFrom, notesPrompt, stampsFrom } from "./moments";
 
 const route = (t: number, query: string) => ({ k: "route", t, path: `/#/clips/james/random?${query}` });
 
@@ -19,4 +19,27 @@ test("ties each sentence to the moment on screen", () => {
 
 test("gives nothing when the recording never touched a clip", () => {
 	expect(momentsFrom([{ start_ms: 0, end_ms: 10, text: "Hi" }], [])).toEqual([]);
+});
+
+test("a note breaks when the thought ends or the playhead moves on", () => {
+	const stamps = [
+		{ atMs: 0, clipTime: 10, concept: "a", round: 1 },
+		{ atMs: 3000, clipTime: 40, concept: "a", round: 1 },
+	];
+	const notes = notesFrom(
+		[
+			{ start_ms: 0, end_ms: 800, text: "Make this caption" },
+			{ start_ms: 800, end_ms: 1600, text: "bigger." },
+			{ start_ms: 1700, end_ms: 2600, text: "And warmer" },
+			{ start_ms: 3100, end_ms: 3900, text: "this zoom is slow" },
+		],
+		stamps,
+	);
+	expect(notes.map((note) => [note.clipFrom, note.text])).toEqual([[10, "Make this caption bigger."], [10, "And warmer"], [40, "this zoom is slow"]]);
+});
+
+test("the prompt groups notes by concept in clip order", () => {
+	const note = (clipFrom: number, concept: string, text: string) => ({ id: text, clipFrom, clipTo: clipFrom, concept, round: 1, text });
+	const prompt = notesPrompt({ guest: "g", slug: "s", title: "T", fps: 24 }, [{ id: "a", name: "Sky", round: 1 }], [note(9, "a", "Second."), note(2, "a", "First.")], (t) => `${t}s`);
+	expect(prompt).toContain("Concept a, Sky, round 1:\n- 2s: First.\n- 9s: Second.");
 });

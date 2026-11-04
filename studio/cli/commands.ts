@@ -1,7 +1,7 @@
 import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { cleanWord } from "../core/captions";
-import { momentsFrom, stampsFrom, type RecordingEvent, type TranscriptSegment } from "../core/moments";
+import { momentsFrom, notesPrompt, stampsFrom, type RecordingEvent, type TranscriptSegment } from "../core/moments";
 import { timecode } from "../core/time";
 import { conceptChecks, emphasisFromCopy } from "../core/checks";
 import { Captions, Concept, CONCEPT_STATUS, type Cut, type FormatId } from "../core/schema";
@@ -12,6 +12,7 @@ import { importNotion, type NotionRow } from "./importers/notion";
 import { renderHash } from "./lib/hash";
 import { findClip, loadAllClips, saveConcept, writeJson, type LoadedClip } from "./lib/load";
 import { buildClip, MANIFEST_FILE, sync } from "./lib/manifest";
+import { addTake, ensureSpeech, loadNotes, notesFile, type NoteRequest } from "./lib/notes";
 import { DIST, MEDIA, mediaPath, PUBLIC, renderDir, ROOT, WORK } from "./lib/paths";
 import { bundleVideo, renderConcept, renderStill, withMedia } from "./lib/render";
 import { capture, ffmpeg, probeDuration, run } from "./lib/run";
@@ -211,13 +212,14 @@ async function reviewCommand(args: string[], flags: Flags) {
 export const commands: Record<string, Command> = {
 	async setup() {
 		await fetchFonts();
+		await ensureSpeech();
 		await sync();
 		console.log(`Ready. Media folder: ${MEDIA}`);
 	},
 
 	async doctor() {
 		const report = (ok: boolean, label: string) => console.log(`${ok ? "ok  " : "MISS"} ${label}`);
-		for (const tool of ["ffmpeg", "ffprobe", "python3"]) report(Boolean(Bun.which(tool)), tool);
+		for (const tool of ["ffmpeg", "ffprobe", "python3", "whisper-cli"]) report(Boolean(Bun.which(tool)), tool);
 		for (const font of ["ClashDisplay-Semibold", "ClashDisplay-Bold", "Tanker-Regular", "ArchivoBlack-Regular"]) report(existsSync(path.join(PUBLIC, "fonts", `${font}.woff2`)), `${font} (run: bun run dive setup)`);
 		report(existsSync(MEDIA), `media folder ${MEDIA}`);
 		for (const loaded of loadAllClips()) {
@@ -356,6 +358,24 @@ export const commands: Record<string, Command> = {
 			}
 		}
 		if (failed) process.exitCode = 1;
+	},
+
+	async take(args) {
+		const request = JSON.parse(readFileSync(args[0] ?? "", "utf8")) as NoteRequest;
+		console.log(JSON.stringify(await addTake(request)));
+	},
+
+	async notes(args, flags) {
+		const loaded = findClip(args[0] ?? "");
+		const { guest, slug, title, fps } = loaded.clip;
+		if (flags.clear) {
+			writeJson(notesFile(guest, slug), []);
+			await sync();
+			return console.log(`Cleared the notes on ${slug}.`);
+		}
+		const notes = loadNotes(guest, slug);
+		if (notes.length === 0) return console.log(`${slug} has no notes.`);
+		console.log(notesPrompt({ guest, slug, title, fps }, loaded.concepts, notes, timecode));
 	},
 
 	async moments(args, flags) {
