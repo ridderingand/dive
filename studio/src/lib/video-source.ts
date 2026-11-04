@@ -6,14 +6,14 @@ import { useEffect, useState } from "react";
  */
 const PLAY_FROM_MEMORY = import.meta.env.VITE_DIVE_REVIEW === "1";
 
-type Load = { progress: number; totalBytes: number; failed: boolean; url: string | null; promise: Promise<string | null>; listeners: Set<() => void> };
+type Load = { progress: number; receivedBytes: number; totalBytes: number; failed: boolean; url: string | null; promise: Promise<string | null>; listeners: Set<() => void> };
 
 const loads = new Map<string, Load>();
 
 function loadVideo(src: string): Load {
 	const existing = loads.get(src);
 	if (existing) return existing;
-	const load: Load = { progress: 0, totalBytes: 0, failed: false, url: null, promise: Promise.resolve(null), listeners: new Set() };
+	const load: Load = { progress: 0, receivedBytes: 0, totalBytes: 0, failed: false, url: null, promise: Promise.resolve(null), listeners: new Set() };
 	const notify = () => load.listeners.forEach((listener) => listener());
 	load.promise = (async () => {
 		const response = await fetch(src);
@@ -29,10 +29,9 @@ function loadVideo(src: string): Load {
 			if (done) break;
 			chunks.push(value);
 			received += value.length;
-			if (total > 0) {
-				load.progress = received / total;
-				notify();
-			}
+			load.receivedBytes = received;
+			if (total > 0) load.progress = received / total;
+			notify();
 		}
 		load.url = URL.createObjectURL(new Blob(chunks, { type: "video/mp4" }));
 		load.progress = 1;
@@ -59,13 +58,13 @@ export function useVideoSource(src: string) {
 			load.listeners.delete(listener);
 		};
 	}, [src, attempt]);
-	if (!PLAY_FROM_MEMORY) return { src, progress: 1, totalBytes: 0, failed: false, retry: () => {} };
+	if (!PLAY_FROM_MEMORY) return { src, progress: 1, receivedBytes: 0, totalBytes: 0, failed: false, retry: () => {} };
 	const load = loads.get(src);
 	const retry = () => {
 		loads.delete(src);
 		rerender((count) => count + 1);
 	};
-	return { src: load?.url ?? undefined, progress: load?.progress ?? 0, totalBytes: load?.totalBytes ?? 0, failed: load?.failed ?? false, retry };
+	return { src: load?.url ?? undefined, progress: load?.progress ?? 0, receivedBytes: load?.receivedBytes ?? 0, totalBytes: load?.totalBytes ?? 0, failed: load?.failed ?? false, retry };
 }
 
 /** Warms the other concepts one at a time, so switching is instant once the first is playing. */

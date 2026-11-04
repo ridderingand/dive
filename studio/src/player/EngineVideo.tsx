@@ -6,7 +6,7 @@ type Props = { engine: PlayerEngine; id: string; src: string; poster?: string; m
 
 export function EngineVideo({ engine, id, src, poster, master = false, timeMap, className }: Props) {
 	const ref = useRef<HTMLVideoElement>(null);
-	const { src: playable, progress, totalBytes, failed, retry } = useVideoSource(src);
+	const { src: playable, progress, receivedBytes, totalBytes, failed, retry } = useVideoSource(src);
 	const [broken, setBroken] = useState(false);
 	useEffect(() => {
 		const video = ref.current;
@@ -38,7 +38,7 @@ export function EngineVideo({ engine, id, src, poster, master = false, timeMap, 
 					<i>
 						<b style={{ transform: `scaleX(${progress})` }} />
 					</i>
-					{master ? <em className="mono">{totalBytes ? `Loading ${Math.round(totalBytes / 1e6)} MB · ${Math.round(progress * 100)}%` : "Loading"}</em> : null}
+					{master ? <em className="mono">{totalBytes ? `Loading ${Math.round(totalBytes / 1e6)} MB · ${Math.round(progress * 100)}%` : `Loading · ${(receivedBytes / 1e6).toFixed(1)} MB`}</em> : null}
 				</span>
 			) : null}
 		</>

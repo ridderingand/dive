@@ -332,7 +332,7 @@ export const commands: Record<string, Command> = {
 			saveConcept(loaded.dir, { ...concept, history, status: concept.status === "draft" ? "in-review" : concept.status });
 		}
 		await sync();
-		console.log(`${loaded.clip.slug}: ${rendered.length} concepts out for review at ${link}`);
+		console.log(`${loaded.clip.slug}: ${rendered.length} concepts out for review at ${link}. Commit the concept files. The link shows in the hosted Rounds tab from the next review build.`);
 	},
 
 	async check(args) {
