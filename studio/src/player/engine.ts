@@ -51,7 +51,7 @@ export class PlayerEngine {
 			const onReady = () => {
 				if (Number.isFinite(video.duration)) this.setState({ ready: true, duration: video.duration });
 				if (Math.abs(video.currentTime - carried) > 0.02) video.currentTime = Math.min(carried, video.duration || carried);
-				if (wasPlaying) void video.play().catch(() => {});
+				if (wasPlaying) void video.play().catch(() => this.setState({ playing: false }));
 				this.emit();
 			};
 			if (video.readyState >= 1) onReady();
@@ -155,13 +155,18 @@ export class PlayerEngine {
 
 	play() {
 		const master = this.master;
-		if (!master) return;
+		if (!master) {
+			// Still downloading: remember the press, and the master starts when it registers.
+			this.setState({ playing: true });
+			return;
+		}
 		if (master.ended) this.seek(0);
 		void master.play().catch(() => {});
 	}
 
 	pause() {
-		this.master?.pause();
+		if (this.master) this.master.pause();
+		else this.setState({ playing: false });
 	}
 
 	toggle() {

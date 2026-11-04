@@ -2,7 +2,7 @@ import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, statSync, wr
 import path from "node:path";
 import { cleanWord } from "../core/captions";
 import { conceptChecks, emphasisFromCopy } from "../core/checks";
-import { Captions, Concept, type Cut, type FormatId } from "../core/schema";
+import { Captions, Concept, CONCEPT_STATUS, type Cut, type FormatId } from "../core/schema";
 import { captionStyles } from "../system/dive";
 import { templates } from "../templates/registry";
 import { importMixture } from "./importers/mixture";
@@ -115,17 +115,19 @@ async function renderCommand(args: string[], flags: Flags) {
 		}
 	} else {
 		const loaded = findClip(args[0] ?? "");
-		targets.push({ loaded, ids: args[1] ? [args[1]] : loaded.concepts.map((concept) => concept.id) });
+		const ids = args[1] ? [args[1]] : loaded.concepts.map((concept) => concept.id);
+		if (ids.length === 0) throw new Error(`${loaded.clip.slug} has no concepts yet. Make one: bun run dive concept ${loaded.clip.slug} a --name "…"`);
+		targets.push({ loaded, ids });
 	}
 	if (targets.length === 0) return console.log("Everything is up to date.");
+	const blocked = targets.flatMap(({ loaded, ids }) => ids.flatMap((id) => conceptChecks(loaded.clip, pickConcept(loaded, id), loaded.captions).filter((check) => check.level === "fail").map((check) => `${loaded.clip.slug}/${id}: ${check.message}`)));
+	if (blocked.length > 0) throw new Error(`Fix these before rendering:\n${blocked.map((line) => `  ${line}`).join("\n")}`);
 	console.log("Bundling templates…");
 	await bundleVideo();
 	await withMedia(async (base) => {
 		for (const { loaded, ids } of targets) {
 			for (const id of ids) {
 				const concept = pickConcept(loaded, id);
-				const blocked = conceptChecks(loaded.clip, concept, loaded.captions).find((check) => check.level === "fail");
-				if (blocked) throw new Error(`${loaded.clip.slug}/${id}: ${blocked.message}`);
 				console.log(`Rendering ${loaded.clip.slug} / ${concept.id} (${concept.name}), round ${concept.round}`);
 				const { record } = await renderConcept(loaded, concept, { mediaBase: base, frames: text(flags.frames), concurrency: text(flags.concurrency) });
 				console.log(`  ${record.renderSeconds}s · master ${mb(record.masterBytes)} · preview ${mb(record.previewBytes)}`);
@@ -192,18 +194,16 @@ async function reviewCommand(args: string[], flags: Flags) {
 		mode: "review",
 		review: { title: text(flags.title) ?? (clips.length === 1 && clips[0] ? clips[0].title : `${clips.length} clips`), note: text(flags.note) ?? null },
 		guests: manifest.guests.filter((guest) => clips.some((clip) => clip.guest === guest.slug)),
-		clips: clips.map((clip) => ({ ...clip, concepts: clip.concepts.filter((concept) => concept.current).map((concept) => ({ ...concept, renders: concept.current ? [concept.current] : [] })) })),
+		clips: clips.map((clip) => ({
+			...clip,
+			stage: clip.stage === "final" ? "final" : "review",
+			concepts: clip.concepts.filter((concept) => concept.current).map((concept) => ({ ...concept, status: concept.status === "draft" ? "in-review" : concept.status, renders: concept.current ? [concept.current] : [] })),
+		})),
 	};
 	writeJson(path.join(DIST, "data", "studio.json"), reviewManifest);
-	for (const { clip, concept } of concepts) {
-		if (concept.status !== "draft") continue;
-		const loaded = findClip(`${clip.guest}/${clip.slug}`);
-		saveConcept(loaded.dir, { ...pickConcept(loaded, concept.id), status: "in-review" });
-	}
-	await sync();
 	const total = Number((await capture(["du", "-sk", DIST])).split("\t")[0]) * 1024;
 	console.log(`dist/ is ready: ${mb(total)} across ${concepts.length} concepts.`);
-	console.log("Share it with Inflight share_app, build_dir studio/dist.");
+	console.log("Share it with Inflight share_app, build_dir studio/dist, then record the link: bun run dive shared <clip> <link>");
 	if (total > 50 * 1024 * 1024) throw new Error("dist/ is over Inflight's 50 MB limit. Share fewer clips.");
 }
 
@@ -316,9 +316,23 @@ export const commands: Record<string, Command> = {
 
 	async status(args) {
 		const [clipQuery, id, status] = args;
+		if (!CONCEPT_STATUS.some((item) => item === status)) throw new Error(`Status must be one of: ${CONCEPT_STATUS.join(", ")}`);
 		const loaded = findClip(clipQuery ?? "");
 		saveConcept(loaded.dir, Concept.parse({ ...pickConcept(loaded, id ?? ""), status }));
 		await sync();
+	},
+
+	async shared(args) {
+		const [clipQuery, link] = args;
+		if (!clipQuery || !link) throw new Error("Usage: shared <clip> <inflight link>");
+		const loaded = findClip(clipQuery);
+		const rendered = loaded.concepts.filter((concept) => existsSync(mediaPath(`${renderDir(loaded.clip.guest, loaded.clip.slug, concept.id, concept.round)}/render.json`)));
+		for (const concept of rendered) {
+			const history = concept.history.map((note) => (note.round === concept.round ? { ...note, reviewUrl: link } : note));
+			saveConcept(loaded.dir, { ...concept, history, status: concept.status === "draft" ? "in-review" : concept.status });
+		}
+		await sync();
+		console.log(`${loaded.clip.slug}: ${rendered.length} concepts out for review at ${link}`);
 	},
 
 	async check(args) {
@@ -338,10 +352,13 @@ export const commands: Record<string, Command> = {
 
 	review: reviewCommand,
 
-	async final(args) {
+	async final(args, flags) {
 		const [clipQuery, id] = args;
 		const loaded = findClip(clipQuery ?? "");
 		const concept = pickConcept(loaded, id ?? "");
+		if (concept.status !== "picked" && !flags.force) throw new Error(`${concept.id} is ${concept.status}. Mark the chosen one first: bun run dive status ${loaded.clip.slug} ${concept.id} picked`);
+		const other = loaded.concepts.find((item) => item.status === "final" && item.id !== concept.id);
+		if (other && !flags.force) throw new Error(`Concept ${other.id} is already final. Pass --force to export a second one.`);
 		const folder = renderDir(loaded.clip.guest, loaded.clip.slug, concept.id, concept.round);
 		const master = mediaPath(`${folder}/master.mp4`);
 		if (!existsSync(master)) throw new Error("Render this round first.");
