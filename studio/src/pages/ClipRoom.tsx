@@ -11,16 +11,14 @@ import { prefetchVideos } from "../lib/video-source";
 import { templateName } from "../lib/templates";
 import { PlayerEngine, useEngineState } from "../player/engine";
 import { EngineVideo } from "../player/EngineVideo";
-import { FilesWall } from "../player/FilesWall";
 import { Rail } from "../player/Rail";
 import { Timeline } from "../player/Timeline";
 import { RATES, Transport } from "../player/Transport";
-import { BackIcon, CopyIcon } from "../ui/icons";
-import { StageMeter } from "../ui/StageMeter";
-import { copyText } from "../ui/toast";
+import { BackIcon, CheckIcon, CopyIcon } from "../ui/icons";
+import { copyText, toast } from "../ui/toast";
 import { accentOf } from "./ClipsPage";
 
-type Mode = "watch" | "compare" | "files";
+type Mode = "watch" | "compare";
 type Pick = { concept: ManifestConcept; render: RenderInfo };
 
 const MAX_COMPARE = 4;
@@ -168,14 +166,14 @@ function CompareGrid({ engine, picks, master, onMaster }: { engine: PlayerEngine
 	);
 }
 
-export function ClipRoom({ manifest, clip }: { manifest: Manifest; clip: ManifestClip }) {
+export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; clip: ManifestClip; onChanged: () => void }) {
 	const { query } = useRoute();
 	const guest = guestOf(manifest, clip);
 	const concepts = clip.concepts;
 	const rendered = concepts.filter((concept) => concept.current);
 	const [activeId, setActiveId] = useState<string | null>(query.get("c") ?? rendered[0]?.id ?? concepts[0]?.id ?? null);
 	const [round, setRound] = useState<number | null>(query.get("r") ? Number(query.get("r")) : null);
-	const [mode, setMode] = useState<Mode>((query.get("v") as Mode) ?? "watch");
+	const [mode, setMode] = useState<Mode>(query.get("v") === "compare" ? "compare" : "watch");
 	const [compareKeys, setCompareKeys] = useState<string[]>(() => rendered.slice(0, MAX_COMPARE).map((concept) => pickKey(concept.id, concept.current?.round ?? 1)));
 	const [masterId, setMasterId] = useState<string | null>(null);
 	const main = useRef<HTMLDivElement>(null);
@@ -273,6 +271,13 @@ export function ClipRoom({ manifest, clip }: { manifest: Manifest; clip: Manifes
 		].filter((line) => line !== null).join("\n");
 	}, [engine, concept, clip, render]);
 
+	const togglePosted = () => {
+		void fetch(`/api/posted?clip=${clip.guest}/${clip.slug}${clip.posted ? "&undo=1" : ""}`, { method: "POST" }).then((response) => {
+			if (response.ok) onChanged();
+			else toast("Couldn't save that. Is the studio running with bun run dev?");
+		});
+	};
+
 	const copyMoment = useCallback(() => void copyText(describeMoment(), "Moment copied"), [describeMoment]);
 	const fullscreen = useCallback(() => void main.current?.requestFullscreen?.(), []);
 
@@ -305,7 +310,7 @@ export function ClipRoom({ manifest, clip }: { manifest: Manifest; clip: Manifes
 		m: () => engine.toggleMute(),
 		s: () => setSafeZones((shown) => !shown),
 		w: () => setMode("watch"),
-		f: (event) => (event.shiftKey ? fullscreen() : setMode("files")),
+		f: fullscreen,
 		// The Inflight widget owns C and T on a hosted review.
 		...(manifest.mode === "local" ? { t: copyMoment, c: () => rendered.length > 1 && setMode("compare") } : {}),
 		...Object.fromEntries(concepts.slice(0, 9).map((item, index) => [String(index + 1), () => selectConcept(item.id)])),
@@ -328,21 +333,25 @@ export function ClipRoom({ manifest, clip }: { manifest: Manifest; clip: Manifes
 					<h1 className="wide">{clip.title}</h1>
 					<span className="room-guest">
 						<span className="room-guest-name">{guest.name}</span>
-						<span className={`role dots${next.warn ? " is-warn" : ""}`}>{next.text}</span>
+						<span className={`status tone-${next.tone}`}>{next.text}</span>
 					</span>
 				</div>
-				<StageMeter stage={clip.stage} />
-				<div className="mode-switch" role="tablist" aria-label="View">
-					<button type="button" role="tab" aria-selected={mode === "watch"} className={mode === "watch" ? "is-active" : undefined} onClick={() => setMode("watch")}>
-						Watch
+				{manifest.mode === "local" ? (
+					<button type="button" className={`pill-button posted-button${clip.posted ? " is-posted" : ""}`} onClick={togglePosted} aria-pressed={clip.posted}>
+						{clip.posted ? <CheckIcon width={15} height={15} /> : null}
+						{clip.posted ? "Posted" : "Mark as posted"}
 					</button>
-					<button type="button" role="tab" aria-selected={mode === "compare"} className={mode === "compare" ? "is-active" : undefined} disabled={rendered.length < 2} onClick={() => setMode("compare")}>
-						Compare
-					</button>
-					<button type="button" role="tab" aria-selected={mode === "files"} className={mode === "files" ? "is-active" : undefined} onClick={() => setMode("files")}>
-						Files
-					</button>
-				</div>
+				) : null}
+				{rendered.length > 1 ? (
+					<div className="mode-switch" role="tablist" aria-label="View">
+						<button type="button" role="tab" aria-selected={mode === "watch"} className={mode === "watch" ? "is-active" : undefined} onClick={() => setMode("watch")}>
+							Watch
+						</button>
+						<button type="button" role="tab" aria-selected={mode === "compare"} className={mode === "compare" ? "is-active" : undefined} onClick={() => setMode("compare")}>
+							Compare
+						</button>
+					</div>
+				) : null}
 			</header>
 
 			<div ref={main} className="room-main">
@@ -364,7 +373,6 @@ export function ClipRoom({ manifest, clip }: { manifest: Manifest; clip: Manifes
 					) : null}
 					{mode === "watch" && !render ? <WaitingStage clip={clip} guestName={guest.name} /> : null}
 					{mode === "compare" ? <CompareGrid engine={engine} picks={picks} master={compareMaster} onMaster={setMasterId} /> : null}
-					{mode === "files" ? <FilesWall engine={engine} clip={clip} concept={concept} render={render} /> : null}
 				</div>
 
 				<Transport engine={engine} onCopyMoment={manifest.mode === "local" ? copyMoment : null} onFullscreen={fullscreen} safeZones={safeZones} onSafeZones={() => setSafeZones((shown) => !shown)} disabled={!hasVideo} />

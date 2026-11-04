@@ -33,7 +33,6 @@ export type ManifestClip = Omit<Clip, "sources"> & {
 	files: ManifestFile[];
 	audioExists: boolean;
 	captions: Pick<Captions, "words" | "lines" | "source"> | null;
-	peaks: string | null;
 	stage: StageId;
 	checks: Check[];
 	concepts: ManifestConcept[];

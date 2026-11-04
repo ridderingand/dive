@@ -87,6 +87,8 @@ In `bun run dive check`, a `fail` must be fixed before you render. A `warn` does
 5. Edit the concept, then record the round: `bun run dive round <clip> <concept> "What changed" --feedback <link>`. Reviewers read this line, so write it for Anna, not for an engineer. Render, and go back to step 1.
 6. When a concept is picked: `bun run dive status <clip> <concept> picked`, then `bun run dive final <clip> <concept>` once Ridd or Anna asks. It prints the file path.
 
+When a clip goes live, mark it with `bun run dive posted <clip>` (or the button in the studio), commit `clip.json`, and tick Shipped Short in Notion.
+
 After each share, set the Notion row: Status to `Ready for review`, and the Inflight link where the Mixture link used to go. Never edit Descript compositions. Nothing goes out as final until Ridd or Anna asks.
 
 ## Editing a template

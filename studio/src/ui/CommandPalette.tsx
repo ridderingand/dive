@@ -13,7 +13,7 @@ const MAX_SAID = 8;
 /** Finds a phrase in what was said, so a line you remember opens the clip at that moment. */
 function searchWords(manifest: Manifest, needle: string): Item[] {
 	const hits: Item[] = [];
-	for (const clip of manifest.clips) {
+	for (const clip of manifest.clips.filter((item) => !item.removed)) {
 		const words = clip.captions?.words ?? [];
 		const text = words.map((word) => word.text).join(" ").toLowerCase();
 		const offsets: number[] = [];
@@ -41,7 +41,7 @@ export function CommandPalette({ manifest, onClose }: { manifest: Manifest; onCl
 	const items = useMemo<Item[]>(() => {
 		const guestName = (slug: string) => manifest.guests.find((guest) => guest.slug === slug)?.name ?? slug;
 		return [
-			...manifest.clips.map((clip) => ({ id: `clip-${clip.slug}`, title: clip.title, detail: guestName(clip.guest), to: clipPath(clip) })),
+			...manifest.clips.filter((clip) => !clip.removed).map((clip) => ({ id: `clip-${clip.slug}`, title: clip.title, detail: guestName(clip.guest), to: clipPath(clip) })),
 			...templates.map((template) => ({ id: `template-${template.id}`, title: template.name, detail: "Template", to: `/templates/${template.id}` })),
 			{ id: "clips", title: "All clips", detail: "Page", to: "/" },
 			{ id: "system", title: "System", detail: "Colour, type, captions, motion and rules", to: "/system" },

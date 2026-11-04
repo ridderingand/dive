@@ -59,56 +59,17 @@
 	color: rgba(219, 250, 244, 0.72);
 }
 
-.stage-filter {
-	display: flex;
-	margin: 44px 0 16px;
-}
-
-.stage-filter button {
-	position: relative;
-	display: flex;
-	align-items: baseline;
-	gap: 8px;
-	padding: 10px 40px 10px 0;
-	color: var(--text-2);
-	transition: color 160ms var(--ease);
-}
-
-.stage-filter button:hover,
-.stage-filter button.is-active {
-	color: var(--ink);
-}
-
-.stage-filter button.is-active .stage-filter-count {
-	color: var(--sky);
-}
-
-.stage-filter-count {
-	font-size: 26px;
-	line-height: 1;
-	color: var(--text);
-}
-
-.stage-filter i {
-	position: absolute;
-	right: 14px;
-	top: 50%;
-	width: 12px;
-	border-top: 2px dotted var(--text-3);
-}
-
 .guest-group {
-	margin-top: 44px;
+	margin-top: 52px;
 }
 
-.guest-group header {
-	display: flex;
-	align-items: baseline;
-	margin-bottom: 14px;
-	padding-left: 6px;
+.clips-hero + .guest-group {
+	margin-top: 104px;
 }
 
 .guest-group h2 {
+	margin-bottom: 14px;
+	padding-left: 6px;
 	font-size: 15px;
 	color: var(--accent);
 }
@@ -120,7 +81,7 @@
 
 .clip-row {
 	display: grid;
-	grid-template-columns: 44px minmax(0, 1fr) auto 148px 52px;
+	grid-template-columns: 44px minmax(0, 1fr) auto 52px;
 	align-items: center;
 	gap: 18px;
 	min-height: 86px;
@@ -182,37 +143,6 @@
 	font-size: 13.5px;
 }
 
-.clip-row-concepts {
-	display: flex;
-	justify-content: flex-end;
-}
-
-.clip-row-concepts img {
-	width: 46px;
-	height: 46px;
-	margin-left: -12px;
-	border-radius: 50%;
-	object-fit: cover;
-	box-shadow:
-		0 0 0 2px var(--abyss),
-		0 0 0 3px var(--rim-2);
-}
-
-.clip-row-state {
-	display: grid;
-	gap: 6px;
-	justify-items: start;
-}
-
-.clip-row-next {
-	font-size: 12px;
-	color: var(--text-2);
-}
-
-.clip-row-next.is-warn {
-	color: var(--warn);
-}
-
 .clip-row-time {
 	text-align: right;
 	color: var(--text-2);
@@ -238,44 +168,13 @@
 		padding-top: 48px;
 	}
 
-	.stage-filter {
-		flex-wrap: wrap;
-	}
-
-	.stage-filter button {
-		padding-right: 26px;
-	}
-
-	.stage-filter i {
-		display: none;
-	}
-
 	.clip-row {
 		grid-template-columns: 40px minmax(0, 1fr) 42px;
 		gap: 12px;
 		padding: 12px 16px 12px 12px;
 	}
-	.clip-row-concepts,
-	.clip-row-state {
+	.clip-row .status {
 		display: none;
 	}
 }
 
-.removed-group {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: baseline;
-	gap: 6px 18px;
-	margin-top: 44px;
-	padding-left: 6px;
-	font-size: 13px;
-}
-
-.removed-group a {
-	color: var(--text-3);
-	text-decoration: none;
-}
-
-.removed-group a:hover {
-	color: var(--text-2);
-}

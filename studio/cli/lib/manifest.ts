@@ -2,7 +2,7 @@ import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import path from "node:path";
 import { clipChecks, conceptChecks } from "../../core/checks";
 import type { Manifest, ManifestClip, ManifestConcept, ManifestFile, RenderInfo, StageId } from "../../core/manifest";
-import { buildPeaks, buildProxy } from "./derive";
+import { buildProxy } from "./derive";
 import { renderHash } from "./hash";
 import { loadAllClips, loadGuests, writeJson, type LoadedClip } from "./load";
 import { MEDIA, mediaPath, PUBLIC, renderDir } from "./paths";
@@ -59,7 +59,6 @@ export async function buildClip(loaded: LoadedClip): Promise<ManifestClip> {
 		files,
 		audioExists,
 		captions: captions ? { words: captions.words, lines: captions.lines, source: captions.source } : null,
-		peaks: await buildPeaks(clip),
 		stage: stageOf(files, audioExists, concepts),
 		checks: clipChecks(clip, captions),
 		concepts,

@@ -1,10 +1,10 @@
 import { useCallback, useMemo, useRef } from "react";
-import type { ManifestClip, ManifestConcept, ManifestFile, RenderInfo } from "@core/manifest";
+import type { ManifestClip, ManifestConcept, ManifestFile } from "@core/manifest";
 import { mediaUrl } from "../lib/data";
 import { useEngineFrame, type PlayerEngine } from "./engine";
 import { EngineVideo } from "./EngineVideo";
 
-const KIND_LABEL: Record<string, string> = { guest: "Guest", host: "Host", screen: "Screen", broll: "B-roll" };
+const bytes = (value: number) => (value > 1e6 ? `${(value / 1e6).toFixed(1)} MB` : `${Math.round(value / 1e3)} KB`);
 
 function FileTile({ engine, file, concept }: { engine: PlayerEngine; file: ManifestFile; concept: ManifestConcept | null }) {
 	const tile = useRef<HTMLElement>(null);
@@ -30,39 +30,25 @@ function FileTile({ engine, file, concept }: { engine: PlayerEngine; file: Manif
 	return (
 		<figure ref={tile} className={`file-tile${file.exists ? "" : " is-missing"}`}>
 			<div className="file-frame">
-				{file.proxy ? <EngineVideo engine={engine} id={`file-${file.key}`} src={mediaUrl(file.proxy)} timeMap={timeMap} /> : <span className="file-empty mono">{file.file.split("/").pop()}</span>}
+				{file.proxy ? <EngineVideo engine={engine} id={`file-${file.key}`} src={mediaUrl(file.proxy)} timeMap={timeMap} /> : <span className="file-empty">Missing</span>}
 				<span className="file-live">On screen</span>
 				<span className="file-in-bubble">In bubble</span>
 			</div>
 			<figcaption>
 				<span className="wide">{file.label}</span>
-				<span className="role">{KIND_LABEL[file.kind] ?? file.kind}</span>
+				<span className="mono">{file.exists ? bytes(file.bytes) : file.file.split("/").pop()}</span>
 			</figcaption>
 		</figure>
 	);
 }
 
-type Props = { engine: PlayerEngine; clip: ManifestClip; concept: ManifestConcept | null; render: RenderInfo | null };
-
-export function FilesWall({ engine, clip, concept, render }: Props) {
+export function FilesPanel({ engine, clip, concept }: { engine: PlayerEngine; clip: ManifestClip; concept: ManifestConcept | null }) {
 	return (
-		<div className="files-wall">
-			{render && concept ? (
-				<figure className="file-tile is-program">
-					<div className="file-frame" style={{ aspectRatio: `${render.width} / ${render.height}`, "--ratio": render.width / render.height } as React.CSSProperties}>
-						<EngineVideo engine={engine} id={`${concept.id}@${render.round}`} src={mediaUrl(render.preview)} poster={mediaUrl(render.poster)} master />
-					</div>
-					<figcaption>
-						<span className="wide">Program</span>
-						<span className="role">{concept.name}</span>
-					</figcaption>
-				</figure>
-			) : null}
-			<div className="files-grid">
-				{clip.files.map((file) => (
-					<FileTile key={file.key} engine={engine} file={file} concept={concept} />
-				))}
-			</div>
+		<div className="files-panel">
+			{clip.files.map((file) => (
+				<FileTile key={file.key} engine={engine} file={file} concept={concept} />
+			))}
+			{clip.audioExists ? null : <p className="rail-note">The final mix, audio.m4a, is missing.</p>}
 		</div>
 	);
 }

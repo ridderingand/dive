@@ -1,6 +1,6 @@
 const GROUPS = [
 	{ title: "Playback", keys: [["Space", "Play or pause"], ["J / L", "Back or forward 5 seconds"], ["← / →", "One frame"], ["Shift ← / →", "One second"], ["[ / ]", "Previous or next cut"], ["M", "Mute"], [", / .", "Slower or faster"]] },
-	{ title: "Looking", keys: [["1–9", "Choose a concept"], ["W", "Watch"], ["C", "Compare concepts"], ["F", "Files per person"], ["S", "Safe zones"], ["Shift F", "Fullscreen"]] },
+	{ title: "Looking", keys: [["1–9", "Choose a concept"], ["W", "Watch"], ["C", "Compare concepts"], ["S", "Safe zones"], ["F", "Fullscreen"]] },
 	{ title: "Everywhere", keys: [["⌘K", "Jump to anything"], ["T", "Copy this moment for an agent"], ["G", "Back to clips"], ["?", "This sheet"]] },
 ];
 

@@ -16,24 +16,24 @@ const REVIEW_BUILD = import.meta.env.VITE_DIVE_REVIEW === "1";
 const TemplatesPage = REVIEW_BUILD ? () => null : lazy(() => import("./pages/TemplatesPage").then((module) => ({ default: module.TemplatesPage })));
 const TemplatePage = REVIEW_BUILD ? () => null : lazy(() => import("./pages/TemplatesPage").then((module) => ({ default: module.TemplatePage })));
 
-function Routes({ manifest }: { manifest: Manifest }) {
+function Routes({ manifest, reload }: { manifest: Manifest; reload: () => void }) {
 	const { pathname } = useRoute();
 	const parts = pathname.split("/").filter(Boolean);
 	if (parts[0] === "clips" && parts[1] && parts[2]) {
 		const clip = manifest.clips.find((item) => item.guest === parts[1] && item.slug === parts[2]);
-		if (clip) return <ClipRoom key={`${clip.guest}/${clip.slug}`} manifest={manifest} clip={clip} />;
+		if (clip) return <ClipRoom key={`${clip.guest}/${clip.slug}`} manifest={manifest} clip={clip} onChanged={reload} />;
 	}
 	if (manifest.mode === "local" && parts[0] === "templates") {
 		return <Suspense fallback={<div className="page-loading" />}>{parts[1] ? <TemplatePage manifest={manifest} id={parts[1]} /> : <TemplatesPage manifest={manifest} />}</Suspense>;
 	}
 	if (manifest.mode === "local" && parts[0] === "system") return <SystemPage />;
 	const only = manifest.clips[0];
-	if (manifest.mode === "review" && manifest.clips.length === 1 && only) return <ClipRoom manifest={manifest} clip={only} />;
+	if (manifest.mode === "review" && manifest.clips.length === 1 && only) return <ClipRoom manifest={manifest} clip={only} onChanged={reload} />;
 	return <ClipsPage manifest={manifest} />;
 }
 
 export function App() {
-	const { manifest, error } = useManifest();
+	const { manifest, error, reload } = useManifest();
 	const [palette, setPalette] = useState(false);
 	const [shortcuts, setShortcuts] = useState(false);
 	useKeys({
@@ -51,7 +51,7 @@ export function App() {
 		<div className="app">
 			<TopBar manifest={manifest} onSearch={() => setPalette(true)} onShortcuts={() => setShortcuts(true)} />
 			<main className="app-main">
-				<Routes manifest={manifest} />
+				<Routes manifest={manifest} reload={reload} />
 			</main>
 			<div className="grain" />
 			{palette ? <CommandPalette manifest={manifest} onClose={() => setPalette(false)} /> : null}

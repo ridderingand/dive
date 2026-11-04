@@ -163,7 +163,6 @@ async function reviewCommand(args: string[], flags: Flags) {
 	};
 	const fixed: string[] = [];
 	for (const clip of clips) {
-		if (clip.peaks) fixed.push(clip.peaks);
 		for (const file of clip.files) if (file.proxy) fixed.push(file.proxy);
 		for (const concept of clip.concepts) if (concept.current) fixed.push(concept.current.poster, concept.current.sprite);
 	}
@@ -320,6 +319,13 @@ export const commands: Record<string, Command> = {
 		const loaded = findClip(clipQuery ?? "");
 		saveConcept(loaded.dir, Concept.parse({ ...pickConcept(loaded, id ?? ""), status }));
 		await sync();
+	},
+
+	async posted(args, flags) {
+		const loaded = findClip(args[0] ?? "");
+		writeJson(path.join(loaded.dir, "clip.json"), { ...loaded.clip, posted: !flags.undo });
+		await sync();
+		console.log(`${loaded.clip.slug} is ${flags.undo ? "no longer marked" : "marked"} posted. Commit clip.json, and set Shipped Short in Notion to match.`);
 	},
 
 	async shared(args) {

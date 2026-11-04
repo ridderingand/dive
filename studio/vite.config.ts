@@ -1,3 +1,4 @@
+import { execFile } from "node:child_process";
 import { createReadStream, existsSync, statSync } from "node:fs";
 import path from "node:path";
 import react from "@vitejs/plugin-react";
@@ -12,6 +13,19 @@ function mediaFolder(): Plugin {
 	return {
 		name: "dive-media",
 		configureServer(server) {
+			// The one thing the studio writes itself. Everything else goes through an agent.
+			server.middlewares.use("/api/posted", (req, res) => {
+				const url = new URL(req.url ?? "", "http://localhost");
+				const clip = url.searchParams.get("clip") ?? "";
+				if (req.method !== "POST" || !/^[a-z0-9-]+\/[a-z0-9-]+$/.test(clip)) {
+					res.statusCode = 400;
+					return res.end();
+				}
+				execFile("bun", ["cli/dive.ts", "posted", clip, ...(url.searchParams.get("undo") ? ["--undo"] : [])], (error) => {
+					res.statusCode = error ? 500 : 200;
+					res.end();
+				});
+			});
 			server.middlewares.use("/media", (req, res, next) => {
 				const relative = decodeURIComponent((req.url ?? "").split("?")[0] ?? "");
 				const file = path.join(media, relative);

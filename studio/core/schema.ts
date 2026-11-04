@@ -154,6 +154,7 @@ export const Clip = z.object({
 	lengthTargetS: z.number().nullable().default(null),
 	durationS: z.number().nullable().default(null).describe("Length of the cut we hold, from cuts.json or the trimmed files"),
 	descriptDurationS: z.number().nullable().default(null).describe("Length of the Descript composition when last synced"),
+	posted: z.boolean().default(false).describe("Live on socials. Mirrors Shipped Short in Notion"),
 	removed: z.boolean().default(false).describe("Ridd marked the composition REMOVED in Descript"),
 	fps: z.number().default(24),
 	format: z.enum(["square", "vertical", "wide"]).nullable().default(null),

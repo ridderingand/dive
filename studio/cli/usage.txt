@@ -23,4 +23,5 @@ Dive Studio
 
   bun run dive review <clip> [clip…]         Build dist/ for Inflight share_app
   bun run dive shared <clip> <link>          Record the Inflight link once it's shared
+  bun run dive posted <clip> [--undo]        Mark a clip as live on socials
   bun run dive final <clip> <concept>        Export the full-quality MP4 of a picked concept

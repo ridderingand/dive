@@ -17,6 +17,7 @@ export type NotionRow = {
 	"Descript composition": string | null;
 	"Source tracks": string | null;
 	"Mixture link": string | null;
+	"Shipped Short"?: string | null;
 };
 
 export function splitTitle(raw: string) {
@@ -126,6 +127,7 @@ export function importNotion(rows: NotionRow[], briefs: string) {
 			title,
 			score: score ?? (brief.score as number | null) ?? null,
 			status: row.Status,
+			posted: row["Shipped Short"] === undefined ? (existing.posted ?? false) : row["Shipped Short"] === "__YES__",
 			designer: row.Designer,
 			topics: row.Topic ? JSON.parse(row.Topic) : [],
 			hook: stripSpeaker(row.Hook ?? ""),
