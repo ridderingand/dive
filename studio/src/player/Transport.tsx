@@ -1,8 +1,10 @@
 import { useRef, type RefObject } from "react";
 import { timecode } from "@core/time";
 import { ExpandIcon, MicIcon, MuteIcon, PauseIcon, PlayIcon, SafeZoneIcon, SoundIcon, StepBackIcon, StepForwardIcon } from "../ui/icons";
+import type { Take } from "@core/moments";
 import type { DictationState } from "../lib/dictation";
 import { useEngineFrame, useEngineState, type PlayerEngine } from "./engine";
+import { PromptHistory } from "./PromptHistory";
 
 export const RATES = [0.5, 1, 1.5, 2];
 
@@ -12,16 +14,16 @@ function TalkButton({ dictation }: { dictation: Dictation }) {
 	const { state, toggle, level } = dictation;
 	const listening = state === "listening";
 	return (
-		<button type="button" ref={level as RefObject<HTMLButtonElement | null>} className={`talk-button is-${state}`} onClick={toggle} disabled={state === "transcribing"} title="Move through the video and say what you'd change. Each note lands on the moment you're on.">
+		<button type="button" ref={level as RefObject<HTMLButtonElement | null>} className={`talk-button is-${state}`} onClick={toggle} disabled={state === "transcribing"} title="Move through the video and say what you'd change. Press Done and the prompt is copied.">
 			{listening ? <i className="talk-level" /> : <MicIcon width={16} height={16} />}
-			{state === "transcribing" ? "Writing notes" : listening ? "Done" : "Talk"}
+			{state === "transcribing" ? "Writing prompt" : listening ? "Done" : "Talk"}
 		</button>
 	);
 }
 
-type Props = { engine: PlayerEngine; dictation: Dictation | null; onFullscreen: () => void; safeZones: boolean; onSafeZones: () => void; disabled: boolean };
+type Props = { engine: PlayerEngine; dictation: Dictation | null; takes: Take[]; onFullscreen: () => void; safeZones: boolean; onSafeZones: () => void; disabled: boolean };
 
-export function Transport({ engine, dictation, onFullscreen, safeZones, onSafeZones, disabled }: Props) {
+export function Transport({ engine, dictation, takes, onFullscreen, safeZones, onSafeZones, disabled }: Props) {
 	const state = useEngineState(engine);
 	const code = useRef<HTMLSpanElement>(null);
 	const frames = useRef<HTMLSpanElement>(null);
@@ -53,7 +55,12 @@ export function Transport({ engine, dictation, onFullscreen, safeZones, onSafeZo
 				<span className="timecode-total">{timecode(state.duration, engine.fps)}</span>
 			</div>
 			<div className="transport-right">
-				{dictation ? <TalkButton dictation={dictation} /> : null}
+				{dictation ? (
+					<>
+						<PromptHistory takes={takes} />
+						<TalkButton dictation={dictation} />
+					</>
+				) : null}
 				<div className="rate" role="group" aria-label="Playback speed">
 					{RATES.map((rate) => (
 						<button key={rate} type="button" className={state.rate === rate ? "is-active" : undefined} onClick={() => engine.setRate(rate)}>

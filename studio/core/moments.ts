@@ -40,6 +40,9 @@ export function momentsFrom(segments: TranscriptSegment[], stamps: Stamp[]): Mom
 
 export type Note = { id: string; clipFrom: number; clipTo: number; concept: string | null; round: number | null; text: string };
 
+/** One press of Talk: what was said, and the prompt it became. */
+export type Take = { id: string; createdAt: string; notes: Note[]; prompt: string };
+
 const JUMP_SECONDS = 1.5;
 
 /** Whisper cuts by length. Notes break where a thought ends or where the playhead moved to somewhere new. */

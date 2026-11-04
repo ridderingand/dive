@@ -1,8 +1,9 @@
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { notesFrom, type Note, type Stamp, type TranscriptSegment } from "../../core/moments";
-import { writeJson } from "./load";
+import { notesFrom, notesPrompt, type Note, type Stamp, type Take, type TranscriptSegment } from "../../core/moments";
+import { timecode } from "../../core/time";
+import { loadClip, writeJson } from "./load";
 import { mediaPath, MEDIA } from "./paths";
 import { ffmpeg, run } from "./run";
 
@@ -10,11 +11,25 @@ const MODEL = path.join(MEDIA, "models", "ggml-small.en.bin");
 const MODEL_URL = "https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-small.en.bin";
 const VOCABULARY = "Dive Club, Ridd, Anna, B-roll, bubble, caption, Tanker, Clash, lower third, zoom, cut, concept.";
 
-export const notesFile = (guest: string, slug: string) => mediaPath(`notes/${guest}/${slug}/notes.json`);
+const takesFile = (guest: string, slug: string) => mediaPath(`notes/${guest}/${slug}/takes.json`);
 
-export function loadNotes(guest: string, slug: string): Note[] {
-	const file = notesFile(guest, slug);
-	return existsSync(file) ? (JSON.parse(readFileSync(file, "utf8")) as Note[]) : [];
+function promptFor(guest: string, slug: string, notes: Note[]) {
+	const { clip, concepts } = loadClip(guest, slug);
+	return notesPrompt({ guest, slug, title: clip.title, fps: clip.fps }, concepts, notes, timecode);
+}
+
+/** Newest first. A list of notes from before takes existed becomes one take, so nothing dictated is lost. */
+export function loadTakes(guest: string, slug: string): Take[] {
+	const file = takesFile(guest, slug);
+	if (existsSync(file)) return JSON.parse(readFileSync(file, "utf8")) as Take[];
+	const legacy = mediaPath(`notes/${guest}/${slug}/notes.json`);
+	if (!existsSync(legacy)) return [];
+	const notes = JSON.parse(readFileSync(legacy, "utf8")) as Note[];
+	if (notes.length === 0) return [];
+	const takes = [{ id: "earlier", createdAt: new Date().toISOString(), notes, prompt: promptFor(guest, slug, notes) }];
+	writeJson(file, takes);
+	rmSync(legacy);
+	return takes;
 }
 
 /** Dictation runs on this machine: the voice never leaves it, and it works in any browser. */
@@ -37,20 +52,20 @@ async function transcribe(audioFile: string, dir: string): Promise<TranscriptSeg
 	return transcription.map((item) => ({ start_ms: item.offsets.from, end_ms: item.offsets.to, text: item.text.trim() })).filter((item) => item.text && !/^[[(]/.test(item.text));
 }
 
-export type NoteRequest = { guest: string; slug: string; audio: string; stamps: Stamp[] };
+export type TakeRequest = { guest: string; slug: string; audio: string; stamps: Stamp[] };
 
-/** Turns one take into notes, adds them to the clip's list and returns the whole list. */
-export async function addTake({ guest, slug, audio, stamps }: NoteRequest): Promise<Note[]> {
+/** Turns one recording into a ready prompt and keeps it in the clip's history. Returns null if nothing was said. */
+export async function addTake({ guest, slug, audio, stamps }: TakeRequest): Promise<Take | null> {
 	await ensureSpeech();
 	const dir = mkdtempSync(path.join(tmpdir(), "dive-take-"));
 	try {
 		const audioFile = path.join(dir, "take.webm");
 		writeFileSync(audioFile, Buffer.from(audio, "base64"));
-		const taken = Date.now();
-		const notes = notesFrom(await transcribe(audioFile, dir), stamps).map((note) => ({ ...note, id: `${taken}-${note.id}` }));
-		const all = [...loadNotes(guest, slug), ...notes];
-		writeJson(notesFile(guest, slug), all);
-		return all;
+		const notes = notesFrom(await transcribe(audioFile, dir), stamps);
+		if (notes.length === 0) return null;
+		const take: Take = { id: String(Date.now()), createdAt: new Date().toISOString(), notes, prompt: promptFor(guest, slug, notes) };
+		writeJson(takesFile(guest, slug), [take, ...loadTakes(guest, slug)]);
+		return take;
 	} finally {
 		rmSync(dir, { recursive: true, force: true });
 	}

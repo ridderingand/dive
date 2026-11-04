@@ -1,5 +1,5 @@
 import { execFile } from "node:child_process";
-import { createReadStream, existsSync, mkdirSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { createReadStream, existsSync, rmSync, statSync, writeFileSync } from "node:fs";
 import type { IncomingMessage } from "node:http";
 import { tmpdir } from "node:os";
 import path from "node:path";
@@ -39,25 +39,23 @@ function mediaFolder(): Plugin {
 					res.end();
 				});
 			});
-			server.middlewares.use("/api/notes/save", async (req, res) => {
-				const { clip, notes } = JSON.parse(await readBody(req)) as { clip: string; notes: unknown[] };
-				if (!CLIP_PATH.test(clip)) {
-					res.statusCode = 400;
-					return res.end();
+			server.middlewares.use("/api/takes", async (req, res) => {
+				const url = new URL(req.url ?? "", "http://localhost");
+				const clip = url.searchParams.get("clip");
+				res.setHeader("Content-Type", "application/json");
+				if (req.method === "GET") {
+					if (!clip || !CLIP_PATH.test(clip)) {
+						res.statusCode = 400;
+						return res.end();
+					}
+					return execFile("bun", ["cli/dive.ts", "prompts", clip, "--json"], { maxBuffer: 1e7 }, (error, stdout) => res.end(error ? "[]" : stdout));
 				}
-				const file = path.join(media, "notes", clip, "notes.json");
-				mkdirSync(path.dirname(file), { recursive: true });
-				writeFileSync(file, JSON.stringify(notes, null, "\t"));
-				res.end();
-			});
-			server.middlewares.use("/api/notes", async (req, res) => {
 				const file = path.join(tmpdir(), `dive-take-${Date.now()}.json`);
 				writeFileSync(file, await readBody(req));
 				execFile("bun", ["cli/dive.ts", "take", file], { maxBuffer: 1e7 }, (error, stdout) => {
 					rmSync(file, { force: true });
 					res.statusCode = error ? 500 : 200;
-					res.setHeader("Content-Type", "application/json");
-					res.end(error ? "[]" : stdout);
+					res.end(error ? "null" : stdout);
 				});
 			});
 			server.middlewares.use("/media", (req, res, next) => {

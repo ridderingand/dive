@@ -1,7 +1,7 @@
 import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { cleanWord } from "../core/captions";
-import { momentsFrom, notesPrompt, stampsFrom, type RecordingEvent, type TranscriptSegment } from "../core/moments";
+import { momentsFrom, stampsFrom, type RecordingEvent, type TranscriptSegment } from "../core/moments";
 import { timecode } from "../core/time";
 import { conceptChecks, emphasisFromCopy } from "../core/checks";
 import { Captions, Concept, CONCEPT_STATUS, type Cut, type FormatId } from "../core/schema";
@@ -12,7 +12,7 @@ import { importNotion, type NotionRow } from "./importers/notion";
 import { renderHash } from "./lib/hash";
 import { findClip, loadAllClips, saveConcept, writeJson, type LoadedClip } from "./lib/load";
 import { buildClip, MANIFEST_FILE, sync } from "./lib/manifest";
-import { addTake, ensureSpeech, loadNotes, notesFile, type NoteRequest } from "./lib/notes";
+import { addTake, ensureSpeech, loadTakes, type TakeRequest } from "./lib/notes";
 import { DIST, MEDIA, mediaPath, PUBLIC, renderDir, ROOT, WORK } from "./lib/paths";
 import { bundleVideo, renderConcept, renderStill, withMedia } from "./lib/render";
 import { capture, ffmpeg, probeDuration, run } from "./lib/run";
@@ -361,21 +361,16 @@ export const commands: Record<string, Command> = {
 	},
 
 	async take(args) {
-		const request = JSON.parse(readFileSync(args[0] ?? "", "utf8")) as NoteRequest;
+		const request = JSON.parse(readFileSync(args[0] ?? "", "utf8")) as TakeRequest;
 		console.log(JSON.stringify(await addTake(request)));
 	},
 
-	async notes(args, flags) {
-		const loaded = findClip(args[0] ?? "");
-		const { guest, slug, title, fps } = loaded.clip;
-		if (flags.clear) {
-			writeJson(notesFile(guest, slug), []);
-			await sync();
-			return console.log(`Cleared the notes on ${slug}.`);
-		}
-		const notes = loadNotes(guest, slug);
-		if (notes.length === 0) return console.log(`${slug} has no notes.`);
-		console.log(notesPrompt({ guest, slug, title, fps }, loaded.concepts, notes, timecode));
+	async prompts(args, flags) {
+		const { clip } = findClip(args[0] ?? "");
+		const takes = loadTakes(clip.guest, clip.slug);
+		if (flags.json) return console.log(JSON.stringify(takes));
+		const latest = takes[0];
+		console.log(latest ? latest.prompt : `${clip.slug} has no dictated prompts.`);
 	},
 
 	async moments(args, flags) {

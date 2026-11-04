@@ -1,57 +1,15 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Manifest, ManifestClip, ManifestConcept, RenderInfo } from "@core/manifest";
 import { activeAt } from "@core/captions";
-import { notesPrompt, type Note } from "@core/moments";
-import { timecode } from "@core/time";
-import { ArrowOutIcon, CloseIcon } from "../ui/icons";
-import { copyText } from "../ui/toast";
+import { ArrowOutIcon } from "../ui/icons";
 import { mediaUrl } from "../lib/data";
 import { useEngineFrame, type PlayerEngine } from "./engine";
 import { FilesPanel } from "./FilesPanel";
 
 // Outlasts the fade in room.css, so the Files videos stop only once the rail is out of sight.
 const RAIL_CLOSE_MS = 280;
-const TABS = ["Transcript", "Notes", "Rounds", "Files"] as const;
-export type RailTab = (typeof TABS)[number];
-
-function NotesTab({ clip, notes, engine, concepts, onNotes }: { clip: ManifestClip; notes: Note[]; engine: PlayerEngine; concepts: ManifestConcept[]; onNotes: (notes: Note[]) => void }) {
-	if (notes.length === 0) return <p className="rail-empty">Press Talk, move through the video and say what you'd change. Each note lands on the moment you're on.</p>;
-	const ordered = [...notes].sort((a, b) => a.clipFrom - b.clipFrom);
-	const conceptName = (id: string | null) => (concepts.length > 1 ? concepts.find((item) => item.id === id)?.name : undefined);
-	const prompt = () => notesPrompt(clip, concepts, notes, timecode);
-	return (
-		<div className="notes">
-			{ordered.map((note) => (
-				<div key={note.id} className="note">
-					<div className="note-head">
-						<button type="button" className="note-time mono" onClick={() => engine.seek(note.clipFrom)}>
-							{timecode(note.clipFrom, clip.fps)}
-						</button>
-						{conceptName(note.concept) ? <span className="role">{conceptName(note.concept)}</span> : null}
-						<button type="button" className="note-delete" aria-label="Delete note" onClick={() => onNotes(notes.filter((item) => item.id !== note.id))}>
-							<CloseIcon width={14} height={14} />
-						</button>
-					</div>
-					<textarea aria-label="Note" rows={1} defaultValue={note.text} ref={fitTextarea} onInput={(event) => fitTextarea(event.currentTarget)} onBlur={(event) => event.target.value !== note.text && onNotes(notes.map((item) => (item.id === note.id ? { ...item, text: event.target.value } : item)))} />
-				</div>
-			))}
-			<div className="notes-actions">
-				<button type="button" className="send-notes" onClick={() => void copyText(prompt(), "Copied. Paste it into Claude.")}>
-					Copy notes for Claude
-				</button>
-				<button type="button" className="pill-button" onClick={() => onNotes([])}>
-					Clear
-				</button>
-			</div>
-		</div>
-	);
-}
-
-function fitTextarea(node: HTMLTextAreaElement | null) {
-	if (!node) return;
-	node.style.height = "auto";
-	node.style.height = `${node.scrollHeight}px`;
-}
+const TABS = ["Transcript", "Rounds", "Files"] as const;
+type Tab = (typeof TABS)[number];
 
 function WordsTab({ clip, engine }: { clip: ManifestClip; engine: PlayerEngine }) {
 	const box = useRef<HTMLDivElement>(null);
@@ -129,11 +87,11 @@ function RoundsTab({ concept, render, review, onPick, onCompare }: { concept: Ma
 	);
 }
 
-type RailProps = { open: boolean; manifest: Manifest; clip: ManifestClip; concept: ManifestConcept | null; render: RenderInfo | null; engine: PlayerEngine; tab: RailTab; onTab: (tab: RailTab) => void; notes: Note[]; onNotes: (notes: Note[]) => void; onPickRound: (round: number) => void; onCompareRounds: (earlier: number) => void };
+type RailProps = { open: boolean; manifest: Manifest; clip: ManifestClip; concept: ManifestConcept | null; render: RenderInfo | null; engine: PlayerEngine; onPickRound: (round: number) => void; onCompareRounds: (earlier: number) => void };
 
-export function Rail({ open, manifest, clip, concept, render, engine, tab, onTab, notes, onNotes, onPickRound, onCompareRounds }: RailProps) {
+export function Rail({ open, manifest, clip, concept, render, engine, onPickRound, onCompareRounds }: RailProps) {
 	const review = manifest.mode === "review";
-	const tabs = review ? TABS.filter((name) => name !== "Notes") : TABS;
+	const [tab, setTab] = useState<Tab>("Transcript");
 	const [filesLive, setFilesLive] = useState(open);
 	if (open && !filesLive) setFilesLive(true);
 	useEffect(() => {
@@ -147,16 +105,14 @@ export function Rail({ open, manifest, clip, concept, render, engine, tab, onTab
 	return (
 		<aside className="rail" inert={!open}>
 			<div className="rail-tabs" role="tablist">
-				{tabs.map((name) => (
-					<button key={name} type="button" role="tab" aria-selected={tab === name} className={tab === name ? "is-active" : undefined} onClick={() => onTab(name)}>
+				{TABS.map((name) => (
+					<button key={name} type="button" role="tab" aria-selected={tab === name} className={tab === name ? "is-active" : undefined} onClick={() => setTab(name)}>
 						{name}
-						{name === "Notes" && notes.length > 0 ? <i>{notes.length}</i> : null}
 					</button>
 				))}
 			</div>
 			<div className="rail-body scroll">
 				{tab === "Transcript" ? <WordsTab clip={clip} engine={engine} /> : null}
-				{tab === "Notes" ? <NotesTab clip={clip} notes={notes} engine={engine} concepts={clip.concepts} onNotes={onNotes} /> : null}
 				{tab === "Rounds" ? <RoundsTab concept={concept} render={render} review={review} onPick={onPickRound} onCompare={onCompareRounds} /> : null}
 				{tab === "Files" && filesLive ? <FilesPanel engine={engine} clip={clip} concept={concept} /> : null}
 			</div>

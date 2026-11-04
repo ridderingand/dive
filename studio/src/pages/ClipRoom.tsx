@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Manifest, ManifestClip, ManifestConcept, RenderInfo } from "@core/manifest";
-import type { Note } from "@core/moments";
+import type { Take } from "@core/moments";
 import { FORMATS, type FormatId } from "@core/formats";
 import { guestOf, mediaUrl } from "../lib/data";
 import { useKeys } from "../lib/keys";
@@ -11,7 +11,7 @@ import { prefetchVideos } from "../lib/video-source";
 import { templateName } from "../lib/templates";
 import { PlayerEngine, useEngineFrame } from "../player/engine";
 import { EngineVideo } from "../player/EngineVideo";
-import { Rail, type RailTab } from "../player/Rail";
+import { Rail } from "../player/Rail";
 import { Timeline } from "../player/Timeline";
 import { RATES, Transport } from "../player/Transport";
 import { BackIcon, CheckIcon, CopyIcon, SidebarClosedIcon, SidebarOpenIcon } from "../ui/icons";
@@ -268,33 +268,22 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 		[concept, render],
 	);
 
-	const [notes, setNotes] = useState<Note[]>([]);
+	const [takes, setTakes] = useState<Take[]>([]);
 	useEffect(() => {
 		if (manifest.mode !== "local") return;
-		fetch(mediaUrl(`notes/${clip.guest}/${clip.slug}/notes.json`), { cache: "no-store" })
+		fetch(`/api/takes?clip=${clip.guest}/${clip.slug}`)
 			.then((response) => (response.ok ? response.json() : []))
-			.then(setNotes)
+			.then(setTakes)
 			.catch(() => {});
 	}, [manifest.mode, clip]);
-	const [railTab, setRailTab] = useState<RailTab>("Transcript");
 	const dictation = useDictation({
 		engine,
 		guest: clip.guest,
 		slug: clip.slug,
-		count: () => notes.length,
 		current: () => ({ concept: concept?.id ?? null, round: render?.round ?? null }),
-		onNotes: (next) => {
-			setNotes(next);
-			setRailTab("Notes");
-			rememberRail(true);
-			setRailOpen(true);
-		},
-		onError: toast,
+		onTake: (take) => setTakes((list) => [take, ...list]),
+		onMessage: toast,
 	});
-	const saveNotes = (next: Note[]) => {
-		setNotes(next);
-		void fetch("/api/notes/save", { method: "POST", body: JSON.stringify({ clip: `${clip.guest}/${clip.slug}`, notes: next }) });
-	};
 
 	const togglePosted = () => {
 		void fetch(`/api/posted?clip=${clip.guest}/${clip.slug}${clip.posted ? "&undo=1" : ""}`, { method: "POST" }).then((response) => {
@@ -406,11 +395,11 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 					{mode === "compare" ? <CompareGrid engine={engine} picks={picks} master={compareMaster} onMaster={setMasterId} /> : null}
 				</div>
 
-				<Transport engine={engine} dictation={manifest.mode === "local" && hasVideo ? dictation : null} onFullscreen={fullscreen} safeZones={safeZones} onSafeZones={() => setSafeZones((shown) => !shown)} disabled={!hasVideo} />
+				<Transport engine={engine} dictation={manifest.mode === "local" && hasVideo ? dictation : null} takes={takes} onFullscreen={fullscreen} safeZones={safeZones} onSafeZones={() => setSafeZones((shown) => !shown)} disabled={!hasVideo} />
 			</div>
 
-			<Rail open={railOpen} manifest={manifest} clip={clip} concept={concept} render={render} engine={engine} tab={railTab} onTab={setRailTab} notes={notes} onNotes={saveNotes} onPickRound={setRound} onCompareRounds={compareRounds} />
-			<Timeline engine={engine} clip={clip} concept={concept} render={render} notes={notes} />
+			<Rail open={railOpen} manifest={manifest} clip={clip} concept={concept} render={render} engine={engine} onPickRound={setRound} onCompareRounds={compareRounds} />
+			<Timeline engine={engine} clip={clip} concept={concept} render={render} />
 		</div>
 	);
 }

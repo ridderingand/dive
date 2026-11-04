@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { Note, Stamp } from "@core/moments";
+import type { Stamp, Take } from "@core/moments";
 import type { PlayerEngine } from "../player/engine";
 
 const STAMP_EVERY_MS = 200;
 
 export type DictationState = "idle" | "listening" | "transcribing";
 
-type Options = { engine: PlayerEngine; guest: string; slug: string; count: () => number; current: () => { concept: string | null; round: number | null }; onNotes: (notes: Note[]) => void; onError: (message: string) => void };
+type Options = { engine: PlayerEngine; guest: string; slug: string; current: () => { concept: string | null; round: number | null }; onTake: (take: Take) => void; onMessage: (message: string) => void };
 
 function toBase64(blob: Blob) {
 	return new Promise<string>((resolve, reject) => {
@@ -17,20 +17,28 @@ function toBase64(blob: Blob) {
 	});
 }
 
+/**
+ * Starts the clipboard write inside the press of Done, because Safari only allows it during a click,
+ * and hands it the text once it exists. Fails if the person switched windows while it was writing.
+ */
+function copyWhenReady(text: Promise<string>) {
+	return navigator.clipboard.write([new ClipboardItem({ "text/plain": text.then((value) => new Blob([value], { type: "text/plain" })) })]);
+}
+
 /** Records the voice and a log of where the playhead was. No screen capture: the timestamp is the context. */
-export function useDictation({ engine, guest, slug, count, current, onNotes, onError }: Options) {
+export function useDictation({ engine, guest, slug, current, onTake, onMessage }: Options) {
 	const [state, setState] = useState<DictationState>("idle");
 	const level = useRef<HTMLElement | null>(null);
 	const stop = useRef<(() => void) | null>(null);
-	const latest = useRef({ count, current, onNotes, onError });
-	latest.current = { count, current, onNotes, onError };
+	const latest = useRef({ current, onTake, onMessage });
+	latest.current = { current, onTake, onMessage };
 
 	const start = useCallback(async () => {
 		let stream: MediaStream;
 		try {
 			stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true } });
 		} catch {
-			latest.current.onError("The microphone is blocked. Allow it for this page and try again.");
+			latest.current.onMessage("The microphone is blocked. Allow it for this page and try again.");
 			return;
 		}
 		const recorder = new MediaRecorder(stream);
@@ -62,6 +70,9 @@ export function useDictation({ engine, guest, slug, count, current, onNotes, onE
 		};
 		meter();
 
+		let settle: { resolve: (text: string) => void; reject: (reason: Error) => void } | null = null;
+		let copying: Promise<void> = Promise.resolve();
+
 		recorder.ondataavailable = (event) => chunks.push(event.data);
 		recorder.onstop = async () => {
 			stopFrames();
@@ -70,19 +81,33 @@ export function useDictation({ engine, guest, slug, count, current, onNotes, onE
 			stream.getTracks().forEach((track) => track.stop());
 			setState("transcribing");
 			try {
-				const response = await fetch("/api/notes", { method: "POST", body: JSON.stringify({ guest, slug, stamps, audio: await toBase64(new Blob(chunks, { type: recorder.mimeType })) }) });
-				if (!response.ok) throw new Error();
-				const notes = (await response.json()) as Note[];
-				if (notes.length === latest.current.count()) latest.current.onError("Didn't catch anything. Check your microphone and try again.");
-				else latest.current.onNotes(notes);
-			} catch {
-				latest.current.onError("Couldn't turn that into notes. Run bun run dive setup, then try again.");
+				const response = await fetch("/api/takes", { method: "POST", body: JSON.stringify({ guest, slug, stamps, audio: await toBase64(new Blob(chunks, { type: recorder.mimeType })) }) });
+				if (!response.ok) throw new Error("failed");
+				const take = (await response.json()) as Take | null;
+				if (!take) throw new Error("silent");
+				settle?.resolve(take.prompt);
+				latest.current.onTake(take);
+				await copying
+					.then(() => latest.current.onMessage("Copied. Paste it into Claude."))
+					.catch(() => {
+						latest.current.onMessage("Your prompt is ready. Come back to this window to copy it.");
+						window.addEventListener("focus", () => void navigator.clipboard.writeText(take.prompt).then(() => latest.current.onMessage("Copied. Paste it into Claude.")), { once: true });
+					});
+			} catch (reason) {
+				settle?.reject(reason as Error);
+				latest.current.onMessage((reason as Error).message === "silent" ? "Didn't catch anything. Check your microphone and try again." : "Couldn't write that up. Run bun run dive setup, then try again.");
 			}
 			setState("idle");
 		};
 		recorder.start();
 		stop.current = () => {
+			stop.current = null;
 			stamp(engine.time, true);
+			const text = new Promise<string>((resolve, reject) => {
+				settle = { resolve, reject };
+			});
+			copying = copyWhenReady(text);
+			copying.catch(() => {});
 			recorder.stop();
 		};
 		setState("listening");

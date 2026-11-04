@@ -99,9 +99,9 @@ When a clip goes live, mark it with `bun run dive posted <clip>` (or the button 
 
 After each share, set the Notion row: Status to `Ready for review`, and the Inflight link where the Mixture link used to go. Never edit Descript compositions. Nothing goes out as final until Ridd or Anna asks.
 
-## Dictated notes
+## Dictated prompts
 
-In the studio, Anna presses **Talk**, moves through the video and says what she'd change. Each note lands on the moment on screen, and transcription runs on her machine, so her voice never leaves it. If someone asks you to apply their notes, run `bun run dive notes <clip>`. Times and concepts are all there. To see a moment, use `bun run dive still <clip> <concept> <seconds>`. Apply the changes, record the round, then clear them with `bun run dive notes <clip> --clear`.
+In the studio, Anna presses **Talk**, moves through the video and says what she'd change, then presses **Done**. The prompt lands on her clipboard, with each note on the moment that was on screen. She pastes it to you. Transcription runs on her machine, so her voice never leaves it. The history icon keeps past prompts, and `bun run dive prompts <clip>` prints the latest. To see a moment, use `bun run dive still <clip> <concept> <seconds>`.
 
 ## Editing a template
 
