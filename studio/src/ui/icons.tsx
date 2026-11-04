@@ -43,12 +43,6 @@ export const MuteIcon = (props: Props) => (
 		<path d="m16 9.5 5 5M21 9.5l-5 5" />
 	</svg>
 );
-export const LinkIcon = (props: Props) => (
-	<svg {...base} {...props}>
-		<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1" />
-		<path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" />
-	</svg>
-);
 export const ExpandIcon = (props: Props) => (
 	<svg {...base} {...props}>
 		<path d="M9 4H4v5M15 4h5v5M9 20H4v-5M15 20h5v-5" />

@@ -1,15 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { activeAt } from "@core/captions";
 import type { Manifest, ManifestClip, ManifestConcept, RenderInfo } from "@core/manifest";
 import { FORMATS, type FormatId } from "@core/formats";
-import { timecode } from "@core/time";
 import { guestOf, mediaUrl } from "../lib/data";
 import { useKeys } from "../lib/keys";
 import { nextStep } from "../lib/next-step";
 import { navigate, replaceQuery, useRoute } from "../lib/router";
 import { prefetchVideos } from "../lib/video-source";
 import { templateName } from "../lib/templates";
-import { PlayerEngine, useEngineState } from "../player/engine";
+import { PlayerEngine, useEngineFrame } from "../player/engine";
 import { EngineVideo } from "../player/EngineVideo";
 import { Rail } from "../player/Rail";
 import { Timeline } from "../player/Timeline";
@@ -22,6 +20,7 @@ type Mode = "watch" | "compare";
 type Pick = { concept: ManifestConcept; render: RenderInfo };
 
 const MAX_COMPARE = 4;
+const STAMP_EVERY_MS = 500;
 const pickKey = (conceptId: string, round: number) => `${conceptId}@${round}`;
 
 function renderOf(concept: ManifestConcept, round: number | null) {
@@ -47,7 +46,7 @@ function SafeZones({ format }: { format: FormatId }) {
 	return (
 		<div className="safe-zones" aria-hidden>
 			<div style={{ inset: `${zone.top}% ${zone.right}% ${zone.bottom}% ${zone.left}%` }} />
-			<span>{zone.note}</span>
+			<span>Keep text and faces inside the box. {zone.note} can cover the rest.</span>
 		</div>
 	);
 }
@@ -179,14 +178,6 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 		if (Math.abs(engine.time - Number(askedTime)) > 0.05) engine.seek(Number(askedTime));
 	}, [askedTime, engine]);
 
-	const state = useEngineState(engine);
-	useEffect(() => {
-		if (state.playing) return;
-		const t = engine.time > 0 ? engine.time.toFixed(2) : null;
-		appliedTime.current = t;
-		replaceQuery({ c: activeId, v: mode === "watch" ? null : mode, r: round === null ? null : String(round), t });
-	}, [activeId, mode, round, engine, state.playing]);
-
 	useEffect(() => {
 		const previews = concepts.flatMap((item) => (item.current ? [mediaUrl(item.current.preview)] : []));
 		void prefetchVideos([...previews, ...clip.files.flatMap((file) => (file.proxy ? [mediaUrl(file.proxy)] : []))]);
@@ -216,6 +207,23 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 	const render = listening?.render ?? (selected ? renderOf(selected, round) : null);
 	const hasVideo = Boolean(render);
 
+	useEffect(() => {
+		replaceQuery({ c: concept?.id ?? null, v: mode === "watch" ? null : mode, r: round === null ? null : String(round) });
+	}, [concept, mode, round]);
+
+	// Screen recordings log URL changes on the same clock as the voice, so keeping the playhead here
+	// ties everything said to the moment on screen. Safari allows about 3 URL changes a second.
+	const lastStamp = useRef(0);
+	useEngineFrame(engine, (t) => {
+		const now = performance.now();
+		if (now - lastStamp.current < STAMP_EVERY_MS) return;
+		const value = t > 0 ? t.toFixed(2) : null;
+		if (value === appliedTime.current) return;
+		lastStamp.current = now;
+		appliedTime.current = value;
+		replaceQuery({ t: value });
+	});
+
 	const selectConcept = useCallback(
 		(id: string) => {
 			if (mode === "compare") {
@@ -241,23 +249,6 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 		[concept, render],
 	);
 
-	const describeMoment = useCallback(() => {
-		const t = engine.time;
-		const cut = concept?.cuts.find((item) => t >= item.from && t < item.to);
-		const words = clip.captions?.words ?? [];
-		const word = activeAt(words, t);
-		const around = word ? words.slice(Math.max(0, word.i - 6), word.i + 7).map((item) => item.text).join(" ") : null;
-		return [
-			`Dive clip: ${clip.guest}/${clip.slug}`,
-			concept ? `Concept ${concept.id} (${concept.name}), round ${render?.round ?? concept.round}, ${concept.template}` : null,
-			`At ${timecode(t, clip.fps)} (${t.toFixed(2)}s)`,
-			cut ? `On screen: ${cut.label ?? cut.source}` : null,
-			around ? `Said: "${around}"` : null,
-			"",
-			"Change: ",
-		].filter((line) => line !== null).join("\n");
-	}, [engine, concept, clip, render]);
-
 	const togglePosted = () => {
 		void fetch(`/api/posted?clip=${clip.guest}/${clip.slug}${clip.posted ? "&undo=1" : ""}`, { method: "POST" }).then((response) => {
 			if (response.ok) onChanged();
@@ -265,7 +256,6 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 		});
 	};
 
-	const copyMoment = useCallback(() => void copyText(describeMoment(), "Moment copied"), [describeMoment]);
 	const fullscreen = useCallback(() => void main.current?.requestFullscreen?.(), []);
 
 	const jumpCut = (direction: 1 | -1) => {
@@ -298,12 +288,11 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 		s: () => setSafeZones((shown) => !shown),
 		w: () => setMode("watch"),
 		f: fullscreen,
-		// The Inflight widget owns C and T on a hosted review.
-		...(manifest.mode === "local" ? { t: copyMoment, c: () => rendered.length > 1 && setMode("compare") } : {}),
+		// The Inflight widget owns C on a hosted review.
+		...(manifest.mode === "local" ? { c: () => rendered.length > 1 && setMode("compare") } : {}),
 		...Object.fromEntries(concepts.slice(0, 9).map((item, index) => [String(index + 1), () => selectConcept(item.id)])),
 	});
 
-	const agentPrompt = () => `Dive clip ${clip.guest}/${clip.slug}${concept ? `, concept ${concept.id}` : ""}. Read studio/AGENTS.md first.\n\n`;
 	const ratio = render ? render.width / render.height : 1;
 	const reviewMany = manifest.mode === "review" && manifest.clips.length > 1;
 	const next = nextStep(clip);
@@ -362,10 +351,10 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 					{mode === "compare" ? <CompareGrid engine={engine} picks={picks} master={compareMaster} onMaster={setMasterId} /> : null}
 				</div>
 
-				<Transport engine={engine} onCopyMoment={manifest.mode === "local" ? copyMoment : null} onFullscreen={fullscreen} safeZones={safeZones} onSafeZones={() => setSafeZones((shown) => !shown)} disabled={!hasVideo} />
+				<Transport engine={engine} onFullscreen={fullscreen} safeZones={safeZones} onSafeZones={() => setSafeZones((shown) => !shown)} disabled={!hasVideo} />
 			</div>
 
-			<Rail manifest={manifest} clip={clip} concept={concept} render={render} engine={engine} onPickRound={setRound} onCompareRounds={compareRounds} agentPrompt={agentPrompt} />
+			<Rail manifest={manifest} clip={clip} concept={concept} render={render} engine={engine} onPickRound={setRound} onCompareRounds={compareRounds} />
 			<Timeline engine={engine} clip={clip} concept={concept} render={render} />
 		</div>
 	);

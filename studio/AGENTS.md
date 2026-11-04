@@ -82,8 +82,8 @@ In `bun run dive check`, a `fail` must be fixed before you render. A `warn` does
 
 1. Build a review: `bun run dive review <clip> --title "…" --note "…"`. It fits the previews into Inflight's limits in `dist/`.
 2. Share it with Inflight's `share_app` tool: `build_dir: studio/dist`, `repo: ridderingand/dive`. Run the command it returns from the repo root. For a new round, pass the earlier link as `page`, so it joins the same project. With several concepts on one link, pass a `poll` in `questions` naming them, so a vote comes back with the feedback. Then record it: `bun run dive shared <clip> <link>`, which moves the concepts to `in-review` and links the round.
-3. Ridd talks over the video with the Inflight widget. The large timecode under the player is on screen on purpose.
-4. Read it with `get_feedback` on the link. For a recording, use `get_transcript`, and `get_frame` at each moment. Read the timecode from the frame to find the clip time, because the recording's clock is not the clip's clock. It shows minutes, seconds, then frames: `01:29·19` is 1 minute, 29 seconds and 19 frames.
+3. Ridd or Anna talks over the video with Inflight, scrubbing as they go. The studio keeps the playhead in its URL twice a second, and recordings log URL changes on the same clock as the voice.
+4. Save the recording's `get_transcript` and `get_events` results to files, then run `bun run dive moments <clip> --transcript <file> --events <file>`. It writes `.work/moments/<clip>/moments.md`: every note tied to its clip time and concept, with the full-quality frame from that render. Read it instead of guessing from the recording. Timecodes are minutes, seconds, then frames: `01:29·19`.
 5. Edit the concept, then record the round: `bun run dive round <clip> <concept> "What changed" --feedback <link>`. Reviewers read this line, so write it for Anna, not for an engineer. Render, and go back to step 1.
 6. When a concept is picked: `bun run dive status <clip> <concept> picked`, then `bun run dive final <clip> <concept>` once Ridd or Anna asks. It prints the file path.
 

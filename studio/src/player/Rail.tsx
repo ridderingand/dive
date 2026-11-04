@@ -1,8 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Manifest, ManifestClip, ManifestConcept, RenderInfo } from "@core/manifest";
 import { activeAt } from "@core/captions";
-import { ArrowOutIcon, CopyIcon } from "../ui/icons";
-import { copyText } from "../ui/toast";
+import { ArrowOutIcon } from "../ui/icons";
 import { mediaUrl } from "../lib/data";
 import { useEngineFrame, type PlayerEngine } from "./engine";
 import { FilesPanel } from "./FilesPanel";
@@ -86,9 +85,9 @@ function RoundsTab({ concept, render, review, onPick, onCompare }: { concept: Ma
 	);
 }
 
-type RailProps = { manifest: Manifest; clip: ManifestClip; concept: ManifestConcept | null; render: RenderInfo | null; engine: PlayerEngine; onPickRound: (round: number) => void; onCompareRounds: (earlier: number) => void; agentPrompt: () => string };
+type RailProps = { manifest: Manifest; clip: ManifestClip; concept: ManifestConcept | null; render: RenderInfo | null; engine: PlayerEngine; onPickRound: (round: number) => void; onCompareRounds: (earlier: number) => void };
 
-export function Rail({ manifest, clip, concept, render, engine, onPickRound, onCompareRounds, agentPrompt }: RailProps) {
+export function Rail({ manifest, clip, concept, render, engine, onPickRound, onCompareRounds }: RailProps) {
 	const review = manifest.mode === "review";
 	const [tab, setTab] = useState<Tab>("Transcript");
 	useEffect(() => {
@@ -108,14 +107,7 @@ export function Rail({ manifest, clip, concept, render, engine, onPickRound, onC
 				{tab === "Rounds" ? <RoundsTab concept={concept} render={render} review={review} onPick={onPickRound} onCompare={onCompareRounds} /> : null}
 				{tab === "Files" ? <FilesPanel engine={engine} clip={clip} concept={concept} /> : null}
 			</div>
-			{manifest.mode === "review" ? (
-				<p className="rail-hint">Use the Inflight button to talk over any moment. Keep the timecode in view so your notes land on the right frame.</p>
-			) : (
-				<button type="button" className="rail-agent" onClick={() => void copyText(agentPrompt(), "Copied. Paste it to your agent.")}>
-					<CopyIcon width={15} height={15} />
-					Copy a prompt for this clip
-				</button>
-			)}
+			{review ? <p className="rail-hint">Use the Inflight button to talk over any moment. Move through the video as you talk, and your notes stay tied to what's on screen.</p> : null}
 		</aside>
 	);
 }

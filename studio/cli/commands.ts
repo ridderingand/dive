@@ -1,6 +1,8 @@
 import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { cleanWord } from "../core/captions";
+import { momentsFrom, stampsFrom, type RecordingEvent, type TranscriptSegment } from "../core/moments";
+import { timecode } from "../core/time";
 import { conceptChecks, emphasisFromCopy } from "../core/checks";
 import { Captions, Concept, CONCEPT_STATUS, type Cut, type FormatId } from "../core/schema";
 import { captionStyles } from "../system/dive";
@@ -354,6 +356,33 @@ export const commands: Record<string, Command> = {
 			}
 		}
 		if (failed) process.exitCode = 1;
+	},
+
+	async moments(args, flags) {
+		const loaded = findClip(args[0] ?? "");
+		const transcriptFile = text(flags.transcript);
+		const eventsFile = text(flags.events);
+		if (!transcriptFile || !eventsFile) throw new Error("Pass the recording's data: --transcript <file> --events <file>");
+		const { segments } = JSON.parse(readFileSync(transcriptFile, "utf8")) as { segments: TranscriptSegment[] };
+		const { timeline } = JSON.parse(readFileSync(eventsFile, "utf8")) as { timeline: RecordingEvent[] };
+		const moments = momentsFrom(segments, stampsFrom(timeline));
+		if (moments.length === 0) throw new Error("This recording never touched a clip in the studio.");
+		const out = path.join(WORK, "moments", loaded.clip.slug);
+		mkdirSync(out, { recursive: true });
+		const lines: string[] = [`# Notes on ${loaded.clip.title}`, ""];
+		for (const [index, moment] of moments.entries()) {
+			const concept = loaded.concepts.find((item) => item.id === moment.concept) ?? loaded.concepts[0];
+			const span = moment.clipFrom === moment.clipTo ? timecode(moment.clipFrom, loaded.clip.fps) : `${timecode(moment.clipFrom, loaded.clip.fps)} to ${timecode(moment.clipTo, loaded.clip.fps)}`;
+			lines.push(`${index + 1}. **${span}**${concept ? ` (concept ${concept.id})` : ""}: ${moment.text}`);
+			if (!concept) continue;
+			const master = mediaPath(`${renderDir(loaded.clip.guest, loaded.clip.slug, concept.id, moment.round ?? concept.round)}/master.mp4`);
+			if (!existsSync(master)) continue;
+			const frame = `${String(index + 1).padStart(3, "0")}.jpg`;
+			await ffmpeg(["-ss", String(moment.clipFrom), "-i", master, "-frames:v", "1", "-q:v", "3", path.join(out, frame)]);
+			lines.push(`   ![](${frame})`);
+		}
+		writeFileSync(path.join(out, "moments.md"), `${lines.join("\n")}\n`);
+		console.log(path.join(out, "moments.md"));
 	},
 
 	review: reviewCommand,

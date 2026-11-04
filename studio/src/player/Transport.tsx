@@ -1,13 +1,13 @@
 import { useRef } from "react";
 import { timecode } from "@core/time";
-import { ExpandIcon, LinkIcon, MuteIcon, PauseIcon, PlayIcon, SafeZoneIcon, SoundIcon, StepBackIcon, StepForwardIcon } from "../ui/icons";
+import { ExpandIcon, MuteIcon, PauseIcon, PlayIcon, SafeZoneIcon, SoundIcon, StepBackIcon, StepForwardIcon } from "../ui/icons";
 import { useEngineFrame, useEngineState, type PlayerEngine } from "./engine";
 
 export const RATES = [0.5, 1, 1.5, 2];
 
-type Props = { engine: PlayerEngine; onCopyMoment: (() => void) | null; onFullscreen: () => void; safeZones: boolean; onSafeZones: () => void; disabled: boolean };
+type Props = { engine: PlayerEngine; onFullscreen: () => void; safeZones: boolean; onSafeZones: () => void; disabled: boolean };
 
-export function Transport({ engine, onCopyMoment, onFullscreen, safeZones, onSafeZones, disabled }: Props) {
+export function Transport({ engine, onFullscreen, safeZones, onSafeZones, disabled }: Props) {
 	const state = useEngineState(engine);
 	const code = useRef<HTMLSpanElement>(null);
 	const frames = useRef<HTMLSpanElement>(null);
@@ -49,14 +49,9 @@ export function Transport({ engine, onCopyMoment, onFullscreen, safeZones, onSaf
 				<button type="button" className="icon-button" onClick={() => engine.toggleMute()} aria-label={state.muted ? "Unmute" : "Mute"} title="Mute">
 					{state.muted ? <MuteIcon /> : <SoundIcon />}
 				</button>
-				<button type="button" className={`icon-button${safeZones ? " is-on" : ""}`} onClick={onSafeZones} aria-label="Safe zones" aria-pressed={safeZones} title="Safe zones">
+				<button type="button" className={`icon-button${safeZones ? " is-on" : ""}`} onClick={onSafeZones} aria-label="Show safe zones" aria-pressed={safeZones} title="Show where platform buttons and crops cover the video">
 					<SafeZoneIcon />
 				</button>
-				{onCopyMoment ? (
-					<button type="button" className="icon-button" onClick={onCopyMoment} aria-label="Copy this moment for an agent" title="Copy this moment for an agent">
-						<LinkIcon />
-					</button>
-				) : null}
 				<button type="button" className="icon-button" onClick={onFullscreen} aria-label="Fullscreen" title="Fullscreen">
 					<ExpandIcon />
 				</button>
