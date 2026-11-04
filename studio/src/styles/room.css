@@ -768,6 +768,10 @@
 	user-select: none;
 }
 
+.lane-picture {
+	height: 46px;
+}
+
 .timeline-track {
 	position: relative;
 	flex: 1;
