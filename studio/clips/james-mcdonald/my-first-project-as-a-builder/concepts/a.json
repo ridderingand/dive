@@ -5,7 +5,7 @@
 	"template": "talk-square",
 	"format": "square",
 	"round": 1,
-	"status": "in-review",
+	"status": "draft",
 	"captionStyle": "sky-label",
 	"cuts": [
 		{
@@ -87,7 +87,7 @@
 		{
 			"round": 1,
 			"date": "2026-11-03",
-			"summary": "Rebuilt from the Mixture composition first-project."
+			"summary": "First version, rebuilt from the Mixture draft."
 		}
 	]
 }

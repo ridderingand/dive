@@ -10,8 +10,8 @@
 		"Craft",
 		"Career"
 	],
-	"hook": "Myles: \"I think it has never been a more exciting and more fearful time to be a designer, and I think both things can be true.\"",
-	"payoff": "Myles: stopped coding in 2017, AI pulled him back to building; ends hard on \"…focus on what you can do today and how you can change today\" (rhetorical \"don't worry about tomorrow, right?\" cut)",
+	"hook": "\"I think it has never been a more exciting and more fearful time to be a designer, and I think both things can be true.\"",
+	"payoff": "stopped coding in 2017, AI pulled him back to building; ends hard on \"…focus on what you can do today and how you can change today\" (rhetorical \"don't worry about tomorrow, right?\" cut)",
 	"arc": "Host-led stakes take (file 15: stakes questions open best). Ridd confesses he doesn't craft anymore → Myles: \"It's 100%…\" → stopped coding in 2017, AI brought him back → payoff on not worrying about tomorrow.",
 	"lengthTargetS": 40.4,
 	"durationS": 61.708,

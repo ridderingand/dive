@@ -24,6 +24,8 @@ export function splitTitle(raw: string) {
 	return match ? { score: Number(match[1]), title: match[2] ?? raw } : { score: null, title: raw.trim() };
 }
 
+export const stripSpeaker = (line: string) => line.replace(/^[A-Z][a-z]+: /, "");
+
 export function slugify(text: string) {
 	return text.toLowerCase().normalize("NFKD").replace(/['’]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 }
@@ -126,8 +128,8 @@ export function importNotion(rows: NotionRow[], briefs: string) {
 			status: row.Status,
 			designer: row.Designer,
 			topics: row.Topic ? JSON.parse(row.Topic) : [],
-			hook: row.Hook ?? "",
-			payoff: row.Payoff ?? "",
+			hook: stripSpeaker(row.Hook ?? ""),
+			payoff: stripSpeaker(row.Payoff ?? ""),
 			arc: (brief.arc as string | null) ?? null,
 			lengthTargetS: row.Length,
 			durationS,

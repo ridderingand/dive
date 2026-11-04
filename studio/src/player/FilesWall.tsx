@@ -49,7 +49,7 @@ export function FilesWall({ engine, clip, concept, render }: Props) {
 		<div className="files-wall">
 			{render && concept ? (
 				<figure className="file-tile is-program">
-					<div className="file-frame" style={{ aspectRatio: `${render.width} / ${render.height}` }}>
+					<div className="file-frame" style={{ aspectRatio: `${render.width} / ${render.height}`, "--ratio": render.width / render.height } as React.CSSProperties}>
 						<EngineVideo engine={engine} id={`${concept.id}@${render.round}`} src={mediaUrl(render.preview)} poster={mediaUrl(render.poster)} master />
 					</div>
 					<figcaption>

@@ -4,7 +4,7 @@ import { bubble, neutrals } from "../../system/dive";
 import { Backdrop } from "../_kit/Backdrop";
 import { Bubbles } from "../_kit/Bubble";
 import { Captions } from "../_kit/Captions";
-import { CutSequence, CutVideo, FramedCut, isCamera } from "../_kit/Picture";
+import { CutSequence, CutVideo, FramedCut, isCamera, ZoomLayer } from "../_kit/Picture";
 import { TemplateShell } from "../_kit/Shell";
 
 const SCREEN_HEIGHT = 1120;
@@ -15,7 +15,9 @@ function ScreenCard({ input, cut }: { input: TemplateInput; cut: Cut }) {
 		<AbsoluteFill>
 			<Backdrop />
 			<div style={{ position: "absolute", left: 0, top: SCREEN_TOP, width: 1080, height: SCREEN_HEIGHT, overflow: "hidden", background: neutrals.trench }}>
-				<CutVideo input={input} cut={cut} style={{ transform: `scale(${cut.scale})`, transformOrigin: `${cut.focus.x * 100}% ${cut.focus.y * 100}%` }} />
+				<ZoomLayer input={input} cut={cut}>
+					<CutVideo input={input} cut={cut} style={{ transform: `scale(${cut.scale})`, transformOrigin: `${cut.focus.x * 100}% ${cut.focus.y * 100}%` }} />
+				</ZoomLayer>
 			</div>
 		</AbsoluteFill>
 	);

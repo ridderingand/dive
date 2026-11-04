@@ -1,8 +1,8 @@
 import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { cleanWord } from "../core/captions";
-import { emphasisFromCopy } from "../core/checks";
-import { Captions, Concept, FORMATS, type Cut, type FormatId } from "../core/schema";
+import { conceptChecks, emphasisFromCopy } from "../core/checks";
+import { Captions, Concept, type Cut, type FormatId } from "../core/schema";
 import { captionStyles } from "../system/dive";
 import { templates } from "../templates/registry";
 import { importMixture } from "./importers/mixture";
@@ -124,6 +124,8 @@ async function renderCommand(args: string[], flags: Flags) {
 		for (const { loaded, ids } of targets) {
 			for (const id of ids) {
 				const concept = pickConcept(loaded, id);
+				const blocked = conceptChecks(loaded.clip, concept, loaded.captions).find((check) => check.level === "fail");
+				if (blocked) throw new Error(`${loaded.clip.slug}/${id}: ${blocked.message}`);
 				console.log(`Rendering ${loaded.clip.slug} / ${concept.id} (${concept.name}), round ${concept.round}`);
 				const { record } = await renderConcept(loaded, concept, { mediaBase: base, frames: text(flags.frames), concurrency: text(flags.concurrency) });
 				console.log(`  ${record.renderSeconds}s · master ${mb(record.masterBytes)} · preview ${mb(record.previewBytes)}`);
@@ -193,6 +195,12 @@ async function reviewCommand(args: string[], flags: Flags) {
 		clips: clips.map((clip) => ({ ...clip, concepts: clip.concepts.filter((concept) => concept.current).map((concept) => ({ ...concept, renders: concept.current ? [concept.current] : [] })) })),
 	};
 	writeJson(path.join(DIST, "data", "studio.json"), reviewManifest);
+	for (const { clip, concept } of concepts) {
+		if (concept.status !== "draft") continue;
+		const loaded = findClip(`${clip.guest}/${clip.slug}`);
+		saveConcept(loaded.dir, { ...pickConcept(loaded, concept.id), status: "in-review" });
+	}
+	await sync();
 	const total = Number((await capture(["du", "-sk", DIST])).split("\t")[0]) * 1024;
 	console.log(`dist/ is ready: ${mb(total)} across ${concepts.length} concepts.`);
 	console.log("Share it with Inflight share_app, build_dir studio/dist.");
@@ -269,7 +277,7 @@ export const commands: Record<string, Command> = {
 		const template = templates.find((item) => item.id === (text(flags.template) ?? from?.template ?? "talk-square"));
 		if (!template) throw new Error(`Unknown template. Choose from: ${templates.map((item) => item.id).join(", ")}`);
 		const format = (text(flags.format) ?? template.formats[0]) as FormatId;
-		if (!(format in FORMATS)) throw new Error(`Unknown format ${format}`);
+		if (!template.formats.includes(format)) throw new Error(`${template.id} does ${template.formats.join(", ")}, not ${format}`);
 		const captionStyle = text(flags.captions) ?? from?.captionStyle ?? template.defaultCaptionStyle;
 		if (!(captionStyle in captionStyles)) throw new Error(`Unknown caption style. Choose from: ${Object.keys(captionStyles).join(", ")}`);
 		const base = from ? { cuts: from.cuts, bubbles: template.id === from.template ? from.bubbles : from.bubbles.map(({ x: _x, y: _y, size: _size, ...bubble }) => bubble), zooms: from.zooms } : { ...buildDraft(loaded), zooms: [] };

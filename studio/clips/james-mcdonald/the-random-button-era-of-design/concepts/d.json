@@ -5,7 +5,7 @@
 	"template": "talk-vertical",
 	"format": "vertical",
 	"round": 1,
-	"status": "draft",
+	"status": "in-review",
 	"captionStyle": "sky-label",
 	"cuts": [
 		{
@@ -163,13 +163,14 @@
 			"transitionOut": 0.3
 		}
 	],
+	"overlays": [],
 	"endCap": false,
 	"props": {},
 	"history": [
 		{
 			"round": 1,
 			"date": "2026-11-03",
-			"summary": "Started from concept a."
+			"summary": "First version, built from concept A."
 		}
 	]
 }

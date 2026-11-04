@@ -10,7 +10,7 @@
 		"Process",
 		"Tools"
 	],
-	"hook": "Derek: \"If you're shipping something without any sort of data around its success…\" how would you know what you did was right?",
+	"hook": "\"If you're shipping something without any sort of data around its success…\" how would you know what you did was right?",
 	"payoff": "Codex scheduled automations read with a cup of coffee, flag criticality, let it bake → ends on asking it \"What should I measure?\"",
 	"arc": "Be ruthless about data → his morning-coffee Codex automations (criticality, let it bake) → don't monitor it yourself, ask it \"What should I measure?\" Product-partner alignment (32:59–33:45) skipped per Ridd.",
 	"lengthTargetS": 86.9,

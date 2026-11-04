@@ -11,13 +11,13 @@ const GUEST = "james-mcdonald";
 
 const PLAN = [
 	{ slug: "the-random-button-era-of-design", comps: [
-		{ comp: "comp-layer-08d12292", id: "a", name: "Sky labels", intent: "Two-word labels with Sky emphasis. The current favourite.", style: "sky-label", status: "in-review" },
+		{ comp: "comp-layer-08d12292", id: "a", name: "Sky labels", intent: "Two-word labels with Sky emphasis. The current favourite.", style: "sky-label", status: "draft" },
 		{ comp: "comp-layer-93d9e875", id: "b", name: "Tanker words", intent: "One loud word at a time. Does it feel more like the feed?", style: "sky-tanker", status: "draft" },
 		{ comp: "comp-layer-453cbbeb", id: "c", name: "Clash words", intent: "Same rhythm as Tanker in calmer type.", style: "sky-clash", status: "draft" },
 	] },
-	{ slug: "quicker-in-claude-than-figma", comps: [{ comp: "claude-figma", id: "a", name: "Sky labels", intent: "The house look on a short clip.", style: "sky-label", status: "in-review" }] },
-	{ slug: "great-designers-self-plagiarize", comps: [{ comp: "self-plagiarize", id: "a", name: "Sky labels", intent: "The house look over the cubes B-roll.", style: "sky-label", status: "in-review" }] },
-	{ slug: "my-first-project-as-a-builder", comps: [{ comp: "first-project", id: "a", name: "Sky labels", intent: "The house look over the face mesh B-roll.", style: "sky-label", status: "in-review" }] },
+	{ slug: "quicker-in-claude-than-figma", comps: [{ comp: "claude-figma", id: "a", name: "Sky labels", intent: "The house look on a short clip.", style: "sky-label", status: "draft" }] },
+	{ slug: "great-designers-self-plagiarize", comps: [{ comp: "self-plagiarize", id: "a", name: "Sky labels", intent: "The house look over the cubes B-roll.", style: "sky-label", status: "draft" }] },
+	{ slug: "my-first-project-as-a-builder", comps: [{ comp: "first-project", id: "a", name: "Sky labels", intent: "The house look over the face mesh B-roll.", style: "sky-label", status: "draft" }] },
 ] as const;
 
 function place(from: string, to: string) {
@@ -94,7 +94,7 @@ function layerToConcept(scene: Layer, plan: (typeof PLAN)[number]["comps"][numbe
 		cuts,
 		bubbles,
 		zooms,
-		history: [{ round: 1, date: "2026-11-03", summary: `Rebuilt from the Mixture composition ${plan.comp}.` }],
+		history: [{ round: 1, date: "2026-11-03", summary: "First version, rebuilt from the Mixture draft." }],
 	};
 }
 

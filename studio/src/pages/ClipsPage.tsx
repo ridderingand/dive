@@ -4,24 +4,11 @@ import type { Guest } from "@core/schema";
 import { shortTime } from "@core/time";
 import { accents } from "../../system/dive";
 import { clipPath, mediaUrl } from "../lib/data";
+import { nextStep } from "../lib/next-step";
 import { PlayIcon } from "../ui/icons";
 import { StageMeter } from "../ui/StageMeter";
 
 export const accentOf = (guest: Guest) => accents[guest.accent as keyof typeof accents]?.hex ?? accents.sky.hex;
-
-const NEXT_STEP: Record<StageId, string> = {
-	clip: "Waiting on tracks",
-	files: "Ready for concepts",
-	concepts: "Ready to render",
-	review: "In review",
-	final: "Exported",
-};
-
-function nextStep(clip: ManifestClip) {
-	if (clip.checks.some((check) => check.id === "cut-fresh" && check.level === "fail")) return { text: "Cut list out of date", warn: true };
-	if (clip.concepts.some((concept) => concept.stale)) return { text: "Needs a new render", warn: true };
-	return { text: NEXT_STEP[clip.stage], warn: false };
-}
 
 function ClipRow({ clip }: { clip: ManifestClip }) {
 	const next = nextStep(clip);
@@ -34,7 +21,7 @@ function ClipRow({ clip }: { clip: ManifestClip }) {
 			</span>
 			<span className="clip-row-main">
 				<span className="clip-row-title wide">{clip.title}</span>
-				<span className="clip-row-hook role">{clip.hook.replace(/^[A-Z][a-z]+: /, "")}</span>
+				<span className="clip-row-hook role">{clip.hook}</span>
 			</span>
 			<span className="clip-row-concepts">
 				{posters.map((concept) => (concept.current ? <img key={concept.id} src={mediaUrl(concept.current.poster)} alt="" loading="lazy" /> : null))}

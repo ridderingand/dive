@@ -5,6 +5,7 @@ import { FORMATS, type FormatId } from "@core/formats";
 import { timecode } from "@core/time";
 import { guestOf, mediaUrl } from "../lib/data";
 import { useKeys } from "../lib/keys";
+import { nextStep } from "../lib/next-step";
 import { navigate, replaceQuery, useRoute } from "../lib/router";
 import { prefetchVideos } from "../lib/video-source";
 import { templateName } from "../lib/templates";
@@ -97,49 +98,72 @@ function WaitingStage({ clip, guestName }: { clip: ManifestClip; guestName: stri
 		);
 	}
 	const staleCut = clip.checks.find((check) => check.id === "cut-fresh" && check.level === "fail");
-	const prompt = `${staleCut ? `Re-export the cut list for ${clip.slug} from Descript. ` : ""}Fetch the Riverside tracks for ${guestName} into the Dive Club Clips Raw Drive folder, as guest.mp4, ridd.mp4 and screenshare.mp4, then trim ${clip.slug}.`;
+	if (clip.removed) {
+		return (
+			<div className="waiting">
+				<img src="/brand/snorkel.png" alt="" />
+				<h2 className="wide">Removed in Descript</h2>
+				<p className="role">This clip's composition is marked removed, so nothing is needed here.</p>
+			</div>
+		);
+	}
+	if (staleCut) {
+		const recut = `Re-export the cut list and per-word captions for ${clip.guest}/${clip.slug} from its Descript composition, then replace cuts.json and captions.json. Follow studio/AGENTS.md.`;
+		return (
+			<div className="waiting">
+				<img src="/brand/snorkel.png" alt="" />
+				<h2 className="wide">Cut list out of date</h2>
+				<p className="role">{staleCut.message}</p>
+				<button type="button" className="pill-button" onClick={() => void copyText(recut, "Prompt copied")}>
+					Copy the prompt
+					<CopyIcon width={14} height={14} />
+				</button>
+			</div>
+		);
+	}
+	const prompt = `Fetch the Riverside tracks for ${guestName} into the Dive Club Clips Raw Drive folder, as guest.mp4, ridd.mp4 and screenshare.mp4, then trim ${clip.slug}.`;
 	return (
 		<div className="waiting">
 			<img src="/brand/snorkel.png" alt="" />
-			<h2 className="wide">{clip.removed ? "Removed in Descript" : "Waiting on tracks"}</h2>
-			<p className="role">{clip.removed ? "This clip's composition is marked removed, so nothing is needed here." : (staleCut?.message ?? "The brief and cut are in. This clip still needs its files.")}</p>
-			{clip.removed ? null : (
-				<>
-					<div className="waiting-files mono">
-						{missing.map((name) => (
-							<span key={name}>{name}</span>
-						))}
-					</div>
-					<button type="button" className="pill-button" onClick={() => void copyText(prompt, "Prompt copied")}>
-						Copy the prompt for Grok
-						<CopyIcon width={14} height={14} />
-					</button>
-				</>
-			)}
+			<h2 className="wide">Waiting on tracks</h2>
+			<p className="role">The brief and cut are in. This clip still needs its files.</p>
+			<div className="waiting-files mono">
+				{missing.map((name) => (
+					<span key={name}>{name}</span>
+				))}
+			</div>
+			<button type="button" className="pill-button" onClick={() => void copyText(prompt, "Prompt copied")}>
+				Copy the prompt for Grok
+				<CopyIcon width={14} height={14} />
+			</button>
 		</div>
 	);
 }
 
 function CompareGrid({ engine, picks, master, onMaster }: { engine: PlayerEngine; picks: Pick[]; master: string; onMaster: (id: string) => void }) {
+	const rows = picks.length === 4 ? [picks.slice(0, 2), picks.slice(2)] : [picks];
 	return (
-		<div className={`compare-grid count-${picks.length}`}>
-			{picks.map(({ concept, render }, index) => {
-				const id = pickKey(concept.id, render.round);
-				const isMaster = master === id;
-				return (
-					<figure key={id} className={isMaster ? "is-master" : undefined}>
-						<button type="button" className="compare-frame" onClick={() => onMaster(id)} title="Listen to this one" style={{ aspectRatio: `${render.width} / ${render.height}` }}>
-							<EngineVideo engine={engine} id={id} src={mediaUrl(render.preview)} poster={mediaUrl(render.poster)} master={isMaster} />
-						</button>
-						<figcaption>
-							<span className="wide">
-								{String.fromCharCode(65 + index)} · {concept.name}
-							</span>
-							<span className="role">R{render.round}{isMaster ? " · listening" : ""}</span>
-						</figcaption>
-					</figure>
-				);
-			})}
+		<div className="compare-grid" style={{ "--rows": rows.length } as React.CSSProperties}>
+			{rows.map((row, rowIndex) => (
+				<div key={rowIndex} className="compare-row">
+					{row.map(({ concept, render }) => {
+						const id = pickKey(concept.id, render.round);
+						const isMaster = master === id;
+						const ratio = render.width / render.height;
+						return (
+							<figure key={id} className={isMaster ? "is-master" : undefined} style={{ "--ratio": ratio } as React.CSSProperties}>
+								<button type="button" className="compare-frame" onClick={() => onMaster(id)} title="Listen to this one" style={{ aspectRatio: `${render.width} / ${render.height}` }}>
+									<EngineVideo engine={engine} id={id} src={mediaUrl(render.preview)} poster={mediaUrl(render.poster)} master={isMaster} />
+								</button>
+								<figcaption>
+									<span className="wide">{concept.name}</span>
+									<span className="role">R{render.round}{isMaster ? " · listening" : ""}</span>
+								</figcaption>
+							</figure>
+						);
+					})}
+				</div>
+			))}
 		</div>
 	);
 }
@@ -160,19 +184,22 @@ export function ClipRoom({ manifest, clip }: { manifest: Manifest; clip: Manifes
 	const engine = useMemo(() => new PlayerEngine(clip.fps, clip.durationS ?? 0), [clip]);
 	useEffect(() => () => engine.dispose(), [engine]);
 
-	const concept = concepts.find((item) => item.id === activeId) ?? null;
-	const render = concept ? renderOf(concept, round) : null;
-	const hasVideo = Boolean(render);
+	const selected = concepts.find((item) => item.id === activeId) ?? null;
 
+	const askedTime = query.get("t");
+	const appliedTime = useRef<string | null>(null);
 	useEffect(() => {
-		const t = Number(new URLSearchParams(window.location.hash.split("?")[1]).get("t"));
-		if (t > 0) window.setTimeout(() => engine.seek(t), 120);
-	}, [engine]);
+		if (askedTime === null || askedTime === appliedTime.current) return;
+		appliedTime.current = askedTime;
+		if (Math.abs(engine.time - Number(askedTime)) > 0.05) engine.seek(Number(askedTime));
+	}, [askedTime, engine]);
 
 	const state = useEngineState(engine);
 	useEffect(() => {
 		if (state.playing) return;
-		replaceQuery({ c: activeId, v: mode === "watch" ? null : mode, r: round === null ? null : String(round), t: engine.time > 0 ? engine.time.toFixed(2) : null });
+		const t = engine.time > 0 ? engine.time.toFixed(2) : null;
+		appliedTime.current = t;
+		replaceQuery({ c: activeId, v: mode === "watch" ? null : mode, r: round === null ? null : String(round), t });
 	}, [activeId, mode, round, engine, state.playing]);
 
 	useEffect(() => {
@@ -198,6 +225,11 @@ export function ClipRoom({ manifest, clip }: { manifest: Manifest; clip: Manifes
 		return list;
 	}, [compareKeys, concepts]);
 	const compareMaster = masterId && picks.some((pick) => pickKey(pick.concept.id, pick.render.round) === masterId) ? masterId : picks[0] ? pickKey(picks[0].concept.id, picks[0].render.round) : "";
+
+	const listening = mode === "compare" ? picks.find((pick) => pickKey(pick.concept.id, pick.render.round) === compareMaster) : undefined;
+	const concept = listening?.concept ?? selected;
+	const render = listening?.render ?? (selected ? renderOf(selected, round) : null);
+	const hasVideo = Boolean(render);
 
 	const selectConcept = useCallback(
 		(id: string) => {
@@ -282,6 +314,7 @@ export function ClipRoom({ manifest, clip }: { manifest: Manifest; clip: Manifes
 	const agentPrompt = () => `Dive clip ${clip.guest}/${clip.slug}${concept ? `, concept ${concept.id}` : ""}. Read studio/AGENTS.md first.\n\n`;
 	const ratio = render ? render.width / render.height : 1;
 	const reviewMany = manifest.mode === "review" && manifest.clips.length > 1;
+	const next = nextStep(clip);
 
 	return (
 		<div className="room" style={{ "--accent": accentOf(guest) } as React.CSSProperties}>
@@ -295,7 +328,7 @@ export function ClipRoom({ manifest, clip }: { manifest: Manifest; clip: Manifes
 					<h1 className="wide">{clip.title}</h1>
 					<span className="room-guest">
 						<span className="room-guest-name">{guest.name}</span>
-						<span className="role dots">{clip.status}</span>
+						<span className={`role dots${next.warn ? " is-warn" : ""}`}>{next.text}</span>
 					</span>
 				</div>
 				<StageMeter stage={clip.stage} />
@@ -334,7 +367,7 @@ export function ClipRoom({ manifest, clip }: { manifest: Manifest; clip: Manifes
 					{mode === "files" ? <FilesWall engine={engine} clip={clip} concept={concept} render={render} /> : null}
 				</div>
 
-				<Transport engine={engine} onCopyMoment={copyMoment} onFullscreen={fullscreen} safeZones={safeZones} onSafeZones={() => setSafeZones((shown) => !shown)} disabled={!hasVideo} />
+				<Transport engine={engine} onCopyMoment={manifest.mode === "local" ? copyMoment : null} onFullscreen={fullscreen} safeZones={safeZones} onSafeZones={() => setSafeZones((shown) => !shown)} disabled={!hasVideo} />
 			</div>
 
 			<Rail manifest={manifest} clip={clip} concept={concept} render={render} engine={engine} onPickRound={setRound} onCompareRounds={compareRounds} agentPrompt={agentPrompt} />

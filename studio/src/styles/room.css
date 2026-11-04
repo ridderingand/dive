@@ -35,6 +35,10 @@
 	font-size: 13px;
 }
 
+.room-guest .is-warn {
+	color: var(--warn);
+}
+
 .room-guest-name {
 	color: var(--accent);
 	font-weight: 550;
@@ -281,36 +285,33 @@
 
 .compare-grid {
 	display: grid;
-	gap: 14px;
+	gap: 12px;
 	width: 100%;
 	height: 100%;
-	align-items: center;
-	justify-items: center;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
+	align-content: center;
 }
 
-.compare-grid.count-1 {
-	grid-template-columns: minmax(0, 1fr);
-}
-
-.compare-grid.count-3,
-.compare-grid.count-4 {
-	grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
-	grid-auto-flow: column;
+/* Widths follow each frame's ratio, so mixed formats land at the same height. */
+.compare-row {
+	display: flex;
+	justify-content: center;
+	gap: 14px;
+	min-width: 0;
 }
 
 .compare-grid figure {
 	display: grid;
-	gap: 8px;
+	gap: 6px;
 	margin: 0;
-	width: 100%;
+	flex: var(--ratio) 1 0;
 	min-width: 0;
+	max-width: calc((100cqh / var(--rows, 1) - 40px) * var(--ratio));
 }
 
 .compare-frame {
 	display: block;
+	position: relative;
 	width: 100%;
-	max-height: calc(100cqh - 44px);
 	border-radius: 14px;
 	overflow: hidden;
 	background: #000;
@@ -371,9 +372,8 @@
 }
 
 .file-tile.is-program .file-frame {
-	max-height: calc(100cqh - 34px);
 	margin: 0 auto;
-	width: 100%;
+	width: min(100%, calc((100cqh - 34px) * var(--ratio, 1)));
 }
 
 .file-frame video {
@@ -484,6 +484,12 @@
 	font-weight: 500;
 	letter-spacing: -0.05em;
 	color: var(--ink);
+}
+
+.timecode-frames {
+	margin-left: -8px;
+	font-size: 16px;
+	color: var(--text-2);
 }
 
 .timecode-total {
@@ -1084,6 +1090,44 @@ button.check-row:hover {
 	}
 }
 
+@media (max-height: 780px) {
+	.timeline-labels .lane-brief,
+	.timeline-track > .lane-brief {
+		display: none;
+	}
+
+	.transport {
+		height: 52px;
+	}
+
+	.transport-play {
+		width: 38px;
+		height: 38px;
+	}
+
+	.timecode-now {
+		font-size: 24px;
+	}
+
+	.room-head {
+		padding-top: 8px;
+		padding-bottom: 2px;
+	}
+
+	.concept-strip {
+		padding: 4px 0 6px;
+	}
+
+	.concept-bubble {
+		width: 32px;
+		height: 32px;
+	}
+
+	.concept-detail {
+		display: none;
+	}
+}
+
 .round-link {
 	display: inline-flex;
 	align-items: center;
@@ -1139,6 +1183,26 @@ button.check-row:hover {
 
 	.room-title {
 		flex: 1 1 calc(100% - 60px);
+	}
+
+	.room-head {
+		order: 1;
+	}
+
+	.room-main {
+		order: 2;
+	}
+
+	.timeline {
+		order: 3;
+	}
+
+	.rail {
+		order: 4;
+	}
+
+	.mode-switch button:nth-child(2) {
+		display: none;
 	}
 
 	.room-title h1 {

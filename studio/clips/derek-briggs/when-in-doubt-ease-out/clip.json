@@ -8,7 +8,7 @@
 	"topics": [
 		"Craft"
 	],
-	"hook": "Derek: \"We all say that we wanna keep movement and transitions around 200 milliseconds… but there's amazing things you can do… in a much longer duration.\"",
+	"hook": "\"We all say that we wanna keep movement and transitions around 200 milliseconds… but there's amazing things you can do… in a much longer duration.\"",
 	"payoff": "Soft-close-drawer demo (screen share), ends hard on \"….2, .8, 0, 1 with 400 milliseconds, and you just use it everywhere.\"",
 	"arc": "Claim (200ms rule is too blunt) → the exact curve (cubic-bezier .2 .8 0 1 @ 400ms, \"that's slow\") → screen-share demo of robotic default vs soft-close drawer → hard end on \"when in doubt, ease out… use it everywhere.\"",
 	"lengthTargetS": 108.6,

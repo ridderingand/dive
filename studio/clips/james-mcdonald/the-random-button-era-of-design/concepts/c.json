@@ -5,7 +5,7 @@
 	"template": "talk-square",
 	"format": "square",
 	"round": 1,
-	"status": "draft",
+	"status": "in-review",
 	"captionStyle": "sky-clash",
 	"cuts": [
 		{
@@ -149,13 +149,14 @@
 		}
 	],
 	"zooms": [],
+	"overlays": [],
 	"endCap": false,
 	"props": {},
 	"history": [
 		{
 			"round": 1,
 			"date": "2026-11-03",
-			"summary": "Rebuilt from the Mixture composition comp-layer-453cbbeb."
+			"summary": "First version, rebuilt from the Mixture draft."
 		}
 	]
 }

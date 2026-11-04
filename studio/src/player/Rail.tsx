@@ -89,6 +89,7 @@ function BriefTab({ clip, concept, engine, review }: { clip: ManifestClip; conce
 			) : null}
 			{review ? null : (
 				<section className="rail-block rail-links">
+					<span className="chip">Notion: {clip.status}</span>
 					{clip.notionUrl ? <a className="pill-button" href={clip.notionUrl} target="_blank" rel="noreferrer">Notion <ArrowOutIcon width={14} height={14} /></a> : null}
 					{clip.descriptUrl ? <a className="pill-button" href={clip.descriptUrl} target="_blank" rel="noreferrer">Descript <ArrowOutIcon width={14} height={14} /></a> : null}
 				</section>
@@ -227,7 +228,7 @@ function RoundsTab({ concept, render, review, onPick, onCompare }: { concept: Ma
 				{earlier ? <button type="button" className="pill-button" onClick={() => onCompare(earlier.round)}>Compare with R{earlier.round}</button> : null}
 				{render && !review ? <a className="pill-button" href={mediaUrl(render.preview.replace("preview.mp4", "master.mp4"))} download={`${concept.id}-r${render.round}.mp4`}>Download master</a> : null}
 			</div>
-			{render ? <p className="rail-tiny rail-meta mono">{render.width}×{render.height} · rendered in {render.renderSeconds}s · {bytes(render.masterBytes)} master</p> : null}
+			{render && !review ? <p className="rail-tiny rail-meta mono">{render.width}×{render.height} · rendered in {render.renderSeconds}s · {bytes(render.masterBytes)} master</p> : null}
 		</section>
 	);
 }

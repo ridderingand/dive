@@ -172,13 +172,14 @@
 			"transitionOut": 0.3
 		}
 	],
+	"overlays": [],
 	"endCap": false,
 	"props": {},
 	"history": [
 		{
 			"round": 1,
 			"date": "2026-11-03",
-			"summary": "Rebuilt from the Mixture composition comp-layer-08d12292."
+			"summary": "First version, rebuilt from the Mixture draft."
 		}
 	]
 }

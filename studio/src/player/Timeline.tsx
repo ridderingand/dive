@@ -150,7 +150,7 @@ export function Timeline({ engine, clip, concept, render }: Props) {
 				<div className="ruler">
 					{ticks.map((t) => (
 						<span key={t} className="mono" style={{ left: percent(t) }}>
-							{timecode(t, clip.fps).slice(0, 5)}
+							{timecode(t, clip.fps).split("·")[0]}
 						</span>
 					))}
 				</div>

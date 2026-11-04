@@ -53,6 +53,15 @@ describe("concept checks", () => {
 		const late = concept({ cuts: [cut("guest", 0, 20), cut("screenshare", 20, 30)], bubbles: [{ source: "guest", from: 20, to: 30 }] });
 		expect(level(conceptChecks(clip, late, captions), "visual-early")).toBe("warn");
 	});
+	test("catches a format the template can't do", () => {
+		expect(level(conceptChecks(clip, concept({ format: "vertical" }), captions), "format")).toBe("fail");
+	});
+	test("catches an unknown caption style", () => {
+		expect(level(conceptChecks(clip, concept({ captionStyle: "nope" }), captions), "caption-style")).toBe("fail");
+	});
+	test("catches a setting the template ignores", () => {
+		expect(level(conceptChecks(clip, concept({ props: { nope: 1 } }), captions), "props")).toBe("warn");
+	});
 	test("catches an unknown source", () => {
 		expect(level(conceptChecks(clip, concept({ cuts: [cut("nobody", 0, 30)], bubbles: [] }), captions), "sources")).toBe("fail");
 	});

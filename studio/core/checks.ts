@@ -1,4 +1,6 @@
 import { cleanWord } from "./captions";
+import { captionStyles } from "../system/dive";
+import { templates } from "../templates/registry";
 import type { Captions, Clip, Concept, Source } from "./schema";
 
 export type CheckLevel = "pass" | "warn" | "fail";
@@ -115,6 +117,15 @@ export function conceptChecks(clip: Clip, concept: Concept, captions: Captions |
 	}
 
 	const screenCards = concept.overlays.filter((overlay) => overlay.type === "screen-card");
+	const template = templates.find((item) => item.id === concept.template);
+	if (!template) checks.push({ id: "template", title: "Template exists", level: "fail", message: `There is no template "${concept.template}".` });
+	else {
+		if (!template.formats.includes(concept.format)) checks.push({ id: "format", title: "Template supports this format", level: "fail", message: `${template.name} doesn't do ${concept.format}. It does ${template.formats.join(", ")}.` });
+		const unknownProps = Object.keys(concept.props).filter((key) => !template.knobs.some((knob) => knob.key === key));
+		if (unknownProps.length > 0) checks.push({ id: "props", title: "Settings are real", level: "warn", message: `${template.name} ignores ${unknownProps.join(", ")}.` });
+	}
+	if (!(concept.captionStyle in captionStyles)) checks.push({ id: "caption-style", title: "Caption style exists", level: "fail", message: `There is no caption style "${concept.captionStyle}".` });
+
 	const unknown = [...concept.cuts, ...concept.bubbles, ...screenCards].find((item) => !sources.has(item.source));
 	if (unknown) checks.push({ id: "sources", title: "Sources exist", level: "fail", message: `Uses "${unknown.source}", which this clip doesn't have.`, at: unknown.from });
 	return checks;

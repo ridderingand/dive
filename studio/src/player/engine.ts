@@ -40,6 +40,7 @@ export class PlayerEngine {
 	register(id: string, video: HTMLVideoElement, isMaster: boolean, timeMap?: (t: number) => number | null) {
 		this.videos.set(id, video);
 		if (timeMap) this.timeMaps.set(id, timeMap);
+		let detach = () => {};
 		video.playbackRate = this.state.rate;
 		if (isMaster) {
 			const carried = this.time;
@@ -54,7 +55,10 @@ export class PlayerEngine {
 				this.emit();
 			};
 			if (video.readyState >= 1) onReady();
-			else video.addEventListener("loadedmetadata", onReady, { once: true });
+			else {
+				video.addEventListener("loadedmetadata", onReady, { once: true });
+				detach = () => video.removeEventListener("loadedmetadata", onReady);
+			}
 			video.onplay = () => this.startLoop();
 			video.onpause = () => this.onMasterPause();
 			video.onended = () => this.onMasterPause();
@@ -67,13 +71,18 @@ export class PlayerEngine {
 				if (this.state.playing) void video.play().catch(() => {});
 			};
 			if (video.readyState >= 1) place();
-			else video.addEventListener("loadedmetadata", place, { once: true });
+			else {
+				video.addEventListener("loadedmetadata", place, { once: true });
+				detach = () => video.removeEventListener("loadedmetadata", place);
+			}
 		}
 		return () => {
+			detach();
 			this.videos.delete(id);
 			this.timeMaps.delete(id);
 			if (this.masterId === id) {
-				this.virtualTime = video.currentTime;
+				// A video with no metadata yet reads 0, which would throw away the time being carried.
+				if (video.readyState >= 1) this.virtualTime = video.currentTime;
 				video.onplay = video.onpause = video.onended = video.onseeked = null;
 				video.pause();
 				this.masterId = null;

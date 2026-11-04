@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { AbsoluteFill, OffthreadVideo, Sequence, useCurrentFrame, useVideoConfig } from "remotion";
 import type { Cut, TemplateInput, Zoom } from "@core/schema";
 
@@ -43,17 +43,21 @@ export function CutVideo({ input, cut, style }: CutVideoProps) {
 	);
 }
 
-/** A cut filling its box, with the concept's framing and any zoom that lands on it. */
-export function FramedCut({ input, cut }: { input: TemplateInput; cut: Cut }) {
+/** Applies whatever zoom lands on this cut, so a template gets zooms by wrapping its video in this. */
+export function ZoomLayer({ input, cut, children }: { input: TemplateInput; cut: Cut; children: ReactNode }) {
 	const frame = useCurrentFrame();
 	const { fps } = useVideoConfig();
-	const t = cut.from + frame / fps;
-	const zoom = zoomAt(input.concept.zooms, t);
+	const zoom = zoomAt(input.concept.zooms, cut.from + frame / fps);
+	return <AbsoluteFill style={zoom ? { transform: `scale(${zoom.scale})`, transformOrigin: `${zoom.focus.x * 100}% ${zoom.focus.y * 100}%` } : undefined}>{children}</AbsoluteFill>;
+}
+
+/** A cut filling its box, with the concept's framing and any zoom that lands on it. */
+export function FramedCut({ input, cut }: { input: TemplateInput; cut: Cut }) {
 	return (
 		<AbsoluteFill style={{ transform: `translateY(${cut.offsetY}px) scale(${cut.scale})`, transformOrigin: `${cut.focus.x * 100}% ${cut.focus.y * 100}%` }}>
-			<AbsoluteFill style={zoom ? { transform: `scale(${zoom.scale})`, transformOrigin: `${zoom.focus.x * 100}% ${zoom.focus.y * 100}%` } : undefined}>
+			<ZoomLayer input={input} cut={cut}>
 				<CutVideo input={input} cut={cut} />
-			</AbsoluteFill>
+			</ZoomLayer>
 		</AbsoluteFill>
 	);
 }

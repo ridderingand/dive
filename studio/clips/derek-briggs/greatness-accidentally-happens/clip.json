@@ -10,7 +10,7 @@
 		"Leadership",
 		"Process"
 	],
-	"hook": "Derek: leadership says \"Hey Derek, go over there and build this thing to make it look better.\" Cool, that makes one thing look better.",
+	"hook": "leadership says \"Hey Derek, go over there and build this thing to make it look better.\" Cool, that makes one thing look better.",
 	"payoff": "Document it in simple markdown so skills deploy to every designer and engineer \"to where greatness accidentally happens\" → \"companies are wasting their time hiring tons of these people… deploy them horizontally through Markdown.\"",
 	"arc": "One-off polish request → extract the craft into markdown skills → greatness accidentally happens → hard contrarian end: stop hiring, deploy taste through Markdown.",
 	"lengthTargetS": 62.9,

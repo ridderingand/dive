@@ -9,7 +9,7 @@
 		"AI",
 		"Tools"
 	],
-	"hook": "Myles: \"A lot of our design team were making these tools, but Claude… falls into the same trap over and over again.\"",
+	"hook": "\"A lot of our design team were making these tools, but Claude… falls into the same trap over and over again.\"",
 	"payoff": "\"Of all of the tools built in the last month, what did we learn? … How can we use that to improve further tools?\"",
 	"arc": "Obsession → a single prompt makes an Oodle (screen share) → self-learning system payoff.",
 	"lengthTargetS": 44.3,

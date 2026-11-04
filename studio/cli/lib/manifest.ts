@@ -30,7 +30,7 @@ function finalFile(loaded: LoadedClip, conceptId: string) {
 
 function stageOf(files: ManifestFile[], audioExists: boolean, concepts: ManifestConcept[]): StageId {
 	if (concepts.some((concept) => concept.finalFile)) return "final";
-	if (concepts.some((concept) => concept.current)) return "review";
+	if (concepts.some((concept) => concept.current && (concept.status === "in-review" || concept.status === "picked"))) return "review";
 	if (concepts.length > 0) return "concepts";
 	const people = files.filter((file) => file.kind === "guest" || file.kind === "host");
 	return people.length > 0 && people.every((file) => file.exists) && audioExists ? "files" : "clip";

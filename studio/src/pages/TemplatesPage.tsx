@@ -1,22 +1,109 @@
-import { Player } from "@remotion/player";
-import { useMemo, useState } from "react";
+import { Player, type PlayerRef } from "@remotion/player";
+import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 import type { Manifest } from "@core/manifest";
 import { FORMATS, type FormatId } from "@core/formats";
 import type { TemplateInput } from "@core/schema";
+import { timecode } from "@core/time";
 import { templateComponent } from "../../templates";
 import { templateInfo, templates, type TemplateInfo } from "../../templates/registry";
 import { captionStyles } from "../../system/dive";
 import { clipPath } from "../lib/data";
 import { placeholderInput } from "../lib/placeholder";
-import { BackIcon, CopyIcon } from "../ui/icons";
+import { BackIcon, CopyIcon, PauseIcon, PlayIcon } from "../ui/icons";
 import { copyText } from "../ui/toast";
 
 const SHOWCASE_FRAME = 140;
 
-function TemplatePlayer({ template, format, captionStyle, controls }: { template: TemplateInfo; format: FormatId; captionStyle: string; controls: boolean }) {
+type TemplatePlayerProps = { template: TemplateInfo; format: FormatId; captionStyle: string; playerRef?: RefObject<PlayerRef | null> };
+
+function TemplatePlayer({ template, format, captionStyle, playerRef }: TemplatePlayerProps) {
 	const input = useMemo<TemplateInput>(() => placeholderInput(format, captionStyle), [format, captionStyle]);
 	const { width, height } = FORMATS[format];
-	return <Player component={templateComponent(template.id)} inputProps={input} durationInFrames={Math.round(input.clip.durationS * 24)} fps={24} compositionWidth={width} compositionHeight={height} loop autoPlay={!controls} controls={controls} initialFrame={SHOWCASE_FRAME} acknowledgeRemotionLicense style={{ width: "100%", height: "100%" }} />;
+	return <Player ref={playerRef} component={templateComponent(template.id)} inputProps={input} durationInFrames={TOTAL_FRAMES} fps={24} compositionWidth={width} compositionHeight={height} loop initialFrame={SHOWCASE_FRAME} acknowledgeRemotionLicense style={{ width: "100%", height: "100%" }} />;
+}
+
+const TOTAL_FRAMES = 288;
+
+function PlayerBar({ playerRef }: { playerRef: RefObject<PlayerRef | null> }) {
+	const [playing, setPlaying] = useState(false);
+	const code = useRef<HTMLSpanElement>(null);
+	const fill = useRef<HTMLDivElement>(null);
+	const track = useRef<HTMLDivElement>(null);
+	useEffect(() => {
+		const player = playerRef.current;
+		if (!player) return;
+		const onFrame = ({ detail }: { detail: { frame: number } }) => {
+			if (code.current) code.current.textContent = timecode(detail.frame / 24, 24);
+			if (fill.current) fill.current.style.transform = `scaleX(${detail.frame / TOTAL_FRAMES})`;
+		};
+		const onPlay = () => setPlaying(true);
+		const onPause = () => setPlaying(false);
+		player.addEventListener("frameupdate", onFrame);
+		player.addEventListener("seeked", ({ detail }) => onFrame(detail ? { detail: { frame: detail.frame } } : { detail: { frame: 0 } }));
+		player.addEventListener("play", onPlay);
+		player.addEventListener("pause", onPause);
+		onFrame({ detail: { frame: SHOWCASE_FRAME } });
+		return () => {
+			player.removeEventListener("frameupdate", onFrame);
+			player.removeEventListener("play", onPlay);
+			player.removeEventListener("pause", onPause);
+		};
+	}, [playerRef]);
+	const seek = (clientX: number) => {
+		const box = track.current?.getBoundingClientRect();
+		if (box) playerRef.current?.seekTo(Math.round(Math.min(1, Math.max(0, (clientX - box.left) / box.width)) * (TOTAL_FRAMES - 1)));
+	};
+	return (
+		<div className="player-bar">
+			<button type="button" className="transport-play" onClick={() => playerRef.current?.toggle()} aria-label={playing ? "Pause" : "Play"}>
+				{playing ? <PauseIcon /> : <PlayIcon />}
+			</button>
+			<div
+				ref={track}
+				className="player-track"
+				onPointerDown={(event) => {
+					event.currentTarget.setPointerCapture(event.pointerId);
+					seek(event.clientX);
+				}}
+				onPointerMove={(event) => event.buttons === 1 && seek(event.clientX)}
+			>
+				<div ref={fill} />
+			</div>
+			<span ref={code} className="mono player-code">
+				00:05·20
+			</span>
+		</div>
+	);
+}
+
+function TemplateCard({ template, used }: { template: TemplateInfo; used: number }) {
+	const format = template.formats[0] ?? "square";
+	const player = useRef<PlayerRef>(null);
+	return (
+		<a
+			href={`#/templates/${template.id}`}
+			className="template-card pool"
+			onMouseEnter={() => player.current?.play()}
+			onMouseLeave={() => {
+				player.current?.pause();
+				player.current?.seekTo(SHOWCASE_FRAME);
+			}}
+		>
+			<div className="template-card-stage">
+				<div className={`template-card-frame format-${format}`}>
+					<TemplatePlayer template={template} format={format} captionStyle={template.defaultCaptionStyle} playerRef={player} />
+				</div>
+			</div>
+			<div className="template-card-text">
+				<h2 className="wide">{template.name}</h2>
+				<p>{template.summary}</p>
+				<span className="role">
+					{FORMATS[format].ratio}
+					<span className="dots">{used === 1 ? "1 concept" : `${used} concepts`}</span>
+				</span>
+			</div>
+		</a>
+	);
 }
 
 function usage(manifest: Manifest, id: string) {
@@ -32,27 +119,9 @@ export function TemplatesPage({ manifest }: { manifest: Manifest }) {
 					<p className="role">Every concept is a template plus a clip's cuts. Pick one to read it, then ask an agent to change it.</p>
 				</header>
 				<div className="template-grid">
-					{templates.map((template) => {
-						const format = template.formats[0] ?? "square";
-						const used = usage(manifest, template.id).length;
-						return (
-							<a key={template.id} href={`#/templates/${template.id}`} className="template-card pool">
-								<div className="template-card-stage">
-									<div className={`template-card-frame format-${format}`}>
-										<TemplatePlayer template={template} format={format} captionStyle={template.defaultCaptionStyle} controls={false} />
-									</div>
-								</div>
-								<div className="template-card-text">
-									<h2 className="wide">{template.name}</h2>
-									<p>{template.summary}</p>
-									<span className="role">
-										{FORMATS[format].ratio}
-										<span className="dots">{used === 1 ? "1 concept" : `${used} concepts`}</span>
-									</span>
-								</div>
-							</a>
-						);
-					})}
+					{templates.map((template) => (
+						<TemplateCard key={template.id} template={template} used={usage(manifest, template.id).length} />
+					))}
 				</div>
 			</div>
 		</div>
@@ -64,6 +133,7 @@ export function TemplatePage({ manifest, id }: { manifest: Manifest; id: string 
 	const [format, setFormat] = useState<FormatId>(template.formats[0] ?? "square");
 	const [captionStyle, setCaptionStyle] = useState(template.defaultCaptionStyle);
 	const used = usage(manifest, template.id);
+	const player = useRef<PlayerRef>(null);
 	const prompt = `Edit the Dive template "${template.id}" (studio/templates/${template.id}). `;
 	return (
 		<div className="library-page scroll">
@@ -74,8 +144,9 @@ export function TemplatePage({ manifest, id }: { manifest: Manifest; id: string 
 				<div className="template-layout">
 					<div className="template-stage">
 						<div className="template-frame" style={{ aspectRatio: `${FORMATS[format].width} / ${FORMATS[format].height}`, "--ratio": FORMATS[format].width / FORMATS[format].height } as React.CSSProperties}>
-							<TemplatePlayer key={`${format}-${captionStyle}`} template={template} format={format} captionStyle={captionStyle} controls />
+							<TemplatePlayer key={`${format}-${captionStyle}`} template={template} format={format} captionStyle={captionStyle} playerRef={player} />
 						</div>
+						<PlayerBar key={`${format}-${captionStyle}`} playerRef={player} />
 					</div>
 					<aside className="template-side">
 						<h1 className="display">{template.name}</h1>

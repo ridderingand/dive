@@ -1,12 +1,13 @@
 export const END_CAP_SECONDS = 4;
 
+/** Minutes, seconds and frames: 01:29·19. The dot keeps frames from reading as seconds. */
 export function timecode(seconds: number, fps = 24): string {
 	const safe = Math.max(0, seconds);
 	const whole = Math.floor(safe + 1e-6);
 	const frames = Math.floor((safe - whole) * fps + 1e-6);
 	const m = Math.floor(whole / 60);
 	const s = whole % 60;
-	return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}:${String(frames).padStart(2, "0")}`;
+	return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}·${String(frames).padStart(2, "0")}`;
 }
 
 export function shortTime(seconds: number): string {

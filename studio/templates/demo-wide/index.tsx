@@ -1,18 +1,16 @@
-import { AbsoluteFill, useCurrentFrame, useVideoConfig } from "remotion";
+import { AbsoluteFill, useVideoConfig } from "remotion";
 import type { Cut, TemplateInput } from "@core/schema";
 import { bubble, neutrals } from "../../system/dive";
 import { Backdrop } from "../_kit/Backdrop";
 import { Bubbles } from "../_kit/Bubble";
 import { Captions } from "../_kit/Captions";
-import { CutSequence, CutVideo, FramedCut, isCamera, zoomAt } from "../_kit/Picture";
+import { CutSequence, CutVideo, FramedCut, isCamera, ZoomLayer } from "../_kit/Picture";
 import { TemplateShell } from "../_kit/Shell";
 
 const INSET = 72;
 
 function ScreenWindow({ input, cut }: { input: TemplateInput; cut: Cut }) {
-	const frame = useCurrentFrame();
-	const { fps, width, height } = useVideoConfig();
-	const zoom = zoomAt(input.concept.zooms, cut.from + frame / fps);
+	const { width, height } = useVideoConfig();
 	const windowHeight = height - INSET * 2;
 	const windowWidth = windowHeight * (16 / 9);
 	return (
@@ -31,9 +29,9 @@ function ScreenWindow({ input, cut }: { input: TemplateInput; cut: Cut }) {
 					boxShadow: "0 30px 80px rgba(0,0,0,0.55), 0 0 0 1px rgba(219,250,244,0.12)",
 				}}
 			>
-				<div style={{ width: "100%", height: "100%", transform: zoom ? `scale(${zoom.scale})` : undefined, transformOrigin: zoom ? `${zoom.focus.x * 100}% ${zoom.focus.y * 100}%` : undefined }}>
+				<ZoomLayer input={input} cut={cut}>
 					<CutVideo input={input} cut={cut} style={{ objectPosition: "50% 50%" }} />
-				</div>
+				</ZoomLayer>
 			</div>
 		</AbsoluteFill>
 	);
