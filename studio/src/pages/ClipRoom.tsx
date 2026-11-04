@@ -28,23 +28,10 @@ function renderOf(concept: ManifestConcept, round: number | null) {
 	return concept.renders.find((render) => render.round === round) ?? concept.current;
 }
 
-function ConceptChip({ concept, index, active, inCompare, review, onClick }: { concept: ManifestConcept; index: number; active: boolean; inCompare: boolean; review: boolean; onClick: () => void }) {
-	const poster = concept.current?.poster;
+function ConceptTab({ concept, active, onClick }: { concept: ManifestConcept; active: boolean; onClick: () => void }) {
 	return (
-		<button type="button" className={`concept-chip${active ? " is-active" : ""}${inCompare ? " is-compare" : ""}`} onClick={onClick} title={concept.intent}>
-			<span className="concept-bubble" style={poster ? { backgroundImage: `url(${mediaUrl(poster)})` } : undefined}>
-				{poster ? null : concept.id.toUpperCase()}
-			</span>
-			<span className="concept-meta">
-				<span className="concept-name wide">
-					<kbd>{index + 1}</kbd> {concept.name}
-				</span>
-				<span className="concept-detail role">
-					{templateName(concept.template)} · {FORMATS[concept.format].ratio} · R{concept.round}
-					{concept.stale && !review ? " · stale" : ""}
-					{concept.status === "picked" ? " · picked" : ""}
-				</span>
-			</span>
+		<button type="button" className={`concept-tab${active ? " is-active" : ""}`} onClick={onClick} title={`${concept.intent} ${templateName(concept.template)}, ${FORMATS[concept.format].ratio}, round ${concept.round}.`}>
+			{concept.name}
 		</button>
 	);
 }
@@ -355,10 +342,10 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 			</header>
 
 			<div ref={main} className="room-main">
-				{concepts.length > 0 ? (
-					<div className="concept-strip scroll-x">
-						{concepts.map((item, index) => (
-							<ConceptChip key={item.id} concept={item} index={index} review={manifest.mode === "review"} active={mode !== "compare" && item.id === activeId} inCompare={mode === "compare" && compareKeys.some((key) => key.startsWith(`${item.id}@`))} onClick={() => selectConcept(item.id)} />
+				{concepts.length > 1 ? (
+					<div className="concept-tabs" role="group" aria-label="Concepts">
+						{concepts.map((item) => (
+							<ConceptTab key={item.id} concept={item} active={mode === "compare" ? compareKeys.some((key) => key.startsWith(`${item.id}@`)) : item.id === activeId} onClick={() => selectConcept(item.id)} />
 						))}
 					</div>
 				) : null}
