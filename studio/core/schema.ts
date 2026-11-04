@@ -107,7 +107,7 @@ export const Concept = z.object({
 	zooms: z.array(Zoom).default([]),
 	overlays: z.array(Overlay).default([]),
 	removals: z.array(Span).default([]).describe("Stretches of the clip to take out, in clip seconds. The rest closes up"),
-	endCap: z.boolean().default(false),
+	endCap: z.boolean().default(true),
 	props: z.record(z.string(), z.unknown()).default({}),
 	history: z.array(RoundNote).default([]),
 });

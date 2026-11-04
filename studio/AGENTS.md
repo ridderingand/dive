@@ -71,11 +71,11 @@ A concept is a template, a caption style, and a list of cuts:
     { "type": "screen-card", "from": 22, "to": 31, "source": "broll-facemesh", "sourceIn": 4 },
     { "type": "title-card", "from": 0, "to": 2.5, "text": "The random button era" }
   ],
-  "endCap": false, "props": {}, "history": []
+  "endCap": true, "props": {}, "history": []
 }
 ```
 
-A cut can show two people side by side with `"split": { "source": "guest", "focus": { "x": 0.72, "y": 0.5 } }`. If the next cut is that same source, their half grows into it over `expandSeconds`. Any template can show overlays. `endCap: true` adds the 4-second Resolve animation after the clip.
+A cut can show two people side by side with `"split": { "source": "guest", "focus": { "x": 0.72, "y": 0.5 } }`. If the next cut is that same source, their half grows into it over `expandSeconds`. Any template can show overlays. Every concept ends on the 4-second Resolve closing: it plays above the clip's held last frame, so its alpha wipes over the picture. Set `endCap: false` only when someone asks for a concept without it. The original `.mov` is in `media/library/`; `public/brand/resolve.webm` is the copy renders use, and it must keep its alpha.
 
 ```bash
 bun run dive concept <clip> b --from a --template talk-vertical --name "Vertical cut" --intent "…"
@@ -105,7 +105,7 @@ After each share, set the Notion row: Status to `Ready for review`, and the Infl
 
 ## Dictated prompts
 
-In the studio, Anna presses **Talk**, moves through the video and says what she'd change, then presses **Done**. The prompt lands on her clipboard, with each note on the moment that was on screen. She pastes it to you. Transcription runs on her machine, so her voice never leaves it. The history icon keeps past prompts, and `bun run dive prompts <clip>` prints the latest. To see a moment, use `bun run dive still <clip> <concept> <seconds>`.
+In the studio, Anna presses **Talk**, moves through the video and says what she'd change, then presses **Done**. The prompt lands on her clipboard, with each note under the scene it was spoken in. Scenes are the concept's cuts, numbered as on the studio's timeline. Read a note as being about its scene, not one exact frame. She pastes it to you. Transcription runs on her machine, so her voice never leaves it. The history icon keeps past prompts, and `bun run dive prompts <clip>` prints the latest. To see a moment, use `bun run dive still <clip> <concept> <seconds>`.
 
 ## Cutting words
 

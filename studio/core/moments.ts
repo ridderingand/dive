@@ -1,3 +1,6 @@
+import { editPicture } from "./removals";
+import type { Concept } from "./schema";
+
 export type TranscriptSegment = { start_ms: number; end_ms: number; text: string };
 export type RecordingEvent = { k: string; t?: number; path?: string };
 export type Stamp = { atMs: number; clipTime: number; concept: string | null; round: number | null };
@@ -43,9 +46,7 @@ export type Note = { id: string; clipFrom: number; clipTo: number; concept: stri
 /** One press of Talk: what was said, and the prompt it became. */
 export type Take = { id: string; createdAt: string; notes: Note[]; prompt: string };
 
-const JUMP_SECONDS = 1.5;
-
-/** Whisper cuts by length. Notes break where a thought ends or where the playhead moved to somewhere new. */
+/** Whisper cuts by length. Notes follow whole thoughts: the scene, not the exact playhead, says what they are about. */
 export function notesFrom(segments: TranscriptSegment[], stamps: Stamp[]): Note[] {
 	const notes: Note[] = [];
 	let current: Note | null = null;
@@ -55,7 +56,7 @@ export function notesFrom(segments: TranscriptSegment[], stamps: Stamp[]): Note[
 	};
 	for (const moment of momentsFrom(segments, stamps)) {
 		const open: Note | null = current;
-		if (open && (Math.abs(moment.clipFrom - open.clipTo) > JUMP_SECONDS || moment.concept !== open.concept)) flush();
+		if (open && moment.concept !== open.concept) flush();
 		const active: Note = current ?? { id: `n${moment.atMs}`, clipFrom: moment.clipFrom, clipTo: moment.clipTo, concept: moment.concept, round: moment.round, text: "" };
 		active.text = `${active.text} ${moment.text.trim()}`;
 		active.clipTo = moment.clipTo;
@@ -66,23 +67,36 @@ export function notesFrom(segments: TranscriptSegment[], stamps: Stamp[]): Note[
 	return notes;
 }
 
-type PromptClip = { guest: string; slug: string; title: string; fps: number };
-type PromptConcept = { id: string; name: string; round: number };
+type PromptClip = { guest: string; slug: string; title: string; fps: number; durationS: number | null; sources: { key: string; label: string }[] };
+type PromptConcept = Pick<Concept, "id" | "name" | "round" | "cuts" | "bubbles" | "zooms" | "overlays" | "removals">;
+type Scene = { number: number; label: string; from: number; to: number };
 
-/** The notes as one message an agent can act on. */
+/** Each cut is a scene, in the same order and with the same names as the studio's timeline. */
+export function scenesOf(clip: PromptClip, concept: PromptConcept): Scene[] {
+	const { cuts } = editPicture(concept, clip.durationS ?? 0, concept.removals);
+	return [...cuts].sort((a, b) => a.from - b.from).map((cut, index) => ({ number: index + 1, label: (cut.label ?? clip.sources.find((source) => source.key === cut.source)?.label ?? cut.source).replace(/^B-roll: /, ""), from: cut.from, to: cut.to }));
+}
+
+const sceneAt = (scenes: Scene[], t: number) => scenes.find((scene) => t >= scene.from && t < scene.to) ?? scenes[scenes.length - 1];
+
+/** The notes as one message an agent can act on, grouped by the scene each one is about. */
 export function notesPrompt(clip: PromptClip, concepts: PromptConcept[], notes: Note[], format: (seconds: number, fps: number) => string) {
-	const groups = new Map<string, Note[]>();
-	for (const note of notes) {
-		const key = note.concept ?? "";
-		groups.set(key, [...(groups.get(key) ?? []), note]);
-	}
-	const lines = [`Apply these notes to the Dive clip "${clip.title}" (${clip.guest}/${clip.slug}). Read studio/AGENTS.md first. Times are in the clip: minutes, seconds, then frames.`];
-	for (const [id, group] of groups) {
+	const lines = [`Apply these notes to the Dive clip "${clip.title}" (${clip.guest}/${clip.slug}). Read studio/AGENTS.md first.`, "", "Each note was spoken while watching the scene it sits under, so read it as being about that scene, not one exact frame. Look at the scene before changing it. Times are minutes, seconds, then frames."];
+	const byConcept = new Map<string, Note[]>();
+	for (const note of notes) byConcept.set(note.concept ?? "", [...(byConcept.get(note.concept ?? "") ?? []), note]);
+	for (const [id, group] of byConcept) {
 		const concept = concepts.find((item) => item.id === id);
-		lines.push("", concept ? `Concept ${concept.id}, ${concept.name}, round ${group[0]?.round ?? concept.round}:` : "Notes:");
+		lines.push("", concept ? `Concept ${concept.id}, ${concept.name}, round ${group[0]?.round ?? concept.round}` : "Notes");
+		const scenes = concept ? scenesOf(clip, concept) : [];
+		let current: Scene | undefined;
 		for (const note of [...group].sort((a, b) => a.clipFrom - b.clipFrom)) {
-			const span = note.clipTo - note.clipFrom > 0.5 ? `${format(note.clipFrom, clip.fps)} to ${format(note.clipTo, clip.fps)}` : format(note.clipFrom, clip.fps);
-			lines.push(`- ${span}: ${note.text}`);
+			const scene = sceneAt(scenes, note.clipFrom);
+			if (scene && scene !== current) {
+				lines.push("", `Scene ${scene.number}, ${scene.label} (${format(scene.from, clip.fps)} to ${format(scene.to, clip.fps)}):`);
+				current = scene;
+			}
+			const end = sceneAt(scenes, note.clipTo);
+			lines.push(`- ${note.text}${end && end !== scene ? ` (moved on to scene ${end.number} while saying this)` : ""}`);
 		}
 	}
 	return lines.join("\n");

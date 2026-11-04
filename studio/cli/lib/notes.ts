@@ -15,7 +15,7 @@ const takesFile = (guest: string, slug: string) => mediaPath(`notes/${guest}/${s
 
 function promptFor(guest: string, slug: string, notes: Note[]) {
 	const { clip, concepts } = loadClip(guest, slug);
-	return notesPrompt({ guest, slug, title: clip.title, fps: clip.fps }, concepts, notes, timecode);
+	return notesPrompt({ guest, slug, title: clip.title, fps: clip.fps, durationS: clip.durationS, sources: clip.sources }, concepts, notes, timecode);
 }
 
 /** Newest first. A list of notes from before takes existed becomes one take, so nothing dictated is lost. */
