@@ -93,13 +93,12 @@ export const SidebarClosedIcon = (props: Props) => (
 	</svg>
 );
 export const MicIcon = (props: Props) => (
-	<svg {...base} {...props} stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
-		<rect x="9" y="3.5" width="6" height="11" rx="3" />
-		<path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v2.5" />
+	<svg {...base} {...props}>
+		<path d="M12.0013 19V21M12.0013 19C8.32307 19 6.14811 16.7451 5.01562 15M12.0013 19C15.6795 19 17.8545 16.7451 18.987 15M16.0013 7V11C16.0013 13.2091 14.2104 15 12.0013 15C9.79215 15 8.00129 13.2091 8.00129 11V7C8.00129 4.79086 9.79215 3 12.0013 3C14.2104 3 16.0013 4.79086 16.0013 7Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
 	</svg>
 );
 export const CloseIcon = (props: Props) => (
-	<svg {...base} {...props} stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
-		<path d="m7 7 10 10M17 7 7 17" />
+	<svg {...base} {...props}>
+		<path d="M8 8L16 16M16 8L8 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
 	</svg>
 );
