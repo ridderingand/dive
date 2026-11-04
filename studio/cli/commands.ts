@@ -12,7 +12,7 @@ import { importNotion, type NotionRow } from "./importers/notion";
 import { renderHash } from "./lib/hash";
 import { findClip, loadAllClips, saveConcept, writeJson, type LoadedClip } from "./lib/load";
 import { buildClip, MANIFEST_FILE, sync } from "./lib/manifest";
-import { addTake, ensureSpeech, loadTakes, type TakeRequest } from "./lib/notes";
+import { addTake, addTextTake, ensureSpeech, loadTakes, type TakeRequest, type TextTakeRequest } from "./lib/notes";
 import { DIST, MEDIA, mediaPath, PUBLIC, renderDir, ROOT, WORK } from "./lib/paths";
 import { bundleVideo, renderConcept, renderStill, withMedia } from "./lib/render";
 import { capture, ffmpeg, probeDuration, run } from "./lib/run";
@@ -361,8 +361,8 @@ export const commands: Record<string, Command> = {
 	},
 
 	async take(args) {
-		const request = JSON.parse(readFileSync(args[0] ?? "", "utf8")) as TakeRequest;
-		console.log(JSON.stringify(await addTake(request)));
+		const request = JSON.parse(readFileSync(args[0] ?? "", "utf8")) as TakeRequest | TextTakeRequest;
+		console.log(JSON.stringify("prompt" in request ? addTextTake(request) : await addTake(request)));
 	},
 
 	async prompts(args, flags) {

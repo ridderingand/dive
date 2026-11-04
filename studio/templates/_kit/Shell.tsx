@@ -15,7 +15,12 @@ export function TemplateShell({ input, children }: { input: TemplateInput; child
 				{children}
 				<Overlays input={input} />
 			</Sequence>
-			{input.clip.audio ? <Audio src={`${input.mediaBase}${input.clip.audio}`} /> : null}
+			{input.clip.audio && !input.clip.audioSpans ? <Audio src={`${input.mediaBase}${input.clip.audio}`} /> : null}
+			{input.clip.audioSpans?.map((span) => (
+				<Sequence key={span.from} from={Math.round(span.from * fps)} durationInFrames={Math.round((span.to - span.from) * fps)} name="Dialogue">
+					<Audio src={`${input.mediaBase}${input.clip.audio}`} trimBefore={Math.round(span.sourceFrom * fps)} />
+				</Sequence>
+			))}
 			{input.concept.endCap ? (
 				<Sequence from={clipFrames} durationInFrames={Math.round(END_CAP_SECONDS * fps)} name="End cap">
 					<AbsoluteFill style={{ alignItems: "center", justifyContent: "center", background: "#000" }}>

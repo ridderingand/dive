@@ -1,14 +1,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Manifest, ManifestClip, ManifestConcept, RenderInfo } from "@core/manifest";
 import type { Take } from "@core/moments";
-import { FORMATS } from "@core/formats";
 import { guestOf, mediaUrl } from "../lib/data";
 import { useKeys } from "../lib/keys";
 import { nextStep } from "../lib/next-step";
 import { useDictation } from "../lib/dictation";
 import { navigate, replaceQuery, useRoute } from "../lib/router";
 import { prefetchVideos } from "../lib/video-source";
-import { templateName } from "../lib/templates";
 import { PlayerEngine, useEngineFrame } from "../player/engine";
 import { EngineVideo } from "../player/EngineVideo";
 import { Rail } from "../player/Rail";
@@ -47,7 +45,7 @@ function renderOf(concept: ManifestConcept, round: number | null) {
 
 function ConceptTab({ concept, active, shortcut, onClick }: { concept: ManifestConcept; active: boolean; shortcut: string | undefined; onClick: () => void }) {
 	return (
-		<button type="button" className={`concept-tab${active ? " is-active" : ""}`} onClick={onClick} data-tip={`${concept.intent} ${templateName(concept.template)}, ${FORMATS[concept.format].ratio}, round ${concept.round}.`} aria-keyshortcuts={shortcut}>
+		<button type="button" className={`concept-tab${active ? " is-active" : ""}`} onClick={onClick} data-tip={concept.name} aria-keyshortcuts={shortcut}>
 			{concept.name}
 		</button>
 	);
@@ -379,7 +377,7 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 				<Transport engine={engine} dictation={manifest.mode === "local" && hasVideo ? dictation : null} takes={takes} onFullscreen={fullscreen} disabled={!hasVideo} />
 			</div>
 
-			<Rail open={railOpen} manifest={manifest} clip={clip} concept={concept} render={render} engine={engine} onPickRound={setRound} onCompareRounds={compareRounds} />
+			<Rail open={railOpen} manifest={manifest} clip={clip} concept={concept} render={render} engine={engine} onTake={(take) => setTakes((list) => [take, ...list])} onPickRound={setRound} onCompareRounds={compareRounds} />
 			<Timeline engine={engine} clip={clip} concept={concept} render={render} />
 		</div>
 	);

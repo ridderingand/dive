@@ -53,6 +53,15 @@ async function transcribe(audioFile: string, dir: string): Promise<TranscriptSeg
 }
 
 export type TakeRequest = { guest: string; slug: string; audio: string; stamps: Stamp[] };
+export type TextTakeRequest = { guest: string; slug: string; prompt: string; preview: string };
+
+/** Keeps a prompt made without dictation, such as words cut from the transcript. */
+export function addTextTake({ guest, slug, prompt, preview }: TextTakeRequest): Take {
+	const note: Note = { id: "text", clipFrom: 0, clipTo: 0, concept: null, round: null, text: preview };
+	const take: Take = { id: String(Date.now()), createdAt: new Date().toISOString(), notes: [note], prompt };
+	writeJson(takesFile(guest, slug), [take, ...loadTakes(guest, slug)]);
+	return take;
+}
 
 /** Turns one recording into a ready prompt and keeps it in the clip's history. Returns null if nothing was said. */
 export async function addTake({ guest, slug, audio, stamps }: TakeRequest): Promise<Take | null> {

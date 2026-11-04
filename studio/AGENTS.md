@@ -35,7 +35,7 @@ Add only the icons the studio uses. Central's license forbids publishing the ful
 
 ## Tooltips
 
-Give a control a tooltip with `data-tip="Mute"`. If it has a keyboard shortcut, add `aria-keyshortcuts="M"` and the tooltip shows the key. Leave the shortcut off when it isn't bound in that mode, and keep the `?` sheet in `src/ui/ShortcutSheet.tsx` in step.
+Give a control a tooltip with `data-tip="Mute"`. Tooltips teach shortcuts, so keep the text to the control's name, never a sentence. If it has a keyboard shortcut, add `aria-keyshortcuts="M"` and the tooltip shows the key. Leave the shortcut off when it isn't bound in that mode, and keep the `?` sheet in `src/ui/ShortcutSheet.tsx` in step.
 
 ## The files Grok delivers
 
@@ -106,6 +106,12 @@ After each share, set the Notion row: Status to `Ready for review`, and the Infl
 ## Dictated prompts
 
 In the studio, Anna presses **Talk**, moves through the video and says what she'd change, then presses **Done**. The prompt lands on her clipboard, with each note on the moment that was on screen. She pastes it to you. Transcription runs on her machine, so her voice never leaves it. The history icon keeps past prompts, and `bun run dive prompts <clip>` prints the latest. To see a moment, use `bun run dive still <clip> <concept> <seconds>`.
+
+## Cutting words
+
+In the studio, Anna selects words in the transcript and presses Delete or the Cut button. Those words are struck through, and a prompt listing every cut so far lands on her clipboard. To apply it, add each stretch to the concept's `removals` in clip seconds, such as `"removals": [{ "from": 8.52, "to": 22.14 }]`. Record the round and render. Picture, dialogue and captions all close up, and a concept's other times stay in clip seconds. Check the join with `bun run dive still`. This shortens the concept only. It doesn't change Descript, which stays the source of the cut.
+
+Dictated timecodes on a concept with removals are on the shortened video, not the original clip.
 
 ## Editing a template
 

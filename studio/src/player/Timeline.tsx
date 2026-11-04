@@ -1,5 +1,6 @@
 import { useLayoutEffect, useMemo, useRef, useState } from "react";
 import type { ManifestClip, ManifestConcept, RenderInfo } from "@core/manifest";
+import { editPicture } from "@core/removals";
 import { timecode } from "@core/time";
 import { mediaUrl } from "../lib/data";
 import { useEngineFrame, type PlayerEngine } from "./engine";
@@ -31,9 +32,10 @@ type Segment = { from: number; to: number; label: string; kind: string; bubble: 
 function segmentsOf(clip: ManifestClip, concept: ManifestConcept | null): Segment[] {
 	if (!concept) return [];
 	const kindOf = (key: string) => clip.files.find((file) => file.key === key);
-	return concept.cuts.map((cut) => {
+	const picture = editPicture(concept, clip.durationS ?? 0, concept.removals);
+	return picture.cuts.map((cut) => {
 		const file = kindOf(cut.source);
-		return { from: cut.from, to: cut.to, label: cut.split || file?.kind === "broll" ? (cut.label ?? file?.label ?? cut.source).replace(/^B-roll: /, "") : (file?.label ?? cut.source), kind: file?.kind ?? "guest", bubble: concept.bubbles.some((bubble) => bubble.from < cut.to && bubble.to > cut.from) };
+		return { from: cut.from, to: cut.to, label: cut.split || file?.kind === "broll" ? (cut.label ?? file?.label ?? cut.source).replace(/^B-roll: /, "") : (file?.label ?? cut.source), kind: file?.kind ?? "guest", bubble: picture.bubbles.some((bubble) => bubble.from < cut.to && bubble.to > cut.from) };
 	});
 }
 
@@ -47,6 +49,7 @@ export function Timeline({ engine, clip, concept, render }: Props) {
 	const scrubbing = useRef(false);
 
 	const segments = useMemo(() => segmentsOf(clip, concept), [clip, concept]);
+	const picture = concept ? editPicture(concept, clip.durationS ?? 0, concept.removals) : null;
 	const percent = (t: number) => `${(t / duration) * 100}%`;
 
 	useEngineFrame(engine, (t) => {
@@ -102,8 +105,8 @@ export function Timeline({ engine, clip, concept, render }: Props) {
 							<em>{segment.label}</em>
 						</span>
 					))}
-					{concept?.zooms.map((zoom) => <span key={zoom.from} className="zoom-mark" style={{ left: percent(zoom.from), width: percent(zoom.to - zoom.from) }} title={`Zoom ${zoom.level}×`} />)}
-					{concept?.overlays.map((overlay) => <span key={`${overlay.type}-${overlay.from}`} className="overlay-mark" style={{ left: percent(overlay.from), width: percent(overlay.to - overlay.from) }} title={overlay.type.replace("-", " ")} />)}
+					{picture?.zooms.map((zoom) => <span key={zoom.from} className="zoom-mark" style={{ left: percent(zoom.from), width: percent(zoom.to - zoom.from) }} title={`Zoom ${zoom.level}×`} />)}
+					{picture?.overlays.map((overlay) => <span key={`${overlay.type}-${overlay.from}`} className="overlay-mark" style={{ left: percent(overlay.from), width: percent(overlay.to - overlay.from) }} title={overlay.type.replace("-", " ")} />)}
 					{segments.length === 0 ? <span className="lane-empty">No picture yet</span> : null}
 				</div>
 				<div ref={head} className="playhead" />

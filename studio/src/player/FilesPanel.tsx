@@ -1,5 +1,6 @@
 import { useCallback, useMemo, useRef } from "react";
 import type { ManifestClip, ManifestConcept, ManifestFile } from "@core/manifest";
+import { toClip } from "@core/removals";
 import { mediaUrl } from "../lib/data";
 import { useEngineFrame, type PlayerEngine } from "./engine";
 import { EngineVideo } from "./EngineVideo";
@@ -11,16 +12,19 @@ function FileTile({ engine, file, concept }: { engine: PlayerEngine; file: Manif
 	const cuts = useMemo(() => concept?.cuts.filter((cut) => cut.source === file.key || cut.split?.source === file.key) ?? [], [concept, file.key]);
 	const bubbles = useMemo(() => concept?.bubbles.filter((bubble) => bubble.source === file.key) ?? [], [concept, file.key]);
 
+	const removals = useMemo(() => concept?.removals ?? [], [concept]);
 	const timeMap = useCallback(
-		(t: number) => {
+		(edited: number) => {
+			const t = toClip(edited, removals);
 			if (file.synced) return t;
 			const cut = cuts.find((item) => t >= item.from && t < item.to);
 			return cut ? cut.sourceIn + (t - cut.from) * cut.rate : null;
 		},
-		[cuts, file.synced],
+		[cuts, file.synced, removals],
 	);
 
-	useEngineFrame(engine, (t) => {
+	useEngineFrame(engine, (edited) => {
+		const t = toClip(edited, removals);
 		const onScreen = cuts.some((cut) => t >= cut.from && t < cut.to);
 		const inBubble = bubbles.some((bubble) => t >= bubble.from && t < bubble.to);
 		tile.current?.classList.toggle("is-live", onScreen);

@@ -50,6 +50,9 @@ export const Bubble = z.object({
 });
 export type Bubble = z.infer<typeof Bubble>;
 
+export const Span = z.object({ from: z.number(), to: z.number() });
+export type Span = z.infer<typeof Span>;
+
 export const Zoom = z.object({
 	from: z.number(),
 	to: z.number(),
@@ -103,6 +106,7 @@ export const Concept = z.object({
 	bubbles: z.array(Bubble).default([]),
 	zooms: z.array(Zoom).default([]),
 	overlays: z.array(Overlay).default([]),
+	removals: z.array(Span).default([]).describe("Stretches of the clip to take out, in clip seconds. The rest closes up"),
 	endCap: z.boolean().default(false),
 	props: z.record(z.string(), z.unknown()).default({}),
 	history: z.array(RoundNote).default([]),
@@ -196,7 +200,7 @@ export type Guest = z.infer<typeof Guest>;
 
 /** What every template receives. Built by the CLI for renders and by the shell for the placeholder preview. */
 export type TemplateInput = {
-	clip: Pick<Clip, "title" | "fps" | "audio" | "sources"> & { durationS: number };
+	clip: Pick<Clip, "title" | "fps" | "audio" | "sources"> & { durationS: number; audioSpans?: { sourceFrom: number; from: number; to: number }[] };
 	concept: Pick<Concept, "cuts" | "bubbles" | "zooms" | "overlays" | "captionStyle" | "format" | "endCap" | "props">;
 	captions: Pick<Captions, "words" | "lines">;
 	mediaBase: string;

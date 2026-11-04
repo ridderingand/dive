@@ -1,6 +1,7 @@
 import { existsSync, mkdirSync, rmSync, statSync } from "node:fs";
 import path from "node:path";
 import type { Concept, TemplateInput } from "../../core/schema";
+import { applyRemovals } from "../../core/removals";
 import { FORMATS } from "../../core/schema";
 import { END_CAP_SECONDS } from "../../core/time";
 import { renderHash } from "./hash";
@@ -23,13 +24,13 @@ export const SPRITE_WIDTH = 192;
 export function buildInput(loaded: LoadedClip, concept: Concept, mediaBase: string): TemplateInput & { templateId: string } {
 	const { clip, captions } = loaded;
 	if (clip.durationS === null) throw new Error(`${clip.slug} has no cut length yet`);
-	return {
-		templateId: concept.template,
+	const input: TemplateInput = {
 		mediaBase,
 		clip: { title: clip.title, fps: clip.fps, audio: clip.audio, sources: clip.sources, durationS: clip.durationS },
 		concept: { cuts: concept.cuts, bubbles: concept.bubbles, zooms: concept.zooms, overlays: concept.overlays, captionStyle: concept.captionStyle, format: concept.format, endCap: concept.endCap, props: concept.props },
 		captions: { words: captions?.words ?? [], lines: captions?.lines },
 	};
+	return { ...applyRemovals(input, concept.removals), templateId: concept.template };
 }
 
 export async function bundleVideo() {

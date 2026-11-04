@@ -736,6 +736,13 @@
 	background: var(--foam);
 }
 
+.rate-keys {
+	display: flex;
+	justify-content: center;
+	gap: 3px;
+	padding-top: 4px;
+}
+
 .rail {
 	grid-area: rail;
 	display: flex;
@@ -894,6 +901,48 @@
 .words button.is-em {
 	color: var(--accent);
 	font-weight: 600;
+}
+
+.words {
+	position: relative;
+}
+
+.words button.is-cut {
+	color: var(--text-3);
+	font-weight: 400;
+	text-decoration: line-through;
+	text-decoration-color: #ff9673;
+}
+
+.words .cut-button {
+	position: absolute;
+	z-index: 5;
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	height: 32px;
+	margin: 0;
+	padding: 0 7px 0 13px;
+	border-radius: 16px;
+	font-size: 13px;
+	font-weight: 600;
+	white-space: nowrap;
+	color: var(--abyss);
+	background: var(--foam);
+	box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+	transform: translateX(-50%);
+	animation: talk-in 180ms var(--ease);
+}
+
+.words .cut-button:hover {
+	color: var(--abyss);
+	background: #fff;
+}
+
+.words .cut-button kbd {
+	color: var(--abyss);
+	background: rgba(9, 19, 20, 0.1);
+	box-shadow: none;
 }
 
 .words button.is-now {
