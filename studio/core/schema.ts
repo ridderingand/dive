@@ -26,6 +26,15 @@ export const Cut = z.object({
 	scale: z.number().default(1),
 	offsetY: z.number().default(0).describe("Pixels on the 1080 canvas, positive moves the picture down"),
 	label: z.string().optional(),
+	split: z
+		.object({
+			source: z.string(),
+			sourceIn: z.number().optional().describe("Defaults to the same clip time, for synced sources"),
+			focus: Focus.default({ x: 0.5, y: 0.5 }),
+			expandSeconds: z.number().default(0.55).describe("How long this half takes to grow into the next cut, when the next cut uses the same source"),
+		})
+		.optional()
+		.describe("Puts a second source in the right half of the frame"),
 });
 export type Cut = z.infer<typeof Cut>;
 

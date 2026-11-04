@@ -34,7 +34,7 @@ export function TopBar({ manifest, onSearch, onShortcuts }: { manifest: Manifest
 						<kbd>⌘K</kbd>
 					</button>
 				)}
-				<button type="button" className="icon-button" onClick={onShortcuts} aria-label="Keyboard shortcuts">
+				<button type="button" className="icon-button" onClick={onShortcuts} aria-label="Keyboard shortcuts" data-tip="Keyboard shortcuts">
 					<kbd>?</kbd>
 				</button>
 			</div>

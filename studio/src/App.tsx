@@ -8,6 +8,7 @@ import { ClipsPage } from "./pages/ClipsPage";
 import { SystemPage } from "./pages/SystemPage";
 import { CommandPalette } from "./ui/CommandPalette";
 import { ShortcutSheet } from "./ui/ShortcutSheet";
+import { TipHost } from "./ui/Tips";
 import { TopBar } from "./ui/TopBar";
 import { ToastHost } from "./ui/toast";
 
@@ -56,6 +57,7 @@ export function App() {
 			<div className="grain" />
 			{palette ? <CommandPalette manifest={manifest} onClose={() => setPalette(false)} /> : null}
 			{shortcuts ? <ShortcutSheet review={manifest.mode === "review"} onClose={() => setShortcuts(false)} /> : null}
+			<TipHost />
 			<ToastHost />
 		</div>
 	);

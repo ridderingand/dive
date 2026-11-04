@@ -33,6 +33,10 @@ To add one, copy its body from the catalog in the Inflight repo, `apps/api/asset
 
 Add only the icons the studio uses. Central's license forbids publishing the full set, so never commit the catalog here.
 
+## Tooltips
+
+Give a control a tooltip with `data-tip="Mute"`. If it has a keyboard shortcut, add `aria-keyshortcuts="M"` and the tooltip shows the key. Leave the shortcut off when it isn't bound in that mode, and keep the `?` sheet in `src/ui/ShortcutSheet.tsx` in step.
+
 ## The files Grok delivers
 
 Per clip, under `media/<guest>/<clip>/`: `guest.mp4`, `ridd.mp4`, `screenshare.mp4` (if any) and `audio.m4a`, all starting at clip time 0 and all the same length. B-roll that isn't synced goes in `media/<guest>/_broll/` and gets `"synced": false` in `clip.json`. Grok's raw tracks are per episode in Drive under `Dive Club Clips Raw/<Guest>`.
@@ -71,7 +75,7 @@ A concept is a template, a caption style, and a list of cuts:
 }
 ```
 
-Any template can show overlays. `endCap: true` adds the 4-second Resolve animation after the clip.
+A cut can show two people side by side with `"split": { "source": "guest", "focus": { "x": 0.72, "y": 0.5 } }`. If the next cut is that same source, their half grows into it over `expandSeconds`. Any template can show overlays. `endCap: true` adds the 4-second Resolve animation after the clip.
 
 ```bash
 bun run dive concept <clip> b --from a --template talk-vertical --name "Vertical cut" --intent "…"

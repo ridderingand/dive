@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Manifest, ManifestClip, ManifestConcept, RenderInfo } from "@core/manifest";
 import type { Take } from "@core/moments";
-import { FORMATS, type FormatId } from "@core/formats";
+import { FORMATS } from "@core/formats";
 import { guestOf, mediaUrl } from "../lib/data";
 import { useKeys } from "../lib/keys";
 import { nextStep } from "../lib/next-step";
@@ -45,27 +45,11 @@ function renderOf(concept: ManifestConcept, round: number | null) {
 	return concept.renders.find((render) => render.round === round) ?? concept.current;
 }
 
-function ConceptTab({ concept, active, onClick }: { concept: ManifestConcept; active: boolean; onClick: () => void }) {
+function ConceptTab({ concept, active, shortcut, onClick }: { concept: ManifestConcept; active: boolean; shortcut: string | undefined; onClick: () => void }) {
 	return (
-		<button type="button" className={`concept-tab${active ? " is-active" : ""}`} onClick={onClick} title={`${concept.intent} ${templateName(concept.template)}, ${FORMATS[concept.format].ratio}, round ${concept.round}.`}>
+		<button type="button" className={`concept-tab${active ? " is-active" : ""}`} onClick={onClick} data-tip={`${concept.intent} ${templateName(concept.template)}, ${FORMATS[concept.format].ratio}, round ${concept.round}.`} aria-keyshortcuts={shortcut}>
 			{concept.name}
 		</button>
-	);
-}
-
-const SAFE_ZONES: Record<FormatId, { top: number; bottom: number; right: number; left: number; note: string }> = {
-	vertical: { top: 13, bottom: 21, right: 12, left: 4, note: "Reels, Shorts and TikTok buttons" },
-	square: { top: 4, bottom: 10, right: 4, left: 4, note: "Feed crop and caption bar" },
-	wide: { top: 5, bottom: 12, right: 5, left: 5, note: "Player controls" },
-};
-
-function SafeZones({ format }: { format: FormatId }) {
-	const zone = SAFE_ZONES[format];
-	return (
-		<div className="safe-zones" aria-hidden>
-			<div style={{ inset: `${zone.top}% ${zone.right}% ${zone.bottom}% ${zone.left}%` }} />
-			<span>Keep text and faces inside the box. {zone.note} can cover the rest.</span>
-		</div>
 	);
 }
 
@@ -181,7 +165,6 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 	const [compareKeys, setCompareKeys] = useState<string[]>(() => rendered.slice(0, MAX_COMPARE).map((concept) => pickKey(concept.id, concept.current?.round ?? 1)));
 	const [masterId, setMasterId] = useState<string | null>(null);
 	const main = useRef<HTMLDivElement>(null);
-	const [safeZones, setSafeZones] = useState(false);
 	const [railOpen, setRailOpen] = useState(() => !railWasClosed());
 
 	const engine = useMemo(() => new PlayerEngine(clip.fps, clip.durationS ?? 0), [clip]);
@@ -325,7 +308,6 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 		",": () => stepRate(-1),
 		".": () => stepRate(1),
 		m: () => engine.toggleMute(),
-		s: () => setSafeZones((shown) => !shown),
 		w: () => setMode("watch"),
 		f: fullscreen,
 		"\\": toggleRail,
@@ -342,7 +324,7 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 		<div className={`room${railOpen ? "" : " is-rail-closed"}`} style={{ "--accent": accentOf(guest) } as React.CSSProperties}>
 			<header className="room-head">
 				{manifest.mode === "local" || reviewMany ? (
-					<button type="button" className="icon-button" onClick={() => navigate("/")} aria-label="All clips">
+					<button type="button" className="icon-button" onClick={() => navigate("/")} aria-label="All clips" data-tip="All clips" aria-keyshortcuts={manifest.mode === "local" ? "G" : undefined}>
 						<BackIcon />
 					</button>
 				) : null}
@@ -361,15 +343,15 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 				) : null}
 				{rendered.length > 1 ? (
 					<div className="mode-switch" role="tablist" aria-label="View">
-						<button type="button" role="tab" aria-selected={mode === "watch"} className={mode === "watch" ? "is-active" : undefined} onClick={() => setMode("watch")}>
+						<button type="button" role="tab" aria-selected={mode === "watch"} className={mode === "watch" ? "is-active" : undefined} onClick={() => setMode("watch")} data-tip="Watch" aria-keyshortcuts="W">
 							Watch
 						</button>
-						<button type="button" role="tab" aria-selected={mode === "compare"} className={mode === "compare" ? "is-active" : undefined} onClick={() => setMode("compare")}>
+						<button type="button" role="tab" aria-selected={mode === "compare"} className={mode === "compare" ? "is-active" : undefined} onClick={() => setMode("compare")} data-tip="Compare concepts" aria-keyshortcuts={manifest.mode === "local" ? "C" : undefined}>
 							Compare
 						</button>
 					</div>
 				) : null}
-				<button type="button" className="icon-button" onClick={toggleRail} aria-label={railOpen ? "Hide sidebar" : "Show sidebar"} aria-expanded={railOpen} title={railOpen ? "Hide sidebar" : "Show sidebar"}>
+				<button type="button" className="icon-button" onClick={toggleRail} aria-label={railOpen ? "Hide sidebar" : "Show sidebar"} aria-expanded={railOpen} data-tip={railOpen ? "Hide sidebar" : "Show sidebar"} aria-keyshortcuts="\">
 					{railOpen ? <SidebarOpenIcon /> : <SidebarClosedIcon />}
 				</button>
 			</header>
@@ -377,8 +359,8 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 			<div ref={main} className="room-main">
 				{concepts.length > 1 ? (
 					<div className="concept-tabs" role="group" aria-label="Concepts">
-						{concepts.map((item) => (
-							<ConceptTab key={item.id} concept={item} active={mode === "compare" ? compareKeys.some((key) => key.startsWith(`${item.id}@`)) : item.id === activeId} onClick={() => selectConcept(item.id)} />
+						{concepts.map((item, index) => (
+							<ConceptTab key={item.id} concept={item} shortcut={index < 9 ? String(index + 1) : undefined} active={mode === "compare" ? compareKeys.some((key) => key.startsWith(`${item.id}@`)) : item.id === activeId} onClick={() => selectConcept(item.id)} />
 						))}
 					</div>
 				) : null}
@@ -388,14 +370,13 @@ export function ClipRoom({ manifest, clip, onChanged }: { manifest: Manifest; cl
 						<div className="stage-frame" style={{ aspectRatio: `${render.width} / ${render.height}`, "--ratio": ratio } as React.CSSProperties}>
 							<EngineVideo key={`${concept.id}@${render.round}`} engine={engine} id={`${concept.id}@${render.round}`} src={mediaUrl(render.preview)} poster={mediaUrl(render.poster)} master />
 							<button type="button" className="stage-hit" aria-label="Play or pause" onClick={() => engine.toggle()} />
-							{safeZones ? <SafeZones format={concept.format} /> : null}
 						</div>
 					) : null}
 					{mode === "watch" && !render ? <WaitingStage clip={clip} guestName={guest.name} /> : null}
 					{mode === "compare" ? <CompareGrid engine={engine} picks={picks} master={compareMaster} onMaster={setMasterId} /> : null}
 				</div>
 
-				<Transport engine={engine} dictation={manifest.mode === "local" && hasVideo ? dictation : null} takes={takes} onFullscreen={fullscreen} safeZones={safeZones} onSafeZones={() => setSafeZones((shown) => !shown)} disabled={!hasVideo} />
+				<Transport engine={engine} dictation={manifest.mode === "local" && hasVideo ? dictation : null} takes={takes} onFullscreen={fullscreen} disabled={!hasVideo} />
 			</div>
 
 			<Rail open={railOpen} manifest={manifest} clip={clip} concept={concept} render={render} engine={engine} onPickRound={setRound} onCompareRounds={compareRounds} />

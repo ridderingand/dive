@@ -4,7 +4,7 @@
 	"intent": "The house look over the face mesh B-roll.",
 	"template": "talk-square",
 	"format": "square",
-	"round": 1,
+	"round": 2,
 	"status": "draft",
 	"captionStyle": "sky-label",
 	"cuts": [
@@ -15,12 +15,20 @@
 			"sourceIn": 0,
 			"rate": 1,
 			"focus": {
-				"x": 0.5,
+				"x": 0.53,
 				"y": 0.45
 			},
 			"scale": 1,
 			"offsetY": 0,
-			"label": "Ridd"
+			"label": "Ridd and James",
+			"split": {
+				"source": "guest",
+				"focus": {
+					"x": 0.55,
+					"y": 0.5
+				},
+				"expandSeconds": 0.7
+			}
 		},
 		{
 			"source": "guest",
@@ -81,6 +89,7 @@
 		}
 	],
 	"zooms": [],
+	"overlays": [],
 	"endCap": false,
 	"props": {},
 	"history": [
@@ -88,6 +97,11 @@
 			"round": 1,
 			"date": "2026-11-03",
 			"summary": "First version, rebuilt from the Mixture draft."
+		},
+		{
+			"round": 2,
+			"date": "2026-11-04",
+			"summary": "The opening is now a split screen of Ridd and James. It zooms into James as he starts talking."
 		}
 	]
 }

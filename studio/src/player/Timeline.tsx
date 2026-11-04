@@ -33,7 +33,7 @@ function segmentsOf(clip: ManifestClip, concept: ManifestConcept | null): Segmen
 	const kindOf = (key: string) => clip.files.find((file) => file.key === key);
 	return concept.cuts.map((cut) => {
 		const file = kindOf(cut.source);
-		return { from: cut.from, to: cut.to, label: file?.kind === "broll" ? (cut.label ?? file.label).replace(/^B-roll: /, "") : (file?.label ?? cut.source), kind: file?.kind ?? "guest", bubble: concept.bubbles.some((bubble) => bubble.from < cut.to && bubble.to > cut.from) };
+		return { from: cut.from, to: cut.to, label: cut.split || file?.kind === "broll" ? (cut.label ?? file?.label ?? cut.source).replace(/^B-roll: /, "") : (file?.label ?? cut.source), kind: file?.kind ?? "guest", bubble: concept.bubbles.some((bubble) => bubble.from < cut.to && bubble.to > cut.from) };
 	});
 }
 

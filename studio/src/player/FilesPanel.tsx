@@ -8,7 +8,7 @@ const bytes = (value: number) => (value > 1e6 ? `${(value / 1e6).toFixed(1)} MB`
 
 function FileTile({ engine, file, concept }: { engine: PlayerEngine; file: ManifestFile; concept: ManifestConcept | null }) {
 	const tile = useRef<HTMLElement>(null);
-	const cuts = useMemo(() => concept?.cuts.filter((cut) => cut.source === file.key) ?? [], [concept, file.key]);
+	const cuts = useMemo(() => concept?.cuts.filter((cut) => cut.source === file.key || cut.split?.source === file.key) ?? [], [concept, file.key]);
 	const bubbles = useMemo(() => concept?.bubbles.filter((bubble) => bubble.source === file.key) ?? [], [concept, file.key]);
 
 	const timeMap = useCallback(

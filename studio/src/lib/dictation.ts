@@ -3,8 +3,9 @@ import type { Stamp, Take } from "@core/moments";
 import type { PlayerEngine } from "../player/engine";
 
 const STAMP_EVERY_MS = 200;
+const COPIED_MS = 2600;
 
-export type DictationState = "idle" | "listening" | "transcribing";
+export type DictationState = "idle" | "listening" | "transcribing" | "copied";
 
 type Options = { engine: PlayerEngine; guest: string; slug: string; current: () => { concept: string | null; round: number | null }; onTake: (take: Take) => void; onMessage: (message: string) => void };
 
@@ -87,12 +88,16 @@ export function useDictation({ engine, guest, slug, current, onTake, onMessage }
 				if (!take) throw new Error("silent");
 				settle?.resolve(take.prompt);
 				latest.current.onTake(take);
-				await copying
-					.then(() => latest.current.onMessage("Copied. Paste it into Claude."))
-					.catch(() => {
-						latest.current.onMessage("Your prompt is ready. Come back to this window to copy it.");
-						window.addEventListener("focus", () => void navigator.clipboard.writeText(take.prompt).then(() => latest.current.onMessage("Copied. Paste it into Claude.")), { once: true });
-					});
+				const showCopied = () => {
+					setState("copied");
+					window.setTimeout(() => setState((now) => (now === "copied" ? "idle" : now)), COPIED_MS);
+				};
+				await copying.then(showCopied).catch(() => {
+					setState("idle");
+					latest.current.onMessage("Your prompt is ready. Come back to this window to copy it.");
+					window.addEventListener("focus", () => void navigator.clipboard.writeText(take.prompt).then(showCopied), { once: true });
+				});
+				return;
 			} catch (reason) {
 				settle?.reject(reason as Error);
 				latest.current.onMessage((reason as Error).message === "silent" ? "Didn't catch anything. Check your microphone and try again." : "Couldn't write that up. Run bun run dive setup, then try again.");
@@ -115,7 +120,7 @@ export function useDictation({ engine, guest, slug, current, onTake, onMessage }
 
 	const toggle = useCallback(() => {
 		if (state === "listening") stop.current?.();
-		else if (state === "idle") void start();
+		else if (state === "idle" || state === "copied") void start();
 	}, [state, start]);
 
 	useEffect(() => () => stop.current?.(), []);

@@ -126,7 +126,8 @@ export function conceptChecks(clip: Clip, concept: Concept, captions: Captions |
 	}
 	if (!(concept.captionStyle in captionStyles)) checks.push({ id: "caption-style", title: "Caption style exists", level: "fail", message: `There is no caption style "${concept.captionStyle}".` });
 
-	const unknown = [...concept.cuts, ...concept.bubbles, ...screenCards].find((item) => !sources.has(item.source));
+	const splits = concept.cuts.flatMap((cut) => (cut.split ? [{ source: cut.split.source, from: cut.from }] : []));
+	const unknown = [...concept.cuts, ...concept.bubbles, ...screenCards, ...splits].find((item) => !sources.has(item.source));
 	if (unknown) checks.push({ id: "sources", title: "Sources exist", level: "fail", message: `Uses "${unknown.source}", which this clip doesn't have.`, at: unknown.from });
 	return checks;
 }

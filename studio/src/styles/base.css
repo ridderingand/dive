@@ -248,6 +248,61 @@ kbd {
 	}
 }
 
+.tip {
+	position: fixed;
+	inset: auto;
+	gap: 8px;
+	max-width: 260px;
+	margin: 0;
+	padding: 6px 10px;
+	border: 0;
+	border-radius: 10px;
+	overflow: visible;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 20px;
+	color: var(--text);
+	background: #0f2023;
+	box-shadow:
+		0 0 0 1px var(--rim-2),
+		0 12px 32px rgba(0, 0, 0, 0.5);
+	pointer-events: none;
+	animation: tip-in 140ms var(--ease);
+}
+
+.tip:popover-open {
+	display: flex;
+}
+
+.tip:has(.tip-keys) {
+	padding-right: 6px;
+}
+
+.tip[data-side="top"] {
+	transform-origin: bottom center;
+}
+
+.tip[data-side="bottom"] {
+	transform-origin: top center;
+}
+
+.tip.is-warm {
+	animation: none;
+}
+
+.tip-keys {
+	flex: none;
+	display: flex;
+	gap: 3px;
+}
+
+@keyframes tip-in {
+	from {
+		opacity: 0;
+		transform: scale(0.96);
+	}
+}
+
 @media (prefers-reduced-motion: reduce) {
 	*,
 	*::before,
