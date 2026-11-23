@@ -90,7 +90,7 @@ schema: 1
 Body, in order:
 
 1. `## Summary` — arc, core claims, why it matters. Descript: speakers/timecodes trusted (no ±30s caveat). Disclose name corrections, never silent.
-2. `## Takeaways (Granola)` — when an Editing Granola note exists, paste/normalize Ridd's Takeaways here first. These are **primary gold**: Ridd's taste layer for what matters and what must stay searchable.
+2. `## Takeaways (Granola)` — when an Editing Granola note exists, paste/normalize Ridd's Takeaways here first. Since 2026-11-23 Ridd only types **Clips** in the Editing note, so use those Clips as the Takeaways (same thing). These are **primary gold**: Ridd's taste layer for what matters and what must stay searchable.
 3. `## Mile Markers` — `| Timecode | Topic | Key claims | Gold |`. Split when the *claim* changes (~2–7 min), not the subject. Cite-alone test. Ad reads kept on timeline, marked skippable. `Gold` column: `takeaway` | `descript-marker` | `inferred` (weight in that order).
 4. `## Notable Quotes` — timestamped, speaker-attributed; low-confidence marked (rare with Descript).
 
